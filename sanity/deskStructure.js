@@ -9,6 +9,9 @@ import Aesthetics from "./icons/aesthetics";
 import Cosmetics from "./icons/cosmetics";
 import { FaRegImage } from "react-icons/fa";
 import { MdMeetingRoom } from "react-icons/md";
+import { GiLaserWarning } from "react-icons/gi";
+import { FaHandHoldingMedical } from "react-icons/fa";
+import { GrContact } from "react-icons/gr";
 
 export default () =>
     S.list()
@@ -43,67 +46,47 @@ export default () =>
                                                         .schemaType("aesthetic_home")
                                                         .documentId("aesthetic_home")
                                                 ),
-                                            // S.list()
-                                            //     .title("Home")
-                                            //     .items([
-                                            //         S.listItem()
-                                            //             .title("Hero")
-                                            //             .icon(FaRegImage)
-                                            //             .child(
-                                            //                 S.document()
-                                            //                     .schemaType("aesthetic_hero")
-                                            //                     .documentId("aesthetic_hero")
-                                            //             ),
-                                            //         S.listItem()
-                                            //             .title("Räumlichkeiten")
-                                            //             .icon(MdMeetingRoom)
-                                            //             .child(
-                                            //                 S.document()
-                                            //                     .schemaType("aesthetic_raeumlichkeiten")
-                                            //                     .documentId("aesthetic_raeumlichkeiten")
-                                            //             ),
-                                            //         S.listItem()
-                                            //             .title("Image Box")
-                                            //             .icon(MdMeetingRoom)
-                                            //             .child(
-                                            //                 S.document()
-                                            //                     .schemaType("aesthetic_imageBox")
-                                            //                     .documentId("aesthetic_imageBox")
-                                            //             ),
-                                            // S.listItem()
-                                            //     .title("Image Box")
-                                            //     .icon(MdMeetingRoom)
-                                            //     .child(
-                                            //         S.list()
-                                            //             .title("Image Box")
-                                            //             .items([
-                                            //                 S.listItem()
-                                            //                     .title("Test 1")
-                                            //                     .child(
-                                            //                         S.document()
-                                            //                             .schemaType(
-                                            //                                 "aesthetic_imageBox"
-                                            //                             )
-                                            //                             .documentId(
-                                            //                                 "aesthetic_imageBox"
-                                            //                             )
-                                            //                     ),
-                                            //             ])
-                                            //     ),
-                                            // ])
-                                            // ),
                                             S.listItem()
                                                 .title("Praxis")
-                                                .icon(MdSettings)
-                                                .child(S.document().schemaType("heroBG").documentId("heroBG")),
+                                                .icon(MdMeetingRoom)
+                                                .child(
+                                                    S.document()
+                                                        .schemaType("aesthetic_praxis")
+                                                        .documentId("aesthetic_praxis")
+                                                ),
                                             S.listItem()
                                                 .title("Laserbehandlung")
-                                                .icon(MdSettings)
-                                                .child(S.document().schemaType("heroBG").documentId("heroBG")),
+                                                .icon(GiLaserWarning)
+                                                .child(
+                                                    S.document()
+                                                        .schemaType("aesthetic_laserbehandlung")
+                                                        .documentId("aesthetic_laserbehandlung")
+                                                ),
+                                            S.listItem()
+                                                .title("Dermatologie")
+                                                .icon(FaHandHoldingMedical)
+                                                .child(
+                                                    S.document()
+                                                        .schemaType("aesthetic_dermatologie")
+                                                        .documentId("aesthetic_dermatologie")
+                                                ),
                                         ])
                                 ),
+                            S.listItem()
+                                .title("Kontakt")
+                                .icon(GrContact)
+                                .child(S.document().schemaType("heroBG").documentId("heroBG")),
                         ])
                 ),
+            S.listItem()
+                .title("Laserbehandlungen")
+                .icon(MdSettings)
+                .child(
+                    S.document()
+                        .schemaType("aesthethic_laserbehandlung_category")
+                        .documentId("aesthethic_laserbehandlung_category")
+                ),
+            S.divider(),
             S.listItem()
                 .title("German Cosmetics")
                 .icon(Cosmetics)

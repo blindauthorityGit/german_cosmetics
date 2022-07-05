@@ -1,9 +1,9 @@
 import { FaRegImage } from "react-icons/fa";
 
 export default {
-    name: "aesthetic_home",
+    name: "aesthetic_praxis",
     type: "document",
-    title: "Home",
+    title: "aesthetic_praxis",
     icon: FaRegImage,
     fields: [
         {
@@ -75,12 +75,22 @@ export default {
                     of: [{ type: "block" }],
                 },
                 {
-                    name: "button",
-                    title: "Button Text",
-                    type: "string",
-                    description: "Text für den Button",
+                    name: "image1",
+                    title: "Bild 1",
+                    type: "image",
+                    fields: [
+                        {
+                            title: "Alt Text",
+                            name: "alt",
+                            type: "string",
+                        },
+                    ],
                 },
-
+                {
+                    name: "image2",
+                    title: "Image2",
+                    type: "image",
+                },
                 {
                     name: "images",
                     type: "array",
@@ -114,13 +124,13 @@ export default {
             ],
         },
         {
-            title: "Imagebox Settings",
-            name: "imagebox_settings",
+            title: "Der Arzt",
+            name: "arzt",
             type: "document",
             fields: [
                 {
-                    name: "backgroundImg1",
-                    title: "Hintergrund Bild 1",
+                    name: "arztImg",
+                    title: "Bild Doktor",
                     type: "image",
                     fields: [
                         {
@@ -131,26 +141,21 @@ export default {
                     ],
                 },
                 {
-                    title: "Headline 1",
-                    name: "headline1",
+                    title: "Headline Doktor",
+                    name: "arztHeadline",
                     type: "string",
                 },
                 {
-                    name: "backgroundImg2",
-                    title: "Hintergrund Bild 2",
-                    type: "image",
-                    fields: [
-                        {
-                            title: "Alt Text",
-                            name: "alt",
-                            type: "string",
-                        },
-                    ],
+                    title: "Text Beschreibung",
+                    name: "arztDesc",
+                    type: "array",
+                    of: [{ type: "block" }],
                 },
                 {
-                    title: "Headline 2",
-                    name: "headline2",
-                    type: "string",
+                    title: "Text Werdegang",
+                    name: "arztWerdegang",
+                    type: "array",
+                    of: [{ type: "block" }],
                 },
             ],
         },
