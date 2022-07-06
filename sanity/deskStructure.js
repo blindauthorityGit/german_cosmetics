@@ -12,6 +12,7 @@ import { MdMeetingRoom } from "react-icons/md";
 import { GiLaserWarning } from "react-icons/gi";
 import { FaHandHoldingMedical } from "react-icons/fa";
 import { GrContact } from "react-icons/gr";
+import { GrTechnology } from "react-icons/gr";
 
 export default () =>
     S.list()
@@ -30,7 +31,7 @@ export default () =>
                             S.listItem()
                                 .title("Settings")
                                 .icon(MdSettings)
-                                .child(S.document().schemaType("heroBG").documentId("heroBG")),
+                                .child(S.document().schemaType("aesthetic_settings").documentId("aesthetic_settings")),
                             S.listItem()
                                 .title("Pages")
                                 .icon(ImTextColor)
@@ -75,17 +76,23 @@ export default () =>
                             S.listItem()
                                 .title("Kontakt")
                                 .icon(GrContact)
-                                .child(S.document().schemaType("heroBG").documentId("heroBG")),
+                                .child(S.document().schemaType("aesthetic_kontakt").documentId("aesthetic_kontakt")),
+                            S.listItem()
+                                .title("Komponente")
+                                .icon(GrTechnology)
+                                .child(
+                                    S.document().schemaType("aesthetic_komponente").documentId("aesthetic_komponente")
+                                ),
                         ])
                 ),
-            S.listItem()
-                .title("Laserbehandlungen")
-                .icon(MdSettings)
-                .child(
-                    S.document()
-                        .schemaType("aesthethic_laserbehandlung_category")
-                        .documentId("aesthethic_laserbehandlung_category")
-                ),
+            // S.listItem()
+            //     .title("Laserbehandlungen")
+            //     .icon(MdSettings)
+            //     .child(
+            //         S.document()
+            //             .schemaType("aesthethic_laserbehandlung_category")
+            //             .documentId("aesthethic_laserbehandlung_category")
+            //     ),
             S.divider(),
             S.listItem()
                 .title("German Cosmetics")
@@ -94,22 +101,6 @@ export default () =>
             // ...S.documentTypeListItems(),
             // ...S.documentTypeListItems().filter((item) => !["angebotSetting"].includes(item.getId())),
             S.divider(),
-            S.listItem()
-                .title("Menue")
-                .icon(MdImage)
-                .child(
-                    S.list()
-                        // Sets a title for our new list
-                        .title("Mittagsmenue")
-                        // Add items to the array
-                        // Each will pull one of our new singletons
-                        .items([
-                            S.listItem()
-                                .title("Menüplan")
-                                .icon(ImImage)
-                                .child(S.document().schemaType("menue").documentId("menue")),
-                        ])
-                ),
 
             // We also need to remove the new singletons from the main list
             ...S.documentTypeListItems().filter(
@@ -123,6 +114,14 @@ export default () =>
                         "rindfleisch_overview",
                         "menue",
                         "angeboteSettings",
+                        "aesthetic_komponente",
+                        "aesthetic_kontakt",
+                        "aesthetic_settings",
+                        "aesthetic_dermatologie",
+                        "aesthetic_laserbehandlung",
+                        "aesthetic_praxis",
+                        "aesthethic_laserbehandlung_category",
+                        "aesthetic_home",
                     ].includes(listItem.getId())
             ),
         ]);

@@ -13,6 +13,12 @@ import aesthetic_laserbehandlung from "./aesthetics/laserbehandlung";
 import aesthethic_laserbehandlung_category from "./aesthetics/category/laserbehanldung";
 import aesthetic_dermatologie from "./aesthetics/dermatologie";
 import dermatologieBehandlung from "./aesthetics/objects/dermatologieBehandlung";
+import aesthetic_settings from "./aesthetics/settings";
+import aesthetics_colors from "./aesthetics/settings/colors";
+import aesthetic_kontakt from "./aesthetics/kontakt";
+import aesthetics_imageBox from "./aesthetics/komponente/imageBox";
+import aesthetic_komponente from "./aesthetics/komponente/";
+import blogEntry from "./main/news/blogEntry";
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -32,5 +38,11 @@ export default createSchema({
         aesthethic_laserbehandlung_category,
         aesthetic_dermatologie,
         dermatologieBehandlung,
+        aesthetic_settings,
+        aesthetics_colors,
+        aesthetic_kontakt,
+        aesthetics_imageBox,
+        aesthetic_komponente,
+        blogEntry,
     ]),
 });
