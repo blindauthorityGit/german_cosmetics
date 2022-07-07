@@ -7,6 +7,7 @@ module.exports = {
     theme: {
         extend: {
             colors: {
+                primaryColor: "#A54399",
                 darkPurple: "#473046",
                 overlay: "#A54399",
             },

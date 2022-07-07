@@ -12,6 +12,7 @@ import { DefaultButton } from "../components/utils/buttons";
 import { useSpring, animated } from "react-spring";
 import { config } from "react-spring";
 import imageUrlBuilder from "@sanity/image-url";
+import Navbar from "../components/nav/navbar";
 
 const builder = imageUrlBuilder(client);
 
@@ -30,6 +31,14 @@ export default function Home({ data }) {
                 <title>{data[0].seo.title}</title>
                 <meta name="description" content={data[0].seo.description} />
             </Head>
+            <Navbar
+                strasse={data[1].adresse.strasse}
+                ort={data[1].adresse.ort}
+                phone={data[1].kontakt.phone}
+                email={data[1].kontakt.email}
+                value={data[1].oeffnungszeiten}
+                logo={urlFor(data[2].logo.logo_dark)}
+            ></Navbar>
             <MainContainer width="max-w-[100%] h-full">
                 <Hero
                     fullHeight={true}
@@ -38,7 +47,7 @@ export default function Home({ data }) {
                     containerKlasse="items-center z-20"
                     value={data[1].oeffnungszeiten}
                 >
-                    <div className="wrapper w-full col-span-12 sm:col-span-6 lg:col-span-4 mt-[-5rem] sm:mt-0">
+                    <div className="wrapper w-full col-span-12 sm:col-span-6 lg:col-span-5 mt-[-5rem] sm:mt-0">
                         <H1 klasse="text-center sm:text-left text-white sm:text-darkPurple">
                             {data[0].hero_settings.headline}
                         </H1>
@@ -54,7 +63,7 @@ export default function Home({ data }) {
 }
 
 export async function getStaticProps() {
-    const res = await client.fetch(`*[_type in ["aesthetic_home", "aesthetic_kontakt"] ]`);
+    const res = await client.fetch(`*[_type in ["aesthetic_home", "aesthetic_kontakt", "aesthetic_settings"] ]`);
     // const res = await fetch("https://jsonplaceholder.typicode.com/todos/1");
 
     const data = await res;

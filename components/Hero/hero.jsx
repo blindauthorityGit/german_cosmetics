@@ -20,7 +20,7 @@ const Hero = (props) => {
                 props.fullHeight ? "h-full" : props.height
             } ${props.colspan}`}
         >
-            <AbsoluteContainer width={`w-[90%] sm:max-w-[80%] sm:w-[80%] h-full ${props.containerKlasse}`}>
+            <AbsoluteContainer width={`container w-auto sm:w-full px-8 sm:px-0 h-full ${props.containerKlasse}`}>
                 {props.children}
             </AbsoluteContainer>
             <animated.div
@@ -46,11 +46,13 @@ const Hero = (props) => {
                     </div>
                 </div>
             </animated.div>
-            <div className="overlay sm:opacity-0 opacity-70 absolute w-full h-full bg-overlay "></div>
-            <animated.div
-                className="w-full h-full bg-cover bg-center"
-                style={{ backgroundImage: `url(${props.bgImage})` }}
-            ></animated.div>
+            <div className="overlay z-10 sm:opacity-10 opacity-70 absolute w-full h-full bg-overlay "></div>
+            <div className="overflow-hidden w-full h-full">
+                <animated.div
+                    className="w-full  blurIn h-full bg-cover bg-right-top md:bg-center  lg:bg-right-top"
+                    style={{ backgroundImage: `url(${props.bgImage})` }}
+                ></animated.div>
+            </div>
         </div>
     );
 };
