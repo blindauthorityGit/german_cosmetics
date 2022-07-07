@@ -6,9 +6,14 @@ module.exports = {
     content: ["./pages/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
     theme: {
         extend: {
+            colors: {
+                darkPurple: "#473046",
+                overlay: "#A54399",
+            },
             fontFamily: {
                 ...fontFamily,
                 sans: ["Montserrat", "sans-serif"],
+                europa: ["europa", "sans-serif"],
             },
         },
     },
