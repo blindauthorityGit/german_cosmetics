@@ -10,6 +10,7 @@ module.exports = {
                 primaryColor: "#A54399",
                 darkPurple: "#473046",
                 overlay: "#A54399",
+                pink: "#e41aff",
             },
             fontFamily: {
                 ...fontFamily,

@@ -6,13 +6,18 @@ import Hero from "../components/Hero/hero";
 import Aesthetic_Home from "./aesthetics/home/home";
 import { useNextSanityImage } from "next-sanity-image";
 import client from "../client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { H1 } from "../components/utils/headlines";
 import { DefaultButton } from "../components/utils/buttons";
 import { useSpring, animated } from "react-spring";
 import { config } from "react-spring";
 import imageUrlBuilder from "@sanity/image-url";
 import Navbar from "../components/nav/navbar";
+import HomeSwiper from "../components/sections/homeSwiper";
+import BlogSwiper from "../components/sections/blogSwiper";
+import { PortableText } from "@portabletext/react";
+import CTA from "../components/sections/cta";
+import ImageBox from "../components/sections/imageBox";
 
 const builder = imageUrlBuilder(client);
 
@@ -20,9 +25,14 @@ function urlFor(source) {
     return builder.image(source);
 }
 
-export default function Home({ data }) {
+export default function Home({ data, dataBlog }) {
+    const headlineRef = useRef();
+
     useEffect(() => {
         console.log(data);
+        console.log(dataBlog);
+        const splitter = headlineRef.current.children[0].innerHTML.split("");
+        console.log(splitter);
     }, []);
 
     return (
@@ -32,12 +42,12 @@ export default function Home({ data }) {
                 <meta name="description" content={data[0].seo.description} />
             </Head>
             <Navbar
-                strasse={data[1].adresse.strasse}
-                ort={data[1].adresse.ort}
-                phone={data[1].kontakt.phone}
-                email={data[1].kontakt.email}
-                value={data[1].oeffnungszeiten}
-                logo={urlFor(data[2].logo.logo_dark)}
+                strasse={data[2].adresse.strasse}
+                ort={data[2].adresse.ort}
+                phone={data[2].kontakt.phone}
+                email={data[2].kontakt.email}
+                value={data[2].oeffnungszeiten}
+                logo={urlFor(data[3].logo.logo_dark)}
             ></Navbar>
             <MainContainer width="max-w-[100%] h-full">
                 <Hero
@@ -45,31 +55,45 @@ export default function Home({ data }) {
                     bgImage={urlFor(data[0].hero_settings.backgroundImg)}
                     colspan="col-span-12"
                     containerKlasse="items-center z-20"
-                    value={data[1].oeffnungszeiten}
+                    value={data[2].oeffnungszeiten}
                 >
-                    <div className="wrapper w-full col-span-12 sm:col-span-6 lg:col-span-5 mt-[-5rem] sm:mt-0">
-                        <H1 klasse="text-center sm:text-left text-white sm:text-darkPurple">
-                            {data[0].hero_settings.headline}
-                        </H1>
-                        <DefaultButton klasse="col-span-12  m-auto sm:m-0 mt-12 sm:mt-16 text-white sm:text-darkPurple border-white sm:border-darkPurple font-semibold">
+                    <div ref={headlineRef} className="">
+                        <H1 klasse="text-center sm:text-left text-white ">{data[0].hero_settings.headline}</H1>
+                        <DefaultButton klasse="col-span-12  m-auto sm:m-0 mt-12 sm:mt-16 text-white border-none bg-pink font-semibold">
                             Termin vereinbaren
                         </DefaultButton>
                     </div>
                 </Hero>
                 {/* <h1 className="font-sans">Hallo ich bin ein Text</h1> */}
             </MainContainer>
+            <HomeSwiper
+                headline={data[0].raeumlichkeiten_settings.headline}
+                value={data[0].raeumlichkeiten_settings.text}
+                button={data[0].raeumlichkeiten_settings.button}
+                images={data[0].raeumlichkeiten_settings.images}
+            >
+                {/* <PortableText value={data[0].raeumlichkeiten_settings.text} /> */}
+            </HomeSwiper>
+            <CTA headline={data[1].cta.headline} text={data[1].cta.text} button={data[1].cta.button_text}></CTA>
+            <ImageBox box={data[1].imagebox.headline}></ImageBox>
+            {/* <BlogSwiper></BlogSwiper> */}
         </>
     );
 }
 
 export async function getStaticProps() {
-    const res = await client.fetch(`*[_type in ["aesthetic_home", "aesthetic_kontakt", "aesthetic_settings"] ]`);
+    const res = await client.fetch(
+        `*[_type in ["aesthetic_home", "aesthetic_kontakt", "aesthetic_settings", "aesthetic_komponente"] ]`
+    );
+    const resBlog = await client.fetch(`*[_type in ["blogEntry"] ]`);
     // const res = await fetch("https://jsonplaceholder.typicode.com/todos/1");
 
     const data = await res;
+    const dataBlog = await resBlog;
     return {
         props: {
             data,
+            dataBlog,
         },
     };
 }

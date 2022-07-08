@@ -3,7 +3,7 @@ import React from "react";
 function H1(props) {
     return (
         <h1
-            className={`z-20 text-3xl lg-text-5xl xl:text-6xl 2xl:text-6xl 3xl:text-8xl font-europa font-light ${props.klasse}`}
+            className={`z-20 text-3xl lg-text-5xl xl:text-6xl 2xl:text-7xl 3xl:text-8xl font-europa font-black ${props.klasse}`}
         >
             {props.children}
         </h1>
@@ -11,7 +11,7 @@ function H1(props) {
 }
 function H2(props) {
     return (
-        <h2 className={`z-20 text-3xl lg-text-3xl xl:text-4xl 2xl:text-5xl 3xl:text-6xl font-roboto ${props.klasse}`}>
+        <h2 className={`z-20 text-3xl lg-text-4xl xl:text-5xl 2xl:text-6xl 3xl:text-6xl font-light  ${props.klasse}`}>
             {props.children}
         </h2>
     );

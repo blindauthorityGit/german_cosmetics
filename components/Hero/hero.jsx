@@ -6,12 +6,24 @@ import { useSpring, animated } from "react-spring";
 import { config } from "react-spring";
 
 const Hero = (props) => {
-    const fadeIn = useSpring({ to: { right: 0 }, from: { right: -400 }, delay: 0, config: config.molasses });
+    const fadeIn = useSpring({ to: { right: 0 }, from: { right: -400 }, delay: 200, config: config.molasses });
+    const leftIn = useSpring({
+        to: { transform: "translateX(0)" },
+        from: { transform: "translateX(-700px)" },
+        delay: 0,
+        config: config.gentle,
+    });
     const blurIn = useSpring({
         to: { filter: "blur(0)" },
         from: { filter: "blur(10px)" },
         delay: 0,
         config: config.molasses,
+    });
+    const opacityIn = useSpring({
+        to: { opacity: "0.1" },
+        from: { opacity: "1" },
+        delay: 0,
+        config: { duration: 2500 },
     });
 
     return (
@@ -21,7 +33,12 @@ const Hero = (props) => {
             } ${props.colspan}`}
         >
             <AbsoluteContainer width={`container w-auto sm:w-full px-8 sm:px-0 h-full ${props.containerKlasse}`}>
-                {props.children}
+                <animated.div
+                    className="wrapper w-full col-span-12 sm:col-span-6 lg:col-span-5 mt-[-5rem] sm:mt-0"
+                    style={leftIn}
+                >
+                    {props.children}
+                </animated.div>
             </AbsoluteContainer>
             <animated.div
                 style={fadeIn}
@@ -46,7 +63,10 @@ const Hero = (props) => {
                     </div>
                 </div>
             </animated.div>
-            <div className="overlay z-10 sm:opacity-10 opacity-70 absolute w-full h-full bg-overlay "></div>
+            <animated.div
+                style={opacityIn}
+                className="overlay z-10 sm:opacity-40 opacity-70 absolute w-full h-full bg-overlay "
+            ></animated.div>
             <div className="overflow-hidden w-full h-full">
                 <animated.div
                     className="w-full  blurIn h-full bg-cover bg-right-top md:bg-center  lg:bg-right-top"
