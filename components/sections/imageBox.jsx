@@ -15,7 +15,7 @@ function urlFor(source) {
 
 const ImageBox = (props) => {
     return (
-        <MainContainer width="container gap-0  pb-16 sm:py-32 font-europa ">
+        <MainContainer width="container gap-0  pb-16 sm:pt-32 font-europa ">
             {props.box.map((e, i) => {
                 return (
                     <div className="col-span-12 sm:col-span-6 py-48 sm:py-64 relative cursor-pointer group transition-all overflow-hidden">

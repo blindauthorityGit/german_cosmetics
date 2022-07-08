@@ -11,6 +11,8 @@ module.exports = {
                 darkPurple: "#473046",
                 overlay: "#A54399",
                 pink: "#e41aff",
+                rosa: "#d77bbf",
+                footer: "#526576",
             },
             fontFamily: {
                 ...fontFamily,

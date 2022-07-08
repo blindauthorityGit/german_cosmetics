@@ -67,7 +67,7 @@ const Hero = (props) => {
                 style={opacityIn}
                 className="overlay z-10 sm:opacity-40 opacity-70 absolute w-full h-full bg-overlay "
             ></animated.div>
-            <div className="overflow-hidden w-full h-full">
+            <div className="overflow-hidden w-full h-full scale-x-[-1]">
                 <animated.div
                     className="w-full  blurIn h-full bg-cover bg-right-top md:bg-center  lg:bg-right-top"
                     style={{ backgroundImage: `url(${props.bgImage})` }}

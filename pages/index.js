@@ -18,6 +18,8 @@ import BlogSwiper from "../components/sections/blogSwiper";
 import { PortableText } from "@portabletext/react";
 import CTA from "../components/sections/cta";
 import ImageBox from "../components/sections/imageBox";
+import LinkBox from "../components/sections/linkBox";
+import Footer from "../components/sections/footer";
 
 const builder = imageUrlBuilder(client);
 
@@ -59,7 +61,7 @@ export default function Home({ data, dataBlog }) {
                 >
                     <div ref={headlineRef} className="">
                         <H1 klasse="text-center sm:text-left text-white ">{data[0].hero_settings.headline}</H1>
-                        <DefaultButton klasse="col-span-12  m-auto sm:m-0 mt-12 sm:mt-16 text-white border-none bg-pink font-semibold">
+                        <DefaultButton klasse="col-span-12  m-auto sm:m-0 mt-12 sm:mt-16 text-white border-none bg-rosa font-semibold">
                             Termin vereinbaren
                         </DefaultButton>
                     </div>
@@ -76,7 +78,23 @@ export default function Home({ data, dataBlog }) {
             </HomeSwiper>
             <CTA headline={data[1].cta.headline} text={data[1].cta.text} button={data[1].cta.button_text}></CTA>
             <ImageBox box={data[1].imagebox.headline}></ImageBox>
-            {/* <BlogSwiper></BlogSwiper> */}
+            <BlogSwiper data={dataBlog}>
+                <div className="absolute w-[100%] h-[960px] bg-[#EEF0F2] top-0 sm:top-[30%]"></div>
+            </BlogSwiper>
+            <LinkBox
+                image={urlFor(data[1].linkbox.img)}
+                headline={data[1].linkbox.headline}
+                text={data[1].linkbox.text}
+                button={data[1].linkbox.button_text}
+            ></LinkBox>
+            <Footer
+                logo={urlFor(data[3].logo.logo_light)}
+                strasse={data[2].adresse.strasse}
+                ort={data[2].adresse.ort}
+                phone={data[2].kontakt.phone}
+                email={data[2].kontakt.email}
+                value={data[2].oeffnungszeiten}
+            ></Footer>
         </>
     );
 }

@@ -63,5 +63,32 @@ export default {
                 },
             ],
         },
+        {
+            title: "Link Box",
+            name: "linkbox",
+            type: "document",
+            fields: [
+                {
+                    name: "img",
+                    title: "Image",
+                    type: "image",
+                },
+                {
+                    name: "headline",
+                    title: "Headline",
+                    type: "string",
+                },
+                {
+                    title: "Text",
+                    name: "text",
+                    type: "text",
+                },
+                {
+                    title: "Button Text",
+                    name: "button_text",
+                    type: "string",
+                },
+            ],
+        },
     ],
 };

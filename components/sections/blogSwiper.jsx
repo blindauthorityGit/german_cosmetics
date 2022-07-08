@@ -18,6 +18,9 @@ function urlFor(source) {
 }
 
 import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/scrollbar";
 
 const BlogSwiper = (props) => {
     useEffect(() => {
@@ -25,11 +28,11 @@ const BlogSwiper = (props) => {
     }, []);
 
     return (
-        <MainContainer width="container pt-16 sm:py-64 font-europa">
-            <div className="col-span-12 sm:col-span-4 flex flex-col justify-center px-8 sm:px-0 sm:pr-16">
+        <MainContainer width="container pt-16 sm:pt-36 sm:pb-32 font-europa relative">
+            <div className="col-span-12 z-20 justify-center px-8 sm:px-0 sm:pr-16">
                 <H2 klasse="font-europa mb-12">Veranstaltungen und Aktionen</H2>
             </div>
-            <div className="col-span-12 sm:col-span-8">
+            <div className="sm:px-16 col-span-12">
                 <Swiper
                     spaceBetween={50}
                     onSlideChange={() => console.log("slide change")}
@@ -37,11 +40,9 @@ const BlogSwiper = (props) => {
                     slidesPerView={2}
                     slideActiveClass="sliderTwo-active"
                     modules={[]}
-                    navigation
-                    loop={true}
+                    loop={false}
                     pagination={{ clickable: true }}
                     className="bubu"
-                    style={props.style}
                     breakpoints={{
                         // when window width is >= 640px
                         320: {
@@ -55,30 +56,23 @@ const BlogSwiper = (props) => {
                             pagination: true,
                         },
                     }}
-                    // scrollbar={{ draggable: true }}
-                    // ref={sliderRef}
                 >
-                    {props.images.map((e, i) => {
+                    {props.data.map((e, i) => {
                         return (
                             <SwiperSlide>
                                 <BlogOverviewElement
-                                    image={urlFor(e).width("522").height("673")}
-                                    headline="test"
-                                    text="testtest"
+                                    date={e.blog_settings.date.split("-").reverse().join("-")}
+                                    image={urlFor(e.blog_settings.featuredImg).width("575").height("512")}
+                                    headline={e.title}
+                                    value={e.blog_settings.intro}
+                                    link={e.blog_settings.slug.current}
                                 ></BlogOverviewElement>
-                                {/* <div>
-                                    <img
-                                        className="hidden sm:block"
-                                        src={urlFor(e).width("522").height("673")}
-                                        alt=""
-                                    />
-                                    <img className="block sm:hidden" src={urlFor(e)} alt="" />
-                                </div> */}
                             </SwiperSlide>
                         );
                     })}
                 </Swiper>
             </div>
+            {props.children}
         </MainContainer>
     );
 };
