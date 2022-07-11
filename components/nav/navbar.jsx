@@ -48,7 +48,11 @@ const Navbar = (props) => {
                         </ul>
                     </div>
                     <div className="middle">
-                        <img src={props.logo} width="230" alt="Logo" />
+                        <Link href="./">
+                            <a>
+                                <img src={props.logo} width="230" alt="Logo" />
+                            </a>
+                        </Link>
                     </div>
                     <div className="right pt-8">
                         <ul>

@@ -10,6 +10,7 @@ import Image from "next/image";
 import client from "../../client";
 import imageUrlBuilder from "@sanity/image-url";
 import ScrollAnimation from "react-animate-on-scroll";
+import Link from "next/link";
 
 const builder = imageUrlBuilder(client);
 
@@ -35,9 +36,11 @@ const HomeSwiper = (props) => {
                 <H2 klasse="font-europa mb-12">{props.headline}</H2>
                 <PortableText className="font-europa" value={props.value} />
                 {props.children}
-                <DefaultButton klasse="mt-8 sm:mt-16 mb-12 sm:mb-0 hover:bg-primaryColor hover:text-white border border-[#A54399] text-primaryColor">
-                    {props.button}
-                </DefaultButton>
+                <Link href="/praxis">
+                    <DefaultButton klasse="mt-8 sm:mt-16 mb-12 sm:mb-0 hover:bg-primaryColor hover:text-white border border-[#A54399] text-primaryColor">
+                        {props.button}
+                    </DefaultButton>
+                </Link>
             </ScrollAnimation>
             <ScrollAnimation
                 animateIn={"slideInRight"}

@@ -16,7 +16,9 @@ const LinkBox = (props) => {
                 <div className="text p-16 z-40 relative flex flex-col items-center justify-center h-full">
                     <H2 klasse="text-white mb-8">{props.headline}</H2>
                     <p className="text-white mb-12">{props.text}</p>
-                    <DefaultButton>{props.button}</DefaultButton>
+                    <DefaultButton klasse="border border-white text-white w-3/4 transition hover:bg-white hover:text-text">
+                        {props.button}
+                    </DefaultButton>
                 </div>
                 <div className="absolute w-full h-full cosmeticLink top-0"></div>
             </div>

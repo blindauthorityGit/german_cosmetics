@@ -89,4 +89,18 @@ a {
 .footer textarea:focus, .footer input:focus {
   outline: none;
 }
+
+p {
+  margin-top: 1.25rem;
+}
+
+.oeffnung p {
+  margin-top: 0;
+}
+
+ul {
+  list-style-type: disc;
+  padding-top: 1rem;
+  padding-left: 2rem;
+}
 /*# sourceMappingURL=globals.css.map */

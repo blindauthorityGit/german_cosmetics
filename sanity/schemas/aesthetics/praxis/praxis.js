@@ -75,6 +75,18 @@ export default {
                     of: [{ type: "block" }],
                 },
                 {
+                    title: "Text 2",
+                    name: "text2",
+                    type: "array",
+                    of: [{ type: "block" }],
+                },
+                {
+                    title: "Text 3",
+                    name: "text3",
+                    type: "array",
+                    of: [{ type: "block" }],
+                },
+                {
                     name: "image1",
                     title: "Bild 1",
                     type: "image",

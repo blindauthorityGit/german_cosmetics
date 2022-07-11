@@ -53,7 +53,7 @@ const Hero = (props) => {
             >
                 <H4>Praxiszeiten</H4>
                 <div className="wrapper flex justify-center">
-                    <div className="left mr-6 text-left ">
+                    <div className="left mr-6 text-left oeffnung">
                         Mo
                         <br />
                         Di
