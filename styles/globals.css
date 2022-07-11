@@ -2,14 +2,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import "animate.css/animate.min.css";
-
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: "europa" -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
- Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: "europa" -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   height: 100%;
   color: #414646;
 }
