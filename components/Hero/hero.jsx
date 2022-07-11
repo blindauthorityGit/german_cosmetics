@@ -4,6 +4,7 @@ import { H4 } from "../../components/utils/headlines";
 import { PortableText } from "@portabletext/react";
 import { useSpring, animated } from "react-spring";
 import { config } from "react-spring";
+import { isMobile } from "react-device-detect";
 
 const Hero = (props) => {
     const fadeIn = useSpring({ to: { right: 0 }, from: { right: -400 }, delay: 200, config: config.molasses });
@@ -21,6 +22,12 @@ const Hero = (props) => {
     });
     const opacityIn = useSpring({
         to: { opacity: "0.1" },
+        from: { opacity: "1" },
+        delay: 0,
+        config: { duration: 2500 },
+    });
+    const opacityInMobile = useSpring({
+        to: { opacity: "0.75" },
         from: { opacity: "1" },
         delay: 0,
         config: { duration: 2500 },
@@ -64,12 +71,14 @@ const Hero = (props) => {
                 </div>
             </animated.div>
             <animated.div
-                style={opacityIn}
+                style={isMobile ? opacityInMobile : opacityIn}
                 className="overlay z-10 sm:opacity-40 opacity-70 absolute w-full h-full bg-overlay "
             ></animated.div>
             <div className="overflow-hidden w-full h-full scale-x-[-1]">
                 <animated.div
-                    className="w-full  blurIn h-full bg-cover bg-right-top md:bg-center  lg:bg-right-top"
+                    className={`w-full  blurIn h-full bg-cover ${
+                        isMobile ? "bg-center" : "bg-right-top"
+                    }  md:bg-center  lg:bg-right-top`}
                     style={{ backgroundImage: `url(${props.bgImage})` }}
                 ></animated.div>
             </div>

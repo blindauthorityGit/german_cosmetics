@@ -13,6 +13,7 @@ module.exports = {
                 pink: "#e41aff",
                 rosa: "#d77bbf",
                 footer: "#526576",
+                text: "#414646",
             },
             fontFamily: {
                 ...fontFamily,

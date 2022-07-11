@@ -30,7 +30,9 @@ const BlogSwiper = (props) => {
     return (
         <MainContainer width="container pt-16 sm:pt-36 sm:pb-32 font-europa relative">
             <div className="col-span-12 z-20 justify-center px-8 sm:px-0 sm:pr-16">
-                <H2 klasse="font-europa mb-12">Veranstaltungen und Aktionen</H2>
+                <H2 klasse="font-europa mb-12">
+                    Veranstaltungen<br></br> und Aktionen
+                </H2>
             </div>
             <div className="sm:px-16 col-span-12">
                 <Swiper

@@ -9,7 +9,7 @@ const CTA = (props) => {
             <div className="col-span-12 text-center flex flex-col items-center m-auto sm:w-2/4">
                 <H2 klasse="font-europa mb-12 text-white">{props.headline}</H2>
                 <p className="text-white sm:w-1/2">{props.text}</p>
-                <DefaultButton klasse="mt-8 sm:mt-16 mb-12 sm:mb-0 hover:bg-primaryColor hover:text-white border border-[#A54399] text-primaryColor">
+                <DefaultButton klasse="mt-8 w-2/4 sm:mt-16 mb-12 sm:mb-0 hover:bg-darkPurple bg-primaryColor hover:text-white  text-white">
                     {props.button}
                 </DefaultButton>
             </div>

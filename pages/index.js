@@ -20,6 +20,7 @@ import CTA from "../components/sections/cta";
 import ImageBox from "../components/sections/imageBox";
 import LinkBox from "../components/sections/linkBox";
 import Footer from "../components/sections/footer";
+import ScrollAnimation from "react-animate-on-scroll";
 
 const builder = imageUrlBuilder(client);
 
@@ -61,7 +62,7 @@ export default function Home({ data, dataBlog }) {
                 >
                     <div ref={headlineRef} className="">
                         <H1 klasse="text-center sm:text-left text-white ">{data[0].hero_settings.headline}</H1>
-                        <DefaultButton klasse="col-span-12  m-auto sm:m-0 mt-12 sm:mt-16 text-white border-none bg-rosa font-semibold">
+                        <DefaultButton klasse="col-span-12 w-3/4 hover:bg-darkPurple m-auto sm:m-0 mt-12 sm:mt-16 text-white border-none bg-rosa font-semibold">
                             Termin vereinbaren
                         </DefaultButton>
                     </div>
