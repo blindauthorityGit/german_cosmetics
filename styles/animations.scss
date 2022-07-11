@@ -1,0 +1,22 @@
+
+
+.blurIn {
+    animation: blurIn 2s ease 0s 1 normal forwards;
+
+}
+
+.slide-in-left{-webkit-animation:slide-in-left .5s cubic-bezier(.23,1.000,.32,1.000) both;animation:slide-in-left .5s cubic-bezier(.23,1.000,.32,1.000) both}
+
+@keyframes blurIn {
+	0% {
+		filter: blur(60px);
+        transform: scale(1.75);
+	}
+
+	100% {
+		filter: blur(0);
+        transform: scale(1);
+	}
+}
+
+@-webkit-keyframes slide-in-left{0%{-webkit-transform:translateX(-1000px);transform:translateX(-1000px);opacity:0}100%{-webkit-transform:translateX(0);transform:translateX(0);opacity:1}}@keyframes slide-in-left{0%{-webkit-transform:translateX(-1000px);transform:translateX(-1000px);opacity:0}100%{-webkit-transform:translateX(0);transform:translateX(0);opacity:1}}
