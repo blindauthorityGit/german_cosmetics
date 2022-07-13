@@ -19,6 +19,7 @@ import aesthetic_kontakt from "./aesthetics/kontakt";
 import aesthetics_imageBox from "./aesthetics/komponente/imageBox";
 import aesthetic_komponente from "./aesthetics/komponente/";
 import blogEntry from "./main/news/blogEntry";
+import teamMember from "./aesthetics/komponente/teamMember";
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -44,5 +45,6 @@ export default createSchema({
         aesthetics_imageBox,
         aesthetic_komponente,
         blogEntry,
+        teamMember,
     ]),
 });

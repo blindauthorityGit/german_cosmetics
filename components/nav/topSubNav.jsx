@@ -9,7 +9,7 @@ const TopSubNav = () => {
     }
 
     return (
-        <div className="container m-auto mt-8 font-europa">
+        <div className="container hidden sm:block m-auto mt-8 font-europa">
             <div className="wrapper flex border-y-2 py-6 px-12">
                 <div id="raum" className="mr-12">
                     <a onClick={toggleActive} className="active" href="#raum">

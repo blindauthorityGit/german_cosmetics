@@ -5,7 +5,7 @@ import { DefaultButton } from "../utils/buttons";
 import { PortableText } from "@portabletext/react";
 import ScrollAnimation from "react-animate-on-scroll";
 
-const PraxisTop = (props) => {
+const BehandlungTop = (props) => {
     return (
         <MainContainer width="w-100 gap-0 mt-12 sm:mt-24 container font-europa sm:px-16 ">
             <div className="container col-span-12 grid grid-cols-12 text-left sm:gap-16">
@@ -33,4 +33,4 @@ const PraxisTop = (props) => {
     );
 };
 
-export default PraxisTop;
+export default BehandlungTop;

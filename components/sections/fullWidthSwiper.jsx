@@ -31,17 +31,18 @@ const FullWidthSwiper = (props) => {
     }, []);
 
     return (
-        <MainContainer width="container pt-16 sm:pt-36 sm:pb-32 font-europa relative">
+        <MainContainer width={`container sm:pt-36 sm:pb-32 font-europa relative ${props.klasse}`}>
             <div className="sm:px-16 col-span-12">
                 <Swiper
                     modules={[Navigation, Pagination, Scrollbar, A11y]}
                     spaceBetween={50}
                     onSlideChange={() => console.log("slide change")}
                     onSwiper={(swiper) => console.log(swiper)}
-                    slidesPerView={2}
+                    centeredSlides
+                    slidesPerView={1.25}
                     scrollbar={{ draggable: true }}
                     slideActiveClass="sliderTwo-active"
-                    loop={false}
+                    loop={true}
                     className="bubu"
                     breakpoints={{
                         // when window width is >= 640px
@@ -51,7 +52,7 @@ const FullWidthSwiper = (props) => {
                             pagination: true,
                         },
                         1025: {
-                            slidesPerView: 1,
+                            slidesPerView: 1.25,
                             navigation: true,
                             pagination: true,
                         },

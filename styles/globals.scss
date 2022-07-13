@@ -128,3 +128,15 @@ ul {
 //   font-size: 1.5rem;
 //   margin-top:1rem
 // }
+.activeLink {
+  font-weight: 800;
+  color: #A54399;
+}
+
+.swiper-slide {
+  transition: all ease-in-out 500;
+}
+
+.swiper-slide-next, .swiper-slide-prev {
+  opacity: 0.5;
+}

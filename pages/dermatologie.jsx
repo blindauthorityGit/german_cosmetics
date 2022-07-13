@@ -34,7 +34,7 @@ function urlFor(source) {
     return builder.image(source);
 }
 
-export default function Praxis({ data, dataBlog }) {
+export default function Dermatologie({ data, dermaData }) {
     const headlineRef = useRef();
     const containerRef = useRef();
     const arztRef = useRef();
@@ -42,21 +42,17 @@ export default function Praxis({ data, dataBlog }) {
 
     const [showDoc, setShowDoc] = useState(true);
     const [showTeam, setShowTeam] = useState(false);
-    function posserTop(element) {
-        return element.current.getBoundingClientRect().top;
-    }
-    function posserBottom(element) {
-        return element.current.getBoundingClientRect().bottom;
-    }
+
     const handleScroll = () => {
         const position = window.pageYOffset;
-        // if (arztRef.current.getBoundingClientRect().top <= 200 && arztRef.current.getBoundingClientRect().bottom >= 0) {
-        //     setShowDoc(true);
-        // } else {
-        //     setShowDoc(false);
-        // }
-        console.log(posserTop(arztRef), posserBottom(arztRef));
+        function posserTop(element) {
+            return element.current.getBoundingClientRect().top;
+        }
+        function posserBottom(element) {
+            return element.current.getBoundingClientRect().bottom;
+        }
 
+        console.log(posserTop(teamRef), posserBottom(teamRef));
         if (posserTop(teamRef) <= 200 && posserBottom(teamRef) >= 0) {
             setShowTeam(true);
         } else {
@@ -66,8 +62,8 @@ export default function Praxis({ data, dataBlog }) {
 
     useEffect(() => {
         console.log(data);
-
-        console.log(posserTop(arztRef));
+        showTeam ? alert("bubu") : "";
+        console.log(containerRef.current.children[1]);
         window.addEventListener("scroll", handleScroll);
         return () => {
             window.removeEventListener("scroll", handleScroll);
@@ -75,13 +71,10 @@ export default function Praxis({ data, dataBlog }) {
     }, []);
 
     useEffect(() => {
-        showDoc
-            ? (document.querySelector("#derarzt").style.color = "#A54399")
-            : (document.querySelector("#derarzt").style.color = "");
         showTeam
             ? (document.querySelector("#dasteam").style.color = "#A54399")
             : (document.querySelector("#dasteam").style.color = "");
-    }, [showTeam, showDoc]);
+    }, [showTeam]);
 
     const sideNavArray = ["Der Arzt", "Das Team"];
 
@@ -115,22 +108,12 @@ export default function Praxis({ data, dataBlog }) {
                 <meta name="description" content={data[3].seo.description} />
             </Head>
             <Navbar logo={urlFor(data[3].logo.logo_dark)}></Navbar>
-            <PageHero headline="Unsere Praxis" showButton={false}></PageHero>
-            <TopSubNav></TopSubNav>
-            {isMobile && (
-                <FullWidthSwiper
-                    klasse="pt-0"
-                    data={data[2].raeumlichkeiten_settings.images}
-                    width="1485"
-                    height="916"
-                ></FullWidthSwiper>
-            )}
+            <PageHero headline="Dermatologie" showButton={false}></PageHero>
+
             <PraxisTop
                 headline={data[2].raeumlichkeiten_settings.headline}
-                imgRight={urlFor(data[2].raeumlichkeiten_settings.image2).width(735).height(892)}
                 // minHeightR="min-h-[892px]"
                 valueLeft={data[2].raeumlichkeiten_settings.text}
-                imgLeft={urlFor(data[2].raeumlichkeiten_settings.image1).width(735).height(1024)}
                 // minHeightL="min-h-[1024px]"
                 valueRight={data[2].raeumlichkeiten_settings.text2}
             ></PraxisTop>
@@ -162,21 +145,19 @@ export default function Praxis({ data, dataBlog }) {
                         ref={arztRef}
                     ></DerArzt>
                 )}
-                {!isMobile && (
-                    <div id="teamWrapper" className="mt-16" ref={teamRef}>
-                        {data[2].team.teamMember.map((e, i) => {
-                            return (
-                                <TeamMember
-                                    img={urlFor(e.img).width(500).height(600)}
-                                    headline={e.title}
-                                    text={e.text}
-                                    orderTop={i % 2 === 0 ? "" : "order-last"}
-                                    // animation={showTeam ? "fade-in" : ""}
-                                ></TeamMember>
-                            );
-                        })}
-                    </div>
-                )}
+                <div id="teamWrapper" className="mt-16" ref={teamRef}>
+                    {data[2].team.teamMember.map((e, i) => {
+                        return (
+                            <TeamMember
+                                img={urlFor(e.img).width(500).height(600)}
+                                headline={e.title}
+                                text={e.text}
+                                orderTop={i % 2 === 0 ? "" : "order-last"}
+                                // animation={showTeam ? "fade-in" : ""}
+                            ></TeamMember>
+                        );
+                    })}
+                </div>
                 {/* {showTeam &&
                     data[2].team.teamMember.map((e, i) => {
                         return (
@@ -245,15 +226,15 @@ export async function getStaticProps() {
     const res = await client.fetch(
         `*[_type in ["aesthetic_praxis", "aesthetic_kontakt", "aesthetic_settings", "aesthetic_komponente"] ]`
     );
-    const resBlog = await client.fetch(`*[_type in ["blogEntry"] ]`);
+    const dermaRes = await client.fetch(`*[_type in ["aesthetic_dermatologie"] ]`);
     // const res = await fetch("https://jsonplaceholder.typicode.com/todos/1");
 
     const data = await res;
-    const dataBlog = await resBlog;
+    const dermaData = await dermaRes;
     return {
         props: {
             data,
-            dataBlog,
+            dermaData,
         },
     };
 }

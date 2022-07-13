@@ -171,5 +171,18 @@ export default {
                 },
             ],
         },
+        {
+            title: "Team",
+            name: "team",
+            type: "document",
+            fields: [
+                {
+                    title: "Team Member",
+                    name: "teamMember",
+                    type: "array",
+                    of: [{ type: "teammember" }],
+                },
+            ],
+        },
     ],
 };

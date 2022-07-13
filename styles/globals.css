@@ -103,4 +103,18 @@ ul {
   padding-top: 1rem;
   padding-left: 2rem;
 }
+
+.activeLink {
+  font-weight: 800;
+  color: #A54399;
+}
+
+.swiper-slide {
+  -webkit-transition: all ease-in-out 500;
+  transition: all ease-in-out 500;
+}
+
+.swiper-slide-next, .swiper-slide-prev {
+  opacity: 0.5;
+}
 /*# sourceMappingURL=globals.css.map */
