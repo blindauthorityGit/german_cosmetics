@@ -29,7 +29,7 @@ function urlFor(source) {
     return builder.image(source);
 }
 
-export default function Dermatologie({ data, dermaData }) {
+export default function LaserBehanldungen({ data, laserData }) {
     const headlineRef = useRef();
     const containerRef = useRef();
     const arztRef = useRef();
@@ -45,16 +45,16 @@ export default function Dermatologie({ data, dermaData }) {
     return (
         <>
             <Head>
-                <title>{data[3].seo.title}</title>
-                <meta name="description" content={data[3].seo.description} />
+                <title>{laserData[0].seo.title}</title>
+                <meta name="description" content={laserData[0].seo.description} />
             </Head>
             <Navbar logo={urlFor(data[3].logo.logo_dark)}></Navbar>
-            <PageHero headline="Dermatologie" showButton={false}></PageHero>
+            <PageHero headline="Laserbehandlungen" showButton={false}></PageHero>
 
-            <BehandlungTop headline={dermaData[0].intro.headline} valueLeft={dermaData[0].intro.text}></BehandlungTop>
+            <BehandlungTop headline={laserData[0].intro.headline} valueLeft={laserData[0].intro.text}></BehandlungTop>
             <BehandlungenContainer
-                dataNav={dermaData[0].behandlungen}
-                dataBehandlung={dermaData[0].behandlungen}
+                dataNav={laserData[0].categouroes}
+                dataBehandlung={laserData[0].behandlungen}
             ></BehandlungenContainer>
             <ImageBox
                 single={true}
@@ -92,15 +92,15 @@ export async function getStaticProps() {
     const res = await client.fetch(
         `*[_type in ["aesthetic_praxis", "aesthetic_kontakt", "aesthetic_settings", "aesthetic_komponente"] ]`
     );
-    const dermaRes = await client.fetch(`*[_type in ["aesthetic_dermatologie"] ]`);
+    const laserRes = await client.fetch(`*[_type in ["aesthetic_laserbehandlung"] ]`);
     // const res = await fetch("https://jsonplaceholder.typicode.com/todos/1");
 
     const data = await res;
-    const dermaData = await dermaRes;
+    const laserData = await laserRes;
     return {
         props: {
             data,
-            dermaData,
+            laserData,
         },
     };
 }

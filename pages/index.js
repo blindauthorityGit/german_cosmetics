@@ -78,7 +78,7 @@ export default function Home({ data, dataBlog }) {
                 {/* <PortableText value={data[0].raeumlichkeiten_settings.text} /> */}
             </HomeSwiper>
             <CTA headline={data[1].cta.headline} text={data[1].cta.text} button={data[1].cta.button_text}></CTA>
-            <ImageBox box={data[1].imagebox.headline}></ImageBox>
+            <ImageBox single={false} box={data[1].imagebox.headline}></ImageBox>
             <BlogSwiper data={dataBlog}>
                 <div className="absolute w-[100%] h-[960px] bg-[#EEF0F2] top-0 sm:top-[30%]"></div>
             </BlogSwiper>

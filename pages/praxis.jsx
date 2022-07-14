@@ -1,14 +1,8 @@
 import Head from "next/head";
-import Image from "next/image";
-import styles from "../styles/Home.module.css";
 import MainContainer from "../components/layout/mainContainer";
-import { useNextSanityImage } from "next-sanity-image";
 import client from "../client";
 import { useState, useEffect, useRef } from "react";
-import { H1 } from "../components/utils/headlines";
-import { DefaultButton } from "../components/utils/buttons";
-import { useSpring, animated } from "react-spring";
-import { config } from "react-spring";
+
 import imageUrlBuilder from "@sanity/image-url";
 import Navbar from "../components/nav/navbar";
 import PageHero from "../components/sections/pageHero";
@@ -18,9 +12,7 @@ import FullWidthSwiper from "../components/sections/fullWidthSwiper";
 import SideNavContainer from "../components/sections/sideNavContainer";
 import { isMobile } from "react-device-detect";
 
-import { PortableText } from "@portabletext/react";
 import CTA from "../components/sections/cta";
-import ImageBox from "../components/sections/imageBox";
 import LinkBox from "../components/sections/linkBox";
 import Footer from "../components/sections/footer";
 import ScrollAnimation from "react-animate-on-scroll";
@@ -35,78 +27,10 @@ function urlFor(source) {
 }
 
 export default function Praxis({ data, dataBlog }) {
-    const headlineRef = useRef();
-    const containerRef = useRef();
     const arztRef = useRef();
     const teamRef = useRef();
 
     const [showDoc, setShowDoc] = useState(true);
-    const [showTeam, setShowTeam] = useState(false);
-    function posserTop(element) {
-        return element.current.getBoundingClientRect().top;
-    }
-    function posserBottom(element) {
-        return element.current.getBoundingClientRect().bottom;
-    }
-    const handleScroll = () => {
-        const position = window.pageYOffset;
-        // if (arztRef.current.getBoundingClientRect().top <= 200 && arztRef.current.getBoundingClientRect().bottom >= 0) {
-        //     setShowDoc(true);
-        // } else {
-        //     setShowDoc(false);
-        // }
-        console.log(posserTop(arztRef), posserBottom(arztRef));
-
-        if (posserTop(teamRef) <= 200 && posserBottom(teamRef) >= 0) {
-            setShowTeam(true);
-        } else {
-            setShowTeam(false);
-        }
-    };
-
-    useEffect(() => {
-        console.log(data);
-
-        console.log(posserTop(arztRef));
-        window.addEventListener("scroll", handleScroll);
-        return () => {
-            window.removeEventListener("scroll", handleScroll);
-        };
-    }, []);
-
-    useEffect(() => {
-        showDoc
-            ? (document.querySelector("#derarzt").style.color = "#A54399")
-            : (document.querySelector("#derarzt").style.color = "");
-        showTeam
-            ? (document.querySelector("#dasteam").style.color = "#A54399")
-            : (document.querySelector("#dasteam").style.color = "");
-    }, [showTeam, showDoc]);
-
-    const sideNavArray = ["Der Arzt", "Das Team"];
-
-    function teamClick(e) {
-        let arr = Array.from(document.querySelectorAll(".linkElement"));
-        let pos = window.pageYOffset + containerRef.current.getBoundingClientRect().top - 40;
-        console.log(window.pageYOffset);
-        if (pos <= window.pageYOffset) {
-            window.scroll({
-                top: pos,
-            });
-        }
-
-        if (e.target.dataset.name === "derarzt") {
-            setShowDoc(true);
-            setShowTeam(false);
-            arr.map((e) => e.classList.remove("activeLink"));
-            e.target.classList.add("activeLink");
-        } else {
-            setShowDoc(false);
-            setShowTeam(true);
-            arr.map((e) => e.classList.remove("activeLink"));
-            e.target.classList.add("activeLink");
-        }
-    }
 
     return (
         <>
@@ -142,79 +66,66 @@ export default function Praxis({ data, dataBlog }) {
                 ></FullWidthSwiper>
             )}
             <CTA headline={data[0].cta.headline} text={data[0].cta.text} button={data[0].cta.button_text}></CTA>
-            <SideNavContainer
-                data={sideNavArray}
-                onClick={(e) => {
-                    teamClick(e);
-                }}
-                ref={containerRef}
-                id="team"
-            >
-                {showDoc && (
-                    <DerArzt
-                        img={urlFor(data[2].arzt.arztImg)
-                            .width(isMobile ? "450" : "500")
-                            .height(isMobile ? "450" : "650")}
-                        headline={data[2].arzt.arztHeadline}
-                        text={data[2].arzt.arztDesc}
-                        werdegang={data[2].arzt.arztWerdegang}
-                        animation={showDoc ? "fade-in" : ""}
-                        ref={arztRef}
-                    ></DerArzt>
-                )}
-                {!isMobile && (
-                    <div id="teamWrapper" className="mt-16" ref={teamRef}>
-                        {data[2].team.teamMember.map((e, i) => {
+            <MainContainer width="w-100 gap-0 sm:mt-24 sm:mb-24 sm:mt-24 container font-europa sm:px-16 ">
+                <div className="container m-auto col-span-12">
+                    {showDoc && (
+                        <DerArzt
+                            img={urlFor(data[2].arzt.arztImg)
+                                .width(isMobile ? "450" : "500")
+                                .height(isMobile ? "450" : "650")}
+                            headline={data[2].arzt.arztHeadline}
+                            text={data[2].arzt.arztDesc}
+                            werdegang={data[2].arzt.arztWerdegang}
+                            animation={showDoc ? "fade-in" : ""}
+                            ref={arztRef}
+                        ></DerArzt>
+                    )}
+                    {!isMobile && (
+                        <div id="teamWrapper" className="mt-16" ref={teamRef}>
+                            {data[2].team.teamMember.map((e, i) => {
+                                return (
+                                    <ScrollAnimation
+                                        animateIn={i % 2 === 0 ? "slideInLeft" : "slideInRight"}
+                                        animateOnce={true}
+                                        duration={0.4}
+                                        className=""
+                                    >
+                                        <TeamMember
+                                            img={urlFor(e.img).width(600).height(600)}
+                                            headline={e.title}
+                                            text={e.text}
+                                            orderTop={i % 2 === 0 ? "" : "order-last"}
+                                            // animation={showTeam ? "fade-in" : ""}
+                                        ></TeamMember>
+                                    </ScrollAnimation>
+                                );
+                            })}
+                        </div>
+                    )}
+
+                    {isMobile &&
+                        data[2].team.teamMember.map((e, i) => {
                             return (
-                                <TeamMember
-                                    img={urlFor(e.img).width(500).height(600)}
-                                    headline={e.title}
-                                    text={e.text}
-                                    orderTop={i % 2 === 0 ? "" : "order-last"}
-                                    // animation={showTeam ? "fade-in" : ""}
-                                ></TeamMember>
+                                <ScrollAnimation
+                                    animateIn={i % 2 === 0 ? "slideInLeft" : "slideInRight"}
+                                    animateOnce={true}
+                                    duration={0.4}
+                                    className="col-span-12 sm:col-span-6 py-48 sm:py-64 relative cursor-pointer group transition-all overflow-hidden"
+                                >
+                                    <TeamMember
+                                        img={urlFor(e.img)
+                                            .width(isMobile ? "450" : "650")
+                                            .height(isMobile ? "450" : "650")}
+                                        headline={e.title}
+                                        text={e.text}
+                                        // orderTop={i % 2 !== 0 ? "" : "order-last"}
+                                        // animation={showTeam ? "fade-in" : ""}
+                                    ></TeamMember>
+                                </ScrollAnimation>
                             );
                         })}
-                    </div>
-                )}
-                {/* {showTeam &&
-                    data[2].team.teamMember.map((e, i) => {
-                        return (
-                            <TeamMember
-                                img={urlFor(e.img).width(500).height(600)}
-                                headline={e.title}
-                                text={e.text}
-                                orderTop={i % 2 !== 0 ? "" : "order-last"}
-                                animation={showTeam ? "fade-in" : ""}
-                                ref={teamRef}
-                            ></TeamMember>
-                        );
-                    })} */}
-                {isMobile &&
-                    data[2].team.teamMember.map((e, i) => {
-                        return (
-                            <TeamMember
-                                img={urlFor(e.img)
-                                    .width(isMobile ? "450" : "500")
-                                    .height(isMobile ? "450" : "650")}
-                                headline={e.title}
-                                text={e.text}
-                                // orderTop={i % 2 !== 0 ? "" : "order-last"}
-                                // animation={showTeam ? "fade-in" : ""}
-                            ></TeamMember>
-                        );
-                    })}
-                {/* {data[2].team.teamMember.map((e, i) => {
-                    return (
-                        <TeamMember
-                            img={urlFor(e.img).width(500).height(500)}
-                            headline={e.title}
-                            text={e.text}
-                            orderTop={i % 2 === 0 ? "" : "order-last"}
-                        ></TeamMember>
-                    );
-                })} */}
-            </SideNavContainer>
+                </div>
+            </MainContainer>
             <CTA
                 klasse="sm:mb-16"
                 headline={data[0].cta.headline}
@@ -223,7 +134,7 @@ export default function Praxis({ data, dataBlog }) {
             ></CTA>
 
             <LinkBox
-                klasse="sm:mt-16"
+                klasse="sm:mt-16 mt-24"
                 image={urlFor(data[0].linkbox.img)}
                 headline={data[0].linkbox.headline}
                 text={data[0].linkbox.text}

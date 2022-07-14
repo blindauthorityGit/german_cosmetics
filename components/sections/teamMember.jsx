@@ -6,7 +6,7 @@ const TeamMember = (props, ref) => {
     const [imageLoaded, setImageLoaded] = useState(false);
 
     return (
-        <div ref={ref} className={`wrapper grid grid-cols-12 mb-16`}>
+        <div ref={ref} className={`wrapper grid grid-cols-12 mb-16 bg-lightGray`}>
             <div className="h-auto col-span-12 grid grid-cols-12">
                 <div className={`col-span-12 sm:col-span-6 ${props.orderTop}`}>
                     <div className="">
@@ -19,7 +19,7 @@ const TeamMember = (props, ref) => {
                     </div>
                 </div>
                 <div
-                    className={`col-span-12 sm:col-span-6 mt-8 sm:mt-0 ${props.orderBottom} ${props.animation} flex flex-col justify-center pl-8 pr-16`}
+                    className={`col-span-12 sm:col-span-6 mt-8 sm:mt-0 ${props.orderBottom} ${props.animation} flex flex-col justify-center px-16`}
                 >
                     <H2 klasse="mb-8 sm:mb-16">{props.headline}</H2>
                     <PortableText value={props.text}></PortableText>

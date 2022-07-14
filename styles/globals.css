@@ -6,7 +6,8 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: "europa" -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: "europa" -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+ Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   height: 100%;
   color: #414646;
 }
@@ -114,7 +115,16 @@ ul {
   transition: all ease-in-out 500;
 }
 
-.swiper-slide-next, .swiper-slide-prev {
+/* .swiper-slide-next, .swiper-slide-prev {
   opacity: 0.5;
+} */
+
+.wordBreak {
+  word-wrap: break-word;
+}
+
+.activeSideLink {
+  font-weight: 800;
+  color: red;
 }
 /*# sourceMappingURL=globals.css.map */

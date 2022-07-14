@@ -44,17 +44,17 @@ const DerArzt = (props, ref) => {
                     VITA
                 </button>
                 <section className="bg-lightGray p-8 grid grid-cols-12" {...getCollapseProps()}>
-                    <div className="col-span-12 sm:col-span-6">
+                    <div className="col-span-12 sm:col-span-12">
                         <PortableText value={props.werdegang}></PortableText>
                     </div>
-                    <div className="hidden sm:block sm:col-span-6">
+                    {/* <div className="hidden sm:block sm:col-span-6">
                         <img
                             src={props.img}
                             alt=""
                             className={`smooth-image ${imageLoaded ? "visible fade-in" : "hidden"}`}
                             onLoad={() => setImageLoaded(true)}
                         />
-                    </div>
+                    </div> */}
                 </section>
             </div>
         </div>

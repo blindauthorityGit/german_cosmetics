@@ -9,20 +9,15 @@ const BehandlungTop = (props) => {
     return (
         <MainContainer width="w-100 gap-0 mt-12 sm:mt-24 container font-europa sm:px-16 ">
             <div className="container col-span-12 grid grid-cols-12 text-left sm:gap-16">
-                <div className="col-span-12 sm:col-span-6">
+                <div className="col-span-12 sm:col-span-8">
                     <div className="px-8">
                         <H2 klasse="mb-8 sm:mb-16">{props.headline}</H2>
                         <PortableText value={props.valueLeft}></PortableText>
                     </div>
-                    <div className={`hidden sm:block ${props.minHeightL}`}>
-                        <img className="mt-16" src={props.imgLeft} alt={props.imgLeftAlt} />
-                    </div>
                 </div>
-                <div className="col-span-12 sm:col-span-6 mb-16 sm:mb-0">
+                <div className="col-span-12 sm:col-span-8 mb-16 sm:mb-0">
                     {/* <ScrollAnimation animateIn="slideInRight" animateOnce={true}> */}
-                    <div className={`hidden sm:block ${props.minHeightR}`}>
-                        <img className="mb-16" src={props.imgRight} alt={props.imgRightAlt} />
-                    </div>
+
                     {/* </ScrollAnimation> */}
                     <div className="px-8">
                         <PortableText value={props.valueRight}></PortableText>

@@ -36,9 +36,7 @@ function H2VariantOneLine(props) {
 }
 function H3(props) {
     return (
-        <h3
-            className={`z-20 text-2xl lg-text-2xl xl:text-3xl 2xl:text-4xl 3xl:text-4xl font-regular font-roboto ${props.klasse}`}
-        >
+        <h3 className={`z-20 text-xl lg-text-xl xl:text-2xl 2xl:text-3xl 3xl:text-3xl font-regular  ${props.klasse}`}>
             {props.children}
         </h3>
     );

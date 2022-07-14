@@ -52,7 +52,7 @@ const Hero = (props) => {
                 className="absolute leading-relaxed font-europa text-center sm:text-left z-20 bg-white py-8 sm:py-12 pl-12 pr-12 sm:pl-16 sm:pr-36  w-[95%] sm:w-auto sm:top-auto bottom-0 transform -translate-x-1/2 sm:-translate-x-0 left-1/2 sm:left-auto right-auto sm:right-0"
             >
                 <H4>Praxiszeiten</H4>
-                <div className="wrapper flex justify-center">
+                <div className="wrapper flex justify-center oeffnung">
                     <div className="left mr-6 text-left oeffnung">
                         Mo
                         <br />
@@ -74,7 +74,7 @@ const Hero = (props) => {
                 style={isMobile ? opacityInMobile : opacityIn}
                 className="overlay z-10 sm:opacity-40 opacity-70 absolute w-full h-full bg-overlay "
             ></animated.div>
-            <div className="overflow-hidden w-full h-full scale-x-[-1]">
+            <div className="overflow-hidden w-full h-full">
                 <animated.div
                     className={`w-full  blurIn h-full bg-cover ${
                         isMobile ? "bg-center" : "bg-right-top"

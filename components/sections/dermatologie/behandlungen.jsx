@@ -1,0 +1,93 @@
+import React, { useState, useRef, useEffect, forwardRef } from "react";
+import MainContainer from "../../layout/mainContainer";
+import SideNavElem from "../../nav/sideNavElem";
+import BehandlungElement from "../behanldungElement";
+import { StickyContainer, Sticky } from "react-sticky";
+import client from "../../../client";
+import imageUrlBuilder from "@sanity/image-url";
+import { checkTop } from "../../utils/functions";
+import ScrollAnimation from "react-animate-on-scroll";
+import { H2 } from "../../utils/headlines";
+
+const builder = imageUrlBuilder(client);
+
+function urlFor(source) {
+    return builder.image(source);
+}
+
+const BehandlungenContainer = (props, ref) => {
+    const [activeLink, setActiveLink] = useState("test");
+
+    useEffect(() => {
+        let divs = Array.from(document.querySelectorAll(".behandlungsElement"));
+        let links = Array.from(document.querySelectorAll(".sideNavElem"));
+        window.addEventListener("scroll", () => {
+            checkTop(divs, activeLink, setActiveLink, links);
+        });
+
+        return () => {
+            window.removeEventListener("scroll", () => {
+                checkTop(divs, activeLink, setActiveLink, links);
+            });
+        };
+    }, []);
+
+    return (
+        <MainContainer id={props.id} width="w-100 gap-0 sm:mt-24 sm:mb-24 sm:mt-24 container font-europa sm:px-16 ">
+            <StickyContainer className="container col-span-12 grid grid-cols-12 text-left sm:gap-8">
+                <div className="hidden sm:block sm:col-span-4 scroll-smooth">
+                    <Sticky distanceFromTop={80}>
+                        {({ style, isSticky }) => (
+                            <div style={{ ...style, marginTop: isSticky ? "64px" : "0px" }} className="col-span-3">
+                                <div className="border-l-2 pr-6" ref={ref}>
+                                    {props.dataNav.map((e, i) => {
+                                        return (
+                                            <SideNavElem
+                                                name={e.title
+                                                    .toLowerCase()
+                                                    .split(" ")
+                                                    .join("")
+                                                    .replace(/[^\w\s]/gi, "")}
+                                                onClick={props.onClick}
+                                                key={`elem${i}`}
+                                                href={`#${e.title
+                                                    .toLowerCase()
+                                                    .split(" ")
+                                                    .join("")
+                                                    .replace(/[^\w\s]/gi, "")}`}
+                                            >
+                                                {e.title}
+                                            </SideNavElem>
+                                        );
+                                    })}
+                                </div>
+                            </div>
+                        )}
+                    </Sticky>
+                </div>
+                <div className="col-span-12 sm:col-span-8">
+                    {/* <H2 klasse="mb-16">Unser Angebot</H2> */}
+                    {props.dataBehandlung.map((e, i) => {
+                        return (
+                            <ScrollAnimation animateIn={"slideInRight"} animateOnce={true} duration={0.4} className="">
+                                <BehandlungElement
+                                    img={urlFor(e.image).width(500).height(600)}
+                                    headline={e.title}
+                                    key={`behandlung${i}`}
+                                    text={e.text}
+                                    id={e.title
+                                        .toLowerCase()
+                                        .split(" ")
+                                        .join("")
+                                        .replace(/[^\w\s]/gi, "")}
+                                ></BehandlungElement>
+                            </ScrollAnimation>
+                        );
+                    })}
+                </div>
+            </StickyContainer>
+        </MainContainer>
+    );
+};
+
+export default forwardRef(BehandlungenContainer);

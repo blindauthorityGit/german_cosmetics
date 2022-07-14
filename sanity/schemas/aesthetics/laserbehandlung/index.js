@@ -87,5 +87,16 @@ export default {
                 },
             ],
         },
+        {
+            title: "Kategories",
+            name: "categouroes",
+            type: "array",
+            of: [
+                {
+                    title: "Kategorie",
+                    type: "aesthethic_laserbehandlung_category",
+                },
+            ],
+        },
     ],
 };

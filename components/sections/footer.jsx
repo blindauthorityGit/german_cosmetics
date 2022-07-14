@@ -66,7 +66,7 @@ const Footer = (props) => {
                     </div>
                     <div className="col-span-12 sm:col-span-2 mt-8 sm:mt-0">
                         <H4 klasse="text-white">Praxiszeiten</H4>
-                        <div className="wrapper flex ">
+                        <div className="wrapper flex oeffnung">
                             <div className="left mr-6 text-left ">
                                 Mo
                                 <br />
