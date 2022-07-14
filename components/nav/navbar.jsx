@@ -32,29 +32,29 @@ const Navbar = (props) => {
                 email={props.email}
             ></MobileNav>
             <nav className="navbar hidden sm:block w-full absolute z-50 ">
-                <div className="container flex justify-between font-semibold font-europa tracking-wider m-auto">
-                    <div className="left pt-8">
+                <div className="container flex grid grid-cols-12 font-semibold font-europa tracking-wider m-auto">
+                    <div className="left col-span-3 pt-8">
                         <ul className="flex">
                             <li className="mr-8 hover:text-primaryColor hover:underline">
-                                <Link href="./">
+                                <Link href="./dermatologie">
                                     <a>Behandlungen</a>
                                 </Link>
                             </li>
                             <li>
-                                <Link href="./">
+                                <Link href="./praxis">
                                     <a>Praxis</a>
                                 </Link>
                             </li>
                         </ul>
                     </div>
-                    <div className="middle">
+                    <div className="middle col-span-6 flex items-center justify-center pt-4">
                         <Link href="./">
                             <a>
                                 <img src={props.logo} width="230" alt="Logo" />
                             </a>
                         </Link>
                     </div>
-                    <div className="right pt-8">
+                    <div className="right flex justify-end col-span-3 pt-8">
                         <ul>
                             <li>
                                 <Link href="./">

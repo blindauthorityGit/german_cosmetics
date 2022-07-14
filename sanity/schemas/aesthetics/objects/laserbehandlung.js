@@ -30,8 +30,8 @@ export default {
             ],
         },
         {
-            name: "kategorie",
-            title: "Kategorie",
+            name: "categories",
+            title: "Categories",
             type: "array",
             of: [
                 {

@@ -9,6 +9,7 @@ const SideNavElem = (props, ref) => {
             onClick={props.onClick}
             id={props.id}
             href={props.href}
+            data-id={props.dataid}
         >
             <div className="line w-8 mr-4 flex items-center">
                 <div className="w-full border border-top "></div>

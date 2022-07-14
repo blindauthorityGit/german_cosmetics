@@ -88,8 +88,19 @@ export default {
             ],
         },
         {
+            title: "Kategorie Behandlung",
+            name: "behandlungenFull",
+            type: "array",
+            of: [
+                {
+                    title: "Behandlung",
+                    type: "catBehandlung",
+                },
+            ],
+        },
+        {
             title: "Kategories",
-            name: "categouroes",
+            name: "categories",
             type: "array",
             of: [
                 {

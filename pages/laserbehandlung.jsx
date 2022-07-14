@@ -14,6 +14,7 @@ import PageHero from "../components/sections/pageHero";
 import BehandlungTop from "../components/sections/behandlungTop";
 import FullWidthSwiper from "../components/sections/fullWidthSwiper";
 import BehandlungenContainer from "../components/sections/dermatologie/behandlungen";
+import LaserBehandlungContainer from "../components/sections/lasermedizin/laserBehandlung";
 import { isMobile } from "react-device-detect";
 
 import { PortableText } from "@portabletext/react";
@@ -35,12 +36,29 @@ export default function LaserBehanldungen({ data, laserData }) {
     const arztRef = useRef();
     const teamRef = useRef();
 
-    const [showDoc, setShowDoc] = useState(true);
+    const [fetchID, setFetchID] = useState(0);
     const [showTeam, setShowTeam] = useState(false);
 
+    const refs = {
+        Licht: "b7924f52-2e37-43bd-9b15-fd8b7e49bee9",
+        Hautverjuengung: "cdc24a98-cb04-4560-a905-d7f981a12627",
+    };
+
     useEffect(() => {
-        console.log(data);
-    }, []);
+        console.log(laserData[0].behandlungen[3].categories[0]._ref);
+        console.log(refs);
+        // containerRef.current.classList.remove("fade-in");
+        // containerRef.current.classList.add("fade-in");
+        containerRef.current.style.opacity = "0";
+        setTimeout(() => {
+            containerRef.current.style.opacity = "1";
+        }, 100);
+    }, [fetchID]);
+
+    function handleClick(e) {
+        console.log(e.target.dataset.id);
+        setFetchID(e.target.dataset.id);
+    }
 
     return (
         <>
@@ -52,10 +70,14 @@ export default function LaserBehanldungen({ data, laserData }) {
             <PageHero headline="Laserbehandlungen" showButton={false}></PageHero>
 
             <BehandlungTop headline={laserData[0].intro.headline} valueLeft={laserData[0].intro.text}></BehandlungTop>
-            <BehandlungenContainer
-                dataNav={laserData[0].categouroes}
-                dataBehandlung={laserData[0].behandlungen}
-            ></BehandlungenContainer>
+            <LaserBehandlungContainer
+                dataNav={laserData[0].categories}
+                onClick={(e) => {
+                    handleClick(e);
+                }}
+                dataBehandlung={laserData[0].behandlungenFull[fetchID].behandlungOption}
+                ref={containerRef}
+            ></LaserBehandlungContainer>
             <ImageBox
                 single={true}
                 headline={data[0].imagebox.headline[1].title}

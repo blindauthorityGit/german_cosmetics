@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect, forwardRef } from "react";
 import MainContainer from "../../layout/mainContainer";
 import SideNavElem from "../../nav/sideNavElem";
 import BehandlungElement from "../behanldungElement";
+import LaserBehandlungElement from "../laserBehandlungElement";
 import { StickyContainer, Sticky } from "react-sticky";
 import client from "../../../client";
 import imageUrlBuilder from "@sanity/image-url";
@@ -15,7 +16,7 @@ function urlFor(source) {
     return builder.image(source);
 }
 
-const BehandlungenContainer = (props, ref) => {
+const LaserBehandlungenContainer = (props, ref) => {
     const [activeLink, setActiveLink] = useState("test");
 
     useEffect(() => {
@@ -71,8 +72,8 @@ const BehandlungenContainer = (props, ref) => {
                     {props.dataBehandlung.map((e, i) => {
                         return (
                             <ScrollAnimation animateIn={"slideInRight"} animateOnce={true} duration={0.4} className="">
-                                <BehandlungElement
-                                    img={urlFor(e.image).width(500).height(600)}
+                                <LaserBehandlungElement
+                                    img={urlFor(e.image).width(860).height(400)}
                                     headline={e.title}
                                     key={`behandlung${i}`}
                                     text={e.text}
@@ -81,7 +82,7 @@ const BehandlungenContainer = (props, ref) => {
                                         .split(" ")
                                         .join("")
                                         .replace(/[^\w\s]/gi, "")}
-                                ></BehandlungElement>
+                                ></LaserBehandlungElement>
                             </ScrollAnimation>
                         );
                     })}
@@ -91,4 +92,4 @@ const BehandlungenContainer = (props, ref) => {
     );
 };
 
-export default forwardRef(BehandlungenContainer);
+export default forwardRef(LaserBehandlungenContainer);
