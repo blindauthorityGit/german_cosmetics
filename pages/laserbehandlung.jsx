@@ -44,9 +44,27 @@ export default function LaserBehanldungen({ data, laserData }) {
         Hautverjuengung: "cdc24a98-cb04-4560-a905-d7f981a12627",
     };
 
+    const dataSet = (e) => {
+        return Array.from(document.querySelectorAll(`[data-cat=${e}]`));
+    };
+
+    const idFormater = (e) => {
+        return laserData[0].categories[e].title
+            .toLowerCase()
+            .split(" ")
+            .join("")
+            .replace(/[^\w\s]/gi, "");
+    };
+
     useEffect(() => {
-        console.log(laserData[0].behandlungen[3].categories[0]._ref);
-        console.log(refs);
+        // Korrekte ID's für Sidenav
+        laserData[0].categories.map((e, i) => {
+            dataSet(`cat${i}`)[0].id = idFormater(i);
+        });
+    }, []);
+
+    useEffect(() => {
+        console.log(laserData);
         // containerRef.current.classList.remove("fade-in");
         // containerRef.current.classList.add("fade-in");
         containerRef.current.style.opacity = "0";
@@ -75,7 +93,7 @@ export default function LaserBehanldungen({ data, laserData }) {
                 onClick={(e) => {
                     handleClick(e);
                 }}
-                dataBehandlung={laserData[0].behandlungenFull[fetchID].behandlungOption}
+                dataBehandlung={laserData[0].behandlungen}
                 ref={containerRef}
             ></LaserBehandlungContainer>
             <ImageBox

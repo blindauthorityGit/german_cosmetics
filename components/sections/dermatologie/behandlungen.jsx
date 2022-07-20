@@ -7,7 +7,7 @@ import client from "../../../client";
 import imageUrlBuilder from "@sanity/image-url";
 import { checkTop } from "../../utils/functions";
 import ScrollAnimation from "react-animate-on-scroll";
-import { H2 } from "../../utils/headlines";
+import { H2, H4 } from "../../utils/headlines";
 
 const builder = imageUrlBuilder(client);
 
@@ -39,6 +39,7 @@ const BehandlungenContainer = (props, ref) => {
                     <Sticky distanceFromTop={80}>
                         {({ style, isSticky }) => (
                             <div style={{ ...style, marginTop: isSticky ? "64px" : "0px" }} className="col-span-3">
+                                <span> {isSticky ? <H4>Dermatologie</H4> : ""}</span>
                                 <div className="border-l-2 pr-6">
                                     {props.dataNav.map((e, i) => {
                                         return (
@@ -72,10 +73,16 @@ const BehandlungenContainer = (props, ref) => {
                         return (
                             <ScrollAnimation animateIn={"slideInRight"} animateOnce={true} duration={0.4} className="">
                                 <BehandlungElement
-                                    img={urlFor(e.image).width(500).height(600)}
+                                    img={urlFor(e.image).width(860).height(350)}
                                     headline={e.title}
                                     key={`behandlung${i}`}
                                     text={e.text}
+                                    len={
+                                        e.text[0].children
+                                            .map((e) => e.text)
+                                            .join("")
+                                            .split("").length
+                                    }
                                     id={e.title
                                         .toLowerCase()
                                         .split(" ")

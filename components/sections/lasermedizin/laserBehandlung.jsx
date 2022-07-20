@@ -20,7 +20,7 @@ const LaserBehandlungenContainer = (props, ref) => {
     const [activeLink, setActiveLink] = useState("test");
 
     useEffect(() => {
-        let divs = Array.from(document.querySelectorAll(".behandlungsElement"));
+        let divs = Array.from(document.querySelectorAll("[data-cat]")).filter((e) => e.id.length > 0);
         let links = Array.from(document.querySelectorAll(".sideNavElem"));
         window.addEventListener("scroll", () => {
             checkTop(divs, activeLink, setActiveLink, links);
@@ -34,7 +34,10 @@ const LaserBehandlungenContainer = (props, ref) => {
     }, []);
 
     return (
-        <MainContainer id={props.id} width="w-100 gap-0 sm:mt-24 sm:mb-24 sm:mt-24 container font-europa sm:px-16 ">
+        <MainContainer
+            id={props.id}
+            width="w-100 scrollContainer gap-0 sm:mt-24 sm:mb-24 sm:mt-24 container font-europa sm:px-16 "
+        >
             <StickyContainer className="container col-span-12 grid grid-cols-12 text-left sm:gap-8">
                 <div className="hidden sm:block sm:col-span-4 scroll-smooth">
                     <Sticky distanceFromTop={80}>
@@ -76,12 +79,14 @@ const LaserBehandlungenContainer = (props, ref) => {
                                     img={urlFor(e.image).width(860).height(400)}
                                     headline={e.title}
                                     key={`behandlung${i}`}
+                                    len={
+                                        e.text[0].children
+                                            .map((e) => e.text)
+                                            .join("")
+                                            .split("").length
+                                    }
                                     text={e.text}
-                                    id={e.title
-                                        .toLowerCase()
-                                        .split(" ")
-                                        .join("")
-                                        .replace(/[^\w\s]/gi, "")}
+                                    cat={`cat${e.categories}`}
                                 ></LaserBehandlungElement>
                             </ScrollAnimation>
                         );

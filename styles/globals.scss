@@ -148,7 +148,21 @@ ul {
 .activeSideLink {
  
     font-weight: 800;
-    color: red;
-  
-  
+    color: #A54399;
+}
+
+.scrollContainer {
+  scroll-padding-top: 4rem;
+
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+:target:before {
+  content: "";
+  display: block;
+  height: 100px;
+  margin: -100px 0 0;
 }
