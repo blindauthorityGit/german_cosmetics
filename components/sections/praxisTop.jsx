@@ -4,6 +4,7 @@ import { H2 } from "../utils/headlines";
 import { DefaultButton } from "../utils/buttons";
 import { PortableText } from "@portabletext/react";
 import ScrollAnimation from "react-animate-on-scroll";
+import { motion } from "framer-motion";
 
 const PraxisTop = (props) => {
     return (
@@ -11,7 +12,7 @@ const PraxisTop = (props) => {
             <div className="container col-span-12 grid grid-cols-12 text-left sm:gap-16">
                 <div className="col-span-12 sm:col-span-6">
                     <div className="px-8">
-                        <H2 klasse="mb-8 sm:mb-16">{props.headline}</H2>
+                        <H2 klasse="mb-8 sm:mb-16 beforeH">{props.headline}</H2>
                         <PortableText value={props.valueLeft}></PortableText>
                     </div>
                     <div className={`hidden sm:block ${props.minHeightL}`}>
@@ -21,7 +22,14 @@ const PraxisTop = (props) => {
                 <div className="col-span-12 sm:col-span-6 mb-16 sm:mb-0">
                     {/* <ScrollAnimation animateIn="slideInRight" animateOnce={true}> */}
                     <div className={`hidden sm:block ${props.minHeightR}`}>
-                        <img className="mb-16" src={props.imgRight} alt={props.imgRightAlt} />
+                        <motion.img
+                            initial={{ x: 1000, opacity: 0 }}
+                            animate={{ x: 0, opacity: 1 }}
+                            transition={{ type: "spring", duration: 0.85 }}
+                            className="mb-16"
+                            src={props.imgRight}
+                            alt={props.imgRightAlt}
+                        />
                     </div>
                     {/* </ScrollAnimation> */}
                     <div className="px-8">

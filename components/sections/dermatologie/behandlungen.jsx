@@ -38,7 +38,7 @@ const BehandlungenContainer = (props, ref) => {
                 <div className="hidden sm:block sm:col-span-4 scroll-smooth">
                     <Sticky distanceFromTop={80}>
                         {({ style, isSticky }) => (
-                            <div style={{ ...style, marginTop: isSticky ? "64px" : "0px" }} className="col-span-3">
+                            <div style={{ ...style, marginTop: isSticky ? "48px" : "0px" }} className="col-span-3">
                                 <span> {isSticky ? <H4>Dermatologie</H4> : ""}</span>
                                 <div className="border-l-2 pr-6">
                                     {props.dataNav.map((e, i) => {
@@ -63,6 +63,7 @@ const BehandlungenContainer = (props, ref) => {
                                         );
                                     })}
                                 </div>
+                                <div className="bg-black w-full h-36">Test</div>
                             </div>
                         )}
                     </Sticky>

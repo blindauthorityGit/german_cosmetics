@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import MainContainer from "../layout/mainContainer";
 import { H2 } from "../utils/headlines";
 import { PortableText } from "@portabletext/react";
@@ -26,46 +26,53 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 
 const FullWidthSwiper = (props) => {
+    // HYDRATION ERROR FIX
+    const [domLoaded, setDomLoaded] = useState(false);
+
     useEffect(() => {
         // console.log(props.images);
+        setDomLoaded(true);
     }, []);
 
     return (
         <MainContainer width={`container sm:pt-36 sm:pb-32 font-europa relative ${props.klasse}`}>
             <div className="sm:px-16 col-span-12">
-                <Swiper
-                    modules={[Navigation, Pagination, Scrollbar, A11y]}
-                    spaceBetween={50}
-                    onSlideChange={() => console.log("slide change")}
-                    onSwiper={(swiper) => console.log(swiper)}
-                    centeredSlides
-                    slidesPerView={1.25}
-                    scrollbar={{ draggable: true }}
-                    slideActiveClass="sliderTwo-active"
-                    loop={true}
-                    className="bubu"
-                    breakpoints={{
-                        // when window width is >= 640px
-                        320: {
-                            slidesPerView: 1,
-                            navigation: false,
-                            pagination: true,
-                        },
-                        1025: {
-                            slidesPerView: 1.25,
-                            navigation: true,
-                            pagination: true,
-                        },
-                    }}
-                >
-                    {props.data.map((e, i) => {
-                        return (
-                            <SwiperSlide>
-                                <img src={urlFor(e).width(props.width).height(props.height)} alt="" />
-                            </SwiperSlide>
-                        );
-                    })}
-                </Swiper>
+                {domLoaded && (
+                    <Swiper
+                        modules={[Navigation, Pagination, Scrollbar, A11y]}
+                        spaceBetween={50}
+                        onSlideChange={() => console.log("slide change")}
+                        onSwiper={(swiper) => console.log(swiper)}
+                        centeredSlides
+                        slidesPerView={1.25}
+                        scrollbar={{ draggable: true }}
+                        slideActiveClass="sliderTwo-active"
+                        loop={true}
+                        className="bubu"
+                        breakpoints={{
+                            // when window width is >= 640px
+                            320: {
+                                slidesPerView: 1,
+                                navigation: false,
+                                pagination: true,
+                            },
+                            1025: {
+                                slidesPerView: 1.25,
+                                navigation: true,
+                                pagination: true,
+                            },
+                        }}
+                    >
+                        {props.data.map((e, i) => {
+                            return (
+                                <SwiperSlide>
+                                    <img src={urlFor(e).width(props.width).height(props.height)} alt="" />
+                                </SwiperSlide>
+                            );
+                        })}
+                    </Swiper>
+                )}
+                ;
             </div>
             {props.children}
         </MainContainer>

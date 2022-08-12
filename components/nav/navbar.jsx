@@ -7,6 +7,7 @@ import MobileNav from "./mobile";
 const Navbar = (props) => {
     const [showMenu, setShowMenu] = useState(false);
     const [mobileClass, setMobileClass] = useState(null);
+    const dropdownRef = useRef();
     const burgerRef = useRef();
     const navRef = useRef();
 
@@ -31,11 +32,11 @@ const Navbar = (props) => {
                 phone={props.phone}
                 email={props.email}
             ></MobileNav>
-            <nav className="navbar hidden sm:block w-full absolute z-50 ">
-                <div className="container flex grid grid-cols-12 font-semibold font-europa tracking-wider m-auto">
+            <nav className="navbar text-white  hidden sm:block w-full absolute z-50 ">
+                <div className="container px-16 flex grid grid-cols-12 font-semibold font-europa tracking-wider m-auto">
                     <div className="left col-span-3 pt-8">
-                        <ul className="flex">
-                            <li className="mr-8 hover:text-primaryColor hover:underline">
+                        <ul className="flex uppercase tracking-widest">
+                            <li ref={dropdownRef} className="mr-8  hover:underline">
                                 <Link href="./dermatologie">
                                     <a>Behandlungen</a>
                                 </Link>
@@ -54,7 +55,7 @@ const Navbar = (props) => {
                             </a>
                         </Link>
                     </div>
-                    <div className="right flex justify-end col-span-3 pt-8">
+                    <div className="right flex justify-end col-span-3 pt-8 uppercase tracking-widest">
                         <ul>
                             <li>
                                 <Link href="./">

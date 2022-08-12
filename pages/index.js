@@ -21,6 +21,7 @@ import ImageBox from "../components/sections/imageBox";
 import LinkBox from "../components/sections/linkBox";
 import Footer from "../components/sections/footer";
 import ScrollAnimation from "react-animate-on-scroll";
+import { motion } from "framer-motion";
 
 const builder = imageUrlBuilder(client);
 
@@ -53,22 +54,34 @@ export default function Home({ data, dataBlog }) {
                 logo={urlFor(data[3].logo.logo_dark)}
             ></Navbar>
             <MainContainer width="max-w-[100%] h-full">
-                <Hero
-                    fullHeight={true}
-                    bgImage={urlFor(data[0].hero_settings.backgroundImg)}
-                    colspan="col-span-12"
-                    containerKlasse="items-center z-20"
-                    value={data[2].oeffnungszeiten}
+                <motion.div
+                    className="col-span-12"
+                    layoutId={"Hero"}
+                    animate={{ opacity: 1 }}
+                    // whileHover={{ scale: 1.1 }}
                 >
-                    <div ref={headlineRef} className="">
-                        <H1 klasse="text-center sm:text-left text-white ">{data[0].hero_settings.headline}</H1>
-                        <DefaultButton klasse="col-span-12 w-3/4 hover:bg-darkPurple m-auto sm:m-0 mt-12 sm:mt-16 text-white border-none bg-rosa font-semibold">
-                            Termin vereinbaren
-                        </DefaultButton>
-                    </div>
-                </Hero>
+                    <Hero
+                        fullHeight={true}
+                        // height={"h-2/3"}
+                        bgImage={urlFor(data[0].hero_settings.backgroundImg)}
+                        colspan="col-span-12"
+                        containerKlasse="items-center z-20"
+                        value={data[2].oeffnungszeiten}
+                    >
+                        <div ref={headlineRef} className="">
+                            <H1 klasse="text-center sm:text-left text-white ">{data[0].hero_settings.headline}</H1>
+                            <DefaultButton klasse="col-span-12 w-3/4 hover:bg-darkPurple m-auto sm:m-0 mt-12 sm:mt-16 text-white border-none bg-rosa font-semibold">
+                                Termin vereinbaren
+                            </DefaultButton>
+                        </div>
+                    </Hero>
+                </motion.div>
+
                 {/* <h1 className="font-sans">Hallo ich bin ein Text</h1> */}
             </MainContainer>
+
+            <ImageBox single={false} box={data[1].imagebox.headline}></ImageBox>
+
             <HomeSwiper
                 headline={data[0].raeumlichkeiten_settings.headline}
                 value={data[0].raeumlichkeiten_settings.text}

@@ -2,11 +2,20 @@ import React from "react";
 import MainContainer from "../layout/mainContainer";
 import { H2 } from "../utils/headlines";
 import { DefaultButton } from "../utils/buttons";
+import { useSpring, animated } from "react-spring";
+import { config } from "react-spring";
 
 const PageHero = (props) => {
+    const blurIn = useSpring({
+        to: { filter: "blur(0)" },
+        from: { filter: "blur(10px)" },
+        delay: 0,
+        config: config.molasses,
+    });
+
     return (
-        <MainContainer width="w-100 bg-rosa py-16 py-16 sm:py-36 font-europa ">
-            <div className="col-span-12 text-center flex flex-col items-center justify-end m-auto sm:w-2/4">
+        <MainContainer width="w-100 bg-lightGray py-20 sm:py-16 py-16 pt-32 sm:pt-48  relative font-europa  sm:h-[450px] sm:mb-32">
+            <div className="col-span-12 text-center flex flex-col items-center justify-end m-auto  sm:w-2/4">
                 <H2 klasse="font-europa mb-12 text-white mb-0">{props.headline}</H2>
                 <p className="text-white sm:w-1/2">{props.text}</p>
                 {props.showButton && (
@@ -14,6 +23,12 @@ const PageHero = (props) => {
                         {props.button}
                     </DefaultButton>
                 )}
+            </div>
+            <div
+                className="absolute container bg-cover bg-top m-auto min-h-[275px] sm:min-h-[550px] bg-green-400 left-1/2 transform -translate-x-1/2"
+                style={{ backgroundImage: `url(${props.bg})` }}
+            >
+                <div className="absolute bg-black w-full h-full opacity-20"></div>
             </div>
         </MainContainer>
     );

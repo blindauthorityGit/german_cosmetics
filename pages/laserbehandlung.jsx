@@ -1,28 +1,18 @@
-import Head from "next/head";
-import Image from "next/image";
-import styles from "../styles/Home.module.css";
-import MainContainer from "../components/layout/mainContainer";
-import { useNextSanityImage } from "next-sanity-image";
-import client from "../client";
-import { useState, useEffect, useRef } from "react";
-import { H1 } from "../components/utils/headlines";
-import { useSpring, animated } from "react-spring";
-import { config } from "react-spring";
 import imageUrlBuilder from "@sanity/image-url";
+import Head from "next/head";
+import { useEffect, useRef, useState } from "react";
+import client from "../client";
+import BehandlungNav from "../components/nav/behandlungNav";
 import Navbar from "../components/nav/navbar";
-import PageHero from "../components/sections/pageHero";
 import BehandlungTop from "../components/sections/behandlungTop";
-import FullWidthSwiper from "../components/sections/fullWidthSwiper";
-import BehandlungenContainer from "../components/sections/dermatologie/behandlungen";
 import LaserBehandlungContainer from "../components/sections/lasermedizin/laserBehandlung";
-import { isMobile } from "react-device-detect";
+import PageHero from "../components/sections/pageHero";
 
-import { PortableText } from "@portabletext/react";
 import CTA from "../components/sections/cta";
+import Footer from "../components/sections/footer";
 import ImageBox from "../components/sections/imageBox";
 import LinkBox from "../components/sections/linkBox";
-import Footer from "../components/sections/footer";
-import ScrollAnimation from "react-animate-on-scroll";
+import { motion } from "framer-motion";
 
 const builder = imageUrlBuilder(client);
 
@@ -65,8 +55,6 @@ export default function LaserBehanldungen({ data, laserData }) {
 
     useEffect(() => {
         console.log(laserData);
-        // containerRef.current.classList.remove("fade-in");
-        // containerRef.current.classList.add("fade-in");
         containerRef.current.style.opacity = "0";
         setTimeout(() => {
             containerRef.current.style.opacity = "1";
@@ -85,7 +73,14 @@ export default function LaserBehanldungen({ data, laserData }) {
                 <meta name="description" content={laserData[0].seo.description} />
             </Head>
             <Navbar logo={urlFor(data[3].logo.logo_dark)}></Navbar>
-            <PageHero headline="Laserbehandlungen" showButton={false}></PageHero>
+            <motion.div layoutId={"Hero"} animate={{ opacity: 1 }}>
+                <PageHero
+                    bg={urlFor(laserData[0].hero_settings.backgroundImg).width(1560).height(550)}
+                    headline=""
+                    showButton={false}
+                ></PageHero>
+            </motion.div>
+            <BehandlungNav klasseOne="active"></BehandlungNav>
 
             <BehandlungTop headline={laserData[0].intro.headline} valueLeft={laserData[0].intro.text}></BehandlungTop>
             <LaserBehandlungContainer

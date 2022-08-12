@@ -37,7 +37,7 @@ const BehandlungElement = (props, ref) => {
                 </div>
                 <div
                     data-len={props.len}
-                    className={`col-span-12 sm:col-span-10 mt-8 sm:mt-0  ${props.orderBottom} ${props.animation} flex flex-col justify-center py-12 px-12`}
+                    className={`col-span-12 sm:col-span-10 mt-8 sm:mt-0  ${props.orderBottom} ${props.animation} flex flex-col justify-center pt-24 pb-12 px-12`}
                 >
                     <H3 klasse="mb-8 sm:mb-3 wordBreak	">{props.headline}</H3>
                     <PortableText value={props.text}></PortableText>

@@ -15,7 +15,7 @@ const BehandlungTopExperiment = (props) => {
                 <div className="col-span-12 sm:col-span-6 mb-16 sm:mb-0">
                     {/* <ScrollAnimation animateIn="slideInRight" animateOnce={true}> */}
                     <div className="px-8">
-                        <H2 klasse="mb-8 sm:mb-16">{props.headline}</H2>
+                        <H2 klasse="mb-8 sm:mb-16 beforeH">{props.headline}</H2>
                         <PortableText value={props.valueLeft}></PortableText>
                     </div>
                     {/* </ScrollAnimation> */}

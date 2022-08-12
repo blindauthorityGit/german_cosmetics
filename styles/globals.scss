@@ -12,6 +12,7 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
     height: 100%;
     color: #414646;
+            
 }
 
 #__next {
@@ -108,6 +109,8 @@ a {
 
 p {
   margin-top: 1.25rem;
+  font-size: clamp(.88rem,calc(0.73rem + 0.73vw),1.25rem);
+  font-weight: 300;
 }
 
 .oeffnung {
@@ -124,6 +127,45 @@ ul {
   }
 }
 
+nav {
+  ul {
+    list-style: none;
+  }
+}
+
+h2 {
+  position: relative;
+}
+// h3 {
+//   position: relative;
+//   border-bottom: solid thin red
+// }
+
+.beforeH::before{
+  content:"";
+  position: absolute;
+  width: .25rem;
+  height: 100%;
+  background: #d679be;
+  left: -2rem;
+}
+// h2::before{
+//   content:"";
+//   position: absolute;
+//   width: .25rem;
+//   height: 100%;
+//   background: #d679be;
+//   left: -2rem;
+// }
+// h3::before{
+//   content:"";
+//   position: absolute;
+//   width: .25rem;
+//   height: 100%;
+//   background: #d679be;
+//   left: -2rem;
+// }
+
 // h3 {
 //   font-size: 1.5rem;
 //   margin-top:1rem
@@ -131,22 +173,31 @@ ul {
 .activeLink {
   font-weight: 800;
   color: #A54399;
+  position: relative;
+}
+
+.activeSideLink::after {
+  content: "-->";
+  position: absolute;
+  right: 0;
+  color: #A54399;
 }
 
 .swiper-slide {
   transition: all ease-in-out 500;
 }
 
-.swiper-slide-next, .swiper-slide-prev {
-  opacity: 0.5;
-}
+// .swiper-slide-next, .swiper-slide-prev {
+//   opacity: 0.5;
+// }
 
 .wordBreak {
   word-wrap: break-word;
 }
 
 .activeSideLink {
- 
+  position: relative;
+
     font-weight: 800;
     color: #A54399;
 }
@@ -165,4 +216,9 @@ html {
   display: block;
   height: 100px;
   margin: -100px 0 0;
+}
+
+.active {
+  background: #A54399;
+  color: white;
 }

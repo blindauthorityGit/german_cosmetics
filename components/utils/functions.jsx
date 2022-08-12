@@ -13,4 +13,14 @@ function checkTop(divs, state, setState, links) {
     });
 }
 
-export { checkTop };
+const wrap = (toWrap, wrapper) => {
+    const newWrapper = wrapper ?? document.createElement("div");
+    toWrap.parentNode.appendChild(newWrapper);
+    return newWrapper.appendChild(toWrap);
+};
+
+const sorter = (data) => {
+    return data.sort((a, b) => (a._type > b._type ? 1 : -1));
+};
+
+export { checkTop, wrap, sorter };

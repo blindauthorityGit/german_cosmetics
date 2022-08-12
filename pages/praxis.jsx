@@ -13,12 +13,15 @@ import SideNavContainer from "../components/sections/sideNavContainer";
 import { isMobile } from "react-device-detect";
 
 import CTA from "../components/sections/cta";
+import JobsCTA from "../components/sections/jobs/jobCTA";
 import LinkBox from "../components/sections/linkBox";
 import Footer from "../components/sections/footer";
 import ScrollAnimation from "react-animate-on-scroll";
 
 import DerArzt from "../components/sections/derArzt";
 import TeamMember from "../components/sections/teamMember";
+
+import { motion } from "framer-motion";
 
 const builder = imageUrlBuilder(client);
 
@@ -32,6 +35,10 @@ export default function Praxis({ data, dataBlog }) {
 
     const [showDoc, setShowDoc] = useState(true);
 
+    useEffect(() => {
+        console.log(data);
+    }, []);
+
     return (
         <>
             <Head>
@@ -39,16 +46,23 @@ export default function Praxis({ data, dataBlog }) {
                 <meta name="description" content={data[3].seo.description} />
             </Head>
             <Navbar logo={urlFor(data[3].logo.logo_dark)}></Navbar>
-            <PageHero headline="Unsere Praxis" showButton={false}></PageHero>
+            <motion.div layoutId={"Hero"} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+                <PageHero
+                    bg={urlFor(data[2].hero_settings.backgroundImg).width(1560).height(550)}
+                    headline="Unsere Praxis"
+                    showButton={false}
+                ></PageHero>
+            </motion.div>
+
             <TopSubNav></TopSubNav>
-            {isMobile && (
+            {/* {isMobile && (
                 <FullWidthSwiper
                     klasse="pt-0"
                     data={data[2].raeumlichkeiten_settings.images}
                     width="1485"
                     height="916"
                 ></FullWidthSwiper>
-            )}
+            )} */}
             <PraxisTop
                 headline={data[2].raeumlichkeiten_settings.headline}
                 imgRight={urlFor(data[2].raeumlichkeiten_settings.image2).width(735).height(892)}
@@ -58,20 +72,16 @@ export default function Praxis({ data, dataBlog }) {
                 // minHeightL="min-h-[1024px]"
                 valueRight={data[2].raeumlichkeiten_settings.text2}
             ></PraxisTop>
-            {!isMobile && (
-                <FullWidthSwiper
-                    data={data[2].raeumlichkeiten_settings.images}
-                    width="1485"
-                    height="816"
-                ></FullWidthSwiper>
-            )}
-            <CTA headline={data[0].cta.headline} text={data[0].cta.text} button={data[0].cta.button_text}></CTA>
-            <MainContainer width="w-100 gap-0 sm:mt-24 sm:mb-24 sm:mt-24 container font-europa sm:px-16 ">
+
+            <FullWidthSwiper data={data[2].raeumlichkeiten_settings.images} width="1485" height="816"></FullWidthSwiper>
+
+            {/* <CTA headline={data[0].cta.headline} text={data[0].cta.text} button={data[0].cta.button_text}></CTA> */}
+            <MainContainer width="w-100 gap-4 sm:mt-24  sm:mt-24 container font-europa sm:px-16 ">
                 <div className="container m-auto col-span-12">
                     {showDoc && (
                         <DerArzt
                             img={urlFor(data[2].arzt.arztImg)
-                                .width(isMobile ? "450" : "500")
+                                .width(isMobile ? "450" : "650")
                                 .height(isMobile ? "450" : "650")}
                             headline={data[2].arzt.arztHeadline}
                             text={data[2].arzt.arztDesc}
@@ -81,19 +91,20 @@ export default function Praxis({ data, dataBlog }) {
                         ></DerArzt>
                     )}
                     {!isMobile && (
-                        <div id="teamWrapper" className="mt-16" ref={teamRef}>
+                        <div id="teamWrapper" className="sm:mt-16 grid grid-cols-12 gap-4" ref={teamRef}>
                             {data[2].team.teamMember.map((e, i) => {
                                 return (
                                     <ScrollAnimation
                                         animateIn={i % 2 === 0 ? "slideInLeft" : "slideInRight"}
                                         animateOnce={true}
                                         duration={0.4}
-                                        className=""
+                                        className="col-span-12 sm:col-span-6 "
                                     >
                                         <TeamMember
                                             img={urlFor(e.img).width(600).height(600)}
                                             headline={e.title}
-                                            text={e.text}
+                                            text={e.subTitle}
+                                            title={e.title}
                                             orderTop={i % 2 === 0 ? "" : "order-last"}
                                             // animation={showTeam ? "fade-in" : ""}
                                         ></TeamMember>
@@ -110,14 +121,15 @@ export default function Praxis({ data, dataBlog }) {
                                     animateIn={i % 2 === 0 ? "slideInLeft" : "slideInRight"}
                                     animateOnce={true}
                                     duration={0.4}
-                                    className="col-span-12 sm:col-span-6 py-48 sm:py-64 relative cursor-pointer group transition-all overflow-hidden"
+                                    className="col-span-12 sm:col-span-6  sm:py-64 relative cursor-pointer group transition-all overflow-hidden"
                                 >
                                     <TeamMember
                                         img={urlFor(e.img)
                                             .width(isMobile ? "450" : "650")
                                             .height(isMobile ? "450" : "650")}
                                         headline={e.title}
-                                        text={e.text}
+                                        title={e.title}
+                                        text={e.subTitle}
                                         // orderTop={i % 2 !== 0 ? "" : "order-last"}
                                         // animation={showTeam ? "fade-in" : ""}
                                     ></TeamMember>
@@ -126,12 +138,13 @@ export default function Praxis({ data, dataBlog }) {
                         })}
                 </div>
             </MainContainer>
-            <CTA
+            <JobsCTA
                 klasse="sm:mb-16"
-                headline={data[0].cta.headline}
-                text={data[0].cta.text}
-                button={data[0].cta.button_text}
-            ></CTA>
+                headline={data[0].cta_jobs.headline}
+                text={data[0].cta_jobs.text}
+                button={data[0].cta_jobs.button_text}
+            ></JobsCTA>
+            <CTA headline={data[0].cta.headline} text={data[0].cta.text} button={data[0].cta.button_text}></CTA>
 
             <LinkBox
                 klasse="sm:mt-16 mt-24"
