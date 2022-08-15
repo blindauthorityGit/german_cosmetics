@@ -22,6 +22,7 @@ import LinkBox from "../components/sections/linkBox";
 import Footer from "../components/sections/footer";
 import ScrollAnimation from "react-animate-on-scroll";
 import { motion } from "framer-motion";
+import { IoMdCalendar } from "react-icons/io";
 
 const builder = imageUrlBuilder(client);
 
@@ -67,10 +68,18 @@ export default function Home({ data, dataBlog }) {
                         colspan="col-span-12"
                         containerKlasse="items-center z-20"
                         value={data[2].oeffnungszeiten}
+                        phone={data[2].kontakt.phone}
+                        email={data[2].kontakt.email}
+                        strasse={data[2].adresse.strasse}
+                        ort={data[2].adresse.ort}
                     >
                         <div ref={headlineRef} className="">
                             <H1 klasse="text-center sm:text-left text-white ">{data[0].hero_settings.headline}</H1>
-                            <DefaultButton klasse="col-span-12 w-3/4 hover:bg-darkPurple m-auto sm:m-0 mt-12 sm:mt-16 text-white border-none bg-rosa font-semibold">
+                            <DefaultButton klasse="col-span-12 w-3/4 hover:bg-darkPurple m-auto sm:m-0 mt-12 sm:mt-16 text-white border-none bg-primaryColor font-semibold">
+                                <span className="mr-4 text-xl">
+                                    {" "}
+                                    <IoMdCalendar></IoMdCalendar>
+                                </span>{" "}
                                 Termin vereinbaren
                             </DefaultButton>
                         </div>

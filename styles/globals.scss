@@ -21,7 +21,7 @@ body {
 
 
 a {
-  color: inherit;
+  // color: inherit;
   text-decoration: none;
 }
 
@@ -221,4 +221,62 @@ html {
 .active {
   background: #A54399;
   color: white;
+}
+
+.dropdown::before {
+  content: "■";
+  position: absolute;
+  color: white;
+  transform: rotate(45deg);
+  font-size: 2rem;
+  top: 0.4rem;
+}
+
+.gradient {
+  background: rgb(255,35,158);
+background: linear-gradient(45deg, rgba(255,35,158,1) 0%, rgba(218,42,233,1) 48%, rgba(214,121,190,1) 100%);
+}
+
+.subNav::before {
+  font-family: "Font Awesome 5 Free";
+
+  content: "\f068";
+  position: absolute;
+  color: #A54399;
+  font-size: 1.5rem;
+  left: -2rem;
+  top: -0.3rem
+}
+
+.activeQuick {
+  color: white!important;
+  opacity: 1!important;
+  position: relative;
+}
+
+.activeQuick::before {
+  content: "■";
+  position: absolute;
+  color: #A54399;
+  transform: rotate(45deg);
+  font-size: 2rem;
+  top: -0.25rem;
+  right: -2rem;
+}
+
+.quick {
+  transition: all ease-in-out 200;
+  opacity: 0.5; 
+  color: white!important;
+ cursor: pointer;
+
+}
+
+.quick:hover {
+      opacity: 1;
+
+}
+
+.clamp {
+  font-size: clamp(0.88rem, calc(0.73rem + 0.73vw), 1.25rem);
 }
