@@ -1,8 +1,6 @@
 import React, { useEffect } from "react";
 import MainContainer from "../layout/mainContainer";
 import { H2 } from "../utils/headlines";
-import { PortableText } from "@portabletext/react";
-import { DefaultButton } from "../utils/buttons";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useSwiper } from "swiper/react";
 import { useNextSanityImage } from "next-sanity-image";
@@ -61,13 +59,13 @@ const BlogSwiper = (props) => {
                 >
                     {props.data.map((e, i) => {
                         return (
-                            <SwiperSlide>
+                            <SwiperSlide key={`blogSwiper${i}`}>
                                 <BlogOverviewElement
                                     date={e.blog_settings.date.split("-").reverse().join("-")}
                                     image={urlFor(e.blog_settings.featuredImg).width("575").height("512")}
                                     headline={e.title}
                                     value={e.blog_settings.intro}
-                                    link={e.blog_settings.slug.current}
+                                    link={`./blog/${e.blog_settings.slug.current}`}
                                 ></BlogOverviewElement>
                             </SwiperSlide>
                         );

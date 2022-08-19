@@ -10,6 +10,7 @@ import Image from "next/image";
 import client from "../../client";
 import imageUrlBuilder from "@sanity/image-url";
 import ScrollAnimation from "react-animate-on-scroll";
+import Link from "next/link";
 
 const builder = imageUrlBuilder(client);
 
@@ -25,7 +26,7 @@ const HomeSwiper = (props) => {
     }, []);
 
     return (
-        <MainContainer width="container pt-16 sm:py-64 font-europa">
+        <MainContainer width="container pt-16 sm:py-32 font-europa">
             <ScrollAnimation
                 animateIn={"slideInLeft"}
                 animateOnce={true}
@@ -35,9 +36,11 @@ const HomeSwiper = (props) => {
                 <H2 klasse="font-europa mb-12">{props.headline}</H2>
                 <PortableText className="font-europa" value={props.value} />
                 {props.children}
-                <DefaultButton klasse="mt-8 sm:mt-16 mb-12 sm:mb-0 hover:bg-primaryColor hover:text-white border border-[#A54399] text-primaryColor">
-                    {props.button}
-                </DefaultButton>
+                <Link href="/praxis">
+                    <DefaultButton klasse="mt-8 sm:mt-16 mb-12 sm:mb-0 hover:bg-primaryColor hover:text-white border border-[#A54399] text-primaryColor">
+                        {props.button}
+                    </DefaultButton>
+                </Link>
             </ScrollAnimation>
             <ScrollAnimation
                 animateIn={"slideInRight"}
@@ -49,7 +52,7 @@ const HomeSwiper = (props) => {
                     spaceBetween={50}
                     onSlideChange={() => console.log("slide change")}
                     onSwiper={(swiper) => console.log(swiper)}
-                    slidesPerView={2}
+                    slidesPerView="auto"
                     slideActiveClass="sliderTwo-active"
                     modules={[]}
                     navigation
@@ -70,20 +73,12 @@ const HomeSwiper = (props) => {
                             pagination: true,
                         },
                     }}
-                    // scrollbar={{ draggable: true }}
-                    // ref={sliderRef}
                 >
                     {props.images.map((e, i) => {
                         return (
-                            <SwiperSlide>
-                                <div>
-                                    <img
-                                        className="hidden sm:block"
-                                        src={urlFor(e).width("522").height("673")}
-                                        alt=""
-                                    />
-                                    <img className="block sm:hidden" src={urlFor(e)} alt="" />
-                                </div>
+                            <SwiperSlide key={`keyImgs${i}`}>
+                                <img className="hidden sm:block" src={urlFor(e).width("522").height("673")} alt="" />
+                                <img className="block sm:hidden" src={urlFor(e).width(415).height(288)} alt="" />
                             </SwiperSlide>
                         );
                     })}

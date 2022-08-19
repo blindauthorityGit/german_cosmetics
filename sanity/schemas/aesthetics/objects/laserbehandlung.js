@@ -30,15 +30,20 @@ export default {
             ],
         },
         {
-            name: "kategorie",
-            title: "Kategorie",
-            type: "array",
-            of: [
-                {
-                    type: "reference",
-                    to: { type: "aesthethic_laserbehandlung_category" },
-                },
-            ],
+            name: "categories",
+            title: "Categories",
+            type: "number",
         },
+        // {
+        //     name: "categories",
+        //     title: "Categories",
+        //     type: "array",
+        //     of: [
+        //         {
+        //             type: "reference",
+        //             to: { type: "aesthethic_laserbehandlung_category" },
+        //         },
+        //     ],
+        // },
     ],
 };

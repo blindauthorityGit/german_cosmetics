@@ -5,6 +5,14 @@ const { fontFamily } = require("tailwindcss/defaultTheme");
 module.exports = {
     content: ["./pages/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
     theme: {
+        container: {
+            screens: {
+                sm: "100%",
+                md: "100%",
+                lg: "1024px",
+                xl: "1480px",
+            },
+        },
         extend: {
             colors: {
                 primaryColor: "#A54399",
@@ -14,6 +22,7 @@ module.exports = {
                 rosa: "#d77bbf",
                 footer: "#526576",
                 text: "#414646",
+                lightGray: "#EEF0F2",
             },
             fontFamily: {
                 ...fontFamily,
