@@ -43,11 +43,11 @@ const BehandlungElement = (props, ref) => {
                     <hr className="text-primaryColor bg-primaryColor h-1 mb-6" />
                     <PortableText value={props.text}></PortableText>
                 </div>
-                {props.len > 300 && (
+                {/* {props.len > 300 && (
                     <div className="absolute right-0 text-[#A54399] text-3xl">
                         <FaChevronCircleDown />
                     </div>
-                )}
+                )} */}
             </div>
         </div>
     );

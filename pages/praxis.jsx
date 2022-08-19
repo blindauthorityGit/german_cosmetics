@@ -62,14 +62,7 @@ export default function Praxis({ data }) {
             </motion.div>
 
             <TopSubNav></TopSubNav>
-            {/* {isMobile && (
-                <FullWidthSwiper
-                    klasse="pt-0"
-                    data={data[2].raeumlichkeiten_settings.images}
-                    width="1485"
-                    height="916"
-                ></FullWidthSwiper>
-            )} */}
+
             <PraxisTop
                 headline={data[2].raeumlichkeiten_settings.headline}
                 imgRight={urlFor(data[2].raeumlichkeiten_settings.image2).width(735).height(892)}

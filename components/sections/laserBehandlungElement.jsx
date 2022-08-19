@@ -17,7 +17,7 @@ const LaserBehandlungElement = (props, ref) => {
             ref={ref}
             id={props.id}
             data-cat={props.cat}
-            className={`wrapper scrollContainer behandlungsElement  grid grid-cols-12 mb-16 border border-bottom`}
+            className={`wrapper  behandlungsElement  grid grid-cols-12 mb-16 border border-bottom`}
         >
             <div className="h-auto col-span-12 grid grid-cols-12 relative">
                 <div className={`col-span-12  ${props.orderTop} relative z-10`}>
@@ -41,11 +41,11 @@ const LaserBehandlungElement = (props, ref) => {
 
                     <PortableText value={props.text}></PortableText>
                 </div>
-                {props.len > 300 && (
+                {/* {props.len > 300 && (
                     <div className="absolute right-0 text-[#A54399] text-3xl">
                         <FaChevronCircleDown />
                     </div>
-                )}
+                )} */}
             </div>
         </div>
     );

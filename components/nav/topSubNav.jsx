@@ -4,7 +4,6 @@ const TopSubNav = () => {
     const [active, setActive] = useState(false);
 
     function toggleActive(e) {
-        preventDefault(e);
         e.target.classList.toggle("active");
     }
 
@@ -16,7 +15,7 @@ const TopSubNav = () => {
                         Räumlichkeiten
                     </a>
                 </div>
-                <div id="team">
+                <div id="teamBtn">
                     <a onClick={toggleActive} href="#team">
                         Das Team
                     </a>

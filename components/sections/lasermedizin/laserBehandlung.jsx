@@ -20,7 +20,7 @@ function urlFor(source) {
 const LaserBehandlungenContainer = (props, ref) => {
     const [activeLink, setActiveLink] = useState("test");
     const scrollRef = useRef(null);
-    useScrollSnap({ ref: scrollRef, duration: 200, delay: 0 });
+    // useScrollSnap({ ref: scrollRef, duration: 200, delay: 0 });
 
     useEffect(() => {
         let divs = Array.from(document.querySelectorAll("[data-cat]")).filter((e) => e.id.length > 0);
@@ -46,7 +46,7 @@ const LaserBehandlungenContainer = (props, ref) => {
                 <div className="hidden sm:block sm:col-span-4 scroll-smooth">
                     <Sticky distanceFromTop={80}>
                         {({ style, isSticky }) => (
-                            <div style={{ ...style, marginTop: isSticky ? "64px" : "0px" }} className="col-span-3">
+                            <div style={{ ...style, marginTop: isSticky ? "128px" : "0px" }} className="col-span-3">
                                 <div className="border-l-2 pr-6">
                                     {props.dataNav.map((e, i) => {
                                         return (
@@ -76,33 +76,33 @@ const LaserBehandlungenContainer = (props, ref) => {
                 </div>
                 <div className="col-span-12 sm:col-span-8 transition-all duration-300" ref={ref}>
                     {/* <H2 klasse="mb-16">Unser Angebot</H2> */}
-                    <section ref={scrollRef}>
-                        {props.dataBehandlung.map((e, i) => {
-                            return (
-                                <ScrollAnimation
-                                    key={`laserBehandlung${i}`}
-                                    animateIn={"slideInRight"}
-                                    animateOnce={true}
-                                    duration={0.4}
-                                    className=""
-                                >
-                                    <LaserBehandlungElement
-                                        img={urlFor(e.image).width(860).height(400)}
-                                        headline={e.title}
-                                        key={`behandlung${i}`}
-                                        len={
-                                            e.text[0].children
-                                                .map((e) => e.text)
-                                                .join("")
-                                                .split("").length
-                                        }
-                                        text={e.text}
-                                        cat={`cat${e.categories}`}
-                                    ></LaserBehandlungElement>
-                                </ScrollAnimation>
-                            );
-                        })}
-                    </section>
+                    {/* <section ref={scrollRef}> */}
+                    {props.dataBehandlung.map((e, i) => {
+                        return (
+                            <ScrollAnimation
+                                key={`laserBehandlung${i}`}
+                                animateIn={"slideInRight"}
+                                animateOnce={true}
+                                duration={0.4}
+                                className=""
+                            >
+                                <LaserBehandlungElement
+                                    img={urlFor(e.image).width(860).height(400)}
+                                    headline={e.title}
+                                    key={`behandlung${i}`}
+                                    len={
+                                        e.text[0].children
+                                            .map((e) => e.text)
+                                            .join("")
+                                            .split("").length
+                                    }
+                                    text={e.text}
+                                    cat={`cat${e.categories}`}
+                                ></LaserBehandlungElement>
+                            </ScrollAnimation>
+                        );
+                    })}
+                    {/* </section> */}
                 </div>
             </StickyContainer>
         </MainContainer>

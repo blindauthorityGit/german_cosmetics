@@ -20,51 +20,9 @@ function urlFor(source) {
     return builder.image(source);
 }
 
-export default function LaserBehanldungen({ data, laserData }) {
+export default function Kontakt({ data, laserData }) {
     const headlineRef = useRef();
     const containerRef = useRef();
-    const arztRef = useRef();
-    const teamRef = useRef();
-
-    const [fetchID, setFetchID] = useState(0);
-    const [showTeam, setShowTeam] = useState(false);
-
-    const refs = {
-        Licht: "b7924f52-2e37-43bd-9b15-fd8b7e49bee9",
-        Hautverjuengung: "cdc24a98-cb04-4560-a905-d7f981a12627",
-    };
-
-    const dataSet = (e) => {
-        return Array.from(document.querySelectorAll(`[data-cat=${e}]`));
-    };
-
-    const idFormater = (e) => {
-        return laserData[0].categories[e].title
-            .toLowerCase()
-            .split(" ")
-            .join("")
-            .replace(/[^\w\s]/gi, "");
-    };
-
-    useEffect(() => {
-        // Korrekte ID's für Sidenav
-        laserData[0].categories.map((e, i) => {
-            dataSet(`cat${i}`)[0].id = idFormater(i);
-        });
-    }, []);
-
-    useEffect(() => {
-        console.log(laserData);
-        containerRef.current.style.opacity = "0";
-        setTimeout(() => {
-            containerRef.current.style.opacity = "1";
-        }, 100);
-    }, [fetchID]);
-
-    function handleClick(e) {
-        console.log(e.target.dataset.id);
-        setFetchID(e.target.dataset.id);
-    }
 
     return (
         <>
@@ -75,8 +33,8 @@ export default function LaserBehanldungen({ data, laserData }) {
             <Navbar logo={urlFor(data[3].logo.logo_dark)}></Navbar>
             <motion.div layoutId={"Hero"} animate={{ opacity: 1 }}>
                 <PageHero
-                    bg={urlFor(laserData[0].hero_settings.backgroundImg).width(1560).height(550)}
-                    headline=""
+                    bg={urlFor(data[2].hero_settings.backgroundImg).width(1560).height(550)}
+                    headline="Lasermedizin"
                     showButton={false}
                 ></PageHero>
             </motion.div>
@@ -93,8 +51,9 @@ export default function LaserBehanldungen({ data, laserData }) {
             ></LaserBehandlungContainer>
             <ImageBox
                 single={true}
-                headline={data[0].imagebox.headline[1].title}
-                img={data[0].imagebox.headline[1].img}
+                headline={data[0].imagebox.headline[0].title}
+                img={data[0].imagebox.headline[0].img}
+                href={data[0].imagebox.headline[0].title.toLowerCase()}
             ></ImageBox>
 
             <CTA

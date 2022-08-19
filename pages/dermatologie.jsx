@@ -12,6 +12,7 @@ import CTA from "../components/sections/cta";
 import Footer from "../components/sections/footer";
 import ImageBox from "../components/sections/imageBox";
 import LinkBox from "../components/sections/linkBox";
+import { motion } from "framer-motion";
 
 const builder = imageUrlBuilder(client);
 
@@ -28,9 +29,7 @@ export default function Dermatologie({ data, dermaData }) {
     const [showDoc, setShowDoc] = useState(true);
     const [showTeam, setShowTeam] = useState(false);
 
-    useEffect(() => {
-        console.log(data);
-    }, []);
+    useEffect(() => {}, []);
 
     return (
         <>
@@ -38,12 +37,21 @@ export default function Dermatologie({ data, dermaData }) {
                 <title>{data[3].seo.title}</title>
                 <meta name="description" content={data[3].seo.description} />
             </Head>
-            <Navbar logo={urlFor(data[3].logo.logo_dark)}></Navbar>
-            <PageHero
-                bg={urlFor(dermaData[0].behandlungen[3].image).width(1560).height(550)}
-                headline="Dermatologie"
-                showButton={false}
-            ></PageHero>
+            <Navbar
+                strasse={data[1].adresse.strasse}
+                ort={data[1].adresse.ort}
+                phone={data[1].kontakt.phone}
+                email={data[1].kontakt.email}
+                value={data[1].oeffnungszeiten}
+                logo={urlFor(data[3].logo.logo_dark)}
+            ></Navbar>
+            <motion.div layoutId={"Hero"} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+                <PageHero
+                    bg={urlFor(dermaData[0].behandlungen[3].image).width(1560).height(550)}
+                    headline="Dermatologie"
+                    showButton={false}
+                ></PageHero>
+            </motion.div>
             <BehandlungNav klasseTwo="active"></BehandlungNav>
 
             <BehandlungTop headline={dermaData[0].intro.headline} valueLeft={dermaData[0].intro.text}></BehandlungTop>
@@ -55,6 +63,7 @@ export default function Dermatologie({ data, dermaData }) {
                 single={true}
                 headline={data[0].imagebox.headline[1].title}
                 img={data[0].imagebox.headline[1].img}
+                href={data[0].imagebox.headline[1].title.toLowerCase()}
             ></ImageBox>
 
             <CTA

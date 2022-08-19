@@ -29,7 +29,7 @@ const ImageBox = (props) => {
                                 {props.headline}
                             </H2>
 
-                            <Link href="/">
+                            <Link href={`./${props.href}`}>
                                 <a className="leading-relaxed tracking-wider transition-all duration-300 group-hover:underline font-europa text-white">
                                     MEHR ENTDECKEN
                                 </a>
