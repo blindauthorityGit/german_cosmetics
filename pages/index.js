@@ -15,6 +15,9 @@ import imageUrlBuilder from "@sanity/image-url";
 import Navbar from "../components/nav/navbar";
 import HomeSwiper from "../components/sections/homeSwiper";
 import BlogSwiper from "../components/sections/blogSwiper";
+import Modal from "../components/sections/modal/modal";
+import Overlay from "../components/sections/modal/overlay";
+import CTAContent from "../components/sections/cta/";
 import { PortableText } from "@portabletext/react";
 import CTA from "../components/sections/cta";
 import ImageBox from "../components/sections/imageBox";
@@ -23,6 +26,7 @@ import Footer from "../components/sections/footer";
 import ScrollAnimation from "react-animate-on-scroll";
 import { motion } from "framer-motion";
 import { IoMdCalendar } from "react-icons/io";
+import { CTAContext } from "../components/helper/Content";
 
 const builder = imageUrlBuilder(client);
 
@@ -31,14 +35,20 @@ function urlFor(source) {
 }
 
 export default function Home({ data, dataBlog }) {
+    const [showModal, setShowModal] = useState(false);
     const headlineRef = useRef();
 
     useEffect(() => {
-        console.log(data);
-        console.log(dataBlog);
         const splitter = headlineRef.current.children[0].innerHTML.split("");
-        console.log(splitter);
+        console.log(client);
     }, []);
+
+    function showModalSet() {
+        setShowModal(true);
+    }
+    function hideModalSet() {
+        setShowModal(false);
+    }
 
     return (
         <>
@@ -46,6 +56,20 @@ export default function Home({ data, dataBlog }) {
                 <title>{data[0].seo.title}</title>
                 <meta name="description" content={data[0].seo.description} />
             </Head>
+            {showModal && (
+                <>
+                    <Modal>
+                        <CTAContent
+                            strasse={data[2].adresse.strasse}
+                            ort={data[2].adresse.ort}
+                            phone={data[2].kontakt.phone}
+                            email={data[2].kontakt.email}
+                            value={data[2].oeffnungszeiten}
+                        ></CTAContent>
+                    </Modal>
+                    <Overlay onClick={hideModalSet}></Overlay>
+                </>
+            )}
             <Navbar
                 strasse={data[2].adresse.strasse}
                 ort={data[2].adresse.ort}
@@ -75,18 +99,18 @@ export default function Home({ data, dataBlog }) {
                     >
                         <div ref={headlineRef} className="">
                             <H1 klasse="text-center sm:text-left text-white ">{data[0].hero_settings.headline}</H1>
-                            <DefaultButton klasse="col-span-12 w-3/4 hover:bg-darkPurple m-auto sm:m-0 mt-12 sm:mt-16 text-white border-none bg-primaryColor font-semibold">
+                            <DefaultButton
+                                onClick={showModalSet}
+                                klasse="col-span-12 w-3/4 hover:bg-darkPurple m-auto sm:m-0 mt-12 sm:mt-16 text-white border-none bg-primaryColor font-semibold"
+                            >
                                 <span className="mr-4 text-xl">
-                                    {" "}
                                     <IoMdCalendar></IoMdCalendar>
-                                </span>{" "}
+                                </span>
                                 Termin vereinbaren
                             </DefaultButton>
                         </div>
                     </Hero>
                 </motion.div>
-
-                {/* <h1 className="font-sans">Hallo ich bin ein Text</h1> */}
             </MainContainer>
 
             <ImageBox single={false} box={data[1].imagebox.headline}></ImageBox>
@@ -96,9 +120,7 @@ export default function Home({ data, dataBlog }) {
                 value={data[0].raeumlichkeiten_settings.text}
                 button={data[0].raeumlichkeiten_settings.button}
                 images={data[0].raeumlichkeiten_settings.images}
-            >
-                {/* <PortableText value={data[0].raeumlichkeiten_settings.text} /> */}
-            </HomeSwiper>
+            ></HomeSwiper>
             <CTA headline={data[1].cta.headline} text={data[1].cta.text} button={data[1].cta.button_text}></CTA>
             <ImageBox single={false} box={data[1].imagebox.headline}></ImageBox>
             <BlogSwiper data={dataBlog}>

@@ -11,14 +11,14 @@ function H1(props) {
 }
 function H2(props) {
     return (
-        <h2 className={`z-20 text-4xl lg-text-5xl xl:text-6xl 2xl:text-5xl 3xl:text-7xl font-light  ${props.klasse}`}>
+        <h2 className={`z-20 text-4xl lg-text-5xl xl:text-6xl 2xl:text-5xl 3xl:text-7xl   ${props.klasse}`}>
             {props.children}
         </h2>
     );
 }
 function H2Variant(props) {
     return (
-        <h2 className={`z-20 text-4xl lg-text-5xl xl:text-6xl 2xl:text-7xl 3xl:text-8xl font-light  ${props.klasse}`}>
+        <h2 className={`z-20 text-4xl lg-text-5xl xl:text-6xl 2xl:text-7xl 3xl:text-8xl   ${props.klasse}`}>
             {props.children}
         </h2>
     );
@@ -34,7 +34,7 @@ function H2VariantOneLine(props) {
 }
 function H3(props) {
     return (
-        <h3 className={`z-20 text-xl lg-text-xl xl:text-2xl 2xl:text-3xl 3xl:text-3xl font-light  ${props.klasse}`}>
+        <h3 className={`z-20 text-xl lg-text-xl xl:text-2xl 2xl:text-3xl 3xl:text-3xl font-bold  ${props.klasse}`}>
             {props.children}
         </h3>
     );

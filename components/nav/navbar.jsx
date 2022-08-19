@@ -4,13 +4,31 @@ import Image from "next/image";
 import Burger from "../../public/burger.svg";
 import MobileNav from "./mobile";
 import { motion } from "framer-motion";
+import isSticky from "../../functions/isSticky";
+import { IoMdCalendar } from "react-icons/io";
+import Overlay from "../sections/modal/overlay";
+import Modal from "../sections/modal/modal";
+import CTAContent from "../sections/cta/";
 
 const Navbar = (props) => {
     const [showMenu, setShowMenu] = useState(false);
+    const [showModal, setShowModal] = useState(false);
+    const [isItSticky, setIsItSticky] = useState(false);
     const [mobileClass, setMobileClass] = useState(null);
     const dropdownRef = useRef();
     const burgerRef = useRef();
     const navRef = useRef();
+
+    useEffect(() => {
+        window.addEventListener("scroll", (e) => {
+            isSticky(e, isItSticky, setIsItSticky);
+        });
+        return () => {
+            window.removeEventListener("scroll", (e) => {
+                isSticky(e, isItSticky, setIsItSticky);
+            });
+        };
+    });
 
     function clicker(e) {
         setShowMenu((current) => !current);
@@ -22,11 +40,11 @@ const Navbar = (props) => {
         }
     }
 
-    function dropdown(e) {
-        // console.log(Array.from(e.target.children)[1]);
-        // Array.from(e.target.children).map((e, i) => {
-        //     e.classList.add("slide-in-left");
-        // });
+    function showModalSet() {
+        setShowModal(true);
+    }
+    function hideModalSet() {
+        setShowModal(false);
     }
 
     const textMotion = {
@@ -63,6 +81,20 @@ const Navbar = (props) => {
 
     return (
         <>
+            {showModal && (
+                <>
+                    <Modal onClick={hideModalSet}>
+                        <CTAContent
+                            strasse={props.strasse}
+                            ort={props.ort}
+                            phone={props.phone}
+                            email={props.email}
+                            value={props.value}
+                        ></CTAContent>
+                    </Modal>
+                    <Overlay onClick={hideModalSet}></Overlay>
+                </>
+            )}
             <MobileNav
                 value={props.value}
                 logo={props.logo}
@@ -72,7 +104,7 @@ const Navbar = (props) => {
                 phone={props.phone}
                 email={props.email}
             ></MobileNav>
-            <nav className="navbar text-white  hidden sm:block w-full absolute z-50 ">
+            <nav className="navbar text-white  hidden sm:block w-full absolute z-30 header-section">
                 <div className="container px-16 flex grid grid-cols-12 font-semibold font-europa tracking-wider m-auto">
                     <div className="middle col-span-6 flex items-center  pt-4">
                         <Link href="./">
@@ -81,17 +113,17 @@ const Navbar = (props) => {
                             </a>
                         </Link>
                     </div>
-                    <div className="left col-span-3 pt-8">
-                        <ul className="flex uppercase tracking-widest">
+                    <div className="left col-span-6 pt-4">
+                        <ul className={`flex uppercase tracking-widest ${isItSticky ? "text-text" : ""}`}>
                             <motion.li
                                 initial="rest"
                                 whileHover="hover"
                                 animate="rest"
-                                onMouseOver={(e) => {
-                                    dropdown(e);
-                                }}
+                                // onMouseOver={(e) => {
+                                //     dropdown(e);
+                                // }}
                                 ref={dropdownRef}
-                                className="mr-8  hover:underline relative hover:text-primaryColor"
+                                className="mr-8  hover:underline relative hover:text-primaryColor flex items-center"
                             >
                                 <Link href="./dermatologie">
                                     <motion.a className="hover:text-primaryColor" variants={textMotion}>
@@ -121,26 +153,26 @@ const Navbar = (props) => {
                                     </div>
                                 </motion.div>
                             </motion.li>
-                            <li>
+                            <li className="mr-8 flex items-center">
                                 <Link href="./praxis">
                                     <a>Praxis</a>
                                 </Link>
                             </li>
-                        </ul>
-                    </div>
-                    {/* <div className="middle col-span-6 flex items-center justify-center pt-4">
-                        <Link href="./">
-                            <a>
-                                <img src={props.logo} width="230" alt="Logo" />
-                            </a>
-                        </Link>
-                    </div> */}
-                    <div className="right flex justify-end col-span-3 pt-8 uppercase tracking-widest">
-                        <ul>
-                            <li>
+                            <li className="mr-8 flex items-center">
                                 <Link href="./">
                                     <a>Kontakt</a>
                                 </Link>
+                            </li>
+                            <li
+                                className="bg-primaryColor cursor-pointer hover:bg-darkPurple py-3 px-4 text-white"
+                                onClick={showModalSet}
+                            >
+                                <a className="flex">
+                                    <span className="mr-2 text-xl">
+                                        <IoMdCalendar></IoMdCalendar>
+                                    </span>
+                                    Termin vereinbaren
+                                </a>
                             </li>
                         </ul>
                     </div>

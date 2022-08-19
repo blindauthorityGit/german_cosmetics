@@ -37,6 +37,8 @@ const LaserBehandlungElement = (props, ref) => {
                     className={`col-span-12 sm:col-span-10 mt-8 sm:mt-8  ${props.orderBottom} ${props.animation} flex flex-col justify-center py-12 px-12`}
                 >
                     <H3 klasse="mb-8 sm:mb-3 wordBreak	">{props.headline}</H3>
+                    <hr className="text-primaryColor bg-primaryColor h-1 mb-6" />
+
                     <PortableText value={props.text}></PortableText>
                 </div>
                 {props.len > 300 && (

@@ -205,19 +205,19 @@ html {
 .activeQuick::before {
   content: "■";
   position: absolute;
-  color: #A54399;
+  color: #EEF0F2;
   -webkit-transform: rotate(45deg);
           transform: rotate(45deg);
   font-size: 2rem;
   top: -0.25rem;
-  right: -2rem;
+  right: -2.25rem;
 }
 
 .quick {
   -webkit-transition: all ease-in-out 200;
   transition: all ease-in-out 200;
-  opacity: 0.5;
-  color: white !important;
+  opacity: 0.2;
+  color: #473046 !important;
   cursor: pointer;
 }
 
@@ -227,5 +227,20 @@ html {
 
 .clamp {
   font-size: clamp(0.88rem, calc(0.73rem + 0.73vw), 1.25rem);
+}
+
+.is-sticky {
+  position: fixed;
+  width: 100%;
+  z-index: 49;
+  background-color: #ffffff !important;
+  -webkit-animation: 500ms ease-in-out 0s normal none 1 running fadeInDown;
+          animation: 500ms ease-in-out 0s normal none 1 running fadeInDown;
+  left: 0 !important;
+}
+
+.dateInput {
+  padding: 1rem !important;
+  font-size: 1rem !important;
 }
 /*# sourceMappingURL=globals.css.map */
