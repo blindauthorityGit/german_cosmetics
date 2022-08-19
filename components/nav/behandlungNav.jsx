@@ -5,9 +5,9 @@ import MainContainer from "../layout/mainContainer";
 const BehandlungNav = (props, ref) => {
     return (
         <section className="container m-auto flex mb-20">
-            <Link href="./laserbehandlung" onClick={props.onClick}>
+            <Link href="./lasermedizin" onClick={props.onClick}>
                 <a className={`text-primaryColor transition-all px-8 py-4 bg-lightGray ${props.klasseOne}`}>
-                    Laserbehandlung
+                    Lasermedizin
                 </a>
             </Link>
             <Link href="./dermatologie" onClick={props.onClick} className="text-primaryColor px-8 py-4 bg-lightGray">
