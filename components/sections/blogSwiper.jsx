@@ -59,7 +59,7 @@ const BlogSwiper = (props) => {
                 >
                     {props.data.map((e, i) => {
                         return (
-                            <SwiperSlide>
+                            <SwiperSlide key={`blogSwiper${i}`}>
                                 <BlogOverviewElement
                                     date={e.blog_settings.date.split("-").reverse().join("-")}
                                     image={urlFor(e.blog_settings.featuredImg).width("575").height("512")}

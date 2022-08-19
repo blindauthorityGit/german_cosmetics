@@ -80,6 +80,7 @@ const LaserBehandlungenContainer = (props, ref) => {
                         {props.dataBehandlung.map((e, i) => {
                             return (
                                 <ScrollAnimation
+                                    key={`laserBehandlung${i}`}
                                     animateIn={"slideInRight"}
                                     animateOnce={true}
                                     duration={0.4}

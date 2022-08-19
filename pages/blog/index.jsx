@@ -49,6 +49,7 @@ export default function Dermatologie({ data, dataBlog, dataBlogSettings }) {
                 {dataBlog.map((e, i) => {
                     return (
                         <BlogOverviewElement
+                            key={`blogOverview${i}`}
                             klasse="col-span-6"
                             date={e.blog_settings.date.split("-").reverse().join("-")}
                             image={urlFor(e.blog_settings.featuredImg).width("575").height("360")}

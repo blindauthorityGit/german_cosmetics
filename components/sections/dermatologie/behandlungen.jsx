@@ -72,7 +72,13 @@ const BehandlungenContainer = (props, ref) => {
                     {/* <H2 klasse="mb-16">Unser Angebot</H2> */}
                     {props.dataBehandlung.map((e, i) => {
                         return (
-                            <ScrollAnimation animateIn={"slideInRight"} animateOnce={true} duration={0.4} className="">
+                            <ScrollAnimation
+                                key={`dermaBehandlung${i}`}
+                                animateIn={"slideInRight"}
+                                animateOnce={true}
+                                duration={0.4}
+                                className=""
+                            >
                                 <BehandlungElement
                                     img={urlFor(e.image).width(860).height(350)}
                                     headline={e.title}
