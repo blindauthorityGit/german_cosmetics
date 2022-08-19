@@ -47,6 +47,7 @@ const ImageBox = (props) => {
                     {props.box.map((e, i) => {
                         return (
                             <ScrollAnimation
+                                key={`keyscroll${i}`}
                                 animateIn={i % 2 === 0 ? "slideInLeft" : "slideInRight"}
                                 animateOnce={true}
                                 duration={0.4}

@@ -20,7 +20,7 @@ export default function CTAContent(props) {
                 {/* <p className="text-white sm:w-1/2">{props.text}</p> */}
                 <form className="grid grid-cols-12 gap-6">
                     <div className="col-span-12">
-                        <label className="block mb-2 font-bold" for="name">
+                        <label className="block mb-2 font-bold" htmlFor="name">
                             Name
                         </label>
                         <input
@@ -32,7 +32,7 @@ export default function CTAContent(props) {
                         />
                     </div>
                     <div className="col-span-12 sm:col-span-6">
-                        <label className="block mb-2 font-bold" for="name">
+                        <label className="block mb-2 font-bold" htmlFor="name">
                             Telefon
                         </label>
                         <input
@@ -44,7 +44,7 @@ export default function CTAContent(props) {
                         />
                     </div>
                     <div className="col-span-12 sm:col-span-6">
-                        <label className="block mb-2 font-bold" for="name">
+                        <label className="block mb-2 font-bold" htmlFor="name">
                             Email
                         </label>
                         <input
@@ -56,7 +56,7 @@ export default function CTAContent(props) {
                         />
                     </div>
                     <div className="col-span-12">
-                        <label className="block mb-2 font-bold" for="name">
+                        <label className="block mb-2 font-bold" htmlFor="name">
                             Behandlung
                         </label>
                         <select
@@ -91,7 +91,7 @@ export default function CTAContent(props) {
                         </select>
                     </div>
                     <div className="col-span-12 sm:col-span-6">
-                        <label className="block mb-2 font-bold" for="name">
+                        <label className="block mb-2 font-bold" htmlFor="name">
                             Datum wählen
                         </label>
                         <DatePicker
@@ -104,7 +104,7 @@ export default function CTAContent(props) {
                         />{" "}
                     </div>
                     <div className="col-span-12 sm:col-span-6">
-                        <label className="block mb-2 font-bold" for="name">
+                        <label className="block mb-2 font-bold" htmlFor="name">
                             Uhrzeit wählen
                         </label>
                         <select

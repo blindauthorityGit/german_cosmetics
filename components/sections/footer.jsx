@@ -27,7 +27,7 @@ const Footer = (props) => {
                         ></textarea>
                         <div className="check col-span-12 mt-6">
                             <input name="checkbox" id="checkbox" className="mr-4" type="checkbox" />
-                            <label for="checkbox" className="text-white">
+                            <label htmlFor="checkbox" className="text-white">
                                 Ich stimme der Verarbeitung meiner Daten gemäß der Datenschutzerklärung zum Zweck der
                                 Kontaktaufnahme zu. *
                             </label>

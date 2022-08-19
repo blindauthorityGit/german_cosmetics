@@ -103,6 +103,7 @@ export default function Praxis({ data }) {
                             {data[2].team.teamMember.map((e, i) => {
                                 return (
                                     <ScrollAnimation
+                                        key={`key${i}`}
                                         animateIn={i % 2 === 0 ? "slideInLeft" : "slideInRight"}
                                         animateOnce={true}
                                         duration={0.4}
@@ -125,7 +126,10 @@ export default function Praxis({ data }) {
                         <div id="teamWrapper" className="sm:mt-16 grid grid-cols-12 gap-4">
                             {data[2].team.teamMember.map((e, i) => {
                                 return (
-                                    <div className="col-span-12 sm:col-span-6  sm:py-64 relative cursor-pointer group transition-all overflow-hidden">
+                                    <div
+                                        key={`key${i}`}
+                                        className="col-span-12 sm:col-span-6  sm:py-64 relative cursor-pointer group transition-all overflow-hidden"
+                                    >
                                         <TeamMember
                                             img={urlFor(e.img)
                                                 .width(isMobile ? "450" : "650")

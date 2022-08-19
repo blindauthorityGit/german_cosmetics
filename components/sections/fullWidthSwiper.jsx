@@ -65,7 +65,7 @@ const FullWidthSwiper = (props) => {
                     >
                         {props.data.map((e, i) => {
                             return (
-                                <SwiperSlide>
+                                <SwiperSlide key={`keyImg${i}`}>
                                     <img src={urlFor(e).width(props.width).height(props.height)} alt="" />
                                 </SwiperSlide>
                             );
