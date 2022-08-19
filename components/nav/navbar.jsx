@@ -3,12 +3,33 @@ import Link from "next/link";
 import Image from "next/image";
 import Burger from "../../public/burger.svg";
 import MobileNav from "./mobile";
+import { motion } from "framer-motion";
+import isSticky from "../../functions/isSticky";
+import { IoMdCalendar } from "react-icons/io";
+import Overlay from "../sections/modal/overlay";
+import Modal from "../sections/modal/modal";
+import CTAContent from "../sections/cta/";
+import { modalSwitcher, hideModalSet } from "../../functions/modal";
 
 const Navbar = (props) => {
     const [showMenu, setShowMenu] = useState(false);
+    const [showModal, setShowModal] = useState(false);
+    const [isItSticky, setIsItSticky] = useState(false);
     const [mobileClass, setMobileClass] = useState(null);
+    const dropdownRef = useRef();
     const burgerRef = useRef();
     const navRef = useRef();
+
+    useEffect(() => {
+        window.addEventListener("scroll", (e) => {
+            isSticky(e, isItSticky, setIsItSticky);
+        });
+        return () => {
+            window.removeEventListener("scroll", (e) => {
+                isSticky(e, isItSticky, setIsItSticky);
+            });
+        };
+    });
 
     function clicker(e) {
         setShowMenu((current) => !current);
@@ -20,8 +41,63 @@ const Navbar = (props) => {
         }
     }
 
+    const textMotion = {
+        rest: {
+            x: 0,
+            transition: {
+                duration: 0.5,
+                type: "tween",
+                ease: "easeIn",
+            },
+        },
+        hover: {
+            // color: "blue",
+            x: 30,
+            transition: {
+                duration: 0.4,
+                type: "tween",
+                ease: "easeOut",
+            },
+        },
+    };
+
+    const boxMotion = {
+        rest: { opacity: 0, ease: "easeOut", duration: 0.2, type: "spring", display: "none" },
+        hover: {
+            opacity: 1,
+            display: "block",
+            transition: {
+                duration: 0.4,
+                type: "spring",
+                ease: "easeIn",
+            },
+        },
+    };
+
     return (
         <>
+            {showModal && (
+                <>
+                    <Modal
+                        onClick={(e) => {
+                            modalSwitcher(e, showModal, setShowModal);
+                        }}
+                    >
+                        <CTAContent
+                            strasse={props.strasse}
+                            ort={props.ort}
+                            phone={props.phone}
+                            email={props.email}
+                            value={props.value}
+                        ></CTAContent>
+                    </Modal>
+                    <Overlay
+                        onClick={(e) => {
+                            modalSwitcher(e, showModal, setShowModal);
+                        }}
+                    ></Overlay>
+                </>
+            )}
             <MobileNav
                 value={props.value}
                 logo={props.logo}
@@ -31,31 +107,75 @@ const Navbar = (props) => {
                 phone={props.phone}
                 email={props.email}
             ></MobileNav>
-            <nav className="navbar hidden sm:block w-full absolute z-50 ">
-                <div className="container flex justify-between font-semibold font-europa tracking-wider m-auto">
-                    <div className="left pt-8">
-                        <ul className="flex">
-                            <li className="mr-8 hover:text-primaryColor hover:underline">
-                                <Link href="./">
-                                    <a>Behandlungen</a>
+            <nav className="navbar text-white  hidden sm:block w-full absolute z-30 header-section">
+                <div className="container px-16 flex grid grid-cols-12 font-semibold font-europa tracking-wider m-auto">
+                    <div className="middle col-span-6 flex items-center  pt-4">
+                        <Link href="./">
+                            <a>
+                                <img src={props.logo} width="230" alt="Logo" />
+                            </a>
+                        </Link>
+                    </div>
+                    <div className="left col-span-6 pt-4">
+                        <ul className={`flex uppercase tracking-widest ${isItSticky ? "text-text" : ""}`}>
+                            <motion.li
+                                initial="rest"
+                                whileHover="hover"
+                                animate="rest"
+                                // onMouseOver={(e) => {
+                                //     dropdown(e);
+                                // }}
+                                ref={dropdownRef}
+                                className="mr-8  hover:underline relative cursor-pointer flex items-center"
+                            >
+                                <Link href="./dermatologie">
+                                    <motion.a className="">Behandlungen</motion.a>
                                 </Link>
-                            </li>
-                            <li>
-                                <Link href="./">
+                                <motion.div variants={boxMotion} className="absolute pt-8  top-8">
+                                    <div className="wrap min-w-60 dropdown bg-white py-8 pl-8 pr-20">
+                                        <Link href="./dermatologie">
+                                            <motion.a
+                                                className="text-text block my-4 subNav relative hover:text-primaryColor cursor-pointer"
+                                                variants={textMotion}
+                                            >
+                                                Dermatologie
+                                            </motion.a>
+                                        </Link>
+                                        <br></br>
+                                        <hr />
+                                        <Link href="./lasermedizin">
+                                            <motion.a
+                                                className="text-text block my-4 subNav relative mt-4 hover:text-primaryColor cursor-pointer"
+                                                variants={textMotion}
+                                            >
+                                                Lasermedizin
+                                            </motion.a>
+                                        </Link>{" "}
+                                    </div>
+                                </motion.div>
+                            </motion.li>
+                            <li className="mr-8 flex items-center hover:underline">
+                                <Link href="./praxis">
                                     <a>Praxis</a>
                                 </Link>
                             </li>
-                        </ul>
-                    </div>
-                    <div className="middle">
-                        <img src={props.logo} width="230" alt="Logo" />
-                    </div>
-                    <div className="right pt-8">
-                        <ul>
-                            <li>
-                                <Link href="./">
+                            <li className="mr-8 flex items-center hover:underline">
+                                <Link href="./kontakt">
                                     <a>Kontakt</a>
                                 </Link>
+                            </li>
+                            <li
+                                className="bg-primaryColor cursor-pointer hover:bg-darkPurple py-3 px-4 text-white"
+                                onClick={(e) => {
+                                    modalSwitcher(e, showModal, setShowModal);
+                                }}
+                            >
+                                <a className="flex">
+                                    <span className="mr-2 text-xl">
+                                        <IoMdCalendar></IoMdCalendar>
+                                    </span>
+                                    Termin vereinbaren
+                                </a>
                             </li>
                         </ul>
                     </div>

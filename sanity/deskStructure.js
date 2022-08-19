@@ -101,6 +101,12 @@ export default () =>
             // ...S.documentTypeListItems(),
             // ...S.documentTypeListItems().filter((item) => !["angebotSetting"].includes(item.getId())),
             S.divider(),
+            S.listItem()
+                .title("Blog Settings")
+                .icon(Cosmetics)
+                .child(S.document().schemaType("blog_settings").documentId("blog_settings")),
+            // ...S.documentTypeListItems(),
+            // ...S.documentTypeListItems().filter((item) => !["angebotSetting"].includes(item.getId())),
 
             // We also need to remove the new singletons from the main list
             ...S.documentTypeListItems().filter(

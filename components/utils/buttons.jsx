@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 function DefaultButton(props) {
     return (
         <>
@@ -10,5 +12,18 @@ function DefaultButton(props) {
         </>
     );
 }
+function DefaultButtonLink(props) {
+    return (
+        <>
+            <Link href={props.href}>
+                <a
+                    className={`group  ease-in-out duration-200 hover:bg-darkBlue cursor-pointer p-4 flex items-center justify-center ${props.klasse}`}
+                >
+                    {props.children}
+                </a>
+            </Link>
+        </>
+    );
+}
 
-export { DefaultButton };
+export { DefaultButton, DefaultButtonLink };

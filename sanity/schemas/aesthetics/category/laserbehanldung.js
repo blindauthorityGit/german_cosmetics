@@ -11,13 +11,21 @@ export default {
             type: "string",
         },
         {
-            name: "slug",
-            title: "Slug",
-            type: "slug",
-            options: {
-                source: "title",
-                maxLength: 96,
-            },
+            title: "Slug Settings",
+            name: "slugSettings",
+            type: "document",
+            fields: [
+                {
+                    name: "slug",
+                    title: "Slug",
+                    type: "slug",
+                    options: {
+                        source: "title",
+                        maxLength: 100,
+                        slugify: (input) => input.toLowerCase().replace(/\s+/g, "-").slice(0, 100),
+                    },
+                },
+            ],
         },
     ],
 };

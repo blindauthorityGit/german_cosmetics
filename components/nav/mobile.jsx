@@ -20,28 +20,46 @@ const MobileNav = (props) => {
                  w-full h-screen bg-white fixed z-50 `}
             >
                 <div className="container h-screen py-16 px-8 font-europa tracking-wider">
-                    <div className="MenuItems text-4xl pt-16">
+                    <div className="middle pl-8">
+                        <Link href="./">
+                            <a>
+                                <img src={props.logo} width="230" alt="Logo" />
+                            </a>
+                        </Link>
+                    </div>
+                    <div className="MenuItems text-4xl pt-8">
                         <ul className="">
-                            <li className="mr-8 hover:text-primaryColor hover:underline mb-4">
-                                <Link href="./">
+                            <li className="mb-4">
+                                <Link href="./dermatologie">
                                     <a>Behandlungen</a>
                                 </Link>
+                                <div className="wrap dropdown bg-white  pl-4 ">
+                                    <Link href="./dermatologie">
+                                        <a className="text-text block my-4 subNav relative hover:text-primaryColor cursor-pointer">
+                                            Dermatologie
+                                        </a>
+                                    </Link>
+
+                                    <Link href="./laserbehandlung">
+                                        <a className="text-text block my-4 subNav relative mt-4 hover:text-primaryColor cursor-pointer">
+                                            Laserbehandlung
+                                        </a>
+                                    </Link>
+                                </div>
                             </li>
-                            <li className="mb-4">
-                                <Link href="./">
+                            <li className="mr-8 hover:text-primaryColor hover:underline mb-4">
+                                <Link href="./praxis">
                                     <a>Praxis</a>
                                 </Link>
                             </li>
                             <li>
-                                <Link href="./">
+                                <Link href="./kontakt">
                                     <a>Kontakt</a>
                                 </Link>
                             </li>
                         </ul>
                     </div>
-                    <div className="middle mt-10">
-                        <img src={props.logo} width="230" alt="Logo" />
-                    </div>
+
                     <div className="Kontakt flex mt-10">
                         <div className="left w-1/2">
                             <H4>Kontakt</H4>

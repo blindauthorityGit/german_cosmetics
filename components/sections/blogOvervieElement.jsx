@@ -7,7 +7,7 @@ import Link from "next/link";
 
 const BlogOverviewElement = (props) => {
     return (
-        <div className="w-full">
+        <div className={`w-full ${props.klasse}`}>
             <img src={props.image} alt={props.alt} />
             <div className="px-8 xm:px-0">
                 <H3 klasse="font-europa mt-6 ">{props.headline}</H3>{" "}
