@@ -1,23 +1,14 @@
 import React, { useState, forwardRef } from "react";
 import { PortableText } from "@portabletext/react";
 import { H2, H3 } from "../utils/headlines";
-import ScrollAnimation from "react-animate-on-scroll";
 
 const TeamMember = (props, ref) => {
-    const [imageLoaded, setImageLoaded] = useState(false);
-
     return (
         <div ref={ref} className={`wrapper col-span-12 sm:col-span-6 grid grid-cols-12 mb-16 `}>
             <div className="h-auto col-span-12 grid grid-cols-12">
                 <div className={`col-span-12 sm:col-span-6 ${props.orderTop}`}>
                     <div className="">
-                        <img
-                            src={props.img}
-                            alt={props.headline}
-                            title={props.title}
-                            // className={`smooth-image ${imageLoaded ? "visible fade-in" : "hidden"}`}
-                            // onLoad={() => setImageLoaded(true)}
-                        />
+                        <img src={props.img} alt={props.headline} title={props.title} />
                     </div>
                 </div>
                 <div

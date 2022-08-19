@@ -26,7 +26,7 @@ const HomeSwiper = (props) => {
     }, []);
 
     return (
-        <MainContainer width="container pt-16 sm:py-64 font-europa">
+        <MainContainer width="container pt-16 sm:py-32 font-europa">
             <ScrollAnimation
                 animateIn={"slideInLeft"}
                 animateOnce={true}
@@ -52,7 +52,7 @@ const HomeSwiper = (props) => {
                     spaceBetween={50}
                     onSlideChange={() => console.log("slide change")}
                     onSwiper={(swiper) => console.log(swiper)}
-                    slidesPerView={2}
+                    slidesPerView="auto"
                     slideActiveClass="sliderTwo-active"
                     modules={[]}
                     navigation
@@ -73,20 +73,12 @@ const HomeSwiper = (props) => {
                             pagination: true,
                         },
                     }}
-                    // scrollbar={{ draggable: true }}
-                    // ref={sliderRef}
                 >
                     {props.images.map((e, i) => {
                         return (
                             <SwiperSlide>
-                                <div>
-                                    <img
-                                        className="hidden sm:block"
-                                        src={urlFor(e).width("522").height("673")}
-                                        alt=""
-                                    />
-                                    <img className="block sm:hidden" src={urlFor(e)} alt="" />
-                                </div>
+                                <img className="hidden sm:block" src={urlFor(e).width("522").height("673")} alt="" />
+                                <img className="block sm:hidden" src={urlFor(e).width(415).height(288)} alt="" />
                             </SwiperSlide>
                         );
                     })}

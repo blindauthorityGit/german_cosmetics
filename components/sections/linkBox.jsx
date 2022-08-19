@@ -13,7 +13,7 @@ const LinkBox = (props) => {
                 ></div>
             </div>
             <div className="col-span-12 sm:col-span-6  relative overflow-hidden">
-                <div className="text p-16 z-40 relative flex flex-col items-center justify-center h-full">
+                <div className="text p-16 z-20 relative flex flex-col items-center justify-center h-full">
                     <H2 klasse="text-white mb-8">{props.headline}</H2>
                     <p className="text-white mb-12">{props.text}</p>
                     <DefaultButton klasse="border border-white text-white w-3/4 transition hover:bg-white hover:text-text">

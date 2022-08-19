@@ -9,6 +9,7 @@ import { IoMdCalendar } from "react-icons/io";
 import Overlay from "../sections/modal/overlay";
 import Modal from "../sections/modal/modal";
 import CTAContent from "../sections/cta/";
+import { modalSwitcher, hideModalSet } from "../../functions/modal";
 
 const Navbar = (props) => {
     const [showMenu, setShowMenu] = useState(false);
@@ -40,17 +41,11 @@ const Navbar = (props) => {
         }
     }
 
-    function showModalSet() {
-        setShowModal(true);
-    }
-    function hideModalSet() {
-        setShowModal(false);
-    }
-
     const textMotion = {
         rest: {
+            x: 0,
             transition: {
-                duration: 2,
+                duration: 0.5,
                 type: "tween",
                 ease: "easeIn",
             },
@@ -83,7 +78,11 @@ const Navbar = (props) => {
         <>
             {showModal && (
                 <>
-                    <Modal onClick={hideModalSet}>
+                    <Modal
+                        onClick={(e) => {
+                            modalSwitcher(e, showModal, setShowModal);
+                        }}
+                    >
                         <CTAContent
                             strasse={props.strasse}
                             ort={props.ort}
@@ -92,7 +91,11 @@ const Navbar = (props) => {
                             value={props.value}
                         ></CTAContent>
                     </Modal>
-                    <Overlay onClick={hideModalSet}></Overlay>
+                    <Overlay
+                        onClick={(e) => {
+                            modalSwitcher(e, showModal, setShowModal);
+                        }}
+                    ></Overlay>
                 </>
             )}
             <MobileNav
@@ -123,14 +126,12 @@ const Navbar = (props) => {
                                 //     dropdown(e);
                                 // }}
                                 ref={dropdownRef}
-                                className="mr-8  hover:underline relative hover:text-primaryColor flex items-center"
+                                className="mr-8  hover:underline relative cursor-pointer flex items-center"
                             >
                                 <Link href="./dermatologie">
-                                    <motion.a className="hover:text-primaryColor" variants={textMotion}>
-                                        Behandlungen
-                                    </motion.a>
+                                    <motion.a className="">Behandlungen</motion.a>
                                 </Link>
-                                <motion.div variants={boxMotion} className="absolute pt-8  top-0">
+                                <motion.div variants={boxMotion} className="absolute pt-8  top-8">
                                     <div className="wrap min-w-60 dropdown bg-white py-8 pl-8 pr-20">
                                         <Link href="./dermatologie">
                                             <motion.a
@@ -153,19 +154,21 @@ const Navbar = (props) => {
                                     </div>
                                 </motion.div>
                             </motion.li>
-                            <li className="mr-8 flex items-center">
+                            <li className="mr-8 flex items-center hover:underline">
                                 <Link href="./praxis">
                                     <a>Praxis</a>
                                 </Link>
                             </li>
-                            <li className="mr-8 flex items-center">
-                                <Link href="./">
+                            <li className="mr-8 flex items-center hover:underline">
+                                <Link href="./kontakt">
                                     <a>Kontakt</a>
                                 </Link>
                             </li>
                             <li
                                 className="bg-primaryColor cursor-pointer hover:bg-darkPurple py-3 px-4 text-white"
-                                onClick={showModalSet}
+                                onClick={(e) => {
+                                    modalSwitcher(e, showModal, setShowModal);
+                                }}
                             >
                                 <a className="flex">
                                     <span className="mr-2 text-xl">

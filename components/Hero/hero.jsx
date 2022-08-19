@@ -78,7 +78,7 @@ const Hero = (props) => {
             </AbsoluteContainer>
             <animated.div
                 style={fadeIn}
-                className="absolute grid grid-cols-12 leading-relaxed font-europa text-center sm:text-left z-20 bg-white w-[95%] sm:w-[30rem] min-h-56 sm:h-96  sm:top-auto bottom-0 transform -translate-x-1/2 sm:-translate-x-0 left-1/2 sm:left-auto right-auto sm:right-0"
+                className="absolute grid grid-cols-12 leading-relaxed font-europa text-center sm:text-left z-20 bg-white w-[95%] sm:w-[30rem] h-56 sm:h-96  sm:top-auto bottom-0 transform -translate-x-1/2 sm:-translate-x-0 left-1/2 sm:left-auto right-auto sm:right-0"
             >
                 <div className="col-span-2 bg-lightGray py-8 sm:py-10 flex flex-col items-center">
                     <div
@@ -115,11 +115,11 @@ const Hero = (props) => {
                 <div className="col-span-10">
                     {showTime && (
                         <>
-                            <H4 klasse=" pt-6 pb-2 sm:py-6 sm:py-0 sm:pt-10 pl-12 sm:pl-12 text-left sm:text-center">
+                            <H4 klasse=" pt-6 mb-2 sm:mb-6 sm:py-6 sm:py-0 sm:pt-10 pl-12 sm:pl-12 text-left ">
                                 Praxiszeiten
                             </H4>
                             <hr />
-                            <div className="wrapper flex sm:justify-center oeffnung  py-8 sm:py-0 sm:pb-24 sm:pt-8 pl-12 sm:pr-24">
+                            <div className="wrapper flex  oeffnung  py-2 sm:py-0 sm:pb-24 sm:pt-8 pl-12 sm:pr-24">
                                 <div className="left mr-6 text-left oeffnung clamp">
                                     Mo
                                     <br />
@@ -140,9 +140,11 @@ const Hero = (props) => {
                     )}
                     {showContact && (
                         <>
-                            <H4 klasse=" py-8 sm:py-0  sm:pt-10 pl-12 ">Kontaktdaten</H4>
+                            <H4 klasse="  pt-6 mb-2 sm:mb-6  sm:py-6 sm:py-0 sm:pt-10 pl-12 sm:pl-12 text-left">
+                                Kontaktdaten
+                            </H4>
                             <hr />
-                            <div className="wrapper flex justify-center oeffnung  py-8 sm:py-0 sm:pb-24 sm:pt-8 pl-12 sm:pr-24">
+                            <div className="wrapper flex  oeffnung  py-2 sm:py-0 sm:pb-24 sm:pt-8 pl-12 pr-6 sm:pr-24">
                                 <div className="left mr-6 text-left oeffnung clamp">
                                     Tel.:
                                     <br />
@@ -150,7 +152,6 @@ const Hero = (props) => {
                                 </div>
                                 <div className="right text-left">
                                     <a className="hover:text-primaryColor font-light clamp" href={`tel:${props.phone}`}>
-                                        {" "}
                                         {props.phone}
                                     </a>
                                     <br></br>
@@ -166,9 +167,11 @@ const Hero = (props) => {
                     )}
                     {showAdresse && (
                         <>
-                            <H4 klasse=" py-8 sm:py-0  sm:pt-10 sm:pl-12 ">Adresse</H4>
+                            <H4 klasse=" pt-6 mb-2 sm:mb-6  sm:py-6 sm:py-0 sm:pt-10 pl-12 sm:pl-12 text-left ">
+                                Adresse
+                            </H4>
                             <hr />
-                            <div className="wrapper flex justify-center oeffnung  py-8 sm:py-0 sm:pb-24 sm:pt-8 pl-12 sm:pr-24">
+                            <div className="wrapper flex  oeffnung  py-2 sm:py-0 sm:pb-24 sm:pt-8 pl-12 sm:pr-24">
                                 <div className="left mr-6 text-left oeffnung clamp font-light">
                                     {props.strasse}
                                     <br></br>

@@ -284,12 +284,16 @@ background: linear-gradient(45deg, rgba(255,35,158,1) 0%, rgba(218,42,233,1) 48%
 .is-sticky {
   position: fixed;
   width: 100%;
-  z-index: 49;
+  z-index: 39;
   background-color: #ffffff !important;
   animation: 500ms ease-in-out 0s normal none 1 running fadeInDown;
   // padding-top: 1rem;
   // padding-bottom: 1rem;
   left: 0 !important;
+  img {
+    padding-bottom: 1rem;
+    height: 5rem;
+  }
 }
 
 .dateInput {

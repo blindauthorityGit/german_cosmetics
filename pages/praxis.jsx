@@ -29,7 +29,7 @@ function urlFor(source) {
     return builder.image(source);
 }
 
-export default function Praxis({ data, dataBlog }) {
+export default function Praxis({ data }) {
     const arztRef = useRef();
     const teamRef = useRef();
 
@@ -45,7 +45,14 @@ export default function Praxis({ data, dataBlog }) {
                 <title>{data[3].seo.title}</title>
                 <meta name="description" content={data[3].seo.description} />
             </Head>
-            <Navbar logo={urlFor(data[3].logo.logo_dark)}></Navbar>
+            <Navbar
+                strasse={data[1].adresse.strasse}
+                ort={data[1].adresse.ort}
+                phone={data[1].kontakt.phone}
+                email={data[1].kontakt.email}
+                value={data[1].oeffnungszeiten}
+                logo={urlFor(data[3].logo.logo_dark)}
+            ></Navbar>
             <motion.div layoutId={"Hero"} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
                 <PageHero
                     bg={urlFor(data[2].hero_settings.backgroundImg).width(1560).height(550)}
@@ -90,6 +97,7 @@ export default function Praxis({ data, dataBlog }) {
                             ref={arztRef}
                         ></DerArzt>
                     )}
+
                     {!isMobile && (
                         <div id="teamWrapper" className="sm:mt-16 grid grid-cols-12 gap-4" ref={teamRef}>
                             {data[2].team.teamMember.map((e, i) => {
@@ -106,7 +114,6 @@ export default function Praxis({ data, dataBlog }) {
                                             text={e.subTitle}
                                             title={e.title}
                                             orderTop={i % 2 === 0 ? "" : "order-last"}
-                                            // animation={showTeam ? "fade-in" : ""}
                                         ></TeamMember>
                                     </ScrollAnimation>
                                 );
@@ -114,28 +121,24 @@ export default function Praxis({ data, dataBlog }) {
                         </div>
                     )}
 
-                    {isMobile &&
-                        data[2].team.teamMember.map((e, i) => {
-                            return (
-                                <ScrollAnimation
-                                    animateIn={i % 2 === 0 ? "slideInLeft" : "slideInRight"}
-                                    animateOnce={true}
-                                    duration={0.4}
-                                    className="col-span-12 sm:col-span-6  sm:py-64 relative cursor-pointer group transition-all overflow-hidden"
-                                >
-                                    <TeamMember
-                                        img={urlFor(e.img)
-                                            .width(isMobile ? "450" : "650")
-                                            .height(isMobile ? "450" : "650")}
-                                        headline={e.title}
-                                        title={e.title}
-                                        text={e.subTitle}
-                                        // orderTop={i % 2 !== 0 ? "" : "order-last"}
-                                        // animation={showTeam ? "fade-in" : ""}
-                                    ></TeamMember>
-                                </ScrollAnimation>
-                            );
-                        })}
+                    {isMobile && (
+                        <div id="teamWrapper" className="sm:mt-16 grid grid-cols-12 gap-4">
+                            {data[2].team.teamMember.map((e, i) => {
+                                return (
+                                    <div className="col-span-12 sm:col-span-6  sm:py-64 relative cursor-pointer group transition-all overflow-hidden">
+                                        <TeamMember
+                                            img={urlFor(e.img)
+                                                .width(isMobile ? "450" : "650")
+                                                .height(isMobile ? "450" : "650")}
+                                            headline={e.title}
+                                            title={e.title}
+                                            text={e.subTitle}
+                                        ></TeamMember>
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    )}
                 </div>
             </MainContainer>
             <JobsCTA
@@ -169,15 +172,12 @@ export async function getStaticProps() {
     const res = await client.fetch(
         `*[_type in ["aesthetic_praxis", "aesthetic_kontakt", "aesthetic_settings", "aesthetic_komponente"] ]`
     );
-    const resBlog = await client.fetch(`*[_type in ["blogEntry"] ]`);
-    // const res = await fetch("https://jsonplaceholder.typicode.com/todos/1");
 
     const data = await res;
-    const dataBlog = await resBlog;
+
     return {
         props: {
             data,
-            dataBlog,
         },
     };
 }

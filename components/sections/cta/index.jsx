@@ -7,7 +7,7 @@ import DatePicker from "@amir04lm26/react-modern-calendar-date-picker";
 import myCustomLocale from "./locale";
 import client from "../../../client";
 import { PortableText } from "@portabletext/react";
-import { IoMdTime, IoIosCall, IoMdMap } from "react-icons/io";
+import { IoMdTime, IoIosCall, IoMdMap, IoMdMail } from "react-icons/io";
 
 export default function CTAContent(props) {
     const [selectedDay, setSelectedDay] = useState(null);
@@ -31,7 +31,7 @@ export default function CTAContent(props) {
                             type="text"
                         />
                     </div>
-                    <div className="col-span-6">
+                    <div className="col-span-12 sm:col-span-6">
                         <label className="block mb-2 font-bold" for="name">
                             Telefon
                         </label>
@@ -43,7 +43,7 @@ export default function CTAContent(props) {
                             type="phone"
                         />
                     </div>
-                    <div className="col-span-6">
+                    <div className="col-span-12 sm:col-span-6">
                         <label className="block mb-2 font-bold" for="name">
                             Email
                         </label>
@@ -90,7 +90,7 @@ export default function CTAContent(props) {
                             <option value="Sonstiges">Sonstiges</option>
                         </select>
                     </div>
-                    <div className="col-span-6">
+                    <div className="col-span-12 sm:col-span-6">
                         <label className="block mb-2 font-bold" for="name">
                             Datum wählen
                         </label>
@@ -103,7 +103,7 @@ export default function CTAContent(props) {
                             shouldHighlightWeekends
                         />{" "}
                     </div>
-                    <div className="col-span-6">
+                    <div className="col-span-12 sm:col-span-6">
                         <label className="block mb-2 font-bold" for="name">
                             Uhrzeit wählen
                         </label>
@@ -137,14 +137,14 @@ export default function CTAContent(props) {
                     </div>
                     <div className="col-span-12">
                         <input
-                            className="mt-8 w-full cursor-pointer py-6  sm:mb-0 hover:bg-darkPurple bg-primaryColor hover:text-white  text-white"
+                            className="mt-8 clamp w-full cursor-pointer py-6  sm:mb-0 hover:bg-darkPurple bg-primaryColor hover:text-white  text-white"
                             type="submit"
                             value="abschicken"
                         />
                     </div>
                 </form>
             </div>
-            <div className="sm:col-span-6 pl-12">
+            <div className="col-span-12 sm:col-span-6 sm:pl-12">
                 <div className="top">
                     <p>
                         <strong className="font-bold"> Bitte beachten Sie:</strong>
@@ -155,32 +155,39 @@ export default function CTAContent(props) {
                         stellen.
                     </p>
                 </div>
-                <div className="">
-                    <H4 klasse="text-white">Adresse</H4>
-                    {props.strasse}
-                    <br></br>
-                    {props.ort}
-                </div>
-                <div className="">
-                    <H4 klasse="text-white">Kontakt</H4>
-                    <div className="wrapper flex items-center">
-                        <div className="icon mr-8">
-                            <IoIosCall />
-                        </div>
-                        <a href={`tel:${props.phone}`}> {props.phone}</a>
-                    </div>
 
-                    <br></br>
+                <div className="contactWrapper grid grid-cols-12 mt-12 clamp ">
+                    <H4 klasse="text-text col-span-12 mb-8">Kontakt</H4>
 
-                    <div className="wrapper flex items-center">
-                        <div className="icon mr-8">
-                            <IoIosCall />
+                    <div className="col-span-12 sm:col-span-6">
+                        <div className="wrapper flex items-center">
+                            <div className="icon mr-8 text-primaryColor">
+                                <IoIosCall />
+                            </div>
+                            <a href={`tel:${props.phone}`}> {props.phone}</a>
                         </div>
-                        <a href={`mailto:${props.email}`}>{props.email}</a>
+
+                        <div className="wrapper flex items-center mt-4">
+                            <div className="icon mr-8 text-primaryColor">
+                                <IoMdMail />
+                            </div>
+                            <a href={`mailto:${props.email}`}>{props.email}</a>
+                        </div>
+                    </div>
+                    <div className="col-span-12 sm:col-span-6 mt-4 sm:mt-0">
+                        <div className="wrapper flex items-center">
+                            <div className="icon mr-8 text-primaryColor">
+                                <IoMdMap />
+                            </div>
+                            {props.strasse}
+                            <br></br>
+                            {props.ort}
+                        </div>
                     </div>
                 </div>
-                <div className="">
-                    <H4 klasse="text-white">Praxiszeiten</H4>
+
+                <div className="mt-12">
+                    <H4 klasse="text-text col-span-12 mb-8">Öffnungszeiten</H4>
                     <div className="wrapper flex oeffnung">
                         <div className="left mr-6 text-left clamp">
                             Mo

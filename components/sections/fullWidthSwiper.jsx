@@ -44,7 +44,7 @@ const FullWidthSwiper = (props) => {
                         onSlideChange={() => console.log("slide change")}
                         onSwiper={(swiper) => console.log(swiper)}
                         centeredSlides
-                        slidesPerView={1.25}
+                        slidesPerView="auto"
                         scrollbar={{ draggable: true }}
                         slideActiveClass="sliderTwo-active"
                         loop={true}

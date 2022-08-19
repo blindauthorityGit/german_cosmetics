@@ -5,7 +5,6 @@ const isSticky = (e, state, setState) => {
     scrollTop >= 250 ? header.classList.add("is-sticky") : header.classList.remove("is-sticky");
     scrollTop >= 250 ? header.classList.add("slide-in-top") : header.classList.remove("slide-in-top");
     scrollTop >= 250 ? setState(true) : setState(false);
-    console.log("sticky?");
 };
 
 export default isSticky;

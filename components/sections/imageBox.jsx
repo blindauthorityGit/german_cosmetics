@@ -15,7 +15,7 @@ function urlFor(source) {
 
 const ImageBox = (props) => {
     return (
-        <MainContainer width="container gap-0  pb-16 sm:pt-32 font-europa ">
+        <MainContainer width="container gap-0   sm:pt-32 font-europa ">
             {props.single ? (
                 <>
                     <ScrollAnimation
@@ -54,11 +54,10 @@ const ImageBox = (props) => {
                             >
                                 <div className="text z-50 absolute w-full h-full flex flex-col items-center justify-end pb-24 top-0">
                                     <H2 klasse="text-white mb-8 group-hover:text-6xl transition-all duration-300">
-                                        {" "}
                                         {e.title}
                                     </H2>
 
-                                    <Link href="/">
+                                    <Link href={`./${e.title.toLowerCase()}`}>
                                         <a className="leading-relaxed tracking-wider transition-all duration-300 group-hover:underline font-europa text-white">
                                             MEHR ENTDECKEN
                                         </a>
