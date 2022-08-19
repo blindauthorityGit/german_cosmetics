@@ -143,12 +143,12 @@ const Navbar = (props) => {
                                         </Link>
                                         <br></br>
                                         <hr />
-                                        <Link href="./laserbehandlung">
+                                        <Link href="./lasermedizin">
                                             <motion.a
                                                 className="text-text block my-4 subNav relative mt-4 hover:text-primaryColor cursor-pointer"
                                                 variants={textMotion}
                                             >
-                                                Laserbehandlung
+                                                Lasermedizin
                                             </motion.a>
                                         </Link>{" "}
                                     </div>

@@ -34,13 +34,12 @@ export default function Kontakt({ data, laserData }) {
             <motion.div layoutId={"Hero"} animate={{ opacity: 1 }}>
                 <PageHero
                     bg={urlFor(data[2].hero_settings.backgroundImg).width(1560).height(550)}
-                    headline="Lasermedizin"
+                    headline="Kontakt"
                     showButton={false}
                 ></PageHero>
             </motion.div>
-            <BehandlungNav klasseOne="active"></BehandlungNav>
 
-            <BehandlungTop headline={laserData[0].intro.headline} valueLeft={laserData[0].intro.text}></BehandlungTop>
+            <BehandlungTop headline="Kontaktdaten" valueLeft={laserData[0].intro.text}></BehandlungTop>
             <LaserBehandlungContainer
                 dataNav={laserData[0].categories}
                 onClick={(e) => {
