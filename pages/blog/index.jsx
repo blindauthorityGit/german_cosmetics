@@ -19,7 +19,7 @@ function urlFor(source) {
     return builder.image(source);
 }
 
-export default function Dermatologie({ data, dataBlog, dataBlogSettings }) {
+export default function Blog({ data, dataBlog, dataBlogSettings }) {
     const headlineRef = useRef();
     const containerRef = useRef();
     const arztRef = useRef();
@@ -29,28 +29,35 @@ export default function Dermatologie({ data, dataBlog, dataBlogSettings }) {
     const [showTeam, setShowTeam] = useState(false);
 
     useEffect(() => {
-        console.log(data);
+        console.log(dataBlogSettings);
     }, []);
 
     return (
         <>
             <Head>
-                <title>{data[3].seo.title}</title>
+                <title>{dataBlogSettings[0].title}</title>
                 <meta name="description" content={data[3].seo.description} />
             </Head>
-            <Navbar logo={urlFor(data[3].logo.logo_dark)}></Navbar>
+            <Navbar
+                strasse={data[2].adresse.strasse}
+                ort={data[2].adresse.ort}
+                phone={data[2].kontakt.phone}
+                email={data[2].kontakt.email}
+                value={data[2].oeffnungszeiten}
+                logo={urlFor(data[3].logo.logo_dark)}
+            ></Navbar>
             <PageHero
                 bg={urlFor(dataBlogSettings[0].bgImage).width(1560).height(550)}
-                headline="Dermatologie"
+                headline="Blog"
                 showButton={false}
             ></PageHero>
 
-            <div className="container m-auto grid grid-cols-12">
+            <div className="container m-auto mt-36 grid gap-16 grid-cols-12 mb-24">
                 {dataBlog.map((e, i) => {
                     return (
                         <BlogOverviewElement
                             key={`blogOverview${i}`}
-                            klasse="col-span-6"
+                            klasse="col-span-4"
                             date={e.blog_settings.date.split("-").reverse().join("-")}
                             image={urlFor(e.blog_settings.featuredImg).width("575").height("360")}
                             headline={e.title}
@@ -60,18 +67,6 @@ export default function Dermatologie({ data, dataBlog, dataBlogSettings }) {
                     );
                 })}
             </div>
-            <ImageBox
-                single={true}
-                headline={data[1].imagebox.headline[1].title}
-                img={data[1].imagebox.headline[1].img}
-            ></ImageBox>
-
-            <CTA
-                klasse="sm:mb-16"
-                headline={data[1].cta.headline}
-                text={data[1].cta.text}
-                button={data[1].cta.button_text}
-            ></CTA>
 
             <LinkBox
                 klasse="sm:mt-16"

@@ -198,11 +198,11 @@ const Hero = (props) => {
             </animated.div>
             <animated.div
                 style={isMobile ? opacityInMobile : opacityIn}
-                className="overlay z-10 sm:opacity-40 opacity-70 absolute w-full h-full bg-overlay "
+                className="overlay z-10 sm:opacity-40  opacity-70 absolute w-full h-full bg-primaryColor "
             ></animated.div>
-            <div className="overflow-hidden w-full h-full">
+            <div className="overflow-hidden w-full h-full ">
                 <animated.div
-                    className={`w-full  blurIn h-full bg-cover ${
+                    className={`w-full  blurIn h-full bg-cover  ${
                         isMobile ? "bg-center" : "bg-right-top"
                     }  md:bg-center  lg:bg-right-top`}
                     style={{ backgroundImage: `url(${props.bgImage})` }}

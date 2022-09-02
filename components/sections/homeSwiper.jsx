@@ -11,6 +11,11 @@ import client from "../../client";
 import imageUrlBuilder from "@sanity/image-url";
 import ScrollAnimation from "react-animate-on-scroll";
 import Link from "next/link";
+import { Navigation, Pagination, Scrollbar, A11y } from "swiper";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/scrollbar";
 
 const builder = imageUrlBuilder(client);
 
@@ -52,25 +57,20 @@ const HomeSwiper = (props) => {
                     spaceBetween={50}
                     onSlideChange={() => console.log("slide change")}
                     onSwiper={(swiper) => console.log(swiper)}
-                    slidesPerView="auto"
+                    slidesPerView={2}
                     slideActiveClass="sliderTwo-active"
-                    modules={[]}
-                    navigation
-                    loop={true}
+                    modules={[Navigation, Pagination, Scrollbar, A11y]}
+                    loop={false}
                     pagination={{ clickable: true }}
+                    navigation={{ clickable: true }}
                     className="bubu"
-                    style={props.style}
                     breakpoints={{
                         // when window width is >= 640px
                         320: {
                             slidesPerView: 1,
-                            navigation: false,
-                            pagination: true,
                         },
                         1025: {
                             slidesPerView: 2,
-                            navigation: false,
-                            pagination: true,
                         },
                     }}
                 >

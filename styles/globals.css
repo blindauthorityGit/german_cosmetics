@@ -248,4 +248,17 @@ html {
   padding: 1rem !important;
   font-size: 1rem !important;
 }
+
+.swiper-button-next::after, .swiper-button-prev::after {
+  color: #A54399;
+}
+
+.swiper-pagination-bullet-active {
+  background: #A54399 !important;
+}
+
+.swiper-pagination {
+  position: relative !important;
+  margin-top: 2rem;
+}
 /*# sourceMappingURL=globals.css.map */
