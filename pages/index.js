@@ -120,7 +120,7 @@ export default function Home({ data, dataBlog }) {
             ></CTA>
             {/* <ImageBox single={false} box={data[1].imagebox.headline}></ImageBox> */}
             <BlogSwiper data={dataBlog}>
-                <div className="absolute w-[100%] h-[960px] bg-[#EEF0F2] top-0 sm:top-[30%]"></div>
+                <div className="absolute w-[100%] h-[360px] bg-[#EEF0F2] top-0 sm:top-[30%]"></div>
             </BlogSwiper>
             <LinkBox
                 image={urlFor(data[1].linkbox.img)}

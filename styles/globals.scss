@@ -209,6 +209,9 @@ h2 {
 
 html {
   scroll-behavior: smooth;
+  img {
+    // filter: grayscale(1)
+  }
 }
 
 :target:before {
@@ -301,4 +304,17 @@ background: linear-gradient(45deg, rgba(255,35,158,1) 0%, rgba(218,42,233,1) 48%
   padding: 1rem!important;
   font-size: 1rem!important
 
+}
+
+.swiper-button-next::after, .swiper-button-prev::after {
+  color:#A54399;
+}
+
+.swiper-pagination-bullet-active {
+  background: #A54399!important;
+}
+
+.swiper-pagination {
+  position: relative!important;
+  margin-top: 2rem
 }

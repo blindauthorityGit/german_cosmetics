@@ -159,7 +159,7 @@ export default function CTAContent(props) {
                 <div className="contactWrapper grid grid-cols-12 mt-12 clamp ">
                     <H4 klasse="text-text col-span-12 mb-8">Kontakt</H4>
 
-                    <div className="col-span-12 sm:col-span-6">
+                    <div className="col-span-12 sm:col-span-12">
                         <div className="wrapper flex items-center">
                             <div className="icon mr-8 text-primaryColor">
                                 <IoIosCall />
@@ -173,9 +173,7 @@ export default function CTAContent(props) {
                             </div>
                             <a href={`mailto:${props.email}`}>{props.email}</a>
                         </div>
-                    </div>
-                    <div className="col-span-12 sm:col-span-6 mt-4 sm:mt-0">
-                        <div className="wrapper flex items-center">
+                        <div className="wrapper flex items-center mt-4">
                             <div className="icon mr-8 text-primaryColor">
                                 <IoMdMap />
                             </div>
@@ -184,6 +182,16 @@ export default function CTAContent(props) {
                             {props.ort}
                         </div>
                     </div>
+                    {/* <div className="col-span-12 sm:col-span-6 mt-4 sm:mt-0">
+                        <div className="wrapper flex items-center">
+                            <div className="icon mr-8 text-primaryColor">
+                                <IoMdMap />
+                            </div>
+                            {props.strasse}
+                            <br></br>
+                            {props.ort}
+                        </div>
+                    </div> */}
                 </div>
 
                 <div className="mt-12">

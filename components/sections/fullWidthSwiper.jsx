@@ -12,18 +12,16 @@ import Image from "next/image";
 import client from "../../client";
 import imageUrlBuilder from "@sanity/image-url";
 import BlogOverviewElement from "./blogOvervieElement";
-
-const builder = imageUrlBuilder(client);
-
-function urlFor(source) {
-    return builder.image(source);
-}
-
 import "swiper/css";
 import "swiper/css/bundle";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
+const builder = imageUrlBuilder(client);
+
+function urlFor(source) {
+    return builder.image(source);
+}
 
 const FullWidthSwiper = (props) => {
     // HYDRATION ERROR FIX
@@ -35,17 +33,21 @@ const FullWidthSwiper = (props) => {
     }, []);
 
     return (
-        <MainContainer width={`container sm:pt-36 sm:pb-32 font-europa relative ${props.klasse}`}>
+        <MainContainer
+            style={{ paddingTop: props.style }}
+            width={` ${props.klasse} container sm:pt-36 sm:pb-32 font-europa relative`}
+        >
             <div className="sm:px-16 col-span-12">
                 {domLoaded && (
                     <Swiper
-                        modules={[Navigation, Pagination, Scrollbar, A11y]}
                         spaceBetween={50}
                         onSlideChange={() => console.log("slide change")}
                         onSwiper={(swiper) => console.log(swiper)}
                         centeredSlides
                         slidesPerView="auto"
-                        scrollbar={{ draggable: true }}
+                        modules={[Navigation, Pagination, Scrollbar, A11y]}
+                        pagination={{ clickable: true }}
+                        navigation={{ clickable: true }}
                         slideActiveClass="sliderTwo-active"
                         loop={true}
                         className="bubu"
@@ -53,13 +55,9 @@ const FullWidthSwiper = (props) => {
                             // when window width is >= 640px
                             320: {
                                 slidesPerView: 1,
-                                navigation: false,
-                                pagination: true,
                             },
                             1025: {
                                 slidesPerView: 1.25,
-                                navigation: true,
-                                pagination: true,
                             },
                         }}
                     >
@@ -67,6 +65,7 @@ const FullWidthSwiper = (props) => {
                             return (
                                 <SwiperSlide key={`keyImg${i}`}>
                                     <img src={urlFor(e).width(props.width).height(props.height)} alt="" />
+                                    {e.caption && <div className="caption italic pt-2">{e.caption}</div>}
                                 </SwiperSlide>
                             );
                         })}
