@@ -110,7 +110,7 @@ const Navbar = (props) => {
             <nav className="navbar text-white  hidden sm:block w-full absolute z-30 header-section">
                 <div className="container px-16 flex grid grid-cols-12 font-semibold font-europa tracking-wider m-auto">
                     <div className="middle col-span-6 flex items-center  pt-4">
-                        <Link href="./">
+                        <Link href="/">
                             <a>
                                 <img src={props.logo} width="230" alt="Logo" />
                             </a>

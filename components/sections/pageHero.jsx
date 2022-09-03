@@ -25,7 +25,7 @@ const PageHero = (props) => {
                 )}
             </div>
             <div
-                className="absolute container bg-cover bg-top m-auto min-h-[275px] sm:min-h-[550px] bg-primaryColor left-1/2 transform -translate-x-1/2"
+                className="absolute grayscale container bg-cover bg-top m-auto min-h-[275px] sm:min-h-[550px]  left-1/2 transform -translate-x-1/2"
                 style={{ backgroundImage: `url(${props.bg})` }}
             >
                 <div className="absolute bg-black w-full h-full opacity-20"></div>

@@ -15,14 +15,14 @@ function urlFor(source) {
 
 const ImageBox = (props) => {
     return (
-        <MainContainer width="container gap-0   sm:pt-32 font-europa ">
+        <MainContainer width="container gap-6   sm:pt-32 font-europa ">
             {props.single ? (
                 <>
                     <ScrollAnimation
                         animateIn={"slideInLeft"}
                         animateOnce={true}
                         duration={0.4}
-                        className="col-span-12 py-48 sm:py-64 relative cursor-pointer group transition-all overflow-hidden"
+                        className="col-span-12 py-48 sm:py-64 relative cursor-pointer group transition-all overflow-hidden "
                     >
                         <div className="text z-50 absolute w-full h-full flex flex-col items-center justify-end pb-24 top-0">
                             <H2 klasse="text-white mb-8 group-hover:text-6xl transition-all duration-300">
@@ -51,7 +51,7 @@ const ImageBox = (props) => {
                                 animateIn={i % 2 === 0 ? "slideInLeft" : "slideInRight"}
                                 animateOnce={true}
                                 duration={0.4}
-                                className="col-span-12 sm:col-span-6 py-48 sm:py-64 relative cursor-pointer group transition-all overflow-hidden"
+                                className="col-span-12 sm:col-span-6 py-48 sm:py-64 relative cursor-pointer group transition-all overflow-hidden "
                             >
                                 <div className="text z-50 absolute w-full h-full flex flex-col items-center justify-end pb-24 top-0">
                                     <H2 klasse="text-white mb-8 group-hover:text-6xl transition-all duration-300">
