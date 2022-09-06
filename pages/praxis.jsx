@@ -51,7 +51,8 @@ export default function Praxis({ data }) {
                 phone={data[1].kontakt.phone}
                 email={data[1].kontakt.email}
                 value={data[1].oeffnungszeiten}
-                logo={urlFor(data[3].logo.logo_dark)}
+                logoLight={urlFor(data[3].logo.logo_light)}
+                logoDark={urlFor(data[3].logo.logo_dark)}
             ></Navbar>
             <motion.div layoutId={"Hero"} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
                 <PageHero

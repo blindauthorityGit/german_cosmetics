@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import client from "../client";
 import BehandlungNav from "../components/nav/behandlungNav";
 import Navbar from "../components/nav/navbar";
-import BehandlungTop from "../components/sections/behandlungTop";
+import KontaktTop from "../components/sections/kontaktTop";
 import LaserBehandlungContainer from "../components/sections/lasermedizin/laserBehandlung";
 import PageHero from "../components/sections/pageHero";
 
@@ -24,22 +24,31 @@ export default function Kontakt({ data, laserData }) {
     const headlineRef = useRef();
     const containerRef = useRef();
 
+    useEffect(() => {
+        console.log(data);
+    }, []);
+
     return (
         <>
             <Head>
                 <title>{laserData[0].seo.title}</title>
                 <meta name="description" content={laserData[0].seo.description} />
             </Head>
-            <Navbar logo={urlFor(data[3].logo.logo_dark)}></Navbar>
+            <Navbar logoLight={urlFor(data[3].logo.logo_light)} logoDark={urlFor(data[3].logo.logo_dark)}></Navbar>
             <motion.div layoutId={"Hero"} animate={{ opacity: 1 }}>
                 <PageHero
-                    bg={urlFor(data[2].hero_settings.backgroundImg).width(1560).height(550)}
+                    bg={urlFor(data[2].raeumlichkeiten_settings.images[2]).width(1560).height(550)}
                     headline="Kontakt"
                     showButton={false}
                 ></PageHero>
             </motion.div>
 
-            <BehandlungTop headline="Kontaktdaten" valueLeft={laserData[0].intro.text}></BehandlungTop>
+            <KontaktTop
+                strasse={data[1].adresse.strasse}
+                ort={data[1].adresse.ort}
+                headline="Kontaktdaten"
+                valueLeft={<div>Hallo</div>}
+            ></KontaktTop>
             <LaserBehandlungContainer
                 dataNav={laserData[0].categories}
                 onClick={(e) => {

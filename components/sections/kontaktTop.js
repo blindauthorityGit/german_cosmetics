@@ -12,7 +12,18 @@ const KontaktTop = (props) => {
                 <div className="col-span-12 sm:col-span-8">
                     <div className="px-8">
                         <H2 klasse="mb-8 sm:mb-16 beforeH">{props.headline}</H2>
-                        {props.valueLeft}
+                        <div className="kdata grid grid-cols-2">
+                            <div className="left">
+                                <strong className="block mb-8">
+                                    Privates Studio<br></br> für Kosmetik und Ästhetik
+                                </strong>
+                                <props>
+                                    {props.strasse}
+                                    <br />
+                                    {props.ort}
+                                </props>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div className="col-span-12 sm:col-span-8 mb-16 sm:mb-0">

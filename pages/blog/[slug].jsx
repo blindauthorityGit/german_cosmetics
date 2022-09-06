@@ -1,15 +1,12 @@
 import React from "react";
 import client from "../../client";
 import Head from "next/head";
-import { useEffect, useRef, useState } from "react";
+import { useEffect } from "react";
 import imageUrlBuilder from "@sanity/image-url";
 
 import Navbar from "../../components/nav/navbar";
 import BehandlungTop from "../../components/sections/behandlungTop";
-import BehandlungenContainer from "../../components/sections/dermatologie/behandlungen";
 import PageHero from "../../components/sections/pageHero";
-import { sorter } from "../../components/utils/functions";
-import CTA from "../../components/sections/cta";
 import Footer from "../../components/sections/footer";
 import ImageBox from "../../components/sections/imageBox";
 import LinkBox from "../../components/sections/linkBox";
@@ -128,23 +125,3 @@ const BlogPage = ({ post, resData, blogData }) => {
 };
 
 export default BlogPage;
-
-// export async function getStaticProps() {
-//     const res = await client.fetch(
-//         `*[_type in ["aesthetic_home", "aesthetic_kontakt", "aesthetic_settings", "aesthetic_komponente"] ]`
-//     );
-//     const resBlog = await client.fetch(`*[_type in ["blogEntry"] ]`);
-//     // const res = await fetch("https://jsonplaceholder.typicode.com/todos/1");
-//     const resBlogSettings = await client.fetch(`*[_type in ["blog_settings"] ]`);
-
-//     const data = await sorter(res);
-//     const dataBlog = await resBlog;
-//     const dataBlogSettings = await resBlogSettings;
-//     return {
-//         props: {
-//             data,
-//             dataBlog,
-//             dataBlogSettings,
-//         },
-//     };
-// }

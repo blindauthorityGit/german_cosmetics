@@ -4,6 +4,7 @@ import { H2, H4 } from "../utils/headlines";
 import { DefaultButton } from "../utils/buttons";
 import { PortableText } from "@portabletext/react";
 import { BsFacebook, BsInstagram } from "react-icons/bs";
+import Link from "next/link";
 
 const Footer = (props) => {
     return (
@@ -86,7 +87,9 @@ const Footer = (props) => {
                     </div>
                     <div className="col-span-6 sm:col-span-2 mt-8 sm:mt-0">
                         <H4 klasse="text-white">Links</H4>
-                        LINKs
+                        <Link href="/jobs">
+                            <a>Jobs</a>
+                        </Link>
                     </div>
                 </div>
             </div>
