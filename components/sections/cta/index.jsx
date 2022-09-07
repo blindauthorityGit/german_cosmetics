@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import MainContainer from "../../layout/mainContainer";
 import { H2, H4 } from "../../utils/headlines";
 import { DefaultButton } from "../../utils/buttons";
@@ -8,58 +8,115 @@ import myCustomLocale from "./locale";
 import client from "../../../client";
 import { PortableText } from "@portabletext/react";
 import { IoMdTime, IoIosCall, IoMdMap, IoMdMail } from "react-icons/io";
+import { Controller, useForm } from "react-hook-form";
+import Error from "../../form/error";
+import axios from "axios";
+import { Rings } from "react-loader-spinner";
 
 export default function CTAContent(props) {
     const [selectedDay, setSelectedDay] = useState(null);
+    const [loading, setLoading] = useState(false);
+    const [success, setSuccess] = useState(false);
+    const [date, setDate] = useState(new Date().toISOString().slice(0, 10));
+
+    const dateRef = useRef();
+
+    const {
+        control,
+        register,
+        handleSubmit,
+        formState: { errors },
+        reset,
+    } = useForm();
+
+    async function onSubmitForm(values) {
+        console.log(values);
+        setLoading(true);
+        let config = {
+            method: "post",
+            // url: `http://localhost:3000/api/contactTermin`,
+            url: `${process.env.NEXT_PUBLIC_API_URL}/api/contactTermin`,
+            headers: {
+                "Content-Type": "application/json",
+            },
+            data: values,
+        };
+
+        try {
+            const response = await axios(config);
+            setLoading(false);
+            setSuccess(true);
+            console.log(response);
+        } catch (err) {
+            console.log(err);
+        }
+    }
 
     useEffect(() => {}, []);
+
     return (
         <MainContainer width={`w-100  font-europa gap-6`}>
             <div className="col-span-12 sm:col-span-6 text-text">
                 <H2 klasse="font-europa mb-12">Wählen Sie Ihren Wunschtermin</H2>
                 {/* <p className="text-white sm:w-1/2">{props.text}</p> */}
-                <form className="grid grid-cols-12 gap-6">
+                <form onSubmit={handleSubmit(onSubmitForm)} className="grid grid-cols-12 gap-6">
                     <div className="col-span-12">
+                        <div className="hidden">
+                            <label htmlFor="name">Name</label>
+                            <input
+                                {...register("firstName", { required: false })}
+                                id="firstName"
+                                name="firstName"
+                                type="text"
+                                autoComplete="off"
+                            />
+                        </div>
                         <label className="block mb-2 font-bold" htmlFor="name">
                             Name
                         </label>
                         <input
+                            {...register("name", { required: true })}
                             className="border py-4 px-4 w-full"
-                            name="name"
                             placeholder="Ihr Name"
                             id="name"
                             type="text"
                         />
+                        {errors.name && <Error klasse="col-span-12">Bitte geben Sie Ihren vollen Namen an</Error>}
                     </div>
                     <div className="col-span-12 sm:col-span-6">
                         <label className="block mb-2 font-bold" htmlFor="name">
                             Telefon
                         </label>
                         <input
+                            {...register("phone", { required: true })}
                             className="border py-4 px-4 w-full"
-                            name="phone"
                             placeholder="Ihre Telefonnummer"
                             id="phone"
                             type="phone"
                         />
+                        {errors.phone && (
+                            <Error klasse="block col-span-12">Bitte geben Sie Ihre Telefonnummer an</Error>
+                        )}
                     </div>
                     <div className="col-span-12 sm:col-span-6">
                         <label className="block mb-2 font-bold" htmlFor="name">
                             Email
                         </label>
                         <input
+                            {...register("email", { required: true })}
                             className="border py-4 px-4 w-full"
-                            name="email"
                             placeholder="Ihre Email"
                             id="email"
                             type="email"
                         />
+                        {errors.email && <Error klasse="block col-span-12">Bitte geben Sie Ihre Email an</Error>}
                     </div>
                     <div className="col-span-12">
                         <label className="block mb-2 font-bold" htmlFor="name">
                             Behandlung
                         </label>
                         <select
+                            {...register("behandlung", { required: true })}
                             className="border py-4 px-4 w-full"
                             name="behandlung"
                             placeholder="Behandlung wählen"
@@ -94,20 +151,32 @@ export default function CTAContent(props) {
                         <label className="block mb-2 font-bold" htmlFor="name">
                             Datum wählen
                         </label>
-                        <DatePicker
+
+                        {/* <DatePicker
+                            {...register("date", { required: true })}
                             value={selectedDay}
                             onChange={setSelectedDay}
                             locale={myCustomLocale}
                             inputPlaceholder="Datum wählen"
                             inputClassName="dateInput font-europa w-full cursor-pointer"
                             shouldHighlightWeekends
-                        />{" "}
+                        /> */}
+                        <input
+                            className="border py-4 px-4 w-full"
+                            value={date}
+                            {...register("date", { required: true })}
+                            type="date"
+                            onChange={(e) => {
+                                setDate(e.target.value);
+                            }}
+                        />
                     </div>
                     <div className="col-span-12 sm:col-span-6">
                         <label className="block mb-2 font-bold" htmlFor="name">
                             Uhrzeit wählen
                         </label>
                         <select
+                            {...register("time", { required: true })}
                             className="border py-4 px-4 w-full"
                             name="uhrzeit"
                             placeholder="Uhrzeit wählen"
@@ -136,11 +205,34 @@ export default function CTAContent(props) {
                         </select>
                     </div>
                     <div className="col-span-12">
-                        <input
-                            className="mt-8 clamp w-full cursor-pointer py-6  sm:mb-0 hover:bg-darkPurple bg-primaryColor hover:text-white  text-white"
-                            type="submit"
-                            value="abschicken"
-                        />
+                        {loading ? (
+                            <div className="w-full flex justify-center">
+                                <Rings
+                                    height="80"
+                                    width="80"
+                                    color="#a53f98"
+                                    radius="6"
+                                    wrapperStyle={{}}
+                                    wrapperClass=""
+                                    visible={true}
+                                    ariaLabel="rings-loading"
+                                />
+                            </div>
+                        ) : success ? (
+                            <div className="success text-primaryColor">
+                                <p>Vielen Dank für Ihre Nachricht!</p>
+                                <p>
+                                    Wir bestätigen In Kürze Ihren Terminwunsch oder schlagen Ihnen einen freien Termin
+                                    vor.
+                                </p>
+                            </div>
+                        ) : (
+                            <input
+                                className="mt-8 clamp w-full cursor-pointer py-6  sm:mb-0 hover:bg-darkPurple bg-primaryColor hover:text-white  text-white"
+                                type="submit"
+                                value="abschicken"
+                            />
+                        )}
                     </div>
                 </form>
             </div>

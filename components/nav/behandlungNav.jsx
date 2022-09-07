@@ -6,7 +6,9 @@ const BehandlungNav = (props, ref) => {
     return (
         <section className="container m-auto flex mb-20">
             <Link href="./lasermedizin" onClick={props.onClick}>
-                <a className={`text-primaryColor transition-all px-8 py-4 bg-lightGray ${props.klasseOne}`}>
+                <a
+                    className={`text-primaryColor transition-all px-8 py-4 bg-lightGray hover:bg-primaryColor hover:text-white  ${props.klasseOne}`}
+                >
                     Lasermedizin
                 </a>
             </Link>

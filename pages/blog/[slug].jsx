@@ -79,7 +79,8 @@ const BlogPage = ({ post, resData, blogData }) => {
                 phone={resData[2].kontakt.phone}
                 email={resData[2].kontakt.email}
                 value={resData[2].oeffnungszeiten}
-                logo={urlFor(resData[3].logo.logo_dark)}
+                logoLight={urlFor(resData[3].logo.logo_light)}
+                logoDark={urlFor(resData[3].logo.logo_dark)}
             ></Navbar>
             <PageHero
                 bg={urlFor(post.blog_settings.featuredImg).width(1560).height(550)}

@@ -38,6 +38,16 @@ export default {
                     title: "Email",
                     type: "string",
                 },
+                {
+                    name: "fax",
+                    title: "Fax",
+                    type: "string",
+                },
+                {
+                    name: "mobile",
+                    title: "Mobil",
+                    type: "string",
+                },
             ],
         },
         {

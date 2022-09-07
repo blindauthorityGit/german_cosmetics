@@ -72,7 +72,7 @@ export default function LaserBehanldungen({ data, laserData }) {
                 <title>{laserData[0].seo.title}</title>
                 <meta name="description" content={laserData[0].seo.description} />
             </Head>
-            <Navbar logo={urlFor(data[3].logo.logo_dark)}></Navbar>
+            <Navbar logoLight={urlFor(data[3].logo.logo_light)} logoDark={urlFor(data[3].logo.logo_dark)}></Navbar>
             <motion.div layoutId={"Hero"} animate={{ opacity: 1 }}>
                 <PageHero
                     bg={urlFor(laserData[0].hero_settings.backgroundImg).width(1560).height(550)}

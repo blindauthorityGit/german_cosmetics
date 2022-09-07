@@ -13,6 +13,8 @@ import Footer from "../components/sections/footer";
 import ImageBox from "../components/sections/imageBox";
 import LinkBox from "../components/sections/linkBox";
 import { motion } from "framer-motion";
+import FormFull from "../components/form/formFull";
+import Map from "../assets/map.jpg";
 
 const builder = imageUrlBuilder(client);
 
@@ -46,30 +48,26 @@ export default function Kontakt({ data, laserData }) {
             <KontaktTop
                 strasse={data[1].adresse.strasse}
                 ort={data[1].adresse.ort}
+                phone={data[1].kontakt.phone}
+                email={data[1].kontakt.email}
+                mobile={data[1].kontakt.mobile}
+                fax={data[1].kontakt.fax}
+                value={data[1].oeffnungszeiten}
                 headline="Kontaktdaten"
                 valueLeft={<div>Hallo</div>}
+                klasse="pt-12"
             ></KontaktTop>
-            <LaserBehandlungContainer
-                dataNav={laserData[0].categories}
-                onClick={(e) => {
-                    handleClick(e);
-                }}
-                dataBehandlung={laserData[0].behandlungen}
-                ref={containerRef}
-            ></LaserBehandlungContainer>
-            <ImageBox
-                single={true}
-                headline={data[0].imagebox.headline[0].title}
-                img={data[0].imagebox.headline[0].img}
-                href={data[0].imagebox.headline[0].title.toLowerCase()}
-            ></ImageBox>
+            <FormFull></FormFull>
+            <div className="container m-auto">
+                <img src={Map.src} alt="" />
+            </div>
 
-            <CTA
+            {/* <CTA
                 klasse="sm:mb-16"
                 headline={data[0].cta.headline}
                 text={data[0].cta.text}
                 button={data[0].cta.button_text}
-            ></CTA>
+            ></CTA> */}
 
             <LinkBox
                 klasse="sm:mt-16"
