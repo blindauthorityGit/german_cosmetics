@@ -67,7 +67,7 @@ const Hero = (props) => {
                 props.fullHeight ? "h-full" : props.height
             } ${props.colspan}`}
         >
-            <AbsoluteContainer width={`container w-auto sm:w-full px-8 sm:px-0 h-full ${props.containerKlasse}`}>
+            <AbsoluteContainer width={`container w-full px-8 sm:px-0 h-full ${props.containerKlasse}`}>
                 <animated.div
                     className="wrapper w-full col-span-12 sm:col-span-6 lg:col-span-5 mt-[-5rem] sm:mt-0"
                     style={leftIn}
