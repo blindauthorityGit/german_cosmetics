@@ -112,7 +112,7 @@ const Navbar = (props) => {
                     <div className="middle col-span-6 flex items-center  pt-4">
                         <Link href="/">
                             <a>
-                                <img src={props.logo} width="230" alt="Logo" />
+                                <img src={isItSticky ? props.logoDark : props.logoLight} width="230" alt="Logo" />
                             </a>
                         </Link>
                     </div>
@@ -128,12 +128,12 @@ const Navbar = (props) => {
                                 ref={dropdownRef}
                                 className="mr-8  hover:underline relative cursor-pointer flex items-center"
                             >
-                                <Link href="./dermatologie">
+                                <Link href="/dermatologie">
                                     <motion.a className="">Behandlungen</motion.a>
                                 </Link>
                                 <motion.div variants={boxMotion} className="absolute pt-8  top-8">
                                     <div className="wrap min-w-60 dropdown bg-white py-8 pl-8 pr-20">
-                                        <Link href="./dermatologie">
+                                        <Link href="/dermatologie">
                                             <motion.a
                                                 className="text-text block my-4 subNav relative hover:text-primaryColor cursor-pointer"
                                                 variants={textMotion}
@@ -143,7 +143,7 @@ const Navbar = (props) => {
                                         </Link>
                                         <br></br>
                                         <hr />
-                                        <Link href="./lasermedizin">
+                                        <Link href="/lasermedizin">
                                             <motion.a
                                                 className="text-text block my-4 subNav relative mt-4 hover:text-primaryColor cursor-pointer"
                                                 variants={textMotion}
@@ -155,12 +155,12 @@ const Navbar = (props) => {
                                 </motion.div>
                             </motion.li>
                             <li className="mr-8 flex items-center hover:underline">
-                                <Link href="./praxis">
+                                <Link href="/praxis">
                                     <a>Praxis</a>
                                 </Link>
                             </li>
                             <li className="mr-8 flex items-center hover:underline">
-                                <Link href="./kontakt">
+                                <Link href="/kontakt">
                                     <a>Kontakt</a>
                                 </Link>
                             </li>
@@ -182,7 +182,7 @@ const Navbar = (props) => {
                 </div>
             </nav>
             <div
-                className="block  sm:hidden  burger absolute z-50 right-8 top-8"
+                className="block  sm:hidden  burger absolute z-40 right-8 top-8"
                 onClick={(e) => {
                     clicker(e);
                 }}

@@ -1,7 +1,7 @@
 function checkTop(divs, state, setState, links) {
     divs.forEach((e, i) => {
         let divTop = e.getBoundingClientRect().top;
-        if (divTop <= 64) {
+        if (divTop <= 128) {
             setState(e.id);
             links.forEach((e) => {
                 e.classList.remove("activeSideLink");

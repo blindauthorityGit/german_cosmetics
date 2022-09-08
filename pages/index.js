@@ -69,7 +69,8 @@ export default function Home({ data, dataBlog }) {
                 phone={data[2].kontakt.phone}
                 email={data[2].kontakt.email}
                 value={data[2].oeffnungszeiten}
-                logo={urlFor(data[3].logo.logo_dark)}
+                logoLight={urlFor(data[3].logo.logo_dark)}
+                logoDark={urlFor(data[3].logo.logo_dark)}
             ></Navbar>
             <MainContainer width="max-w-[100%] h-full">
                 <motion.div className="col-span-12" layoutId={"Hero"} animate={{ opacity: 1 }}>
@@ -118,7 +119,6 @@ export default function Home({ data, dataBlog }) {
                 text={data[1].cta.text}
                 button={data[1].cta.button_text}
             ></CTA>
-            {/* <ImageBox single={false} box={data[1].imagebox.headline}></ImageBox> */}
             <BlogSwiper data={dataBlog}>
                 <div className="absolute w-[100%] h-[360px] bg-[#EEF0F2] top-0 sm:top-[30%]"></div>
             </BlogSwiper>

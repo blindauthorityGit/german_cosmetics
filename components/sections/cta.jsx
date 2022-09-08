@@ -11,7 +11,7 @@ const CTA = (props) => {
                 <p className="text-white sm:w-1/2">{props.text}</p>
                 <DefaultButton
                     onClick={props.onClick}
-                    klasse="mt-8 clamp w-2/4 sm:mt-16 mb-12 sm:mb-0 hover:bg-darkPurple bg-rosa hover:text-white  text-white"
+                    klasse="mt-8 clamp w-2/4 sm:mt-16  sm:mb-0 hover:bg-darkPurple bg-rosa hover:text-white  text-white"
                 >
                     {props.button}
                 </DefaultButton>

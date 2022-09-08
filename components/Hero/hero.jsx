@@ -14,7 +14,6 @@ const Hero = (props) => {
 
     function quickCheck(e) {
         Array.from(document.querySelectorAll(".quick")).forEach((e) => e.classList.remove("activeQuick"));
-        console.log(e.currentTarget.dataset.id);
         e.currentTarget.classList.add("activeQuick");
         switch (e.currentTarget.dataset.id) {
             case "time":
@@ -56,10 +55,10 @@ const Hero = (props) => {
         config: { duration: 2500 },
     });
     const opacityInMobile = useSpring({
-        to: { opacity: "0.75" },
+        to: { opacity: "0.5" },
         from: { opacity: "1" },
         delay: 0,
-        config: { duration: 2500 },
+        config: { duration: 2000 },
     });
 
     return (
@@ -177,20 +176,6 @@ const Hero = (props) => {
                                     <br></br>
                                     {props.ort}
                                 </div>
-                                {/* <div className="karte">
-                                    <iframe
-                                        width="325"
-                                        height="150"
-                                        scrolling="no"
-                                        src="https://www.openstreetmap.org/export/embed.html?bbox=8.70720684528351%2C50.04633003066532%2C8.716165423393251%2C50.04947852707731&amp;layer=mapnik&amp;marker=50.04790430468902%2C8.711686134338379"
-                                    ></iframe>
-                                    <br />
-                                    <small>
-                                        <a href="https://www.openstreetmap.org/?mlat=50.04790&amp;mlon=8.71169#map=18/50.04790/8.71169">
-                                            Größere Karte anzeigen
-                                        </a>
-                                    </small>
-                                </div> */}
                             </div>
                         </>
                     )}
@@ -198,7 +183,7 @@ const Hero = (props) => {
             </animated.div>
             <animated.div
                 style={isMobile ? opacityInMobile : opacityIn}
-                className="overlay z-10 sm:opacity-40  opacity-70 absolute w-full h-full bg-primaryColor "
+                className="overlay z-10 sm:opacity-40  opacity-60 absolute w-full h-full bg-primaryColor "
             ></animated.div>
             <div className="overflow-hidden w-full h-full ">
                 <animated.div
