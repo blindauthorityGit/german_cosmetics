@@ -66,7 +66,7 @@ const ImageBox = (props) => {
                                                 MEHR ENTDECKEN
                                             </div>
                                         </div>
-                                        <div className="overlay absolute z-40 w-full h-full bg-gradient-to-t transition-all duration-500 from-[#00000061] group-hover:from-[#0000] opacity-40 group-hover:opacity-80 group-hover:bg-overlay group-hover:from-bg-overlay  top-0"></div>
+                                        <div className="overlay absolute z-40 w-full h-full sm:bg-gradient-to-t bg-black sm:bg-transparent transition-all duration-500 sm:from-[#00000061] group-hover:from-[#0000] opacity-30 sm:opacity-60 group-hover:opacity-80 group-hover:bg-overlay group-hover:from-bg-overlay  top-0"></div>
                                         <div
                                             className="absolute bg-center w-full h-full bg-cover top-0 transition-all duration-300 group-hover:scale-110"
                                             style={{ backgroundImage: `url("${urlFor(e.img)}")` }}
