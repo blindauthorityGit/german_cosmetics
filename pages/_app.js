@@ -1,5 +1,6 @@
 import "../styles/globals.css";
 import "../styles/animations.css";
+import "../styles/mobile.css";
 import { useState } from "react";
 import { AnimateSharedLayout } from "framer-motion";
 import { CTAContext } from "../components/helper/Content";

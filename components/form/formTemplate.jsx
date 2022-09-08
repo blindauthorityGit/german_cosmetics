@@ -44,6 +44,16 @@ const FormTemplate = () => {
                 className="col-span-12 grid grid-cols-12 footer  gap-8"
                 action=""
             >
+                <div className="hidden">
+                    <label htmlFor="firstName">Name</label>
+                    <input
+                        {...register("firstName", { required: false })}
+                        id="firstName"
+                        name="firstName"
+                        type="text"
+                        autoComplete="off"
+                    />
+                </div>
                 <input
                     {...register("name", { required: true })}
                     id="name"

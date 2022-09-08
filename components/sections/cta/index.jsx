@@ -57,12 +57,12 @@ export default function CTAContent(props) {
     return (
         <MainContainer width={`w-100  font-europa gap-6`}>
             <div className="col-span-12 sm:col-span-6 text-text">
-                <H2 klasse="font-europa mb-12">Wählen Sie Ihren Wunschtermin</H2>
+                <H2 klasse="font-europa mb-12 hidden sm:block">Wählen Sie Ihren Wunschtermin</H2>
                 {/* <p className="text-white sm:w-1/2">{props.text}</p> */}
-                <form onSubmit={handleSubmit(onSubmitForm)} className="grid grid-cols-12 gap-6">
+                <form onSubmit={handleSubmit(onSubmitForm)} className="grid grid-cols-12 gap-6 pt-8 sm:pr-t-0">
                     <div className="col-span-12">
                         <div className="hidden">
-                            <label htmlFor="name">Name</label>
+                            <label htmlFor="firstName">Name</label>
                             <input
                                 {...register("firstName", { required: false })}
                                 id="firstName"

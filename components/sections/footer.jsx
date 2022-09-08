@@ -27,21 +27,25 @@ const Footer = (props) => {
                             </a>
                         </div>
                     </div>
-                    <div className="col-span-12 sm:col-span-2 ">
+                    <div className="col-span-12 sm:col-span-2 clamp">
                         <H4 klasse="text-white">Adresse</H4>
-                        {props.strasse}
-                        <br></br>
-                        {props.ort}
+                        <span className="opacity-60">
+                            {props.strasse}
+                            <br></br>
+                            {props.ort}
+                        </span>
                     </div>
-                    <div className="col-span-12 sm:col-span-3 mt-8 sm:mt-0">
+                    <div className="col-span-12 sm:col-span-3 mt-8 sm:mt-0 clamp">
                         <H4 klasse="text-white">Kontakt</H4>
-                        {props.phone}
-                        <br></br>
-                        {props.email}
+                        <span className="opacity-60">
+                            {props.phone}
+                            <br></br>
+                            {props.email}
+                        </span>
                     </div>
                     <div className="col-span-12 sm:col-span-2 mt-8 sm:mt-0">
                         <H4 klasse="text-white">Praxiszeiten</H4>
-                        <div className="wrapper flex oeffnung">
+                        <div className="wrapper flex oeffnung opacity-60">
                             <div className="left mr-6 text-left clamp">
                                 Mo
                                 <br />
@@ -54,16 +58,18 @@ const Footer = (props) => {
                                 Fr
                                 <br />
                             </div>
-                            <div className="right text-left">
+                            <div className="right text-left ">
                                 <PortableText value={props.value}></PortableText>
                             </div>
                         </div>
                     </div>
-                    <div className="col-span-6 sm:col-span-2 mt-8 sm:mt-0">
+                    <div className="col-span-6 sm:col-span-2 mt-8 sm:mt-0 clamp">
                         <H4 klasse="text-white">Links</H4>
-                        <Link href="/jobs">
-                            <a>Jobs</a>
-                        </Link>
+                        <span className="opacity-60">
+                            <Link href="/jobs">
+                                <a>Jobs</a>
+                            </Link>
+                        </span>
                     </div>
                 </div>
             </div>

@@ -68,6 +68,7 @@ const HomeSwiper = (props) => {
                         // when window width is >= 640px
                         320: {
                             slidesPerView: 1,
+                            navigation: false,
                         },
                         1025: {
                             slidesPerView: 2,
@@ -77,8 +78,8 @@ const HomeSwiper = (props) => {
                     {props.images.map((e, i) => {
                         return (
                             <SwiperSlide key={`keyImgs${i}`}>
-                                <img className="hidden sm:block" src={urlFor(e).width("522").height("673")} alt="" />
-                                <img className="block sm:hidden" src={urlFor(e).width(415).height(288)} alt="" />
+                                <img className="hidden sm:block" src={urlFor(e).width("522").height("673")} alt="img" />
+                                <img className="block sm:hidden" src={urlFor(e).width(415).height(288)} alt="img" />
                             </SwiperSlide>
                         );
                     })}

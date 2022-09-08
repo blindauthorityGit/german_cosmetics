@@ -182,7 +182,7 @@ const Navbar = (props) => {
                 </div>
             </nav>
             <div
-                className="block  sm:hidden  burger absolute z-50 right-8 top-8"
+                className="block  sm:hidden  burger absolute z-40 right-8 top-8"
                 onClick={(e) => {
                     clicker(e);
                 }}
