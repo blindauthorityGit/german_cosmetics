@@ -1,0 +1,16 @@
+@media only screen and (max-width: 500px) {
+    .activeQuick::before {
+        content: "■";
+        position: absolute;
+        color: #EEF0F2;
+        transform: rotate(45deg);
+        font-size: 2rem;
+        top: -0.25rem;
+        right: -1.75rem;
+      }
+
+      .swiper-pagination {
+        position: relative!important;
+        margin-top: 1rem
+      }
+  }

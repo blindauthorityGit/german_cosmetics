@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import client from "../client";
 import BehandlungNav from "../components/nav/behandlungNav";
 import Navbar from "../components/nav/navbar";
-import BehandlungTop from "../components/sections/behandlungTop";
+import KontaktTop from "../components/sections/kontaktTop";
 import LaserBehandlungContainer from "../components/sections/lasermedizin/laserBehandlung";
 import PageHero from "../components/sections/pageHero";
 
@@ -13,6 +13,8 @@ import Footer from "../components/sections/footer";
 import ImageBox from "../components/sections/imageBox";
 import LinkBox from "../components/sections/linkBox";
 import { motion } from "framer-motion";
+import FormFull from "../components/form/formFull";
+import Map from "../assets/map.jpg";
 
 const builder = imageUrlBuilder(client);
 
@@ -24,43 +26,48 @@ export default function Kontakt({ data, laserData }) {
     const headlineRef = useRef();
     const containerRef = useRef();
 
+    useEffect(() => {
+        console.log(data);
+    }, []);
+
     return (
         <>
             <Head>
                 <title>{laserData[0].seo.title}</title>
                 <meta name="description" content={laserData[0].seo.description} />
             </Head>
-            <Navbar logo={urlFor(data[3].logo.logo_dark)}></Navbar>
+            <Navbar logoLight={urlFor(data[3].logo.logo_light)} logoDark={urlFor(data[3].logo.logo_dark)}></Navbar>
             <motion.div layoutId={"Hero"} animate={{ opacity: 1 }}>
                 <PageHero
-                    bg={urlFor(data[2].hero_settings.backgroundImg).width(1560).height(550)}
+                    bg={urlFor(data[2].raeumlichkeiten_settings.images[2]).width(1560).height(550)}
                     headline="Kontakt"
                     showButton={false}
                 ></PageHero>
             </motion.div>
 
-            <BehandlungTop headline="Kontaktdaten" valueLeft={laserData[0].intro.text}></BehandlungTop>
-            <LaserBehandlungContainer
-                dataNav={laserData[0].categories}
-                onClick={(e) => {
-                    handleClick(e);
-                }}
-                dataBehandlung={laserData[0].behandlungen}
-                ref={containerRef}
-            ></LaserBehandlungContainer>
-            <ImageBox
-                single={true}
-                headline={data[0].imagebox.headline[0].title}
-                img={data[0].imagebox.headline[0].img}
-                href={data[0].imagebox.headline[0].title.toLowerCase()}
-            ></ImageBox>
+            <KontaktTop
+                strasse={data[1].adresse.strasse}
+                ort={data[1].adresse.ort}
+                phone={data[1].kontakt.phone}
+                email={data[1].kontakt.email}
+                mobile={data[1].kontakt.mobile}
+                fax={data[1].kontakt.fax}
+                value={data[1].oeffnungszeiten}
+                headline="Kontaktdaten"
+                valueLeft={<div>Hallo</div>}
+                klasse="pt-12"
+            ></KontaktTop>
+            <FormFull></FormFull>
+            <div className="container m-auto">
+                <img src={Map.src} alt="" />
+            </div>
 
-            <CTA
+            {/* <CTA
                 klasse="sm:mb-16"
                 headline={data[0].cta.headline}
                 text={data[0].cta.text}
                 button={data[0].cta.button_text}
-            ></CTA>
+            ></CTA> */}
 
             <LinkBox
                 klasse="sm:mt-16"

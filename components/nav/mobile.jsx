@@ -17,7 +17,7 @@ const MobileNav = (props) => {
         <>
             <nav
                 className={`navbar ${props.klasse} 
-                 w-full h-screen bg-white fixed z-50 `}
+                 w-full h-screen bg-white fixed z-40 `}
             >
                 <div className="container h-screen py-16 px-8 font-europa tracking-wider">
                     <div className="middle pl-8">

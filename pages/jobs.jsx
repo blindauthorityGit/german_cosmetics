@@ -5,13 +5,15 @@ import client from "../client";
 import BehandlungNav from "../components/nav/behandlungNav";
 import Navbar from "../components/nav/navbar";
 import BehandlungTop from "../components/sections/behandlungTop";
-import LaserBehandlungContainer from "../components/sections/lasermedizin/laserBehandlung";
+import JobsContainer from "../components/sections/jobs/jobConatiner";
 import PageHero from "../components/sections/pageHero";
 
-import CTA from "../components/sections/cta";
+import { H2 } from "../components/utils/headlines";
 import Footer from "../components/sections/footer";
 import ImageBox from "../components/sections/imageBox";
 import LinkBox from "../components/sections/linkBox";
+
+import JobHero from "../assets/jobHero.jpg";
 
 const builder = imageUrlBuilder(client);
 
@@ -19,59 +21,42 @@ function urlFor(source) {
     return builder.image(source);
 }
 
-export default function Jobs({ data, laserData }) {
-    const headlineRef = useRef();
-    const containerRef = useRef();
-    const arztRef = useRef();
-    const teamRef = useRef();
-
-    const [fetchID, setFetchID] = useState(0);
-    const [showTeam, setShowTeam] = useState(false);
-
-    const refs = {
-        Licht: "b7924f52-2e37-43bd-9b15-fd8b7e49bee9",
-        Hautverjuengung: "cdc24a98-cb04-4560-a905-d7f981a12627",
-    };
-
-    const dataSet = (e) => {
-        return Array.from(document.querySelectorAll(`[data-cat=${e}]`));
-    };
-
-    const idFormater = (e) => {
-        return laserData[0].categories[e].title
-            .toLowerCase()
-            .split(" ")
-            .join("")
-            .replace(/[^\w\s]/gi, "");
-    };
-
+export default function Jobs({ data, jobsData }) {
     useEffect(() => {
-        // Korrekte ID's für Sidenav
-        laserData[0].categories.map((e, i) => {
-            dataSet(`cat${i}`)[0].id = idFormater(i);
-        });
+        console.log(jobsData);
     }, []);
-
-    useEffect(() => {
-        console.log(laserData);
-        containerRef.current.style.opacity = "0";
-        setTimeout(() => {
-            containerRef.current.style.opacity = "1";
-        }, 100);
-    }, [fetchID]);
 
     return (
         <>
-            <Head>
-                <title>{laserData[0].seo.title}</title>
-                <meta name="description" content={laserData[0].seo.description} />
-            </Head>
-            <Navbar logo={urlFor(data[3].logo.logo_dark)}></Navbar>
-            <PageHero
-                bg={urlFor(laserData[0].hero_settings.backgroundImg).width(1560).height(550)}
-                headline=""
-                showButton={false}
-            ></PageHero>
+            {/* <Head>
+                <title>{jobsData[0].seo.title}</title>
+                <meta name="description" content={jobsData[0].seo.description} />
+            </Head> */}
+            <Navbar logoLight={urlFor(data[3].logo.logo_light)} logoDark={urlFor(data[3].logo.logo_dark)}></Navbar>
+            <PageHero bg={JobHero.src} headline="Jobs" showButton={false}></PageHero>
+            <BehandlungTop
+                klasse="pt-12"
+                headline="Werden Sie Teil unseres Teams!"
+                jobIntro={
+                    <p>
+                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
+                        ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo
+                        dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
+                        sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+                        invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et
+                        justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
+                        ipsum dolor sit amet.
+                    </p>
+                }
+            ></BehandlungTop>
+            {jobsData ? (
+                <JobsContainer dataNav={jobsData} dataJobs={jobsData}></JobsContainer>
+            ) : (
+                <div className="container m-auto font-europa">
+                    <H2 klasse="mb-8 sm:mb-16 beforeH">Derzeit keine offenen Stellen</H2>
+                </div>
+            )}
+
             <LinkBox
                 klasse="sm:mt-16"
                 image={urlFor(data[0].linkbox.img)}
@@ -95,15 +80,15 @@ export async function getStaticProps() {
     const res = await client.fetch(
         `*[_type in ["aesthetic_praxis", "aesthetic_kontakt", "aesthetic_settings", "aesthetic_komponente"] ]`
     );
-    const laserRes = await client.fetch(`*[_type in ["aesthetic_laserbehandlung"] ]`);
+    const jobsRes = await client.fetch(`*[_type in ["jobs"] ]`);
     // const res = await fetch("https://jsonplaceholder.typicode.com/todos/1");
 
     const data = await res;
-    const laserData = await laserRes;
+    const jobsData = await jobsRes;
     return {
         props: {
             data,
-            laserData,
+            jobsData,
         },
     };
 }

@@ -12,11 +12,16 @@ const BehandlungTop = (props) => {
                 <div className="col-span-12 sm:col-span-8">
                     <div className="px-8">
                         {props.date && (
-                            <div className="date text-primaryColor font-semibold  mt-4 mb-6">{props.date}</div>
+                            <>
+                                <div className="date text-primaryColor font-semibold mb-2 mt-4">{props.date}</div>
+                                <hr className="mb-6"></hr>
+                            </>
                         )}
 
                         <H2 klasse="mb-8 sm:mb-16 beforeH">{props.headline}</H2>
+
                         <PortableText value={props.valueLeft}></PortableText>
+                        {props.jobIntro}
                     </div>
                 </div>
                 <div className="col-span-12 sm:col-span-8 mb-16 sm:mb-0">
