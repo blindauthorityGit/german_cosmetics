@@ -100,7 +100,7 @@ const Navbar = (props) => {
             )}
             <MobileNav
                 value={props.value}
-                logo={props.logo}
+                logo={props.logoDark}
                 klasse={`${showMenu ? "block" : "hidden"} ${mobileClass}`}
                 strasse={props.strasse}
                 ort={props.ort}

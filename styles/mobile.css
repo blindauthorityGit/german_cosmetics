@@ -14,5 +14,8 @@
     position: relative !important;
     margin-top: 1rem;
   }
+  .swiper-button-next::after, .swiper-button-prev::after {
+    display: none;
+  }
 }
 /*# sourceMappingURL=mobile.css.map */
