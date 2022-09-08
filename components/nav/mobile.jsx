@@ -27,13 +27,13 @@ const MobileNav = (props) => {
                             </a>
                         </Link>
                     </div>
-                    <div className="MenuItems text-4xl pt-8">
+                    <div className="MenuItems text-2xl sm:text-4xl pt-8">
                         <ul className="">
                             <li className="mb-4">
-                                <Link href="./dermatologie">
+                                {/* <Link href="./dermatologie">
                                     <a>Behandlungen</a>
-                                </Link>
-                                <div className="wrap dropdown bg-white  pl-4 ">
+                                </Link> */}
+                                <div className="wrap dropdown bg-white  ">
                                     <Link href="./dermatologie">
                                         <a className="text-text block my-4 subNav relative hover:text-primaryColor cursor-pointer">
                                             Dermatologie
@@ -58,9 +58,48 @@ const MobileNav = (props) => {
                                 </Link>
                             </li>
                         </ul>
+                        <hr className="mt-6" />
+                        <ul className="">
+                            <li className="mb-4 text-sm">
+                                {/* <Link href="./dermatologie">
+                                    <a>Behandlungen</a>
+                                </Link> */}
+                                <div className="wrap dropdown bg-white  ">
+                                    <Link href="./impressum">
+                                        <a className="text-text block my-4 subNav relative hover:text-primaryColor cursor-pointer">
+                                            Jobs
+                                        </a>
+                                    </Link>
+
+                                    <Link href="./datenschutz">
+                                        <a className="text-text block my-4 subNav relative mt-4 hover:text-primaryColor cursor-pointer">
+                                            News
+                                        </a>
+                                    </Link>
+                                </div>
+                            </li>
+                            <li className="mb-4 mt-8 text-sm">
+                                {/* <Link href="./dermatologie">
+                                    <a>Behandlungen</a>
+                                </Link> */}
+                                <div className="wrap dropdown bg-white  ">
+                                    <Link href="./impressum">
+                                        <a className="text-text block my-4 subNav relative hover:text-primaryColor cursor-pointer">
+                                            Impressum
+                                        </a>
+                                    </Link>
+
+                                    <Link href="./datenschutz">
+                                        <a className="text-text block my-4 subNav relative mt-4 hover:text-primaryColor cursor-pointer">
+                                            Datenschutzerklärung
+                                        </a>
+                                    </Link>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
 
-                    <div className="Kontakt flex mt-10">
+                    {/* <div className="Kontakt flex mt-10">
                         <div className="left w-1/2">
                             <H4>Kontakt</H4>
                             <div className="content text-xs leading-relaxed">
@@ -94,7 +133,7 @@ const MobileNav = (props) => {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </nav>
         </>

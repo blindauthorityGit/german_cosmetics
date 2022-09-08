@@ -41,7 +41,7 @@ const FormTemplate = () => {
         <div className="col-span-12 sm:col-span-12 grid grid-cols-12">
             <form
                 onSubmit={handleSubmit(onSubmitForm)}
-                className="col-span-12 grid grid-cols-12 footer  gap-8"
+                className="col-span-12 grid grid-cols-12 footer  sm:gap-8"
                 action=""
             >
                 <div className="hidden">
