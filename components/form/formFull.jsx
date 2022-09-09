@@ -38,11 +38,11 @@ const FormFull = () => {
         }
     }
     return (
-        <MainContainer width="container pt-16 sm:pt-16 sm:pb-32 font-europa relative sm:px-32">
+        <MainContainer width="container sm:pt-16 sm:pt-16 sm:pb-32 font-europa relative px-8 sm:px-32">
             <div className="col-span-12 sm:col-span-12 grid grid-cols-12">
                 <form
                     onSubmit={handleSubmit(onSubmitForm)}
-                    className="col-span-12 grid grid-cols-12 footer topKontakt gap-8"
+                    className="col-span-12 grid grid-cols-12 footer topKontakt sm:gap-8"
                     action=""
                 >
                     <input
@@ -112,12 +112,14 @@ const FormFull = () => {
                             />
                         </div>
                     ) : (
-                        <button
-                            className="group w-96 ease-in-out duration-200 hover:bg-darkBlue cursor-pointer p-4 flex items-center justify-center mt-8 sm:mt-4 mb-12 sm:mb-0 hover:bg-primaryColor hover:text-white border border-[#A54399] text-primaryColor"
-                            type="submit"
-                        >
-                            Absenden
-                        </button>
+                        <div className="w-full col-span-12">
+                            <button
+                                className="group w-full  sm:w-96 ease-in-out duration-200 hover:bg-darkBlue cursor-pointer p-4 flex items-center justify-center mt-8 sm:mt-4 mb-12 sm:mb-0 hover:bg-primaryColor hover:text-white border border-[#A54399] text-primaryColor"
+                                type="submit"
+                            >
+                                Absenden
+                            </button>
+                        </div>
                     )}
                 </form>
                 {success ? <div className="text-primaryColor w-96 mt-4">Vielen Dank für Ihre Nachricht!</div> : ""}

@@ -21,7 +21,7 @@ const MobileNav = (props) => {
             >
                 <div className="container h-screen py-16 px-8 font-europa tracking-wider">
                     <div className="middle pl-8">
-                        <Link href="./">
+                        <Link href="/">
                             <a>
                                 <img src={props.logo} width="230" alt="Logo" />
                             </a>
@@ -30,30 +30,27 @@ const MobileNav = (props) => {
                     <div className="MenuItems text-2xl sm:text-4xl pt-8">
                         <ul className="">
                             <li className="mb-4">
-                                {/* <Link href="./dermatologie">
-                                    <a>Behandlungen</a>
-                                </Link> */}
                                 <div className="wrap dropdown bg-white  ">
-                                    <Link href="./dermatologie">
+                                    <Link href="/dermatologie">
                                         <a className="text-text block my-4 subNav relative hover:text-primaryColor cursor-pointer">
                                             Dermatologie
                                         </a>
                                     </Link>
 
-                                    <Link href="./laserbehandlung">
+                                    <Link href="./lasermedizin">
                                         <a className="text-text block my-4 subNav relative mt-4 hover:text-primaryColor cursor-pointer">
-                                            Laserbehandlung
+                                            Lasermedizin
                                         </a>
                                     </Link>
                                 </div>
                             </li>
                             <li className="mr-8 hover:text-primaryColor hover:underline mb-4">
-                                <Link href="./praxis">
+                                <Link href="/praxis">
                                     <a>Praxis</a>
                                 </Link>
                             </li>
                             <li>
-                                <Link href="./kontakt">
+                                <Link href="/kontakt">
                                     <a>Kontakt</a>
                                 </Link>
                             </li>
@@ -61,17 +58,14 @@ const MobileNav = (props) => {
                         <hr className="mt-6" />
                         <ul className="">
                             <li className="mb-4 text-sm">
-                                {/* <Link href="./dermatologie">
-                                    <a>Behandlungen</a>
-                                </Link> */}
                                 <div className="wrap dropdown bg-white  ">
-                                    <Link href="./impressum">
+                                    <Link href="/impressum">
                                         <a className="text-text block my-4 subNav relative hover:text-primaryColor cursor-pointer">
                                             Jobs
                                         </a>
                                     </Link>
 
-                                    <Link href="./datenschutz">
+                                    <Link href="/blog">
                                         <a className="text-text block my-4 subNav relative mt-4 hover:text-primaryColor cursor-pointer">
                                             News
                                         </a>
@@ -79,17 +73,14 @@ const MobileNav = (props) => {
                                 </div>
                             </li>
                             <li className="mb-4 mt-8 text-sm">
-                                {/* <Link href="./dermatologie">
-                                    <a>Behandlungen</a>
-                                </Link> */}
                                 <div className="wrap dropdown bg-white  ">
-                                    <Link href="./impressum">
+                                    <Link href="/impressum">
                                         <a className="text-text block my-4 subNav relative hover:text-primaryColor cursor-pointer">
                                             Impressum
                                         </a>
                                     </Link>
 
-                                    <Link href="./datenschutz">
+                                    <Link href="/datenschutz">
                                         <a className="text-text block my-4 subNav relative mt-4 hover:text-primaryColor cursor-pointer">
                                             Datenschutzerklärung
                                         </a>

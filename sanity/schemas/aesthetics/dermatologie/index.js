@@ -77,6 +77,30 @@ export default {
             ],
         },
         {
+            title: "Preise",
+            name: "preise",
+            type: "document",
+            fields: [
+                {
+                    name: "headline",
+                    title: "Headline",
+                    type: "string",
+                },
+                {
+                    title: "Text Preise",
+                    name: "textPrice",
+                    type: "array",
+                    of: [{ type: "block" }],
+                },
+                {
+                    title: "Text Preise Nachtrag",
+                    name: "textPriceAfter",
+                    type: "array",
+                    of: [{ type: "block" }],
+                },
+            ],
+        },
+        {
             title: "Behandlungen",
             name: "behandlungen",
             type: "array",

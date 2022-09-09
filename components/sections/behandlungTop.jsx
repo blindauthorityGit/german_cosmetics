@@ -7,8 +7,8 @@ import ScrollAnimation from "react-animate-on-scroll";
 
 const BehandlungTop = (props) => {
     return (
-        <MainContainer width={`${props.klasse} w-100 gap-0 mt-12  container font-europa sm:px-32 `}>
-            <div className="container col-span-12 grid grid-cols-12 text-left sm:gap-16">
+        <MainContainer width={`${props.klasse} w-100 gap-0 mt-12  container font-europa 2xl:px-32 `}>
+            <div className="container col-span-12 grid grid-cols-12 text-left ">
                 <div className="col-span-12 sm:col-span-8">
                     <div className="px-8">
                         {props.date && (
@@ -32,6 +32,26 @@ const BehandlungTop = (props) => {
                         <PortableText value={props.valueRight}></PortableText>
                     </div>
                 </div>
+                {props.preise && (
+                    <>
+                        <div className="col-span-12 sm:col-span-8 sm:mt-16  sm:mb-0 bg-lightGray preiseAfter p-12 preise clamp">
+                            {/* <ScrollAnimation animateIn="slideInRight" animateOnce={true}> */}
+
+                            {/* </ScrollAnimation> */}
+                            <div className="px-8">
+                                <PortableText value={props.preiseText}></PortableText>
+                            </div>
+                        </div>
+                        <div className="col-span-12 sm:col-span-8 mb-24 sm:mb-0 border p-12 preise preiseAfter clamp">
+                            {/* <ScrollAnimation animateIn="slideInRight" animateOnce={true}> */}
+
+                            {/* </ScrollAnimation> */}
+                            <div className="px-8">
+                                <PortableText value={props.preiseTextAfter}></PortableText>
+                            </div>
+                        </div>
+                    </>
+                )}
             </div>
         </MainContainer>
     );
