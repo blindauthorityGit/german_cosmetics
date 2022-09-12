@@ -12,7 +12,7 @@ import { Controller, useForm } from "react-hook-form";
 import Error from "../../form/error";
 import axios from "axios";
 import { Rings } from "react-loader-spinner";
-import { Mon, Tue, Wed, Thu, Fri } from "../../utils/days";
+import { Mon, Tue, Wed, Thu, Fri, No } from "../../utils/days";
 
 export default function CTAContent(props) {
     const [selectedDay, setSelectedDay] = useState(null);
@@ -214,6 +214,8 @@ export default function CTAContent(props) {
                             {day === 3 && Wed()}
                             {day === 4 && Thu()}
                             {day === 5 && Fri()}
+                            {day === 6 && No()}
+                            {day === 0 && No()}
                         </select>
                     </div>
                     <div className="col-span-12">

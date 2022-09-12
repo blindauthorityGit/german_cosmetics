@@ -95,5 +95,12 @@ function Fri() {
         </>
     );
 }
+function No() {
+    return (
+        <>
+            <option value="">Kein Termin verfügbar</option>
+        </>
+    );
+}
 
-export { Mon, Tue, Wed, Thu, Fri };
+export { Mon, Tue, Wed, Thu, Fri, No };
