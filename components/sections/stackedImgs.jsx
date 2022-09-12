@@ -30,7 +30,7 @@ const StackedImgs = (props) => {
                         <>
                             <div className="image pb-12">
                                 <img src={urlFor(e).width(800).height(500)} alt={e.alt} />
-                                {e.caption && <div className="caption italic pt-2">{e.caption}</div>}
+                                {e.caption && <div className="pl-8 sm:pl-0 caption italic pt-2">{e.caption}</div>}
                             </div>
                         </>
                     );

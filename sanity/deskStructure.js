@@ -13,6 +13,7 @@ import { GiLaserWarning } from "react-icons/gi";
 import { FaHandHoldingMedical } from "react-icons/fa";
 import { GrContact } from "react-icons/gr";
 import { GrTechnology } from "react-icons/gr";
+import { GoLaw } from "react-icons/go";
 
 export default () =>
     S.list()
@@ -107,6 +108,20 @@ export default () =>
                 .child(S.document().schemaType("blog_settings").documentId("blog_settings")),
             // ...S.documentTypeListItems(),
             // ...S.documentTypeListItems().filter((item) => !["angebotSetting"].includes(item.getId())),
+            S.divider(),
+            S.listItem()
+                .title("Impressum")
+                .icon(GoLaw)
+                .child(S.document().schemaType("impressum").documentId("impressum")),
+            // ...S.documentTypeListItems(),
+            // ...S.documentTypeListItems().filter((item) => !["angebotSetting"].includes(item.getId())),
+            S.listItem()
+                .title("Datenschutz")
+                .icon(GoLaw)
+                .child(S.document().schemaType("datenschutz").documentId("datenschutz")),
+            // ...S.documentTypeListItems(),
+            // ...S.documentTypeListItems().filter((item) => !["angebotSetting"].includes(item.getId())),
+            S.divider(),
 
             // We also need to remove the new singletons from the main list
             ...S.documentTypeListItems().filter(
@@ -128,6 +143,8 @@ export default () =>
                         "aesthetic_praxis",
                         "aesthethic_laserbehandlung_category",
                         "aesthetic_home",
+                        "impressum",
+                        "datenschutz",
                     ].includes(listItem.getId())
             ),
         ]);

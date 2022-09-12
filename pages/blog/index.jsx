@@ -12,6 +12,7 @@ import Footer from "../../components/sections/footer";
 import ImageBox from "../../components/sections/imageBox";
 import LinkBox from "../../components/sections/linkBox";
 import BlogOverviewElement from "../../components/sections/blogOvervieElement";
+import { isMobile } from "react-device-detect";
 
 const builder = imageUrlBuilder(client);
 
@@ -20,17 +21,11 @@ function urlFor(source) {
 }
 
 export default function Blog({ data, dataBlog, dataBlogSettings }) {
-    const headlineRef = useRef();
-    const containerRef = useRef();
-    const arztRef = useRef();
-    const teamRef = useRef();
-
-    const [showDoc, setShowDoc] = useState(true);
-    const [showTeam, setShowTeam] = useState(false);
+    const [_isMobile, setMobile] = useState();
 
     useEffect(() => {
-        console.log(dataBlogSettings);
-    }, []);
+        setMobile(isMobile);
+    }, [setMobile]);
 
     return (
         <>
@@ -44,7 +39,7 @@ export default function Blog({ data, dataBlog, dataBlogSettings }) {
                 phone={data[2].kontakt.phone}
                 email={data[2].kontakt.email}
                 value={data[2].oeffnungszeiten}
-                logo={urlFor(data[3].logo.logo_dark)}
+                logoDark={urlFor(data[3].logo.logo_dark)}
             ></Navbar>
             <PageHero
                 bg={urlFor(dataBlogSettings[0].bgImage).width(1560).height(550)}
@@ -52,14 +47,19 @@ export default function Blog({ data, dataBlog, dataBlogSettings }) {
                 showButton={false}
             ></PageHero>
 
-            <div className="container m-auto mt-36 grid gap-16 grid-cols-12 mb-24">
+            <div className="container m-auto mt-12 sm:mt-36 grid sm:gap-16 grid-cols-12 mb-24">
                 {dataBlog.map((e, i) => {
                     return (
                         <BlogOverviewElement
                             key={`blogOverview${i}`}
-                            klasse="col-span-4"
+                            klasse="col-span-12 sm:col-span-4 mb-12 sm:mb-0"
                             date={e.blog_settings.date.split("-").reverse().join("-")}
-                            image={urlFor(e.blog_settings.featuredImg).width("575").height("360")}
+                            // image={urlFor(e.blog_settings.featuredImg).width("575").height("360")}
+                            image={
+                                urlFor(e.blog_settings.featuredImg).auto("format").fit("max")
+                                // .width(_isMobile ? "100%" : 575)
+                                // .height("360")}
+                            }
                             headline={e.title}
                             value={e.blog_settings.intro}
                             link={`./blog/${e.blog_settings.slug.current}`}

@@ -4,17 +4,17 @@ import MainContainer from "../layout/mainContainer";
 
 const BehandlungNav = (props, ref) => {
     return (
-        <section className="container m-auto flex mb-20">
+        <section className="container w-full mt-1 sm:m-auto flex mb-20">
             <Link href="./lasermedizin" onClick={props.onClick}>
                 <a
-                    className={`text-primaryColor transition-all px-8 py-4 bg-lightGray hover:bg-primaryColor hover:text-white  ${props.klasseOne}`}
+                    className={`text-primaryColor text-center w-2/4 sm:w-auto transition-all px-8 py-4 bg-lightGray hover:bg-primaryColor hover:text-white  ${props.klasseOne}`}
                 >
                     Lasermedizin
                 </a>
             </Link>
             <Link href="./dermatologie" onClick={props.onClick} className="text-primaryColor px-8 py-4 bg-lightGray">
                 <a
-                    className={`text-primaryColor transition-all px-8 py-4 bg-lightGray hover:bg-primaryColor hover:text-white ${props.klasseTwo}`}
+                    className={`text-primaryColor text-center w-2/4 sm:w-auto transition-all px-8 py-4 bg-lightGray hover:bg-primaryColor hover:text-white ${props.klasseTwo}`}
                 >
                     Dermatologie
                 </a>

@@ -6,7 +6,7 @@ import Link from "next/link";
 
 const Breadcrumbs = (props) => {
     return (
-        <MainContainer width={`w-100 container font-europa ${props.klasse}`}>
+        <MainContainer width={`w-100 pl-8 sm:pl-0 mt-6 sm:mt-0 container font-europa ${props.klasse}`}>
             <div className="col-span-12 flex">
                 <div className="home mr-3">
                     <Link href="/">

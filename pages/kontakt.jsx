@@ -15,6 +15,7 @@ import LinkBox from "../components/sections/linkBox";
 import { motion } from "framer-motion";
 import FormFull from "../components/form/formFull";
 import Map from "../assets/map.jpg";
+import MapMobile from "../assets/mapMobile.jpg";
 
 const builder = imageUrlBuilder(client);
 
@@ -59,7 +60,8 @@ export default function Kontakt({ data, laserData }) {
             ></KontaktTop>
             <FormFull></FormFull>
             <div className="container m-auto">
-                <img src={Map.src} alt="" />
+                <img className="hidden sm:block" src={Map.src} alt="" />
+                <img className="block sm:hidden" src={MapMobile.src} alt="" />
             </div>
 
             {/* <CTA

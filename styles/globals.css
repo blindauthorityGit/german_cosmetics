@@ -297,4 +297,26 @@ h5 {
 .kdataRight p {
   margin-top: 0.5rem;
 }
+
+.impressum a {
+  color: #A54399;
+}
+
+.impressum h2 {
+  font-size: 1.75rem;
+  margin-top: 1.5rem;
+}
+
+.preise h3 {
+  font-size: 1.75rem;
+  margin-top: 1.75rem;
+}
+
+.preise li {
+  margin-top: 1rem;
+}
+
+.preiseAfter p {
+  margin-top: 0 !important;
+}
 /*# sourceMappingURL=globals.css.map */

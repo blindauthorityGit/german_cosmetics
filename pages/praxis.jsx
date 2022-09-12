@@ -36,7 +36,7 @@ export default function Praxis({ data }) {
     const [showDoc, setShowDoc] = useState(true);
 
     useEffect(() => {
-        console.log(data);
+        console.log(isMobile);
     }, []);
 
     return (
@@ -92,7 +92,50 @@ export default function Praxis({ data }) {
                         ></DerArzt>
                     )}
 
-                    {!isMobile && (
+                    <div id="teamWrapperM" className=" sm:hidden sm:mt-16 grid grid-cols-12 gap-4">
+                        {data[2].team.teamMember.map((e, i) => {
+                            return (
+                                <ScrollAnimation
+                                    key={`keyM${i}`}
+                                    animateIn={i % 2 === 0 ? "slideInLeft" : "slideInRight"}
+                                    animateOnce={true}
+                                    duration={0.4}
+                                    className="BUBU col-span-12 sm:col-span-6  sm:py-64 relative cursor-pointer group overflow-hidden"
+                                >
+                                    <TeamMember
+                                        img={urlFor(e.img).width(450).height(450)}
+                                        headline={e.title}
+                                        title={e.title}
+                                        text={e.subTitle}
+                                    ></TeamMember>
+                                </ScrollAnimation>
+                            );
+                        })}
+                    </div>
+
+                    <div id="teamWrapperD" className="hidden sm:grid sm:mt-16  grid-cols-12 gap-4" ref={teamRef}>
+                        {data[2].team.teamMember.map((e, i) => {
+                            return (
+                                <ScrollAnimation
+                                    key={`key${i}`}
+                                    animateIn={i % 2 === 0 ? "slideInLeft" : "slideInRight"}
+                                    animateOnce={true}
+                                    duration={0.4}
+                                    className="col-span-12 sm:col-span-6 "
+                                >
+                                    <TeamMember
+                                        img={urlFor(e.img).width(600).height(600)}
+                                        headline={e.title}
+                                        text={e.subTitle}
+                                        title={e.title}
+                                        orderTop={i % 2 === 0 ? "" : "order-last"}
+                                    ></TeamMember>
+                                </ScrollAnimation>
+                            );
+                        })}
+                    </div>
+
+                    {/* {!isMobile ? (
                         <div id="teamWrapper" className="sm:mt-16 grid grid-cols-12 gap-4" ref={teamRef}>
                             {data[2].team.teamMember.map((e, i) => {
                                 return (
@@ -114,20 +157,16 @@ export default function Praxis({ data }) {
                                 );
                             })}
                         </div>
-                    )}
-
-                    {isMobile && (
+                    ) : (
                         <div id="teamWrapper" className="sm:mt-16 grid grid-cols-12 gap-4">
                             {data[2].team.teamMember.map((e, i) => {
                                 return (
                                     <div
-                                        key={`key${i}`}
-                                        className="col-span-12 sm:col-span-6  sm:py-64 relative cursor-pointer group transition-all overflow-hidden"
+                                        key={`keyM${i}`}
+                                        className="BUBU opacity-[1!important] col-span-12 sm:col-span-6  sm:py-64 relative cursor-pointer group overflow-hidden"
                                     >
                                         <TeamMember
-                                            img={urlFor(e.img)
-                                                .width(isMobile ? "450" : "650")
-                                                .height(isMobile ? "450" : "650")}
+                                            img={urlFor(e.img).width(450).height(450)}
                                             headline={e.title}
                                             title={e.title}
                                             text={e.subTitle}
@@ -136,7 +175,7 @@ export default function Praxis({ data }) {
                                 );
                             })}
                         </div>
-                    )}
+                    )} */}
                 </div>
             </MainContainer>
             <JobsCTA
