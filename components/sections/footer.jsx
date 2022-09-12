@@ -76,7 +76,13 @@ const Footer = (props) => {
                         <H4 klasse="text-white">Links</H4>
                         <span className="opacity-60">
                             <Link href="/jobs">
-                                <a>Jobs</a>
+                                <a className="block">Karriere</a>
+                            </Link>
+                            <Link className="block" href="/impressum">
+                                <a className="block">Impressum</a>
+                            </Link>
+                            <Link href="/datenschutz">
+                                <a className="block">Datenschutz</a>
                             </Link>
                         </span>
                     </div>
