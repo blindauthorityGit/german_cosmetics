@@ -14,7 +14,7 @@ const PageHero = (props) => {
     });
 
     return (
-        <MainContainer width="w-100 bg-lightGray py-20 sm:py-16 py-16 pt-32 sm:pt-48  relative font-europa  sm:h-[450px] sm:mb-32">
+        <MainContainer width="w-100 bg-lightGray py-20 sm:py-16 py-16 pt-32 sm:pt-48  relative font-europa sm:h-[320px]  2xl:h-[450px] sm:mb-32">
             <div className="col-span-12 text-center flex flex-col items-center justify-end m-auto  sm:w-2/4">
                 <H2 klasse="font-europa mb-12 text-white mb-0">{props.headline}</H2>
                 <p className="text-white sm:w-1/2">{props.text}</p>
@@ -25,7 +25,7 @@ const PageHero = (props) => {
                 )}
             </div>
             <div
-                className="absolute grayscale container bg-cover bg-top m-auto min-h-[275px] sm:min-h-[550px]  left-1/2 transform -translate-x-1/2"
+                className="absolute grayscale container bg-cover bg-top m-auto min-h-[275px] sm:min-h-[400px] 2xl:min-h-[550px]  left-1/2 transform -translate-x-1/2"
                 style={{ backgroundImage: `url(${props.bg})` }}
             >
                 <div className="absolute bg-black w-full h-full opacity-20"></div>

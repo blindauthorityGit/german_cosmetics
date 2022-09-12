@@ -65,7 +65,7 @@ const FullWidthSwiper = (props) => {
                             return (
                                 <SwiperSlide key={`keyImg${i}`}>
                                     <img src={urlFor(e).width(props.width).height(props.height)} alt="" />
-                                    {e.caption && <div className="caption italic pt-2">{e.caption}</div>}
+                                    {e.caption && <div className="pl-8 sm:pl-0 caption italic pt-2">{e.caption}</div>}
                                 </SwiperSlide>
                             );
                         })}

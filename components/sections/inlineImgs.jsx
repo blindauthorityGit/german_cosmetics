@@ -28,9 +28,9 @@ const InlineImgs = (props) => {
                 {props.data.map((e, i) => {
                     return (
                         <>
-                            <div className="image pb-12 col-span-4">
+                            <div className="image pb-12 col-span-6 sm:col-span-4">
                                 <img src={urlFor(e).width(400).height(400)} alt={e.alt} />
-                                {e.caption && <div className="caption italic pt-2">{e.caption}</div>}
+                                {e.caption && <div className="pl-8 sm:pl-0 caption italic pt-2">{e.caption}</div>}
                             </div>
                         </>
                     );

@@ -34,6 +34,8 @@ const Navbar = (props) => {
     function clicker(e) {
         setShowMenu((current) => !current);
         burgerRef.current.classList.toggle("open");
+        navRef.current.classList.toggle("fixed");
+        navRef.current.classList.toggle("absolute");
         if (!showMenu) {
             setMobileClass("slide-in-left");
         } else {
@@ -107,7 +109,11 @@ const Navbar = (props) => {
                 phone={props.phone}
                 email={props.email}
             ></MobileNav>
-            <nav className="navbar text-white  hidden sm:block w-full absolute z-30 header-section">
+            <nav
+                className={`navbar ${
+                    props.dark ? "text-text" : "text-white"
+                }  hidden sm:block w-full absolute z-30 header-section`}
+            >
                 <div className="container px-16 flex grid grid-cols-12 font-semibold font-europa tracking-wider m-auto">
                     <div className="middle col-span-6 flex items-center  pt-4">
                         <Link href="/">
@@ -183,11 +189,12 @@ const Navbar = (props) => {
             </nav>
             <div
                 className="block  sm:hidden  burger absolute z-40 right-8 top-8"
+                ref={navRef}
                 onClick={(e) => {
                     clicker(e);
                 }}
             >
-                <div id="burger" ref={burgerRef}>
+                <div className="fixed" id="burger" ref={burgerRef}>
                     <span></span>
                     <span></span>
                 </div>

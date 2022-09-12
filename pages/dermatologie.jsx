@@ -55,7 +55,13 @@ export default function Dermatologie({ data, dermaData }) {
             </motion.div>
             <BehandlungNav klasseTwo="active"></BehandlungNav>
 
-            <BehandlungTop headline={dermaData[0].intro.headline} valueLeft={dermaData[0].intro.text}></BehandlungTop>
+            <BehandlungTop
+                headline={dermaData[0].intro.headline}
+                valueLeft={dermaData[0].intro.text}
+                preise={dermaData[0].preise.headline}
+                preiseText={dermaData[0].preise.textPrice}
+                preiseTextAfter={dermaData[0].preise.textPriceAfter}
+            ></BehandlungTop>
             <BehandlungenContainer
                 dataNav={dermaData[0].behandlungen}
                 dataBehandlung={dermaData[0].behandlungen}
