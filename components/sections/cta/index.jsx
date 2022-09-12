@@ -12,12 +12,14 @@ import { Controller, useForm } from "react-hook-form";
 import Error from "../../form/error";
 import axios from "axios";
 import { Rings } from "react-loader-spinner";
+import { Mon, Tue, Wed, Thu, Fri } from "../../utils/days";
 
 export default function CTAContent(props) {
     const [selectedDay, setSelectedDay] = useState(null);
     const [loading, setLoading] = useState(false);
     const [success, setSuccess] = useState(false);
     const [date, setDate] = useState(new Date().toISOString().slice(0, 10));
+    const [day, setDay] = useState(new Date().getDay());
 
     const dateRef = useRef();
 
@@ -52,7 +54,9 @@ export default function CTAContent(props) {
         }
     }
 
-    useEffect(() => {}, []);
+    useEffect(() => {
+        console.log(new Date().getDay());
+    }, []);
 
     return (
         <MainContainer width={`w-100  font-europa gap-6`}>
@@ -168,6 +172,9 @@ export default function CTAContent(props) {
                             type="date"
                             onChange={(e) => {
                                 setDate(e.target.value);
+                                console.log(Date.parse(e.target.value));
+                                console.log(new Date(e.target.value).getDay());
+                                setDay(new Date(e.target.value).getDay());
                             }}
                         />
                     </div>
@@ -182,7 +189,7 @@ export default function CTAContent(props) {
                             placeholder="Uhrzeit wählen"
                             id="uhrzeit"
                         >
-                            <option value="09:00">09:00</option>
+                            {/* <option value="09:00">09:00</option>
                             <option value="09:30">09:30</option>
                             <option value="10:00">10:00</option>
                             <option value="10:30">10:30</option>
@@ -201,7 +208,12 @@ export default function CTAContent(props) {
                             <option value="17:00">17:00</option>
                             <option value="17:30">17:30</option>
                             <option value="18:00">18:00</option>
-                            <option value="18:30">18:30</option>
+                            <option value="18:30">18:30</option> */}
+                            {day === 1 && Mon()}
+                            {day === 2 && Tue()}
+                            {day === 3 && Wed()}
+                            {day === 4 && Thu()}
+                            {day === 5 && Fri()}
                         </select>
                     </div>
                     <div className="col-span-12">
