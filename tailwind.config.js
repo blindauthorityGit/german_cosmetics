@@ -15,15 +15,16 @@ module.exports = {
         },
         extend: {
             colors: {
-                primaryColor: "#A54399",
-                darkPurple: "#473046",
+                primaryColor: "#8E8162",
+                secondaryColor: "#bab298",
+                darkPurple: "#71664D",
                 overlay: "#A54399",
                 pink: "#e41aff",
                 rosa: "#d77bbf",
                 // footer: "#526576",
                 footer: "#1d1e1e",
                 text: "#414646",
-                lightGray: "#EEF0F2",
+                lightGray: "#F5F0ED",
             },
             fontFamily: {
                 ...fontFamily,

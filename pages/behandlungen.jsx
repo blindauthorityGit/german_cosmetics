@@ -20,7 +20,7 @@ function urlFor(source) {
     return builder.image(source);
 }
 
-export default function LaserBehanldungen({ data, laserData }) {
+export default function LaserBehanldungen({ data, laserData, dataKontakt, resKomponente }) {
     const headlineRef = useRef();
     const containerRef = useRef();
     const arztRef = useRef();
@@ -49,6 +49,7 @@ export default function LaserBehanldungen({ data, laserData }) {
     useEffect(() => {
         // Korrekte ID's für Sidenav
         laserData[0].categories.map((e, i) => {
+            // console.log(dataSet(`cat${i}`));
             dataSet(`cat${i}`)[0].id = idFormater(i);
         });
         console.log(data[0].imagebox.headline[0].title);
@@ -72,11 +73,19 @@ export default function LaserBehanldungen({ data, laserData }) {
                 <title>{laserData[0].seo.title}</title>
                 <meta name="description" content={laserData[0].seo.description} />
             </Head>
-            <Navbar logoLight={urlFor(data[3].logo.logo_light)} logoDark={urlFor(data[3].logo.logo_dark)}></Navbar>
+            <Navbar
+                strasse={dataKontakt[0].adresse.strasse}
+                ort={dataKontakt[0].adresse.ort}
+                phone={dataKontakt[0].kontakt.phone}
+                email={dataKontakt[0].kontakt.email}
+                value={dataKontakt[0].oeffnungszeiten}
+                logoLight={urlFor(data[3].logo.logo_light)}
+                logoDark={urlFor(data[3].logo.logo_dark)}
+            ></Navbar>
             <motion.div layoutId={"Hero"} animate={{ opacity: 1 }}>
                 <PageHero
                     bg={urlFor(laserData[0].hero_settings.backgroundImg).width(1560).height(550)}
-                    headline="Lasermedizin"
+                    headline="Behandlungen"
                     showButton={false}
                 ></PageHero>
             </motion.div>
@@ -93,9 +102,9 @@ export default function LaserBehanldungen({ data, laserData }) {
             ></LaserBehandlungContainer>
             <ImageBox
                 single={true}
-                headline={data[0].imagebox.headline[0].title}
-                img={data[0].imagebox.headline[0].img}
-                href={data[0].imagebox.headline[0].title.toLowerCase()}
+                headline={resKomponente[0].imagebox.headline[1].title}
+                img={resKomponente[0].imagebox.headline[1].img}
+                href={resKomponente[0].imagebox.headline[1].title.toLowerCase()}
             ></ImageBox>
 
             <CTA
@@ -103,6 +112,11 @@ export default function LaserBehanldungen({ data, laserData }) {
                 headline={data[0].cta.headline}
                 text={data[0].cta.text}
                 button={data[0].cta.button_text}
+                strasse={dataKontakt[0].adresse.strasse}
+                ort={dataKontakt[0].adresse.ort}
+                phone={dataKontakt[0].kontakt.phone}
+                email={dataKontakt[0].kontakt.email}
+                value={dataKontakt[0].oeffnungszeiten}
             ></CTA>
 
             <LinkBox
@@ -114,11 +128,11 @@ export default function LaserBehanldungen({ data, laserData }) {
             ></LinkBox>
             <Footer
                 logo={urlFor(data[3].logo.logo_light)}
-                strasse={data[1].adresse.strasse}
-                ort={data[1].adresse.ort}
-                phone={data[1].kontakt.phone}
-                email={data[1].kontakt.email}
-                value={data[1].oeffnungszeiten}
+                strasse={dataKontakt[0].adresse.strasse}
+                ort={dataKontakt[0].adresse.ort}
+                phone={dataKontakt[0].kontakt.phone}
+                email={dataKontakt[0].kontakt.email}
+                value={dataKontakt[0].oeffnungszeiten}
             ></Footer>
         </>
     );
@@ -126,17 +140,24 @@ export default function LaserBehanldungen({ data, laserData }) {
 
 export async function getStaticProps() {
     const res = await client.fetch(
-        `*[_type in ["aesthetic_praxis", "aesthetic_kontakt", "aesthetic_settings", "aesthetic_komponente"] ]`
+        `*[_type in ["aesthetic_praxis", "aesthetic_kontakt", "cosmetics_settings", "aesthetic_komponente"] ]`
     );
-    const laserRes = await client.fetch(`*[_type in ["aesthetic_laserbehandlung"] ]`);
+    const laserRes = await client.fetch(`*[_type in ["cosmetics_behandlung"] ]`);
     // const res = await fetch("https://jsonplaceholder.typicode.com/todos/1");
+    const resKontakt = await client.fetch(`*[_type in ["cosmetics_kontakt"] ]`);
+    const resKomponente = await client.fetch(`*[_type in ["cosmetics_komponente"] ]`);
 
     const data = await res;
     const laserData = await laserRes;
+    const dataKontakt = await resKontakt;
+    const dataKomponente = await resKomponente;
+
     return {
         props: {
             data,
             laserData,
+            dataKontakt,
+            resKomponente,
         },
     };
 }

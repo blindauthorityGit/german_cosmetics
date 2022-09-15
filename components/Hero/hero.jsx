@@ -49,7 +49,7 @@ const Hero = (props) => {
         config: config.molasses,
     });
     const opacityIn = useSpring({
-        to: { opacity: "0.1" },
+        to: { opacity: "0.3" },
         from: { opacity: "1" },
         delay: 0,
         config: { duration: 2500 },
@@ -120,10 +120,6 @@ const Hero = (props) => {
                             <hr />
                             <div className="wrapper flex  oeffnung  py-2 sm:py-0 sm:pb-24 sm:pt-8 pl-12 sm:pr-24">
                                 <div className="left mr-6 text-left oeffnung clamp">
-                                    Mo
-                                    <br />
-                                    Di
-                                    <br />
                                     Mi
                                     <br />
                                     Do

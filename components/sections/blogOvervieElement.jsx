@@ -10,7 +10,7 @@ const BlogOverviewElement = (props) => {
         <div className={`w-full ${props.klasse}`}>
             <Link href={props.link}>
                 <a className="cursor-pointer relative  group transition-all overflow-hidden">
-                    <div className="overlay absolute z-30 w-full h-full bg-gradient-to-t transition-all duration-500 from-[#00000061] group-hover:from-[#0000] opacity-40 group-hover:opacity-80 group-hover:bg-overlay group-hover:from-bg-overlay  top-0"></div>
+                    <div className="overlay absolute z-30 w-full h-full bg-gradient-to-t transition-all duration-500 from-[#00000061] group-hover:from-[#0000] opacity-40 group-hover:opacity-20 group-hover:bg-secondaryColor group-hover:from-bg-overlay  top-0"></div>
                     <img
                         className="transition-all duration-300 group-hover:opacity-50 overflow-hidden"
                         src={props.image}

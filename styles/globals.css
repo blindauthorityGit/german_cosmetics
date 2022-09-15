@@ -134,13 +134,13 @@ h2 {
   position: absolute;
   width: .25rem;
   height: 100%;
-  background: #d679be;
+  background: #8E8162;
   left: -2rem;
 }
 
 .activeLink {
   font-weight: 800;
-  color: #A54399;
+  color: #8E8162;
   position: relative;
 }
 
@@ -148,7 +148,7 @@ h2 {
   content: "-->";
   position: absolute;
   right: 0;
-  color: #A54399;
+  color: #8E8162;
 }
 
 .swiper-slide {
@@ -163,7 +163,7 @@ h2 {
 .activeSideLink {
   position: relative;
   font-weight: 800;
-  color: #A54399;
+  color: #8E8162;
 }
 
 .scrollContainer {
@@ -182,8 +182,14 @@ html {
 }
 
 .active {
-  background: #A54399;
+  background: #8E8162;
   color: white;
+}
+
+.activeBtn {
+  background: #8E8162;
+  color: white;
+  padding: 1.65rem;
 }
 
 .dropdown::before {
@@ -205,7 +211,7 @@ html {
   font-family: "Font Awesome 5 Free";
   content: "\f068";
   position: absolute;
-  color: #A54399;
+  color: #8E8162;
   font-size: 1.5rem;
   left: -2rem;
   top: -0.3rem;
@@ -236,12 +242,16 @@ html {
   cursor: pointer;
 }
 
+.fontAuto p {
+  font-size: 1rem !important;
+}
+
 .quick:hover {
   opacity: 1;
 }
 
 .clamp {
-  font-size: clamp(0.88rem, calc(0.73rem + 0.73vw), 1.25rem);
+  font-size: clamp(0.88rem, calc(0.73rem + 0.73vw), 1.25rem) !important;
 }
 
 .is-sticky {
@@ -265,11 +275,11 @@ html {
 }
 
 .swiper-button-next::after, .swiper-button-prev::after {
-  color: #A54399;
+  color: #8E8162;
 }
 
 .swiper-pagination-bullet-active {
-  background: #A54399 !important;
+  background: #8E8162 !important;
 }
 
 .swiper-pagination {
@@ -299,7 +309,7 @@ h5 {
 }
 
 .impressum a {
-  color: #A54399;
+  color: #8E8162;
 }
 
 .impressum h2 {

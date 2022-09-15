@@ -21,6 +21,11 @@ import ScrollAnimation from "react-animate-on-scroll";
 import DerArzt from "../components/sections/derArzt";
 import TeamMember from "../components/sections/teamMember";
 
+import Overlay from "../components/sections/modal/overlay";
+import Modal from "../components/sections/modal/modal";
+import CTAContent from "../components/sections/cta/";
+import { modalSwitcher, hideModalSet } from "../functions/modal";
+
 import { motion } from "framer-motion";
 
 const builder = imageUrlBuilder(client);
@@ -29,7 +34,7 @@ function urlFor(source) {
     return builder.image(source);
 }
 
-export default function Praxis({ data }) {
+export default function Praxis({ data, dataCosmetics, dataKontakt }) {
     const arztRef = useRef();
     const teamRef = useRef();
 
@@ -46,13 +51,13 @@ export default function Praxis({ data }) {
                 <meta name="description" content={data[3].seo.description} />
             </Head>
             <Navbar
-                strasse={data[1].adresse.strasse}
-                ort={data[1].adresse.ort}
-                phone={data[1].kontakt.phone}
-                email={data[1].kontakt.email}
-                value={data[1].oeffnungszeiten}
-                logoLight={urlFor(data[3].logo.logo_light)}
-                logoDark={urlFor(data[3].logo.logo_dark)}
+                strasse={dataKontakt[0].adresse.strasse}
+                ort={dataKontakt[0].adresse.ort}
+                phone={dataKontakt[0].kontakt.phone}
+                email={dataKontakt[0].kontakt.email}
+                value={dataKontakt[0].oeffnungszeiten}
+                logoLight={urlFor(dataCosmetics[0].logo.logo_light)}
+                logoDark={urlFor(dataCosmetics[0].logo.logo_dark)}
             ></Navbar>
             <motion.div layoutId={"Hero"} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
                 <PageHero
@@ -78,7 +83,7 @@ export default function Praxis({ data }) {
 
             {/* <CTA headline={data[0].cta.headline} text={data[0].cta.text} button={data[0].cta.button_text}></CTA> */}
             <MainContainer width="w-100 gap-4 sm:mt-24  sm:mt-24 container font-europa sm:px-16 ">
-                <div className="container m-auto col-span-12">
+                <div id="team" className="container m-auto col-span-12">
                     {showDoc && (
                         <DerArzt
                             img={urlFor(data[2].arzt.arztImg)
@@ -184,7 +189,19 @@ export default function Praxis({ data }) {
                 text={data[0].cta_jobs.text}
                 button={data[0].cta_jobs.button_text}
             ></JobsCTA>
-            <CTA headline={data[0].cta.headline} text={data[0].cta.text} button={data[0].cta.button_text}></CTA>
+            <CTA
+                onClick={(e) => {
+                    modalSwitcher(e, showModal, setShowModal);
+                }}
+                headline={data[0].cta.headline}
+                text={data[0].cta.text}
+                button={data[0].cta.button_text}
+                strasse={dataKontakt[0].adresse.strasse}
+                ort={dataKontakt[0].adresse.ort}
+                phone={dataKontakt[0].kontakt.phone}
+                email={dataKontakt[0].kontakt.email}
+                value={dataKontakt[0].oeffnungszeiten}
+            ></CTA>
 
             <LinkBox
                 klasse="sm:mt-16 mt-24"
@@ -211,10 +228,18 @@ export async function getStaticProps() {
     );
 
     const data = await res;
+    const resCosmetic = await client.fetch(`*[_type in ["cosmetics_settings"] ]`);
+
+    const dataCosmetics = await resCosmetic;
+    const resKontakt = await client.fetch(`*[_type in ["cosmetics_kontakt"] ]`);
+
+    const dataKontakt = await resKontakt;
 
     return {
         props: {
             data,
+            dataCosmetics,
+            dataKontakt,
         },
     };
 }

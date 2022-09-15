@@ -55,11 +55,7 @@ const Footer = (props) => {
                     <div className="col-span-12 sm:col-span-3 mt-8 sm:mt-0">
                         <H4 klasse="text-white">Praxiszeiten</H4>
                         <div className="wrapper flex oeffnung opacity-60">
-                            <div className="left mr-6 text-left 2xl:clamp">
-                                Mo
-                                <br />
-                                Di
-                                <br />
+                            <div className="left mr-6 text-left  2xl:clamp">
                                 Mi
                                 <br />
                                 Do
@@ -67,7 +63,7 @@ const Footer = (props) => {
                                 Fr
                                 <br />
                             </div>
-                            <div className="right text-left 2xl:clamp">
+                            <div className="right text-left  fontAuto">
                                 <PortableText value={props.value}></PortableText>
                             </div>
                         </div>

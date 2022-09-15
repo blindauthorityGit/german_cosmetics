@@ -4,14 +4,14 @@ const TopSubNav = () => {
     const [active, setActive] = useState(false);
 
     function toggleActive(e) {
-        e.target.classList.toggle("active");
+        e.target.classList.toggle("activeBtn");
     }
 
     return (
         <div className="container hidden sm:block m-auto mt-8 font-europa">
             <div className="wrapper flex border-y-2 py-6 px-12">
                 <div id="raum" className="mr-12">
-                    <a onClick={toggleActive} className="active" href="#raum">
+                    <a onClick={toggleActive} className="activeBtn" href="#raum">
                         Räumlichkeiten
                     </a>
                 </div>
