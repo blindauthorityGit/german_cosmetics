@@ -41,7 +41,7 @@ export default function Home({ data, dataBlog, dataHome, dataKontakt, dataKompon
             <Head>
                 <title>{dataHome[0].seo.title}</title>
                 <meta name="description" content={dataHome[0].seo.description} />
-                <link rel="shortcut icon" href={urlFor(data[3].logo.favicon)} />
+                {/* <link rel="shortcut icon" href={urlFor(data[3].logo.favicon)} /> */}
             </Head>
             {showModal && (
                 <>
