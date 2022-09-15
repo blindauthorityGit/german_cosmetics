@@ -12,7 +12,7 @@ import { Controller, useForm } from "react-hook-form";
 import Error from "../../form/error";
 import axios from "axios";
 import { Rings } from "react-loader-spinner";
-import { Mon, Tue, Wed, Thu, Fri, No } from "../../utils/days";
+import { Wed, Thu, Fri, No } from "../../utils/days";
 
 export default function CTAContent(props) {
     const [selectedDay, setSelectedDay] = useState(null);
@@ -209,8 +209,8 @@ export default function CTAContent(props) {
                             <option value="17:30">17:30</option>
                             <option value="18:00">18:00</option>
                             <option value="18:30">18:30</option> */}
-                            {day === 1 && Mon()}
-                            {day === 2 && Tue()}
+                            {day === 1 && No()}
+                            {day === 2 && No()}
                             {day === 3 && Wed()}
                             {day === 4 && Thu()}
                             {day === 5 && Fri()}
@@ -304,10 +304,6 @@ export default function CTAContent(props) {
                     <H4 klasse="text-text col-span-12 mb-8">Öffnungszeiten</H4>
                     <div className="wrapper flex oeffnung">
                         <div className="left mr-6 text-left clamp">
-                            Mo
-                            <br />
-                            Di
-                            <br />
                             Mi
                             <br />
                             Do

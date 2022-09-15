@@ -98,7 +98,74 @@ export default () =>
             S.listItem()
                 .title("German Cosmetics")
                 .icon(Cosmetics)
-                .child(S.document().schemaType("angeboteSettings").documentId("angeboteSettings")),
+                .child(
+                    S.list()
+                        // Sets a title for our new list
+                        .title("German Cosmetics")
+                        // Add items to the array
+                        // Each will pull one of our new singletons
+                        .items([
+                            S.listItem()
+                                .title("Settings")
+                                .icon(MdSettings)
+                                .child(S.document().schemaType("cosmetics_settings").documentId("cosmetics_settings")),
+                            S.listItem()
+                                .title("Pages")
+                                .icon(ImTextColor)
+                                .child(
+                                    S.list()
+                                        .title("Seiten")
+                                        .items([
+                                            S.listItem()
+                                                .title("Home")
+                                                .icon(GoHome)
+                                                .child(
+                                                    S.document()
+                                                        .schemaType("cosmetics_home")
+                                                        .documentId("cosmetics_home")
+                                                ),
+                                            S.listItem()
+                                                .title("Praxis")
+                                                .icon(MdMeetingRoom)
+                                                .child(
+                                                    S.document()
+                                                        .schemaType("aesthetic_praxis")
+                                                        .documentId("aesthetic_praxis")
+                                                ),
+                                            S.listItem()
+                                                .title("Behandlungen")
+                                                .icon(GiLaserWarning)
+                                                .child(
+                                                    S.document()
+                                                        .schemaType("cosmetics_behandlung")
+                                                        .documentId("cosmetics_behandlung")
+                                                ),
+                                            S.listItem()
+                                                .title("Dermatologie")
+                                                .icon(FaHandHoldingMedical)
+                                                .child(
+                                                    S.document()
+                                                        .schemaType("aesthetic_dermatologie")
+                                                        .documentId("aesthetic_dermatologie")
+                                                ),
+                                        ])
+                                ),
+                            S.listItem()
+                                .title("Kontakt")
+                                .icon(GrContact)
+                                .child(S.document().schemaType("cosmetics_kontakt").documentId("cosmetics_kontakt")),
+                            S.listItem()
+                                .title("Komponente")
+                                .icon(GrTechnology)
+                                .child(
+                                    S.document().schemaType("cosmetics_komponente").documentId("cosmetics_komponente")
+                                ),
+                        ])
+                ),
+            // S.listItem()
+            //     .title("German Cosmetics")
+            //     .icon(Cosmetics)
+            //     .child(S.document().schemaType("angeboteSettings").documentId("angeboteSettings")),
             // ...S.documentTypeListItems(),
             // ...S.documentTypeListItems().filter((item) => !["angebotSetting"].includes(item.getId())),
             S.divider(),
@@ -145,6 +212,10 @@ export default () =>
                         "aesthetic_home",
                         "impressum",
                         "datenschutz",
+                        "cosmetics_settings",
+                        "cosmetics_home",
+                        "cosmetics_kontakt",
+                        "cosmetics_komponente",
                     ].includes(listItem.getId())
             ),
         ]);

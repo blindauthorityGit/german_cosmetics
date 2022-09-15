@@ -42,7 +42,7 @@ const HomeSwiper = (props) => {
                 <PortableText className="font-europa" value={props.value} />
                 {props.children}
                 <Link href="/praxis">
-                    <DefaultButton klasse="mt-8 sm:mt-16 mb-12 sm:mb-0 hover:bg-primaryColor hover:text-white border border-[#A54399] text-primaryColor">
+                    <DefaultButton klasse="mt-8 sm:mt-16 mb-12 sm:mb-0 hover:bg-primaryColor hover:text-white border border-primaryColor text-primaryColor">
                         {props.button}
                     </DefaultButton>
                 </Link>

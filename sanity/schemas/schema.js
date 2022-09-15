@@ -26,6 +26,14 @@ import jobs from "./main/jobs";
 import impressum from "./main/impressum";
 import datenschutz from "./main/datenschutz";
 
+import cosmetics_settings from "./cosmetics/settings";
+import cosmetics_home from "./cosmetics/home/all";
+import cosmetics_kontakt from "./cosmetics/kontakt";
+import cosmetics_komponente from "./cosmetics/komponente/";
+import cosmetics_imageBox from "./cosmetics/komponente/imageBox";
+import behandlung from "./cosmetics/objects/behandlung";
+import cosmetics_behandlung from "./cosmetics/behandlungen/";
+
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
     // We name our schema
@@ -56,5 +64,12 @@ export default createSchema({
         jobs,
         impressum,
         datenschutz,
+        cosmetics_settings,
+        cosmetics_home,
+        cosmetics_kontakt,
+        cosmetics_komponente,
+        cosmetics_imageBox,
+        behandlung,
+        cosmetics_behandlung,
     ]),
 });

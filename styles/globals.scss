@@ -166,7 +166,7 @@ h2 {
   position: absolute;
   width: .25rem;
   height: 100%;
-  background: #d679be;
+  background: #8E8162;
   left: -2rem;
 }
 // h2::before{
@@ -192,7 +192,7 @@ h2 {
 // }
 .activeLink {
   font-weight: 800;
-  color: #A54399;
+  color: #8E8162;
   position: relative;
 }
 
@@ -200,7 +200,7 @@ h2 {
   content: "-->";
   position: absolute;
   right: 0;
-  color: #A54399;
+  color: #8E8162;
 }
 
 .swiper-slide {
@@ -219,7 +219,7 @@ h2 {
   position: relative;
 
     font-weight: 800;
-    color: #A54399;
+    color: #8E8162;
 }
 
 .scrollContainer {
@@ -242,9 +242,15 @@ html {
 }
 
 .active {
-  background: #A54399;
+  background: #8E8162;
   color: white;
   // padding: 1.65rem;
+}
+
+.activeBtn {
+  background: #8E8162;
+  color: white;
+  padding: 1.65rem;
 }
 
 .dropdown::before {
@@ -266,7 +272,7 @@ background: linear-gradient(45deg, rgba(255,35,158,1) 0%, rgba(218,42,233,1) 48%
 
   content: "\f068";
   position: absolute;
-  color: #A54399;
+  color: #8E8162;
   font-size: 1.5rem;
   left: -2rem;
   top: -0.3rem
@@ -296,13 +302,20 @@ background: linear-gradient(45deg, rgba(255,35,158,1) 0%, rgba(218,42,233,1) 48%
 
 }
 
+.fontAuto {
+  p {
+      font-size: 1rem !important;
+  }
+
+}
+
 .quick:hover {
       opacity: 1;
 
 }
 
 .clamp {
-  font-size: clamp(0.88rem, calc(0.73rem + 0.73vw), 1.25rem);
+  font-size: clamp(0.88rem, calc(0.73rem + 0.73vw), 1.25rem)!important;
 }
 
 .is-sticky {
@@ -327,11 +340,11 @@ background: linear-gradient(45deg, rgba(255,35,158,1) 0%, rgba(218,42,233,1) 48%
 }
 
 .swiper-button-next::after, .swiper-button-prev::after {
-  color:#A54399;
+  color:#8E8162;
 }
 
 .swiper-pagination-bullet-active {
-  background: #A54399!important;
+  background: #8E8162!important;
 }
 
 .swiper-pagination {
@@ -364,7 +377,7 @@ h5 {
 
 .impressum {
   a {
-    color: #A54399;
+    color: #8E8162;
   }
   h2 {
     font-size: 1.75rem;
