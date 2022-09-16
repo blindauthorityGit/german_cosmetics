@@ -16,9 +16,11 @@ const LinkBox = (props) => {
                 <div className="text p-16 z-20 relative flex flex-col items-center justify-center h-full">
                     <H2 klasse="text-white mb-8">{props.headline}</H2>
                     <p className="text-white mb-12">{props.text}</p>
-                    <DefaultButton klasse="border border-white text-white w-3/4 transition hover:bg-white hover:text-text">
-                        {props.button}
-                    </DefaultButton>
+                    <a className="flex items-center justify-center w-full" href="https://german-cosmetics.vercel.app/">
+                        <DefaultButton klasse="border border-white text-white w-3/4 transition hover:bg-white hover:text-text">
+                            {props.button}
+                        </DefaultButton>
+                    </a>
                 </div>
                 <div className="absolute w-full h-full cosmeticLink top-0"></div>
             </div>

@@ -40,6 +40,7 @@ export default function Blog({ data, dataBlog, dataBlogSettings }) {
                 email={data[2].kontakt.email}
                 value={data[2].oeffnungszeiten}
                 logoDark={urlFor(data[3].logo.logo_dark)}
+                logoLight={urlFor(data[3].logo.logo_light)}
             ></Navbar>
             <PageHero
                 bg={urlFor(dataBlogSettings[0].bgImage).width(1560).height(550)}
@@ -56,7 +57,7 @@ export default function Blog({ data, dataBlog, dataBlogSettings }) {
                             date={e.blog_settings.date.split("-").reverse().join("-")}
                             // image={urlFor(e.blog_settings.featuredImg).width("575").height("360")}
                             image={
-                                urlFor(e.blog_settings.featuredImg).auto("format").fit("max")
+                                urlFor(e.blog_settings.featuredImg).width(600).height(400)
                                 // .width(_isMobile ? "100%" : 575)
                                 // .height("360")}
                             }

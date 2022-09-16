@@ -247,6 +247,12 @@ html {
   // padding: 1.65rem;
 }
 
+.activeBtn {
+  background: #A54399;
+  color: white;
+  padding: 1.65rem;
+}
+
 .dropdown::before {
   content: "■";
   position: absolute;
@@ -370,6 +376,13 @@ h5 {
     font-size: 1.75rem;
     margin-top: 1.5rem;
   }
+}
+
+.fontAuto {
+  p {
+      font-size: 1rem !important;
+  }
+
 }
 
 .preise {

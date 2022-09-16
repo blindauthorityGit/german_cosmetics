@@ -78,6 +78,11 @@ export default function Dermatologie({ data, dermaData }) {
                 headline={data[0].cta.headline}
                 text={data[0].cta.text}
                 button={data[0].cta.button_text}
+                strasse={data[1].adresse.strasse}
+                ort={data[1].adresse.ort}
+                phone={data[1].kontakt.phone}
+                email={data[1].kontakt.email}
+                value={data[1].oeffnungszeiten}
             ></CTA>
 
             <LinkBox

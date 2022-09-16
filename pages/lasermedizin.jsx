@@ -72,7 +72,15 @@ export default function LaserBehanldungen({ data, laserData }) {
                 <title>{laserData[0].seo.title}</title>
                 <meta name="description" content={laserData[0].seo.description} />
             </Head>
-            <Navbar logoLight={urlFor(data[3].logo.logo_light)} logoDark={urlFor(data[3].logo.logo_dark)}></Navbar>
+            <Navbar
+                strasse={data[1].adresse.strasse}
+                ort={data[1].adresse.ort}
+                phone={data[1].kontakt.phone}
+                email={data[1].kontakt.email}
+                value={data[1].oeffnungszeiten}
+                logoLight={urlFor(data[3].logo.logo_light)}
+                logoDark={urlFor(data[3].logo.logo_dark)}
+            ></Navbar>
             <motion.div layoutId={"Hero"} animate={{ opacity: 1 }}>
                 <PageHero
                     bg={urlFor(laserData[0].hero_settings.backgroundImg).width(1560).height(550)}
@@ -103,6 +111,11 @@ export default function LaserBehanldungen({ data, laserData }) {
                 headline={data[0].cta.headline}
                 text={data[0].cta.text}
                 button={data[0].cta.button_text}
+                strasse={data[1].adresse.strasse}
+                ort={data[1].adresse.ort}
+                phone={data[1].kontakt.phone}
+                email={data[1].kontakt.email}
+                value={data[1].oeffnungszeiten}
             ></CTA>
 
             <LinkBox

@@ -78,7 +78,7 @@ export default function Praxis({ data }) {
 
             {/* <CTA headline={data[0].cta.headline} text={data[0].cta.text} button={data[0].cta.button_text}></CTA> */}
             <MainContainer width="w-100 gap-4 sm:mt-24  sm:mt-24 container font-europa sm:px-16 ">
-                <div className="container m-auto col-span-12">
+                <div id="team" className="container m-auto col-span-12">
                     {showDoc && (
                         <DerArzt
                             img={urlFor(data[2].arzt.arztImg)
@@ -184,7 +184,16 @@ export default function Praxis({ data }) {
                 text={data[0].cta_jobs.text}
                 button={data[0].cta_jobs.button_text}
             ></JobsCTA>
-            <CTA headline={data[0].cta.headline} text={data[0].cta.text} button={data[0].cta.button_text}></CTA>
+            <CTA
+                strasse={data[1].adresse.strasse}
+                ort={data[1].adresse.ort}
+                phone={data[1].kontakt.phone}
+                email={data[1].kontakt.email}
+                value={data[1].oeffnungszeiten}
+                headline={data[0].cta.headline}
+                text={data[0].cta.text}
+                button={data[0].cta.button_text}
+            ></CTA>
 
             <LinkBox
                 klasse="sm:mt-16 mt-24"

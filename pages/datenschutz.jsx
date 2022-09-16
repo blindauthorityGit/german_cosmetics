@@ -37,6 +37,11 @@ export default function Datenschutz({ data, impressumData }) {
                 dark={true}
                 logoLight={urlFor(data[3].logo.logo_dark)}
                 logoDark={urlFor(data[3].logo.logo_dark)}
+                strasse={data[1].adresse.strasse}
+                ort={data[1].adresse.ort}
+                phone={data[1].kontakt.phone}
+                email={data[1].kontakt.email}
+                value={data[1].oeffnungszeiten}
             ></Navbar>
             {/* <PageHero bg={JobHero.src} headline="Jobs" showButton={false}></PageHero> */}
             {/* <BehandlungTop

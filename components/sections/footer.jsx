@@ -67,7 +67,7 @@ const Footer = (props) => {
                                 Fr
                                 <br />
                             </div>
-                            <div className="right text-left 2xl:clamp">
+                            <div className="right text-left fontAuto">
                                 <PortableText value={props.value}></PortableText>
                             </div>
                         </div>

@@ -118,6 +118,11 @@ export default function Home({ data, dataBlog }) {
                 headline={data[1].cta.headline}
                 text={data[1].cta.text}
                 button={data[1].cta.button_text}
+                strasse={data[2].adresse.strasse}
+                ort={data[2].adresse.ort}
+                phone={data[2].kontakt.phone}
+                email={data[2].kontakt.email}
+                value={data[2].oeffnungszeiten}
             ></CTA>
             <BlogSwiper data={dataBlog}>
                 <div className="absolute w-[100%] h-[360px] bg-[#EEF0F2] top-0 sm:top-[30%]"></div>

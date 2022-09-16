@@ -32,7 +32,15 @@ export default function Jobs({ data, jobsData }) {
                 <title>{jobsData[0].seo.title}</title>
                 <meta name="description" content={jobsData[0].seo.description} />
             </Head> */}
-            <Navbar logoLight={urlFor(data[3].logo.logo_light)} logoDark={urlFor(data[3].logo.logo_dark)}></Navbar>
+            <Navbar
+                strasse={data[1].adresse.strasse}
+                ort={data[1].adresse.ort}
+                phone={data[1].kontakt.phone}
+                email={data[1].kontakt.email}
+                value={data[1].oeffnungszeiten}
+                logoLight={urlFor(data[3].logo.logo_light)}
+                logoDark={urlFor(data[3].logo.logo_dark)}
+            ></Navbar>
             <PageHero bg={JobHero.src} headline="Jobs" showButton={false}></PageHero>
             <BehandlungTop
                 klasse="pt-12"
