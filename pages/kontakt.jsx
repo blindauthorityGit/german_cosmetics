@@ -23,7 +23,7 @@ function urlFor(source) {
     return builder.image(source);
 }
 
-export default function Kontakt({ data, laserData, kontaktData }) {
+export default function Kontakt({ data, laserData, kontaktData, dataKomponente }) {
     const headlineRef = useRef();
     const containerRef = useRef();
 
@@ -73,10 +73,10 @@ export default function Kontakt({ data, laserData, kontaktData }) {
 
             <LinkBox
                 klasse="sm:mt-16"
-                image={urlFor(data[0].linkbox.img)}
-                headline={data[0].linkbox.headline}
-                text={data[0].linkbox.text}
-                button={data[0].linkbox.button_text}
+                image={urlFor(dataKomponente[0].linkbox.img)}
+                headline={dataKomponente[0].linkbox.headline}
+                text={dataKomponente[0].linkbox.text}
+                button={dataKomponente[0].linkbox.button_text}
             ></LinkBox>
             <Footer
                 logo={urlFor(data[3].logo.logo_light)}
@@ -102,11 +102,15 @@ export async function getStaticProps() {
     const data = await res;
     const laserData = await laserRes;
     const kontaktData = await resKontakt;
+    const resKomponente = await client.fetch(`*[_type in ["cosmetics_komponente"] ]`);
+
+    const dataKomponente = await resKomponente;
     return {
         props: {
             data,
             laserData,
             kontaktData,
+            dataKomponente,
         },
     };
 }

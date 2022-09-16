@@ -34,7 +34,7 @@ function urlFor(source) {
     return builder.image(source);
 }
 
-export default function Praxis({ data, dataCosmetics, dataKontakt }) {
+export default function Praxis({ data, dataCosmetics, dataKontakt, dataKomponente }) {
     const arztRef = useRef();
     const teamRef = useRef();
 
@@ -205,18 +205,18 @@ export default function Praxis({ data, dataCosmetics, dataKontakt }) {
 
             <LinkBox
                 klasse="sm:mt-16 mt-24"
-                image={urlFor(data[0].linkbox.img)}
-                headline={data[0].linkbox.headline}
-                text={data[0].linkbox.text}
-                button={data[0].linkbox.button_text}
+                image={urlFor(dataKomponente[0].linkbox.img)}
+                headline={dataKomponente[0].linkbox.headline}
+                text={dataKomponente[0].linkbox.text}
+                button={dataKomponente[0].linkbox.button_text}
             ></LinkBox>
             <Footer
-                logo={urlFor(data[3].logo.logo_light)}
-                strasse={data[1].adresse.strasse}
-                ort={data[1].adresse.ort}
-                phone={data[1].kontakt.phone}
-                email={data[1].kontakt.email}
-                value={data[1].oeffnungszeiten}
+                logo={urlFor(dataCosmetics[0].logo.logo_light)}
+                strasse={dataKontakt[0].adresse.strasse}
+                ort={dataKontakt[0].adresse.ort}
+                phone={dataKontakt[0].kontakt.phone}
+                email={dataKontakt[0].kontakt.email}
+                value={dataKontakt[0].oeffnungszeiten}
             ></Footer>
         </>
     );
@@ -232,14 +232,17 @@ export async function getStaticProps() {
 
     const dataCosmetics = await resCosmetic;
     const resKontakt = await client.fetch(`*[_type in ["cosmetics_kontakt"] ]`);
+    const resKomponente = await client.fetch(`*[_type in ["cosmetics_komponente"] ]`);
 
     const dataKontakt = await resKontakt;
+    const dataKomponente = await resKomponente;
 
     return {
         props: {
             data,
             dataCosmetics,
             dataKontakt,
+            dataKomponente,
         },
     };
 }

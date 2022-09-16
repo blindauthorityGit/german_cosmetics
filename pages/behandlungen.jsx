@@ -20,7 +20,7 @@ function urlFor(source) {
     return builder.image(source);
 }
 
-export default function LaserBehanldungen({ data, laserData, dataKontakt, resKomponente }) {
+export default function LaserBehanldungen({ data, laserData, dataKontakt, resKomponente, dataKomponente }) {
     const headlineRef = useRef();
     const containerRef = useRef();
     const arztRef = useRef();
@@ -120,11 +120,11 @@ export default function LaserBehanldungen({ data, laserData, dataKontakt, resKom
             ></CTA>
 
             <LinkBox
-                klasse="sm:mt-16"
-                image={urlFor(data[0].linkbox.img)}
-                headline={data[0].linkbox.headline}
-                text={data[0].linkbox.text}
-                button={data[0].linkbox.button_text}
+                klasse="sm:mt-16 mt-24"
+                image={urlFor(dataKomponente[0].linkbox.img)}
+                headline={dataKomponente[0].linkbox.headline}
+                text={dataKomponente[0].linkbox.text}
+                button={dataKomponente[0].linkbox.button_text}
             ></LinkBox>
             <Footer
                 logo={urlFor(data[3].logo.logo_light)}
@@ -158,6 +158,7 @@ export async function getStaticProps() {
             laserData,
             dataKontakt,
             resKomponente,
+            dataKomponente,
         },
     };
 }
