@@ -84,10 +84,10 @@ export default function Produkte({ data, dermaData, produkteData, produkteKompon
 
             <LinkBox
                 klasse="sm:mt-16"
-                image={urlFor(data[0].linkbox.img)}
-                headline={data[0].linkbox.headline}
-                text={data[0].linkbox.text}
-                button={data[0].linkbox.button_text}
+                image={urlFor(produkteKomponente[0].linkbox.img)}
+                headline={produkteKomponente[0].linkbox.headline}
+                text={produkteKomponente[0].linkbox.text}
+                button={produkteKomponente[0].linkbox.button_text}
             ></LinkBox>
             <Footer
                 logo={urlFor(data[3].logo.logo_light)}

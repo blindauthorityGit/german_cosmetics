@@ -90,11 +90,12 @@ export default function Blog({ data, dataBlog, dataBlogSettings }) {
 
 export async function getStaticProps() {
     const res = await client.fetch(
-        `*[_type in ["aesthetic_home", "cosmetics_kontakt", "cosmetics_settings", "aesthetic_komponente"] ]`
+        `*[_type in ["aesthetic_home", "cosmetics_kontakt", "cosmetics_settings", "cosmetics_komponente"] ]`
     );
     const resBlog = await client.fetch(`*[_type in ["blogEntry"] ]`);
     // const res = await fetch("https://jsonplaceholder.typicode.com/todos/1");
     const resBlogSettings = await client.fetch(`*[_type in ["blog_settings"] ]`);
+    const resKomponente = await client.fetch(`*[_type in ["cosmetics_komponente"] ]`);
 
     const data = await sorter(res);
     const dataBlog = await resBlog;

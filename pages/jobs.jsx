@@ -21,7 +21,7 @@ function urlFor(source) {
     return builder.image(source);
 }
 
-export default function Jobs({ data, jobsData, dataKontakt }) {
+export default function Jobs({ data, jobsData, dataKontakt, dataKomponente }) {
     useEffect(() => {
         console.log(jobsData);
     }, []);
@@ -67,10 +67,10 @@ export default function Jobs({ data, jobsData, dataKontakt }) {
 
             <LinkBox
                 klasse="sm:mt-16"
-                image={urlFor(data[0].linkbox.img)}
-                headline={data[0].linkbox.headline}
-                text={data[0].linkbox.text}
-                button={data[0].linkbox.button_text}
+                image={urlFor(dataKomponente[0].linkbox.img)}
+                headline={dataKomponente[0].linkbox.headline}
+                text={dataKomponente[0].linkbox.text}
+                button={dataKomponente[0].linkbox.button_text}
             ></LinkBox>
             <Footer
                 logo={urlFor(data[3].logo.logo_light)}
@@ -96,11 +96,15 @@ export async function getStaticProps() {
     const resKontakt = await client.fetch(`*[_type in ["cosmetics_kontakt"] ]`);
 
     const dataKontakt = await resKontakt;
+    const resKomponente = await client.fetch(`*[_type in ["cosmetics_komponente"] ]`);
+
+    const dataKomponente = await resKomponente;
     return {
         props: {
             data,
             jobsData,
             dataKontakt,
+            dataKomponente,
         },
     };
 }
