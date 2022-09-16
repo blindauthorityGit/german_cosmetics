@@ -114,7 +114,7 @@ const FormFull = () => {
                     ) : (
                         <div className="w-full col-span-12">
                             <button
-                                className="group w-full  sm:w-96 ease-in-out duration-200 hover:bg-darkBlue cursor-pointer p-4 flex items-center justify-center mt-8 sm:mt-4 mb-12 sm:mb-0 hover:bg-primaryColor hover:text-white border border-[#A54399] text-primaryColor"
+                                className="group w-full  sm:w-96 ease-in-out duration-200 hover:bg-darkBlue cursor-pointer p-4 flex items-center justify-center mt-8 sm:mt-4 mb-12 sm:mb-0 hover:bg-primaryColor hover:text-white border border-primaryColor text-primaryColor"
                                 type="submit"
                             >
                                 Absenden

@@ -23,7 +23,7 @@ function urlFor(source) {
     return builder.image(source);
 }
 
-export default function Kontakt({ data, laserData }) {
+export default function Kontakt({ data, laserData, kontaktData }) {
     const headlineRef = useRef();
     const containerRef = useRef();
 
@@ -47,13 +47,13 @@ export default function Kontakt({ data, laserData }) {
             </motion.div>
 
             <KontaktTop
-                strasse={data[1].adresse.strasse}
-                ort={data[1].adresse.ort}
-                phone={data[1].kontakt.phone}
-                email={data[1].kontakt.email}
-                mobile={data[1].kontakt.mobile}
-                fax={data[1].kontakt.fax}
-                value={data[1].oeffnungszeiten}
+                strasse={kontaktData[0].adresse.strasse}
+                ort={kontaktData[0].adresse.ort}
+                phone={kontaktData[0].kontakt.phone}
+                email={kontaktData[0].kontakt.email}
+                mobile={kontaktData[0].kontakt.mobile}
+                fax={kontaktData[0].kontakt.fax}
+                value={kontaktData[0].oeffnungszeiten}
                 headline="Kontaktdaten"
                 valueLeft={<div>Hallo</div>}
                 klasse="pt-12"
@@ -80,11 +80,12 @@ export default function Kontakt({ data, laserData }) {
             ></LinkBox>
             <Footer
                 logo={urlFor(data[3].logo.logo_light)}
-                strasse={data[1].adresse.strasse}
-                ort={data[1].adresse.ort}
-                phone={data[1].kontakt.phone}
-                email={data[1].kontakt.email}
-                value={data[1].oeffnungszeiten}
+                strasse={kontaktData[0].adresse.strasse}
+                ort={kontaktData[0].adresse.ort}
+                phone={kontaktData[0].kontakt.phone}
+                email={kontaktData[0].kontakt.email}
+                mobile={kontaktData[0].kontakt.mobile}
+                value={kontaktData[0].oeffnungszeiten}
             ></Footer>
         </>
     );
@@ -92,17 +93,20 @@ export default function Kontakt({ data, laserData }) {
 
 export async function getStaticProps() {
     const res = await client.fetch(
-        `*[_type in ["aesthetic_praxis", "aesthetic_kontakt", "aesthetic_settings", "aesthetic_komponente"] ]`
+        `*[_type in ["aesthetic_praxis", "aesthetic_kontakt", "cosmetics_settings", "aesthetic_komponente"] ]`
     );
     const laserRes = await client.fetch(`*[_type in ["aesthetic_laserbehandlung"] ]`);
     // const res = await fetch("https://jsonplaceholder.typicode.com/todos/1");
+    const resKontakt = await client.fetch(`*[_type in ["cosmetics_kontakt"] ]`);
 
     const data = await res;
     const laserData = await laserRes;
+    const kontaktData = await resKontakt;
     return {
         props: {
             data,
             laserData,
+            kontaktData,
         },
     };
 }
