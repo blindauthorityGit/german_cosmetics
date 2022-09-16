@@ -141,12 +141,12 @@ export default () =>
                                                         .documentId("cosmetics_behandlung")
                                                 ),
                                             S.listItem()
-                                                .title("Dermatologie")
+                                                .title("Produkte")
                                                 .icon(FaHandHoldingMedical)
                                                 .child(
                                                     S.document()
-                                                        .schemaType("aesthetic_dermatologie")
-                                                        .documentId("aesthetic_dermatologie")
+                                                        .schemaType("cosmetics_produkte")
+                                                        .documentId("cosmetics_produkte")
                                                 ),
                                         ])
                                 ),
@@ -216,6 +216,8 @@ export default () =>
                         "cosmetics_home",
                         "cosmetics_kontakt",
                         "cosmetics_komponente",
+                        "cosmetics_behandlung",
+                        "cosmetics_produkte",
                     ].includes(listItem.getId())
             ),
         ]);

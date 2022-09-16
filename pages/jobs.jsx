@@ -21,7 +21,7 @@ function urlFor(source) {
     return builder.image(source);
 }
 
-export default function Jobs({ data, jobsData }) {
+export default function Jobs({ data, jobsData, dataKontakt }) {
     useEffect(() => {
         console.log(jobsData);
     }, []);
@@ -32,7 +32,15 @@ export default function Jobs({ data, jobsData }) {
                 <title>{jobsData[0].seo.title}</title>
                 <meta name="description" content={jobsData[0].seo.description} />
             </Head> */}
-            <Navbar logoLight={urlFor(data[3].logo.logo_light)} logoDark={urlFor(data[3].logo.logo_dark)}></Navbar>
+            <Navbar
+                strasse={dataKontakt[0].adresse.strasse}
+                ort={dataKontakt[0].adresse.ort}
+                phone={dataKontakt[0].kontakt.phone}
+                email={dataKontakt[0].kontakt.email}
+                value={dataKontakt[0].oeffnungszeiten}
+                logoLight={urlFor(data[3].logo.logo_light)}
+                logoDark={urlFor(data[3].logo.logo_dark)}
+            ></Navbar>
             <PageHero bg={JobHero.src} headline="Jobs" showButton={false}></PageHero>
             <BehandlungTop
                 klasse="pt-12"
@@ -66,11 +74,11 @@ export default function Jobs({ data, jobsData }) {
             ></LinkBox>
             <Footer
                 logo={urlFor(data[3].logo.logo_light)}
-                strasse={data[1].adresse.strasse}
-                ort={data[1].adresse.ort}
-                phone={data[1].kontakt.phone}
-                email={data[1].kontakt.email}
-                value={data[1].oeffnungszeiten}
+                strasse={dataKontakt[0].adresse.strasse}
+                ort={dataKontakt[0].adresse.ort}
+                phone={dataKontakt[0].kontakt.phone}
+                email={dataKontakt[0].kontakt.email}
+                value={dataKontakt[0].oeffnungszeiten}
             ></Footer>
         </>
     );
@@ -78,17 +86,21 @@ export default function Jobs({ data, jobsData }) {
 
 export async function getStaticProps() {
     const res = await client.fetch(
-        `*[_type in ["aesthetic_praxis", "aesthetic_kontakt", "aesthetic_settings", "aesthetic_komponente"] ]`
+        `*[_type in ["aesthetic_praxis", "aesthetic_kontakt", "cosmetics_settings", "aesthetic_komponente"] ]`
     );
     const jobsRes = await client.fetch(`*[_type in ["jobs"] ]`);
     // const res = await fetch("https://jsonplaceholder.typicode.com/todos/1");
 
     const data = await res;
     const jobsData = await jobsRes;
+    const resKontakt = await client.fetch(`*[_type in ["cosmetics_kontakt"] ]`);
+
+    const dataKontakt = await resKontakt;
     return {
         props: {
             data,
             jobsData,
+            dataKontakt,
         },
     };
 }

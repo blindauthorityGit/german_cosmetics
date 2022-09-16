@@ -48,11 +48,11 @@ const ImageBox = (props) => {
                 <>
                     {props.box.map((e, i) => {
                         return (
-                            <ScrollAnimation
+                            <div
                                 key={`keyscroll${i}`}
-                                animateIn={i % 2 === 0 ? "slideInLeft" : "slideInRight"}
-                                animateOnce={true}
-                                duration={0.4}
+                                // animateIn={i % 2 === 0 ? "slideInLeft" : "slideInRight"}
+                                // animateOnce={true}
+                                // duration={0.4}
                                 className="col-span-12 sm:col-span-6 py-36 sm:py-64 relative cursor-pointer group transition-all overflow-hidden "
                             >
                                 <Link href={`./${e.title.toLowerCase()}`}>
@@ -73,7 +73,7 @@ const ImageBox = (props) => {
                                         ></div>
                                     </a>
                                 </Link>
-                            </ScrollAnimation>
+                            </div>
                         );
                     })}
                 </>

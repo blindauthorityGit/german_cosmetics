@@ -46,7 +46,7 @@ export const getStaticProps = async (context) => {
     const data = await res;
     // console.log(slug, res);
     const resMain = await client.fetch(
-        `*[_type in ["aesthetic_home", "aesthetic_kontakt", "aesthetic_settings", "aesthetic_komponente"] ]`
+        `*[_type in ["aesthetic_home", "cosmetics_kontakt", "cosmetics_settings", "aesthetic_komponente"] ]`
     );
     const resData = await resMain;
 

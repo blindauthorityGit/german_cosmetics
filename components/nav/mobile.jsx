@@ -31,15 +31,15 @@ const MobileNav = (props) => {
                         <ul className="">
                             <li className="mb-4">
                                 <div className="wrap dropdown bg-white  ">
-                                    <Link href="/dermatologie">
+                                    <Link href="/behandlungen">
                                         <a className="text-text block my-4 subNav relative hover:text-primaryColor cursor-pointer">
-                                            Dermatologie
+                                            Behandlungen
                                         </a>
                                     </Link>
 
-                                    <Link href="./lasermedizin">
+                                    <Link href="./produkte">
                                         <a className="text-text block my-4 subNav relative mt-4 hover:text-primaryColor cursor-pointer">
-                                            Lasermedizin
+                                            Produkte
                                         </a>
                                     </Link>
                                 </div>
@@ -59,9 +59,9 @@ const MobileNav = (props) => {
                         <ul className="">
                             <li className="mb-4 text-sm">
                                 <div className="wrap dropdown bg-white  ">
-                                    <Link href="/impressum">
+                                    <Link href="/jobs">
                                         <a className="text-text block my-4 subNav relative hover:text-primaryColor cursor-pointer">
-                                            Jobs
+                                            Karriere
                                         </a>
                                     </Link>
 

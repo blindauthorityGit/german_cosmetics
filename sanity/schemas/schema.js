@@ -33,6 +33,8 @@ import cosmetics_komponente from "./cosmetics/komponente/";
 import cosmetics_imageBox from "./cosmetics/komponente/imageBox";
 import behandlung from "./cosmetics/objects/behandlung";
 import cosmetics_behandlung from "./cosmetics/behandlungen/";
+import cosmetics_produkte from "./cosmetics/produkte";
+import produkt from "./cosmetics/objects/produkt";
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -71,5 +73,7 @@ export default createSchema({
         cosmetics_imageBox,
         behandlung,
         cosmetics_behandlung,
+        cosmetics_produkte,
+        produkt,
     ]),
 });

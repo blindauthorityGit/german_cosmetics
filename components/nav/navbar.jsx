@@ -115,14 +115,14 @@ const Navbar = (props) => {
                 }  hidden sm:block w-full absolute z-30 header-section`}
             >
                 <div className="container px-16 flex grid grid-cols-12 font-semibold font-europa tracking-wider m-auto">
-                    <div className="middle col-span-6 flex items-center  pt-4">
+                    <div className="middle col-span-4 flex items-center  pt-4">
                         <Link href="/">
                             <a>
                                 <img src={isItSticky ? props.logoDark : props.logoLight} width="230" alt="Logo" />
                             </a>
                         </Link>
                     </div>
-                    <div className="left col-span-6 pt-4">
+                    <div className="left col-span-8 pt-4 flex justify-end items-baseline">
                         <ul className={`flex uppercase tracking-widest ${isItSticky ? "text-text" : ""}`}>
                             <motion.li
                                 initial="rest"
@@ -134,10 +134,10 @@ const Navbar = (props) => {
                                 ref={dropdownRef}
                                 className="mr-8  hover:underline relative cursor-pointer flex items-center"
                             >
-                                <Link href="/dermatologie">
+                                <Link href="/behandlungen">
                                     <motion.a className="">Behandlungen</motion.a>
                                 </Link>
-                                <motion.div variants={boxMotion} className="absolute pt-8  top-8">
+                                {/* <motion.div variants={boxMotion} className="absolute pt-8  top-8">
                                     <div className="wrap min-w-60 dropdown bg-white py-8 pl-8 pr-20">
                                         <Link href="/dermatologie">
                                             <motion.a
@@ -158,8 +158,13 @@ const Navbar = (props) => {
                                             </motion.a>
                                         </Link>{" "}
                                     </div>
-                                </motion.div>
+                                </motion.div> */}
                             </motion.li>
+                            <li className="mr-8 flex items-center hover:underline">
+                                <Link href="/produkte">
+                                    <a>Produkte</a>
+                                </Link>
+                            </li>
                             <li className="mr-8 flex items-center hover:underline">
                                 <Link href="/praxis">
                                     <a>Praxis</a>
