@@ -45,8 +45,8 @@ const MobileNav = (props) => {
                                 </div>
                             </li>
                             <li className="mr-8 hover:text-primaryColor hover:underline mb-4">
-                                <Link href="/praxis">
-                                    <a>Praxis</a>
+                                <Link href="/institut">
+                                    <a>Institut</a>
                                 </Link>
                             </li>
                             <li>

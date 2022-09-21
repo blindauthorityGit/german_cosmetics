@@ -108,16 +108,22 @@ const Mobile = (props) => {
                         style={{ backgroundImage: `url(${urlFor(props.imageL)})` }}
                         className="w-full h-full bg-cover cursor-pointer"
                     ></div>
-                    <div ref={rightLogo} className={`absolute z-50 bottom-20 flex justify-center w-full`}>
-                        <img src={urlFor(props.logoL)} alt="" />
-                    </div>{" "}
-                    <div
-                        className={`text absolute bottom-10 flex justify-center text-white z-50 w-full ${
-                            showAesthLogo ? "fade-in" : "fade-out"
-                        } `}
-                    >
-                        <p> Klassische und ästhetische Dermatologie</p>
-                    </div>
+                    <Link href="https://germanaesthetic-git-dev-blindauthoritygit.vercel.app/">
+                        <div ref={rightLogo} className={`absolute z-50 bottom-20 flex justify-center w-full`}>
+                            <img src={urlFor(props.logoL)} alt="" />
+                        </div>
+                    </Link>
+
+                    <Link href="https://germanaesthetic-git-dev-blindauthoritygit.vercel.app/">
+                        <div
+                            className={`text absolute bottom-10 flex justify-center text-white z-50 w-full ${
+                                showAesthLogo ? "fade-in" : "fade-out"
+                            } `}
+                        >
+                            <p> Klassische und ästhetische Dermatologie</p>
+                        </div>
+                    </Link>
+
                     <Link href="https://germanaesthetic-git-dev-blindauthoritygit.vercel.app/">
                         <a>
                             <animated.div
@@ -134,24 +140,27 @@ const Mobile = (props) => {
                         style={{ backgroundImage: `url(${urlFor(props.imageR)})` }}
                         className="w-full bg-center h-full bg-cover cursor-pointer"
                     ></div>
-                    <div
-                        ref={rightLogo}
-                        className={`absolute z-50 bottom-20 flex justify-center w-full ${
-                            showCosmLogo ? "fade-in" : "fade-out"
-                        }`}
-                    >
-                        <img src={urlFor(props.logoR)} alt="" />
-                    </div>{" "}
-                    <div
-                        className={`text absolute bottom-10 flex  justify-center w-full text-white z-50 ${
-                            showCosmLogo ? "fade-in" : "fade-out"
-                        } `}
-                    >
-                        <p> Privates Studio für Kosmetik und Ästhetik</p>
-                    </div>
+                    <Link href="/start">
+                        <div
+                            ref={rightLogo}
+                            className={`absolute z-50 bottom-20 flex justify-center w-full ${
+                                showCosmLogo ? "fade-in" : "fade-out"
+                            }`}
+                        >
+                            <img src={urlFor(props.logoR)} alt="" />
+                        </div>
+                    </Link>
+                    <Link href="/start">
+                        <div
+                            className={`text absolute bottom-10 flex  justify-center w-full text-white z-50 ${
+                                showCosmLogo ? "fade-in" : "fade-out"
+                            } `}
+                        >
+                            <p> Privates Studio für Kosmetik und Ästhetik</p>
+                        </div>
+                    </Link>
                     <Link href="/start">
                         <a>
-                            {" "}
                             <animated.div
                                 style={opacityIn}
                                 className="overlay z-10 sm:opacity-40  opacity-60 absolute w-full h-full top-0 bg-primaryColor "
