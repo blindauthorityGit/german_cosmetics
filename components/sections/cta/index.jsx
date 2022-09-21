@@ -115,6 +115,7 @@ export default function CTAContent(props) {
                         />
                         {errors.email && <Error klasse="block col-span-12">Bitte geben Sie Ihre Email an</Error>}
                     </div>
+                    \behandlungen
                     <div className="col-span-12">
                         <label className="block mb-2 font-bold" htmlFor="name">
                             Behandlung
@@ -127,27 +128,39 @@ export default function CTAContent(props) {
                             id="behandlung"
                         >
                             <option value="Sprechstunde">Sprechstunde</option>
-                            <option value="Kontrolle">Kontrolle</option>
-                            <option value="Hautkrebsvorsorge">Hautkrebsvorsorge</option>
-                            <option value="med. Lidstraffung">med. Lidstraffung</option>
 
-                            <optgroup label="med. Lasertherapie">
-                                <option value="Rosazea/Gefäße/Blutschwämmchen">Rosazea/Gefäße/Blutschwämmchen</option>
-                                <option value="Pigmente/Hyperpigmentierungen">Pigmente/Hyperpigmentierungen</option>
-                                <option value="krankh. Haarwuchs">krankh. Haarwuchs</option>
-                                <option value="Hautveränderungen (Warzen etc.)">Hautveränderungen (Warzen etc.)</option>
-                                <option value="Venen/Besenreisser">Venen/Besenreisser</option>
-                                <option value="Narben">Narben</option>
-                                <option value="heller Hautkrebs">heller Hautkrebs</option>
+                            <optgroup label="Ästhethische Behandlungen">
+                                <option value="Aesthetische Beratung">Ästhetische Beratung</option>
+                                <option value="Botoxbehandlung">Botoxbehandlung, FullFace</option>
+                                <option value="Hyaluronsäurebehandlung">Hyaluronsäurebehandlung</option>
+                                <option value="Lipolyse-Injektion">Lipolyse-Injektion</option>
+                                <option value="PRP-Arthrex Vampirelift">PRP-Arthrex Vampirelift</option>
+                                <option value="PRP-Arthrex Vampirelift mit tiefenmedizinischem Microneedling">
+                                    PRP-Arthrex Vampirelift mit tiefenmedizinischem Microneedling
+                                </option>
+                                <option value="Arthrex Vampirelift mit fraktioniertem Laser">
+                                    Arthrex Vampirelift mit fraktioniertem Laser
+                                </option>
+                                <option value="Besenreiser-Schaumverödung">Besenreiser-Schaumverödung</option>
+                                <option value="Blepharoplastik">Blepharoplastik (Oberlidstraffung)</option>
                             </optgroup>
-                            <option value="Venenverödung">Venenverödung</option>
-                            <option value="med. Botox">med. Botox</option>
-                            <option value="Blutentnahme">Blutentnahme</option>
-                            <option value="PRP-Eigenbluttherapie">PRP-Eigenbluttherapie</option>
-                            <option value="Fadenzug">Fadenzug</option>
-                            <option value="Verbandwechsel/Wundversorgung">Verbandwechsel/Wundversorgung</option>
-                            <option value="Operationen v. Tumoren">Operationen v. Tumoren</option>
-                            <option value="med. Infusion">med. Infusion</option>
+
+                            <optgroup label="Laserbehandlungen">
+                                <option value="Photofraktionierte Laserbehandlung">
+                                    Photofraktionierte Laserbehandlung
+                                </option>
+                                <option value="Dauerhafte Haarentfernung">Dauerhafte Haarentfernung</option>
+                                <option value="Co2 Laser">Co²-Laser</option>
+                                <option value="Abstehende Hautveränderungen">Abstehende Hautveränderungen</option>
+                                <option value="Tattoo-Entfernung">Tattoo-Entfernung</option>
+                            </optgroup>
+
+                            <optgroup label="Kosmetische Behandlungen">
+                                <option value="Kosmetische Beratung">Kosmetische Beratung</option>
+                                <option value="HydraFacial-Behandlungen">HydraFacial-Behandlungen</option>
+                                <option value="Microneedling">Microneedling</option>
+                                <option value="Neostrata Glycolsäurepeeling">Neostrata Glycolsäurepeeling</option>
+                            </optgroup>
                             <option value="Sonstiges">Sonstiges</option>
                         </select>
                     </div>
