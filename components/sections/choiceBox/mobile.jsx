@@ -103,13 +103,11 @@ const Mobile = (props) => {
         <MainContainer width="container w-full h-screen items-center z-10">
             <div className="wrapper flex flex-col flex-col-reverse overflow-hidden col-span-12  h-full z-50">
                 <div ref={leftRef} className="innerWrapper w-full bg-cover h-2/4 relative bg-lightGray">
-                    <Link href="/">
-                        <div
-                            ref={leftImgRef}
-                            style={{ backgroundImage: `url(${urlFor(props.imageL)})` }}
-                            className="w-full h-full bg-cover cursor-pointer"
-                        ></div>
-                    </Link>
+                    <div
+                        ref={leftImgRef}
+                        style={{ backgroundImage: `url(${urlFor(props.imageL)})` }}
+                        className="w-full h-full bg-cover cursor-pointer"
+                    ></div>
                     <div ref={rightLogo} className={`absolute z-50 bottom-20 flex justify-center w-full`}>
                         <img src={urlFor(props.logoL)} alt="" />
                     </div>{" "}
@@ -120,20 +118,22 @@ const Mobile = (props) => {
                     >
                         <p> Klassische und ästhetische Dermatologie</p>
                     </div>
-                    <animated.div
-                        style={opacityIn}
-                        className="overlay z-10 sm:opacity-40  opacity-60 absolute w-full h-full top-0 bg-[#a53f98]"
-                    ></animated.div>{" "}
+                    <Link href="https://germanaesthetic-git-dev-blindauthoritygit.vercel.app/">
+                        <a>
+                            <animated.div
+                                style={opacityIn}
+                                className="overlay z-10 sm:opacity-40  opacity-60 absolute w-full h-full top-0 bg-[#a53f98]"
+                            ></animated.div>
+                        </a>
+                    </Link>
                 </div>
 
                 <div ref={rightRef} className="innerWrapper relative w-full bg-cover h-2/4 ">
-                    <Link href="/">
-                        <div
-                            ref={rightImgRef}
-                            style={{ backgroundImage: `url(${urlFor(props.imageR)})` }}
-                            className="w-full bg-center h-full bg-cover cursor-pointer"
-                        ></div>
-                    </Link>
+                    <div
+                        ref={rightImgRef}
+                        style={{ backgroundImage: `url(${urlFor(props.imageR)})` }}
+                        className="w-full bg-center h-full bg-cover cursor-pointer"
+                    ></div>
                     <div
                         ref={rightLogo}
                         className={`absolute z-50 bottom-20 flex justify-center w-full ${
@@ -149,11 +149,15 @@ const Mobile = (props) => {
                     >
                         <p> Privates Studio für Kosmetik und Ästhetik</p>
                     </div>
-                    {/* <div className={`bg-lightGray transition-all absolute w-full h-full top-0 left-0 opacity-50`}></div> */}
-                    <animated.div
-                        style={opacityIn}
-                        className="overlay z-10 sm:opacity-40  opacity-60 absolute w-full h-full top-0 bg-primaryColor "
-                    ></animated.div>
+                    <Link href="/start">
+                        <a>
+                            {" "}
+                            <animated.div
+                                style={opacityIn}
+                                className="overlay z-10 sm:opacity-40  opacity-60 absolute w-full h-full top-0 bg-primaryColor "
+                            ></animated.div>
+                        </a>
+                    </Link>
                 </div>
             </div>
         </MainContainer>
