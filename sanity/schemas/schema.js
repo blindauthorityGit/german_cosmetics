@@ -36,6 +36,8 @@ import cosmetics_behandlung from "./cosmetics/behandlungen/";
 import cosmetics_produkte from "./cosmetics/produkte";
 import produkt from "./cosmetics/objects/produkt";
 
+import start from "./main/start";
+
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
     // We name our schema
@@ -75,5 +77,6 @@ export default createSchema({
         cosmetics_behandlung,
         cosmetics_produkte,
         produkt,
+        start,
     ]),
 });

@@ -256,6 +256,9 @@ export default function CTAContent(props) {
                         <strong className="font-bold"> Bitte beachten Sie:</strong>
                         <br></br>
                         <br></br>
+                        <strong>Keine Behandlung ohne Sprechstunde!</strong>
+                        <br></br>
+                        <br></br>
                         Termine sollten bitte nur in dringenden Fällen, spätestens jedoch 24h vor der Behandlung
                         abgesagt werden. Leider müssen wir Ihnen nicht rechtzeitig abgesagte Termine in Rechnung
                         stellen.

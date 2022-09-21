@@ -17,16 +17,6 @@ const Footer = (props) => {
                 <FormTemplate></FormTemplate>
 
                 <div className="col-span-12 grid grid-cols-12 mt-16 text-white gap-4">
-                    {/* <div className="col-span-6 sm:col-span-1 socials mt-8 sm:mt-0 order-last sm:order-none">
-                        <div className="flex">
-                            <a className="mr-6" href="https://www.facebook.com/drhubatsch">
-                                <BsFacebook></BsFacebook>
-                            </a>
-                            <a href="https://www.instagram.com/german_aesthetics.de/">
-                                <BsInstagram></BsInstagram>
-                            </a>
-                        </div>
-                    </div> */}
                     <div className="col-span-12 sm:col-span-3 2xl:clamp">
                         <H4 klasse="text-white">Adresse</H4>
                         <span className="opacity-60">

@@ -116,13 +116,13 @@ const Navbar = (props) => {
             >
                 <div className="container px-16 flex grid grid-cols-12 font-semibold font-europa tracking-wider m-auto">
                     <div className="middle col-span-4 flex items-center  pt-4">
-                        <Link href="/">
+                        <Link href="/start">
                             <a>
                                 <img src={isItSticky ? props.logoDark : props.logoLight} width="230" alt="Logo" />
                             </a>
                         </Link>
                     </div>
-                    <div className="left col-span-8 pt-4 flex justify-end items-baseline">
+                    <div className={`left col-span-8 pt-4 flex justify-end ${props.hideCTA ? "" : "items-baseline"}`}>
                         <ul className={`flex uppercase tracking-widest ${isItSticky ? "text-text" : ""}`}>
                             <motion.li
                                 initial="rest"
@@ -166,8 +166,8 @@ const Navbar = (props) => {
                                 </Link>
                             </li>
                             <li className="mr-8 flex items-center hover:underline">
-                                <Link href="/praxis">
-                                    <a>Praxis</a>
+                                <Link href="/institut">
+                                    <a>Institut</a>
                                 </Link>
                             </li>
                             <li className="mr-8 flex items-center hover:underline">
@@ -175,8 +175,11 @@ const Navbar = (props) => {
                                     <a>Kontakt</a>
                                 </Link>
                             </li>
+
                             <li
-                                className="bg-primaryColor cursor-pointer hover:bg-darkPurple py-3 px-4 text-white"
+                                className={`bg-primaryColor cursor-pointer hover:bg-darkPurple py-3 px-4 text-white ${
+                                    props.hideCTA ? "hidden" : ""
+                                }`}
                                 onClick={(e) => {
                                     modalSwitcher(e, showModal, setShowModal);
                                 }}
