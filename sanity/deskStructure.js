@@ -189,6 +189,12 @@ export default () =>
             // ...S.documentTypeListItems(),
             // ...S.documentTypeListItems().filter((item) => !["angebotSetting"].includes(item.getId())),
             S.divider(),
+            S.listItem()
+                .title("Start Settings")
+                .icon(GoLaw)
+                .child(S.document().schemaType("start").documentId("start")),
+            // ...S.documentTypeListItems(),
+            // ...S.documentTypeListItems().filter((item) => !["angebotSetting"].includes(item.getId())),
 
             // We also need to remove the new singletons from the main list
             ...S.documentTypeListItems().filter(
@@ -218,6 +224,7 @@ export default () =>
                         "cosmetics_komponente",
                         "cosmetics_behandlung",
                         "cosmetics_produkte",
+                        "start",
                     ].includes(listItem.getId())
             ),
         ]);

@@ -12,7 +12,7 @@ function MyApp({ Component, pageProps }) {
 
     return (
         <AnimateSharedLayout>
-            <Component {...pageProps} />;
+            <Component {...pageProps} />
             <CookieConsent
                 location="bottom"
                 buttonText="Bestätigen"

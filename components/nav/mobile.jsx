@@ -21,7 +21,7 @@ const MobileNav = (props) => {
             >
                 <div className="container h-screen py-16 px-8 font-europa tracking-wider">
                     <div className="middle pl-8">
-                        <Link href="/">
+                        <Link href="/start">
                             <a>
                                 <img src={props.logo} width="230" alt="Logo" />
                             </a>

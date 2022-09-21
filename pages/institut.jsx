@@ -23,7 +23,7 @@ import TeamMember from "../components/sections/teamMember";
 
 import Overlay from "../components/sections/modal/overlay";
 import Modal from "../components/sections/modal/modal";
-import CTAContent from "../components/sections/cta/";
+import CTAContent from "../components/sections/cta";
 import { modalSwitcher, hideModalSet } from "../functions/modal";
 
 import { motion } from "framer-motion";
@@ -34,7 +34,7 @@ function urlFor(source) {
     return builder.image(source);
 }
 
-export default function Praxis({ data, dataCosmetics, dataKontakt, dataKomponente }) {
+export default function Institut({ data, dataCosmetics, dataKontakt, dataKomponente }) {
     const arztRef = useRef();
     const teamRef = useRef();
 
@@ -62,7 +62,7 @@ export default function Praxis({ data, dataCosmetics, dataKontakt, dataKomponent
             <motion.div layoutId={"Hero"} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
                 <PageHero
                     bg={urlFor(data[2].hero_settings.backgroundImg).width(1560).height(550)}
-                    headline="Unsere Praxis"
+                    headline="Das Institut"
                     showButton={false}
                 ></PageHero>
             </motion.div>
