@@ -28,7 +28,7 @@ const LaserBehandlungenContainer = (props, ref) => {
         window.addEventListener("scroll", () => {
             checkTop(divs, activeLink, setActiveLink, links);
             console.log("test");
-            console.log(divs);
+            console.log(Array.from(document.querySelectorAll("[data-cat]")).filter((e) => e.id.length > 0));
         });
 
         return () => {
