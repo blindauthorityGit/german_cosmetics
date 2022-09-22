@@ -22,13 +22,14 @@ const LaserBehandlungenContainer = (props, ref) => {
     const scrollRef = useRef(null);
 
     useEffect(() => {
-        let divs = Array.from(document.querySelectorAll("[data-cat]")).filter((e) => e.id.length > 0);
-        let links = Array.from(document.querySelectorAll(".sideNavElem"));
+        // let divs = Array.from(document.querySelectorAll("[data-cat]")).filter((e) => e.id.length > 0);
+        // let links = Array.from(document.querySelectorAll(".sideNavElem"));
         props.dataNav.map((e, i) => {});
         window.addEventListener("scroll", () => {
+            let divs = Array.from(document.querySelectorAll("[data-cat]")).filter((e) => e.id.length > 0);
+            let links = Array.from(document.querySelectorAll(".sideNavElem"));
+
             checkTop(divs, activeLink, setActiveLink, links);
-            console.log("test");
-            console.log(Array.from(document.querySelectorAll("[data-cat]")).filter((e) => e.id.length > 0));
         });
 
         return () => {
