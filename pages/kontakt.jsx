@@ -1,21 +1,19 @@
 import imageUrlBuilder from "@sanity/image-url";
 import Head from "next/head";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import client from "../client";
-import BehandlungNav from "../components/nav/behandlungNav";
 import Navbar from "../components/nav/navbar";
 import KontaktTop from "../components/sections/kontaktTop";
-import LaserBehandlungContainer from "../components/sections/lasermedizin/laserBehandlung";
 import PageHero from "../components/sections/pageHero";
 
-import CTA from "../components/sections/cta";
 import Footer from "../components/sections/footer";
-import ImageBox from "../components/sections/imageBox";
 import LinkBox from "../components/sections/linkBox";
 import { motion } from "framer-motion";
 import FormFull from "../components/form/formFull";
 import Map from "../assets/map.jpg";
 import MapMobile from "../assets/mapMobile.jpg";
+import Image from "next/image";
+import { useNextSanityImage } from "next-sanity-image";
 
 const builder = imageUrlBuilder(client);
 
@@ -24,12 +22,7 @@ function urlFor(source) {
 }
 
 export default function Kontakt({ data, laserData, kontaktData, dataKomponente }) {
-    const headlineRef = useRef();
-    const containerRef = useRef();
-
-    useEffect(() => {
-        console.log(data);
-    }, []);
+    const imageProps = useNextSanityImage(client, data[2].raeumlichkeiten_settings.images[2]);
 
     return (
         <>
@@ -43,7 +36,15 @@ export default function Kontakt({ data, laserData, kontaktData, dataKomponente }
                     bg={urlFor(data[2].raeumlichkeiten_settings.images[2]).width(1560).height(550)}
                     headline="Kontakt"
                     showButton={false}
-                ></PageHero>
+                >
+                    <Image
+                        {...imageProps}
+                        layout="fill"
+                        objectFit="cover"
+                        alt="hero"
+                        sizes="(max-height: 550px) 100%, 550px"
+                    />
+                </PageHero>
             </motion.div>
 
             <KontaktTop
@@ -63,14 +64,6 @@ export default function Kontakt({ data, laserData, kontaktData, dataKomponente }
                 <img className="hidden sm:block" src={Map.src} alt="" />
                 <img className="block sm:hidden" src={MapMobile.src} alt="" />
             </div>
-
-            {/* <CTA
-                klasse="sm:mb-16"
-                headline={data[0].cta.headline}
-                text={data[0].cta.text}
-                button={data[0].cta.button_text}
-            ></CTA> */}
-
             <LinkBox
                 klasse="sm:mt-16"
                 image={urlFor(dataKomponente[0].linkbox.img)}

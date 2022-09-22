@@ -20,7 +20,6 @@ function urlFor(source) {
 const LaserBehandlungenContainer = (props, ref) => {
     const [activeLink, setActiveLink] = useState("test");
     const scrollRef = useRef(null);
-    // useScrollSnap({ ref: scrollRef, duration: 200, delay: 0 });
 
     useEffect(() => {
         let divs = Array.from(document.querySelectorAll("[data-cat]")).filter((e) => e.id.length > 0);
@@ -28,6 +27,8 @@ const LaserBehandlungenContainer = (props, ref) => {
         props.dataNav.map((e, i) => {});
         window.addEventListener("scroll", () => {
             checkTop(divs, activeLink, setActiveLink, links);
+            console.log("test");
+            console.log(divs);
         });
 
         return () => {

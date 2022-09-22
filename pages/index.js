@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { ChoiceDesktop, ChoiceMobile } from "../components/sections/choiceBox";
 import client from "../client";
-import useCheckMobileScreen from "../components/utils/useCheckMobileScreen";
-import { isMobile, getUA, getSelectorsByUserAgent } from "react-device-detect";
 import FooterMini from "../components/sections/footerMini";
 import Navbar from "../components/nav/navbar";
 import Head from "next/head";
@@ -15,10 +13,7 @@ function urlFor(source) {
 }
 
 export default function Choose({ data, cosmData, aesthData, dataHome, dataKontakt }) {
-    const [width, setWidth] = useState(0);
     const [mobile, setMobile] = useState(null);
-
-    // const { isMobile } = getSelectorsByUserAgent(userAgent);
 
     useEffect(() => {
         function checkWidth() {
@@ -34,7 +29,6 @@ export default function Choose({ data, cosmData, aesthData, dataHome, dataKontak
             <Head>
                 <title>{dataHome.seo.title}</title>
                 <meta name="description" content={dataHome.seo.description} />
-                {/* <link rel="shortcut icon" href={urlFor(data[3].logo.favicon)} /> */}
             </Head>
             <Navbar
                 dark={true}
@@ -69,8 +63,6 @@ export default function Choose({ data, cosmData, aesthData, dataHome, dataKontak
 }
 
 export const getStaticProps = async (context) => {
-    // const slug = context.params;
-
     const res = await client.fetch(`*[_type in ["start"] ]`);
 
     const data = await res[0];
@@ -86,12 +78,6 @@ export const getStaticProps = async (context) => {
 
     const resKontakt = await client.fetch(`*[_type in ["cosmetics_kontakt"] ]`);
     const dataKontakt = await resKontakt[0];
-
-    // const reqRes = await context.req;
-    // const userAgent = context.params.slug;
-    // const userAgent = req["userAgent"];
-
-    // const { isMobile } = getSelectorsByUserAgent(userAgent)
 
     return {
         props: {

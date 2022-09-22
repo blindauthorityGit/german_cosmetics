@@ -1,8 +1,7 @@
 import imageUrlBuilder from "@sanity/image-url";
 import Head from "next/head";
-import { useEffect, useRef, useState } from "react";
+import { useEffect } from "react";
 import client from "../client";
-import BehandlungNav from "../components/nav/behandlungNav";
 import Navbar from "../components/nav/navbar";
 import BehandlungTop from "../components/sections/behandlungTop";
 import JobsContainer from "../components/sections/jobs/jobConatiner";
@@ -10,8 +9,8 @@ import PageHero from "../components/sections/pageHero";
 
 import { H2 } from "../components/utils/headlines";
 import Footer from "../components/sections/footer";
-import ImageBox from "../components/sections/imageBox";
 import LinkBox from "../components/sections/linkBox";
+import { motion } from "framer-motion";
 
 import JobHero from "../assets/jobHero.jpg";
 

@@ -4,6 +4,7 @@ import { H2 } from "../utils/headlines";
 import { DefaultButton } from "../utils/buttons";
 import { useSpring, animated } from "react-spring";
 import { config } from "react-spring";
+import Image from "next/image";
 
 const PageHero = (props) => {
     const blurIn = useSpring({
@@ -24,10 +25,12 @@ const PageHero = (props) => {
                     </DefaultButton>
                 )}
             </div>
+
             <div
                 className="absolute grayscale container bg-cover bg-top m-auto min-h-[275px] sm:min-h-[400px] 2xl:min-h-[550px]  left-1/2 transform -translate-x-1/2"
-                style={{ backgroundImage: `url(${props.bg})` }}
+                // style={{ backgroundImage: `url(${props.bg})` }}
             >
+                {props.children}
                 <div className="absolute bg-black w-full h-full opacity-20"></div>
             </div>
         </MainContainer>
