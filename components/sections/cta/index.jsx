@@ -60,8 +60,7 @@ export default function CTAContent(props) {
 
     return (
         <MainContainer width={`w-100  font-europa gap-6`}>
-            <div className="col-span-12 sm:col-span-6 text-text">
-                <H2 klasse="font-europa mb-12 hidden sm:block">Wählen Sie Ihren Wunschtermin</H2>
+            <div className="col-span-12 order-last sm:col-span-6 text-text">
                 {/* <p className="text-white sm:w-1/2">{props.text}</p> */}
                 <form onSubmit={handleSubmit(onSubmitForm)} className="grid grid-cols-12 gap-6 pt-8 sm:pr-t-0">
                     <div className="col-span-12">
@@ -115,7 +114,6 @@ export default function CTAContent(props) {
                         />
                         {errors.email && <Error klasse="block col-span-12">Bitte geben Sie Ihre Email an</Error>}
                     </div>
-                    \behandlungen
                     <div className="col-span-12">
                         <label className="block mb-2 font-bold" htmlFor="name">
                             Behandlung
@@ -164,20 +162,23 @@ export default function CTAContent(props) {
                             <option value="Sonstiges">Sonstiges</option>
                         </select>
                     </div>
-                    <div className="col-span-12 sm:col-span-6">
+                    <div className="col-span-12 sm:col-span-12">
+                        <label className="block mb-2 font-bold" htmlFor="name">
+                            Ihre Nachricht
+                        </label>
+                        <textarea
+                            className="border py-4 px-4 w-full"
+                            {...register("message", { required: true })}
+                            type="text"
+                            name="message"
+                            placeholder="Ihre Nachricht"
+                            id="message"
+                        />
+                    </div>
+                    {/* <div className="col-span-12 sm:col-span-6">
                         <label className="block mb-2 font-bold" htmlFor="name">
                             Datum wählen
                         </label>
-
-                        {/* <DatePicker
-                            {...register("date", { required: true })}
-                            value={selectedDay}
-                            onChange={setSelectedDay}
-                            locale={myCustomLocale}
-                            inputPlaceholder="Datum wählen"
-                            inputClassName="dateInput font-europa w-full cursor-pointer"
-                            shouldHighlightWeekends
-                        /> */}
                         <input
                             className="border py-4 px-4 w-full"
                             value={date}
@@ -202,26 +203,6 @@ export default function CTAContent(props) {
                             placeholder="Uhrzeit wählen"
                             id="uhrzeit"
                         >
-                            {/* <option value="09:00">09:00</option>
-                            <option value="09:30">09:30</option>
-                            <option value="10:00">10:00</option>
-                            <option value="10:30">10:30</option>
-                            <option value="11:00">11:00</option>
-                            <option value="11:30">11:30</option>
-                            <option value="12:00">12:00</option>
-                            <option value="12:30">12:30</option>
-                            <option value="13:00">13:00</option>
-                            <option value="13:30">13:30</option>
-                            <option value="14:00">14:00</option>
-                            <option value="14:30">14:30</option>
-                            <option value="15:00">15:00</option>
-                            <option value="15:30">15:30</option>
-                            <option value="16:00">16:00</option>
-                            <option value="16:30">16:30</option>
-                            <option value="17:00">17:00</option>
-                            <option value="17:30">17:30</option>
-                            <option value="18:00">18:00</option>
-                            <option value="18:30">18:30</option> */}
                             {day === 1 && No()}
                             {day === 2 && No()}
                             {day === 3 && Wed()}
@@ -230,14 +211,14 @@ export default function CTAContent(props) {
                             {day === 6 && No()}
                             {day === 0 && No()}
                         </select>
-                    </div>
+                    </div> */}
                     <div className="col-span-12">
                         {loading ? (
                             <div className="w-full flex justify-center">
                                 <Rings
                                     height="80"
                                     width="80"
-                                    color="#a53f98"
+                                    color="#8b8163"
                                     radius="6"
                                     wrapperStyle={{}}
                                     wrapperClass=""
@@ -248,10 +229,7 @@ export default function CTAContent(props) {
                         ) : success ? (
                             <div className="success text-primaryColor">
                                 <p>Vielen Dank für Ihre Nachricht!</p>
-                                <p>
-                                    Wir bestätigen In Kürze Ihren Terminwunsch oder schlagen Ihnen einen freien Termin
-                                    vor.
-                                </p>
+                                <p>Wir melden uns in Kürze bei Ihnen.</p>
                             </div>
                         ) : (
                             <input
@@ -260,27 +238,18 @@ export default function CTAContent(props) {
                                 value="abschicken"
                             />
                         )}
+                        <p>
+                            Termine sollten bitte nur in dringenden Fällen, spätestens jedoch 24h vor der Behandlung
+                            abgesagt werden. Leider müssen wir Ihnen nicht rechtzeitig abgesagte Termine in Rechnung
+                            stellen.
+                        </p>
                     </div>
                 </form>
             </div>
             <div className="col-span-12 sm:col-span-6 sm:pl-12">
-                <div className="top">
-                    <p>
-                        <strong className="font-bold"> Bitte beachten Sie:</strong>
-                        <br></br>
-                        <br></br>
-                        <strong>Keine Behandlung ohne Sprechstunde!</strong>
-                        <br></br>
-                        <br></br>
-                        Termine sollten bitte nur in dringenden Fällen, spätestens jedoch 24h vor der Behandlung
-                        abgesagt werden. Leider müssen wir Ihnen nicht rechtzeitig abgesagte Termine in Rechnung
-                        stellen.
-                    </p>
-                </div>
+                <H2 klasse="font-europa mb-12 hidden sm:block">Rufen Sie uns an!</H2>
 
                 <div className="contactWrapper grid grid-cols-12 mt-12 clamp ">
-                    <H4 klasse="text-text col-span-12 mb-8">Kontakt</H4>
-
                     <div className="col-span-12 sm:col-span-12">
                         <div className="wrapper flex items-center">
                             <div className="icon mr-8 text-primaryColor">
@@ -304,16 +273,6 @@ export default function CTAContent(props) {
                             {props.ort}
                         </div>
                     </div>
-                    {/* <div className="col-span-12 sm:col-span-6 mt-4 sm:mt-0">
-                        <div className="wrapper flex items-center">
-                            <div className="icon mr-8 text-primaryColor">
-                                <IoMdMap />
-                            </div>
-                            {props.strasse}
-                            <br></br>
-                            {props.ort}
-                        </div>
-                    </div> */}
                 </div>
 
                 <div className="mt-12">
@@ -331,6 +290,15 @@ export default function CTAContent(props) {
                             <PortableText value={props.value}></PortableText>
                         </div>
                     </div>
+                </div>
+
+                <div className="top mt-16">
+                    <p>
+                        <strong className="font-bold"> Bitte beachten Sie:</strong>
+                        <br></br>
+                        <br></br>
+                        <strong>Keine Behandlung ohne Sprechstunde!</strong>
+                    </p>
                 </div>
             </div>
         </MainContainer>

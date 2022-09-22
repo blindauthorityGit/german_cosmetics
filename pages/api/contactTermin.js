@@ -5,7 +5,7 @@ const fs = require("fs");
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default async (req, res) => {
-    const { firstName, name, email, phone, behandlung, date, time } = req.body;
+    const { firstName, name, email, phone, behandlung, message } = req.body;
 
     const transporter = nodemailer.createTransport({
         host: "smtp.gmail.com",
@@ -25,8 +25,7 @@ export default async (req, res) => {
         email: email,
         phone: phone,
         behandlung: behandlung,
-        date: date,
-        time: time,
+        message: message,
     };
     const htmlToSend = template(replacements);
 

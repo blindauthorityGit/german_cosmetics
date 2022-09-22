@@ -1,18 +1,17 @@
 import imageUrlBuilder from "@sanity/image-url";
 import Head from "next/head";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import client from "../../client";
 import Navbar from "../../components/nav/navbar";
-import BehandlungTop from "../../components/sections/behandlungTop";
-import BehandlungenContainer from "../../components/sections/dermatologie/behandlungen";
 import PageHero from "../../components/sections/pageHero";
 import { sorter } from "../../components/utils/functions";
-import CTA from "../../components/sections/cta";
 import Footer from "../../components/sections/footer";
-import ImageBox from "../../components/sections/imageBox";
 import LinkBox from "../../components/sections/linkBox";
 import BlogOverviewElement from "../../components/sections/blogOvervieElement";
 import { isMobile } from "react-device-detect";
+
+import Image from "next/image";
+import { useNextSanityImage } from "next-sanity-image";
 
 const builder = imageUrlBuilder(client);
 
@@ -22,6 +21,8 @@ function urlFor(source) {
 
 export default function Blog({ data, dataBlog, dataBlogSettings }) {
     const [_isMobile, setMobile] = useState();
+
+    const imageProps = useNextSanityImage(client, dataBlogSettings[0].bgImage);
 
     useEffect(() => {
         setMobile(isMobile);
@@ -42,11 +43,15 @@ export default function Blog({ data, dataBlog, dataBlogSettings }) {
                 logoDark={urlFor(data[3].logo.logo_dark)}
                 logoLight={urlFor(data[3].logo.logo_light)}
             ></Navbar>
-            <PageHero
-                bg={urlFor(dataBlogSettings[0].bgImage).width(1560).height(550)}
-                headline="Blog"
-                showButton={false}
-            ></PageHero>
+            <PageHero headline="Blog" showButton={false}>
+                <Image
+                    {...imageProps}
+                    layout="fill"
+                    objectFit="cover"
+                    alt="hero"
+                    sizes="(max-height: 550px) 100%, 550px"
+                />
+            </PageHero>
 
             <div className="container m-auto mt-12 sm:mt-36 grid sm:gap-16 grid-cols-12 mb-24">
                 {dataBlog.map((e, i) => {

@@ -17,6 +17,9 @@ import StackedImgs from "../../components/sections/stackedImgs";
 import InlineImgs from "../../components/sections/inlineImgs";
 import Breadcrumbs from "../../components/sections/breadcrumbs";
 
+import Image from "next/image";
+import { useNextSanityImage } from "next-sanity-image";
+
 const builder = imageUrlBuilder(client);
 
 function urlFor(source) {
@@ -63,10 +66,8 @@ export const getStaticProps = async (context) => {
 };
 
 const BlogPage = ({ post, resData, blogData }) => {
-    useEffect(() => {
-        console.log(resData);
-        console.log(post.blog_settings.slug.current);
-    }, []);
+    const imageProps = useNextSanityImage(client, post.blog_settings.featuredImg);
+
     return (
         <>
             <Head>
@@ -82,11 +83,15 @@ const BlogPage = ({ post, resData, blogData }) => {
                 logoLight={urlFor(resData[3].logo.logo_light)}
                 logoDark={urlFor(resData[3].logo.logo_dark)}
             ></Navbar>
-            <PageHero
-                bg={urlFor(post.blog_settings.featuredImg).width(1560).height(550)}
-                headline={post.title}
-                showButton={false}
-            ></PageHero>
+            <PageHero headline={post.title} showButton={false}>
+                <Image
+                    {...imageProps}
+                    layout="fill"
+                    objectFit="cover"
+                    alt="hero"
+                    sizes="(max-height: 550px) 100%, 550px"
+                />
+            </PageHero>
             <Breadcrumbs
                 first="Blog"
                 firstHref="/blog"
