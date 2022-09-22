@@ -23,6 +23,9 @@ import TeamMember from "../components/sections/teamMember";
 
 import { motion } from "framer-motion";
 
+import Image from "next/image";
+import { useNextSanityImage } from "next-sanity-image";
+
 const builder = imageUrlBuilder(client);
 
 function urlFor(source) {
@@ -30,14 +33,12 @@ function urlFor(source) {
 }
 
 export default function Praxis({ data }) {
+    const imageProps = useNextSanityImage(client, data[2].hero_settings.backgroundImg);
+
     const arztRef = useRef();
     const teamRef = useRef();
 
     const [showDoc, setShowDoc] = useState(true);
-
-    useEffect(() => {
-        console.log(isMobile);
-    }, []);
 
     return (
         <>
@@ -55,11 +56,15 @@ export default function Praxis({ data }) {
                 logoDark={urlFor(data[3].logo.logo_dark)}
             ></Navbar>
             <motion.div layoutId={"Hero"} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-                <PageHero
-                    bg={urlFor(data[2].hero_settings.backgroundImg).width(1560).height(550)}
-                    headline="Unsere Praxis"
-                    showButton={false}
-                ></PageHero>
+                <PageHero headline="Unsere Praxis" showButton={false}>
+                    <Image
+                        {...imageProps}
+                        layout="fill"
+                        objectFit="cover"
+                        alt="hero"
+                        sizes="(max-height: 550px) 100%, 550px"
+                    />
+                </PageHero>
             </motion.div>
 
             <TopSubNav></TopSubNav>

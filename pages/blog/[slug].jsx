@@ -8,14 +8,16 @@ import Navbar from "../../components/nav/navbar";
 import BehandlungTop from "../../components/sections/behandlungTop";
 import PageHero from "../../components/sections/pageHero";
 import Footer from "../../components/sections/footer";
-import ImageBox from "../../components/sections/imageBox";
-import LinkBox from "../../components/sections/linkBox";
+
 import BlogSwiperMore from "../../components/sections/blogSwiperMore";
 import BlogOverviewElement from "../../components/sections/blogOvervieElement";
 import FullWidthSwiper from "../../components/sections/fullWidthSwiper";
 import StackedImgs from "../../components/sections/stackedImgs";
 import InlineImgs from "../../components/sections/inlineImgs";
 import Breadcrumbs from "../../components/sections/breadcrumbs";
+
+import Image from "next/image";
+import { useNextSanityImage } from "next-sanity-image";
 
 const builder = imageUrlBuilder(client);
 
@@ -63,10 +65,8 @@ export const getStaticProps = async (context) => {
 };
 
 const BlogPage = ({ post, resData, blogData }) => {
-    useEffect(() => {
-        console.log(resData);
-        console.log(post.blog_settings.slug.current);
-    }, []);
+    const imageProps = useNextSanityImage(client, post.blog_settings.featuredImg);
+
     return (
         <>
             <Head>
@@ -82,11 +82,15 @@ const BlogPage = ({ post, resData, blogData }) => {
                 logoLight={urlFor(resData[3].logo.logo_light)}
                 logoDark={urlFor(resData[3].logo.logo_dark)}
             ></Navbar>
-            <PageHero
-                bg={urlFor(post.blog_settings.featuredImg).width(1560).height(550)}
-                headline={post.title}
-                showButton={false}
-            ></PageHero>
+            <PageHero headline={post.title} showButton={false}>
+                <Image
+                    {...imageProps}
+                    layout="fill"
+                    objectFit="cover"
+                    alt="hero"
+                    sizes="(max-height: 550px) 100%, 550px"
+                />
+            </PageHero>
             <Breadcrumbs
                 first="Blog"
                 firstHref="/blog"

@@ -23,10 +23,11 @@ const LaserBehandlungenContainer = (props, ref) => {
     // useScrollSnap({ ref: scrollRef, duration: 200, delay: 0 });
 
     useEffect(() => {
-        let divs = Array.from(document.querySelectorAll("[data-cat]")).filter((e) => e.id.length > 0);
-        let links = Array.from(document.querySelectorAll(".sideNavElem"));
         props.dataNav.map((e, i) => {});
         window.addEventListener("scroll", () => {
+            let divs = Array.from(document.querySelectorAll("[data-cat]")).filter((e) => e.id.length > 0);
+            let links = Array.from(document.querySelectorAll(".sideNavElem"));
+
             checkTop(divs, activeLink, setActiveLink, links);
         });
 

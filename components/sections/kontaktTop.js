@@ -24,7 +24,7 @@ const KontaktTop = (props) => {
                         <div className="kdata grid grid-cols-3">
                             <div className="left col-span-3 sm:col-span-1 flex items-end">
                                 <p>
-                                    german cosmetics GmbH
+                                    german aesthetics GmbH
                                     <br />
                                     <br />
                                     {props.strasse}

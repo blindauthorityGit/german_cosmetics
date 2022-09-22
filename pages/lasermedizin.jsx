@@ -14,6 +14,9 @@ import ImageBox from "../components/sections/imageBox";
 import LinkBox from "../components/sections/linkBox";
 import { motion } from "framer-motion";
 
+import Image from "next/image";
+import { useNextSanityImage } from "next-sanity-image";
+
 const builder = imageUrlBuilder(client);
 
 function urlFor(source) {
@@ -21,18 +24,12 @@ function urlFor(source) {
 }
 
 export default function LaserBehanldungen({ data, laserData }) {
-    const headlineRef = useRef();
+    const imageProps = useNextSanityImage(client, laserData[0].hero_settings.backgroundImg);
+
     const containerRef = useRef();
-    const arztRef = useRef();
-    const teamRef = useRef();
 
     const [fetchID, setFetchID] = useState(0);
     const [showTeam, setShowTeam] = useState(false);
-
-    const refs = {
-        Licht: "b7924f52-2e37-43bd-9b15-fd8b7e49bee9",
-        Hautverjuengung: "cdc24a98-cb04-4560-a905-d7f981a12627",
-    };
 
     const dataSet = (e) => {
         return Array.from(document.querySelectorAll(`[data-cat=${e}]`));
@@ -51,7 +48,6 @@ export default function LaserBehanldungen({ data, laserData }) {
         laserData[0].categories.map((e, i) => {
             dataSet(`cat${i}`)[0].id = idFormater(i);
         });
-        console.log(data[0].imagebox.headline[0].title);
     }, []);
 
     useEffect(() => {
@@ -62,7 +58,6 @@ export default function LaserBehanldungen({ data, laserData }) {
     }, [fetchID]);
 
     function handleClick(e) {
-        console.log(e.target.dataset.id);
         setFetchID(e.target.dataset.id);
     }
 
@@ -82,11 +77,15 @@ export default function LaserBehanldungen({ data, laserData }) {
                 logoDark={urlFor(data[3].logo.logo_dark)}
             ></Navbar>
             <motion.div layoutId={"Hero"} animate={{ opacity: 1 }}>
-                <PageHero
-                    bg={urlFor(laserData[0].hero_settings.backgroundImg).width(1560).height(550)}
-                    headline="Lasermedizin"
-                    showButton={false}
-                ></PageHero>
+                <PageHero headline="Lasermedizin" showButton={false}>
+                    <Image
+                        {...imageProps}
+                        layout="fill"
+                        objectFit="cover"
+                        alt="hero"
+                        sizes="(max-height: 550px) 100%, 550px"
+                    />
+                </PageHero>
             </motion.div>
             <BehandlungNav klasseOne="active"></BehandlungNav>
 

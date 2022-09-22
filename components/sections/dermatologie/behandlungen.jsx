@@ -19,9 +19,10 @@ const BehandlungenContainer = (props, ref) => {
     const [activeLink, setActiveLink] = useState("test");
 
     useEffect(() => {
-        let divs = Array.from(document.querySelectorAll(".behandlungsElement"));
-        let links = Array.from(document.querySelectorAll(".sideNavElem"));
         window.addEventListener("scroll", () => {
+            let divs = Array.from(document.querySelectorAll(".behandlungsElement"));
+            let links = Array.from(document.querySelectorAll(".sideNavElem"));
+
             checkTop(divs, activeLink, setActiveLink, links);
         });
 

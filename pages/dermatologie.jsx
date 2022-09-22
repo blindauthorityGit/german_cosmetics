@@ -14,6 +14,9 @@ import ImageBox from "../components/sections/imageBox";
 import LinkBox from "../components/sections/linkBox";
 import { motion } from "framer-motion";
 
+import Image from "next/image";
+import { useNextSanityImage } from "next-sanity-image";
+
 const builder = imageUrlBuilder(client);
 
 function urlFor(source) {
@@ -21,15 +24,7 @@ function urlFor(source) {
 }
 
 export default function Dermatologie({ data, dermaData }) {
-    const headlineRef = useRef();
-    const containerRef = useRef();
-    const arztRef = useRef();
-    const teamRef = useRef();
-
-    const [showDoc, setShowDoc] = useState(true);
-    const [showTeam, setShowTeam] = useState(false);
-
-    useEffect(() => {}, []);
+    const imageProps = useNextSanityImage(client, dermaData[0].behandlungen[3].image);
 
     return (
         <>
@@ -47,11 +42,15 @@ export default function Dermatologie({ data, dermaData }) {
                 logoDark={urlFor(data[3].logo.logo_dark)}
             ></Navbar>
             <motion.div layoutId={"Hero"} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-                <PageHero
-                    bg={urlFor(dermaData[0].behandlungen[3].image).width(1560).height(550)}
-                    headline="Dermatologie"
-                    showButton={false}
-                ></PageHero>
+                <PageHero headline="Dermatologie" showButton={false}>
+                    <Image
+                        {...imageProps}
+                        layout="fill"
+                        objectFit="cover"
+                        alt="hero"
+                        sizes="(max-height: 550px) 100%, 550px"
+                    />
+                </PageHero>
             </motion.div>
             <BehandlungNav klasseTwo="active"></BehandlungNav>
 

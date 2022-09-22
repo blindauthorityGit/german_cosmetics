@@ -1,25 +1,10 @@
-import Head from "next/head";
-import MainContainer from "../components/layout/mainContainer";
-import Hero from "../components/Hero/hero";
+import React, { useState, useEffect } from "react";
+import { ChoiceDesktop, ChoiceMobile } from "../components/sections/choiceBox";
 import client from "../client";
-import { useState, useEffect, useRef } from "react";
-import { H1 } from "../components/utils/headlines";
-import { DefaultButton } from "../components/utils/buttons";
-
-import imageUrlBuilder from "@sanity/image-url";
+import FooterMini from "../components/sections/footerMini";
 import Navbar from "../components/nav/navbar";
-import HomeSwiper from "../components/sections/homeSwiper";
-import BlogSwiper from "../components/sections/blogSwiper";
-import Modal from "../components/sections/modal/modal";
-import Overlay from "../components/sections/modal/overlay";
-import CTAContent from "../components/sections/cta/";
-import CTA from "../components/sections/cta";
-import ImageBox from "../components/sections/imageBox";
-import LinkBox from "../components/sections/linkBox";
-import Footer from "../components/sections/footer";
-import { motion } from "framer-motion";
-import { IoMdCalendar } from "react-icons/io";
-import { modalSwitcher } from "../functions/modal";
+import Head from "next/head";
+import imageUrlBuilder from "@sanity/image-url";
 
 const builder = imageUrlBuilder(client);
 
@@ -27,136 +12,80 @@ function urlFor(source) {
     return builder.image(source);
 }
 
-export default function Home({ data, dataBlog }) {
-    const [showModal, setShowModal] = useState(false);
-    const headlineRef = useRef();
+export default function Choose({ data, cosmData, aesthData, dataHome, dataKontakt }) {
+    const [mobile, setMobile] = useState(null);
 
     useEffect(() => {
-        const splitter = headlineRef.current.children[0].innerHTML.split("");
+        function checkWidth() {
+            setMobile(window.innerWidth <= 768);
+        }
+        checkWidth();
+        window.addEventListener("resize", checkWidth);
+        return () => window.removeEventListener("resize", checkWidth);
     }, []);
 
     return (
         <>
             <Head>
-                <title>{data[0].seo.title}</title>
-                <meta name="description" content={data[0].seo.description} />
+                <title>{dataHome.seo.title}</title>
+                <meta name="description" content={dataHome.seo.description} />
             </Head>
-            {showModal && (
-                <>
-                    <Modal
-                        onClick={(e) => {
-                            modalSwitcher(e, showModal, setShowModal);
-                        }}
-                    >
-                        <CTAContent
-                            strasse={data[2].adresse.strasse}
-                            ort={data[2].adresse.ort}
-                            phone={data[2].kontakt.phone}
-                            email={data[2].kontakt.email}
-                            value={data[2].oeffnungszeiten}
-                        ></CTAContent>
-                    </Modal>
-                    <Overlay
-                        onClick={(e) => {
-                            modalSwitcher(e, showModal, setShowModal);
-                        }}
-                    ></Overlay>
-                </>
-            )}
             <Navbar
-                strasse={data[2].adresse.strasse}
-                ort={data[2].adresse.ort}
-                phone={data[2].kontakt.phone}
-                email={data[2].kontakt.email}
-                value={data[2].oeffnungszeiten}
-                logoLight={urlFor(data[3].logo.logo_dark)}
-                logoDark={urlFor(data[3].logo.logo_dark)}
+                dark={true}
+                hideCTA={true}
+                strasse={dataKontakt.adresse.strasse}
+                ort={dataKontakt.adresse.ort}
+                phone={dataKontakt.kontakt.phone}
+                email={dataKontakt.kontakt.email}
+                value={dataKontakt.oeffnungszeiten}
+                logoLight={urlFor(aesthData.logo.logo_dark)}
+                logoDark={urlFor(aesthData.logo.logo_dark)}
             ></Navbar>
-            <MainContainer width="max-w-[100%] h-full">
-                <motion.div className="col-span-12" layoutId={"Hero"} animate={{ opacity: 1 }}>
-                    <Hero
-                        fullHeight={true}
-                        bgImage={urlFor(data[0].hero_settings.backgroundImg)}
-                        colspan="col-span-12"
-                        containerKlasse="items-center z-20"
-                        value={data[2].oeffnungszeiten}
-                        phone={data[2].kontakt.phone}
-                        email={data[2].kontakt.email}
-                        strasse={data[2].adresse.strasse}
-                        ort={data[2].adresse.ort}
-                    >
-                        <div ref={headlineRef} className="">
-                            <H1 klasse="text-center sm:text-left text-white ">{data[0].hero_settings.headline}</H1>
-                            <DefaultButton
-                                onClick={(e) => {
-                                    modalSwitcher(e, showModal, setShowModal);
-                                }}
-                                klasse="col-span-12 w-3/4 hover:bg-darkPurple m-auto sm:m-0 mt-12 sm:mt-16 text-white border-none bg-primaryColor font-semibold"
-                            >
-                                <span className="mr-4 text-xl">
-                                    <IoMdCalendar></IoMdCalendar>
-                                </span>
-                                Termin vereinbaren
-                            </DefaultButton>
-                        </div>
-                    </Hero>
-                </motion.div>
-            </MainContainer>
-
-            <ImageBox single={false} box={data[1].imagebox.headline}></ImageBox>
-
-            <HomeSwiper
-                headline={data[0].raeumlichkeiten_settings.headline}
-                value={data[0].raeumlichkeiten_settings.text}
-                button={data[0].raeumlichkeiten_settings.button}
-                images={data[0].raeumlichkeiten_settings.images}
-            ></HomeSwiper>
-            <CTA
-                onClick={(e) => {
-                    modalSwitcher(e, showModal, setShowModal);
-                }}
-                headline={data[1].cta.headline}
-                text={data[1].cta.text}
-                button={data[1].cta.button_text}
-                strasse={data[2].adresse.strasse}
-                ort={data[2].adresse.ort}
-                phone={data[2].kontakt.phone}
-                email={data[2].kontakt.email}
-                value={data[2].oeffnungszeiten}
-            ></CTA>
-            <BlogSwiper data={dataBlog}>
-                <div className="absolute w-[100%] h-[360px] bg-[#EEF0F2] top-0 sm:top-[30%]"></div>
-            </BlogSwiper>
-            <LinkBox
-                image={urlFor(data[1].linkbox.img)}
-                headline={data[1].linkbox.headline}
-                text={data[1].linkbox.text}
-                button={data[1].linkbox.button_text}
-            ></LinkBox>
-            <Footer
-                logo={urlFor(data[3].logo.logo_light)}
-                strasse={data[2].adresse.strasse}
-                ort={data[2].adresse.ort}
-                phone={data[2].kontakt.phone}
-                email={data[2].kontakt.email}
-                value={data[2].oeffnungszeiten}
-            ></Footer>
+            {mobile === null && <div className="absolute w-full h-screen bg-white z-[999]"></div>}
+            {mobile && mobile ? (
+                <ChoiceMobile
+                    imageR={data.cosmetics_image}
+                    logoR={cosmData.logo.logo_light}
+                    imageL={data.aesthetics_image}
+                    logoL={aesthData.logo.logo_light}
+                ></ChoiceMobile>
+            ) : (
+                <ChoiceDesktop
+                    imageR={data.cosmetics_image}
+                    logoR={cosmData.logo.logo_dark}
+                    imageL={data.aesthetics_image}
+                    logoL={aesthData.logo.logo_dark}
+                ></ChoiceDesktop>
+            )}
+            {!mobile && <FooterMini></FooterMini>}
         </>
     );
 }
 
-export async function getStaticProps() {
-    const res = await client.fetch(
-        `*[_type in ["aesthetic_home", "aesthetic_kontakt", "aesthetic_settings", "aesthetic_komponente"] ]`
-    );
-    const resBlog = await client.fetch(`*[_type in ["blogEntry"] ]`);
+export const getStaticProps = async (context) => {
+    const res = await client.fetch(`*[_type in ["start"] ]`);
 
-    const data = await res;
-    const dataBlog = await resBlog;
+    const data = await res[0];
+    const resCosm = await client.fetch(`*[_type in ["cosmetics_settings"] ]`);
+
+    const resHome = await client.fetch(`*[_type in ["cosmetics_home"] ]`);
+    const dataHome = await resHome[0];
+
+    const cosmData = await resCosm[0];
+    const resAesth = await client.fetch(`*[_type in ["aesthetic_settings"] ]`);
+
+    const aesthData = await resAesth[0];
+
+    const resKontakt = await client.fetch(`*[_type in ["cosmetics_kontakt"] ]`);
+    const dataKontakt = await resKontakt[0];
+
     return {
         props: {
             data,
-            dataBlog,
+            cosmData,
+            aesthData,
+            dataHome,
+            dataKontakt,
         },
     };
-}
+};

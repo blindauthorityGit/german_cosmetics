@@ -17,6 +17,9 @@ import FormFull from "../components/form/formFull";
 import Map from "../assets/map.jpg";
 import MapMobile from "../assets/mapMobile.jpg";
 
+import Image from "next/image";
+import { useNextSanityImage } from "next-sanity-image";
+
 const builder = imageUrlBuilder(client);
 
 function urlFor(source) {
@@ -24,12 +27,7 @@ function urlFor(source) {
 }
 
 export default function Kontakt({ data, laserData }) {
-    const headlineRef = useRef();
-    const containerRef = useRef();
-
-    useEffect(() => {
-        console.log(data);
-    }, []);
+    const imageProps = useNextSanityImage(client, data[2].raeumlichkeiten_settings.images[2]);
 
     return (
         <>
@@ -47,11 +45,15 @@ export default function Kontakt({ data, laserData }) {
                 logoDark={urlFor(data[3].logo.logo_dark)}
             ></Navbar>
             <motion.div layoutId={"Hero"} animate={{ opacity: 1 }}>
-                <PageHero
-                    bg={urlFor(data[2].raeumlichkeiten_settings.images[2]).width(1560).height(550)}
-                    headline="Kontakt"
-                    showButton={false}
-                ></PageHero>
+                <PageHero headline="Kontakt" showButton={false}>
+                    <Image
+                        {...imageProps}
+                        layout="fill"
+                        objectFit="cover"
+                        alt="hero"
+                        sizes="(max-height: 550px) 100%, 550px"
+                    />
+                </PageHero>
             </motion.div>
 
             <KontaktTop
@@ -71,13 +73,6 @@ export default function Kontakt({ data, laserData }) {
                 <img className="hidden sm:block" src={Map.src} alt="" />
                 <img className="block sm:hidden" src={MapMobile.src} alt="" />
             </div>
-
-            {/* <CTA
-                klasse="sm:mb-16"
-                headline={data[0].cta.headline}
-                text={data[0].cta.text}
-                button={data[0].cta.button_text}
-            ></CTA> */}
 
             <LinkBox
                 klasse="sm:mt-16"
@@ -103,7 +98,6 @@ export async function getStaticProps() {
         `*[_type in ["aesthetic_praxis", "aesthetic_kontakt", "aesthetic_settings", "aesthetic_komponente"] ]`
     );
     const laserRes = await client.fetch(`*[_type in ["aesthetic_laserbehandlung"] ]`);
-    // const res = await fetch("https://jsonplaceholder.typicode.com/todos/1");
 
     const data = await res;
     const laserData = await laserRes;
