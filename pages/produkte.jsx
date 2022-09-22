@@ -1,6 +1,5 @@
 import imageUrlBuilder from "@sanity/image-url";
 import Head from "next/head";
-import { useEffect, useRef, useState } from "react";
 import client from "../client";
 import BehandlungNav from "../components/nav/behandlungNav";
 import Navbar from "../components/nav/navbar";
@@ -13,6 +12,8 @@ import Footer from "../components/sections/footer";
 import ImageBox from "../components/sections/imageBox";
 import LinkBox from "../components/sections/linkBox";
 import { motion } from "framer-motion";
+import Image from "next/image";
+import { useNextSanityImage } from "next-sanity-image";
 
 const builder = imageUrlBuilder(client);
 
@@ -21,15 +22,7 @@ function urlFor(source) {
 }
 
 export default function Produkte({ data, dermaData, produkteData, produkteKomponente, produkteKontakt }) {
-    const headlineRef = useRef();
-    const containerRef = useRef();
-    const arztRef = useRef();
-    const teamRef = useRef();
-
-    const [showDoc, setShowDoc] = useState(true);
-    const [showTeam, setShowTeam] = useState(false);
-
-    useEffect(() => {}, []);
+    const imageProps = useNextSanityImage(client, produkteData[0].hero_settings.backgroundImg);
 
     return (
         <>
@@ -51,16 +44,21 @@ export default function Produkte({ data, dermaData, produkteData, produkteKompon
                     bg={urlFor(produkteData[0].hero_settings.backgroundImg).width(1560).height(550)}
                     headline="Unsere Produkte"
                     showButton={false}
-                ></PageHero>
+                >
+                    <Image
+                        {...imageProps}
+                        layout="fill"
+                        objectFit="cover"
+                        alt="hero"
+                        sizes="(max-height: 550px) 100%, 550px"
+                    />
+                </PageHero>
             </motion.div>
             <BehandlungNav klasseTwo="active"></BehandlungNav>
 
             <BehandlungTop
                 headline={produkteData[0].intro.headline}
                 valueLeft={produkteData[0].intro.text}
-                // preise={dermaData[0].preise.headline}
-                // preiseText={dermaData[0].preise.textPrice}
-                // preiseTextAfter={dermaData[0].preise.textPriceAfter}
             ></BehandlungTop>
             <ProduktGrid data={produkteData[0].produkte}></ProduktGrid>
             <ImageBox
@@ -106,9 +104,7 @@ export async function getStaticProps() {
         `*[_type in ["aesthetic_praxis", "aesthetic_kontakt", "cosmetics_settings", "aesthetic_komponente"] ]`
     );
     const dermaRes = await client.fetch(`*[_type in ["aesthetic_dermatologie"] ]`);
-    // const res = await fetch("https://jsonplaceholder.typicode.com/todos/1");
     const produkteRes = await client.fetch(`*[_type in ["cosmetics_produkte"] ]`);
-    // const res = await fetch("https://jsonplaceholder.typicode.com/todos/1");
     const resKomponente = await client.fetch(`*[_type in ["cosmetics_komponente"] ]`);
     const resKontakt = await client.fetch(`*[_type in ["cosmetics_kontakt"] ]`);
 

@@ -13,6 +13,8 @@ import Footer from "../components/sections/footer";
 import ImageBox from "../components/sections/imageBox";
 import LinkBox from "../components/sections/linkBox";
 import { motion } from "framer-motion";
+import Image from "next/image";
+import { useNextSanityImage } from "next-sanity-image";
 
 const builder = imageUrlBuilder(client);
 
@@ -21,18 +23,11 @@ function urlFor(source) {
 }
 
 export default function LaserBehanldungen({ data, laserData, dataKontakt, resKomponente, dataKomponente }) {
-    const headlineRef = useRef();
+    const imageProps = useNextSanityImage(client, laserData[0].hero_settings.backgroundImg);
+
     const containerRef = useRef();
-    const arztRef = useRef();
-    const teamRef = useRef();
 
     const [fetchID, setFetchID] = useState(0);
-    const [showTeam, setShowTeam] = useState(false);
-
-    const refs = {
-        Licht: "b7924f52-2e37-43bd-9b15-fd8b7e49bee9",
-        Hautverjuengung: "cdc24a98-cb04-4560-a905-d7f981a12627",
-    };
 
     const dataSet = (e) => {
         return Array.from(document.querySelectorAll(`[data-cat=${e}]`));
@@ -47,12 +42,9 @@ export default function LaserBehanldungen({ data, laserData, dataKontakt, resKom
     };
 
     useEffect(() => {
-        // Korrekte ID's für Sidenav
         laserData[0].categories.map((e, i) => {
-            // console.log(dataSet(`cat${i}`));
             dataSet(`cat${i}`)[0].id = idFormater(i);
         });
-        console.log(data[0].imagebox.headline[0].title);
     }, []);
 
     useEffect(() => {
@@ -63,7 +55,6 @@ export default function LaserBehanldungen({ data, laserData, dataKontakt, resKom
     }, [fetchID]);
 
     function handleClick(e) {
-        console.log(e.target.dataset.id);
         setFetchID(e.target.dataset.id);
     }
 
@@ -87,7 +78,15 @@ export default function LaserBehanldungen({ data, laserData, dataKontakt, resKom
                     bg={urlFor(laserData[0].hero_settings.backgroundImg).width(1560).height(550)}
                     headline="Behandlungen"
                     showButton={false}
-                ></PageHero>
+                >
+                    <Image
+                        {...imageProps}
+                        layout="fill"
+                        objectFit="cover"
+                        alt="hero"
+                        sizes="(max-height: 550px) 100%, 550px"
+                    />
+                </PageHero>
             </motion.div>
             <BehandlungNav klasseOne="active"></BehandlungNav>
 
@@ -143,7 +142,6 @@ export async function getStaticProps() {
         `*[_type in ["aesthetic_praxis", "aesthetic_kontakt", "cosmetics_settings", "aesthetic_komponente"] ]`
     );
     const laserRes = await client.fetch(`*[_type in ["cosmetics_behandlung"] ]`);
-    // const res = await fetch("https://jsonplaceholder.typicode.com/todos/1");
     const resKontakt = await client.fetch(`*[_type in ["cosmetics_kontakt"] ]`);
     const resKomponente = await client.fetch(`*[_type in ["cosmetics_komponente"] ]`);
 

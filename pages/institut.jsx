@@ -21,12 +21,11 @@ import ScrollAnimation from "react-animate-on-scroll";
 import DerArzt from "../components/sections/derArzt";
 import TeamMember from "../components/sections/teamMember";
 
-import Overlay from "../components/sections/modal/overlay";
-import Modal from "../components/sections/modal/modal";
-import CTAContent from "../components/sections/cta";
 import { modalSwitcher, hideModalSet } from "../functions/modal";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
+import { useNextSanityImage } from "next-sanity-image";
 
 const builder = imageUrlBuilder(client);
 
@@ -40,9 +39,9 @@ export default function Institut({ data, dataCosmetics, dataKontakt, dataKompone
 
     const [showDoc, setShowDoc] = useState(true);
 
-    useEffect(() => {
-        console.log(isMobile);
-    }, []);
+    const imageProps = useNextSanityImage(client, data[2].hero_settings.backgroundImg);
+
+    useEffect(() => {}, []);
 
     return (
         <>
@@ -64,7 +63,16 @@ export default function Institut({ data, dataCosmetics, dataKontakt, dataKompone
                     bg={urlFor(data[2].hero_settings.backgroundImg).width(1560).height(550)}
                     headline="Das Institut"
                     showButton={false}
-                ></PageHero>
+                >
+                    <Image
+                        {...imageProps}
+                        layout="fill"
+                        objectFit="cover"
+                        alt="hero"
+                        // height={550}
+                        sizes="(max-height: 550px) 100%, 550px"
+                    />
+                </PageHero>
             </motion.div>
 
             <TopSubNav></TopSubNav>
@@ -72,10 +80,8 @@ export default function Institut({ data, dataCosmetics, dataKontakt, dataKompone
             <PraxisTop
                 headline={data[2].raeumlichkeiten_settings.headline}
                 imgRight={urlFor(data[2].raeumlichkeiten_settings.image2).width(735).height(892)}
-                // minHeightR="min-h-[892px]"
                 valueLeft={data[2].raeumlichkeiten_settings.text}
                 imgLeft={urlFor(data[2].raeumlichkeiten_settings.image1).width(735).height(1024)}
-                // minHeightL="min-h-[1024px]"
                 valueRight={data[2].raeumlichkeiten_settings.text2}
             ></PraxisTop>
 
