@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, forwardRef } from "react";
+import React, { useState, useEffect, forwardRef } from "react";
 import MainContainer from "../../layout/mainContainer";
 import SideNavElem from "../../nav/sideNavElem";
 import JobElement from "./jobElement";
@@ -7,7 +7,6 @@ import client from "../../../client";
 import imageUrlBuilder from "@sanity/image-url";
 import { checkTop } from "../../utils/functions";
 import ScrollAnimation from "react-animate-on-scroll";
-import { H2, H4 } from "../../utils/headlines";
 
 const builder = imageUrlBuilder(client);
 
@@ -19,9 +18,9 @@ const JobContainer = (props, ref) => {
     const [activeLink, setActiveLink] = useState("test");
 
     useEffect(() => {
-        let divs = Array.from(document.querySelectorAll(".jobsElement"));
-        let links = Array.from(document.querySelectorAll(".sideNavElem"));
         window.addEventListener("scroll", () => {
+            let divs = Array.from(document.querySelectorAll(".jobsElement"));
+            let links = Array.from(document.querySelectorAll(".sideNavElem"));
             checkTop(divs, activeLink, setActiveLink, links);
         });
 

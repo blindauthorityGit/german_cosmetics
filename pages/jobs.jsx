@@ -11,6 +11,8 @@ import { H2 } from "../components/utils/headlines";
 import Footer from "../components/sections/footer";
 import LinkBox from "../components/sections/linkBox";
 import { motion } from "framer-motion";
+import Image from "next/image";
+import { useNextSanityImage } from "next-sanity-image";
 
 import JobHero from "../assets/jobHero.jpg";
 
@@ -21,16 +23,14 @@ function urlFor(source) {
 }
 
 export default function Jobs({ data, jobsData, dataKontakt, dataKomponente }) {
-    useEffect(() => {
-        console.log(jobsData);
-    }, []);
+    // const imageProps = useNextSanityImage(client, JobHero.src);
 
     return (
         <>
-            {/* <Head>
-                <title>{jobsData[0].seo.title}</title>
-                <meta name="description" content={jobsData[0].seo.description} />
-            </Head> */}
+            <Head>
+                <title>german cosmetics - Offene Stellen</title>
+                <meta name="description" content={"Job Angebote für german cosmetics"} />
+            </Head>
             <Navbar
                 strasse={dataKontakt[0].adresse.strasse}
                 ort={dataKontakt[0].adresse.ort}
@@ -40,7 +40,23 @@ export default function Jobs({ data, jobsData, dataKontakt, dataKomponente }) {
                 logoLight={urlFor(data[3].logo.logo_light)}
                 logoDark={urlFor(data[3].logo.logo_dark)}
             ></Navbar>
-            <PageHero bg={JobHero.src} headline="Jobs" showButton={false}></PageHero>
+            <PageHero bg={JobHero.src} headline="Jobs" showButton={false}>
+                {/* <Image {...imageProps} layout="fill" objectFit="cover" alt="hero" /> */}
+                {/* <Image src={JobHero.src} layout="fill"></Image> */}
+                <img
+                    style={{
+                        position: "absolute",
+                        maxHeight: "100%",
+                        minHeight: "100%",
+                        maxWidth: "100%",
+                        minWidth: "100%",
+                        objectFit: "cover",
+                        objectPosition: "top",
+                    }}
+                    src={JobHero.src}
+                    alt="JobHero"
+                />
+            </PageHero>
             <BehandlungTop
                 klasse="pt-12"
                 headline="Werden Sie Teil unseres Teams!"

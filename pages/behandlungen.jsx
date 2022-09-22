@@ -74,11 +74,7 @@ export default function LaserBehanldungen({ data, laserData, dataKontakt, resKom
                 logoDark={urlFor(data[3].logo.logo_dark)}
             ></Navbar>
             <motion.div layoutId={"Hero"} animate={{ opacity: 1 }}>
-                <PageHero
-                    bg={urlFor(laserData[0].hero_settings.backgroundImg).width(1560).height(550)}
-                    headline="Behandlungen"
-                    showButton={false}
-                >
+                <PageHero headline="Behandlungen" showButton={false}>
                     <Image
                         {...imageProps}
                         layout="fill"
