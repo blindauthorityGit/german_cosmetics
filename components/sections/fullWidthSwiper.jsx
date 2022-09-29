@@ -35,9 +35,9 @@ const FullWidthSwiper = (props) => {
     return (
         <MainContainer
             style={{ paddingTop: props.style }}
-            width={` ${props.klasse} container sm:pt-36 sm:pb-32 font-europa relative`}
+            width={` ${props.klasse} container md:pt-16 lg:pt-36  font-europa relative`}
         >
-            <div className="sm:px-16 col-span-12">
+            <div className="lg:px-16 col-span-12">
                 {domLoaded && (
                     <Swiper
                         spaceBetween={50}
