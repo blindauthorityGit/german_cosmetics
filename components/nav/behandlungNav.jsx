@@ -4,7 +4,7 @@ import MainContainer from "../layout/mainContainer";
 
 const BehandlungNav = (props, ref) => {
     return (
-        <section className="container w-full mt-1 sm:m-auto flex mb-20">
+        <section className="container w-full mt-1 sm:m-auto flex mb-20 md:pl-12 pl-0 lg:pl-0">
             <Link href="./behandlungen" onClick={props.onClick}>
                 <a
                     className={`text-primaryColor text-center w-2/4 sm:w-auto transition-all px-8 py-4 bg-lightGray hover:bg-primaryColor hover:text-white  ${props.klasseOne}`}

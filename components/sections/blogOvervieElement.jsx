@@ -19,7 +19,7 @@ const BlogOverviewElement = (props) => {
                 </a>
             </Link>
 
-            <div className="px-8 xm:px-0">
+            <div className="px-8 lg:px-0">
                 <H3 klasse="font-europa mt-6 ">{props.headline}</H3>{" "}
                 <div className="date text-primaryColor font-semibold text-xs mt-4 mb-6">{props.date}</div>
                 <PortableText value={props.value}></PortableText>

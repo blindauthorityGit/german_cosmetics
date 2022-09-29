@@ -9,7 +9,7 @@ import { FaFax, FaMobileAlt } from "react-icons/fa";
 
 const KontaktTop = (props) => {
     return (
-        <MainContainer width={`${props.klasse} w-100 gap-0 sm:mt-12  container font-europa sm:px-32 `}>
+        <MainContainer width={`${props.klasse} w-100 gap-0 sm:mt-12  container font-europa px-0 md:px-12 lg:px-32 `}>
             <div className="container col-span-12 grid grid-cols-12 text-left sm:gap-16">
                 <div className="col-span-12 sm:col-span-12">
                     <div className="px-8">
@@ -32,7 +32,7 @@ const KontaktTop = (props) => {
                                     {props.ort}
                                 </p>
                             </div>
-                            <div className="right col-span-3 sm:col-span-1 kdataRight">
+                            <div className="right col-span-3 lg:col-span-1 kdataRight">
                                 <div className="wrapper flex items-center">
                                     <div className="icon mr-8 text-primaryColor">
                                         <p>
@@ -75,7 +75,7 @@ const KontaktTop = (props) => {
                                     </p>
                                 </div>
                             </div>
-                            <div className="left col-span-3 sm:col-span-1 mt-8 sm:mt-0 flex items-end sm:justify-center">
+                            <div className="left col-span-3 lg:col-span-1 mt-8 lg:mt-0 flex items-end lg:justify-center">
                                 <div className="wrapper flex oeffnung">
                                     <div className="left mr-6 text-left clamp">
                                         Mi

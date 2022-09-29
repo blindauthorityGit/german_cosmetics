@@ -40,7 +40,7 @@ const LaserBehandlungenContainer = (props, ref) => {
     return (
         <MainContainer
             id={props.id}
-            width="w-100 scrollContainer gap-0 sm:mt-24 sm:mb-24 sm:mt-24 container font-europa sm:px-16 "
+            width="w-100 overflow-hidden scrollContainer gap-0 sm:mt-24 lg:mb-24 sm:mt-24 container font-europa sm:px-16 "
         >
             <StickyContainer className="container col-span-12 grid grid-cols-12 text-left sm:gap-8">
                 <div className="hidden sm:block sm:col-span-4 scroll-smooth">
