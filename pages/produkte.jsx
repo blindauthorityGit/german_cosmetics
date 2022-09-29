@@ -62,8 +62,6 @@ export default function Produkte({ data, dermaData, produkteData, produkteKompon
             ></BehandlungTop>
             <ProduktGrid data={produkteData[0].produkte}></ProduktGrid>
             <ProduktContainer
-                // dataNav={"Bubu"}
-                // dataNav={["Kategorie 1", "Kategorie 2", "Kategorie 3"]}
                 dataNav={produkteData[0].produktKategorien}
                 dataBehandlung={produkteData[0].produkte}
             ></ProduktContainer>

@@ -10,9 +10,6 @@ import PageHero from "../components/sections/pageHero";
 import { H2 } from "../components/utils/headlines";
 import Footer from "../components/sections/footer";
 import LinkBox from "../components/sections/linkBox";
-import { motion } from "framer-motion";
-import Image from "next/image";
-import { useNextSanityImage } from "next-sanity-image";
 
 import JobHero from "../assets/jobHero.jpg";
 
@@ -43,8 +40,6 @@ export default function Jobs({ data, jobsData, dataKontakt, dataKomponente }) {
                 logoDark={urlFor(data[3].logo.logo_dark)}
             ></Navbar>
             <PageHero bg={JobHero.src} headline="Jobs" showButton={false}>
-                {/* <Image {...imageProps} layout="fill" objectFit="cover" alt="hero" /> */}
-                {/* <Image src={JobHero.src} layout="fill"></Image> */}
                 <img
                     style={{
                         position: "absolute",
@@ -106,7 +101,6 @@ export async function getStaticProps() {
         `*[_type in ["aesthetic_praxis", "aesthetic_kontakt", "cosmetics_settings", "aesthetic_komponente"] ]`
     );
     const jobsRes = await client.fetch(`*[_type in ["jobs"] ]`);
-    // const res = await fetch("https://jsonplaceholder.typicode.com/todos/1");
 
     const data = await res;
     const jobsData = await jobsRes;

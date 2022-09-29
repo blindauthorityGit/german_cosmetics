@@ -50,7 +50,7 @@ export default function Datenschutz({ data, impressumData, dataKontakt }) {
                 jobIntro={
                 }
             ></BehandlungTop> */}
-            <MainContainer width="px-8 sm:px-0 container pt-16 sm:py-32 font-europa impressum">
+            <MainContainer width="px-8 lgs:px-0 container pt-16 sm:py-32 font-europa impressum">
                 <div className="col-span-12">
                     <PortableText value={impressumData[0].description}></PortableText>
                 </div>
