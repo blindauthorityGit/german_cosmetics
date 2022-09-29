@@ -170,10 +170,6 @@ h2 {
   scroll-padding-top: 4rem;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
 :target:before {
   content: "";
   display: block;
