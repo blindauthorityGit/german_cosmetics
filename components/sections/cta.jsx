@@ -35,10 +35,10 @@ const CTA = (props) => {
                     ></Overlay>
                 </>
             )}
-            <MainContainer width={`w-100 bg-lightGray py-16 py-16 sm:py-32 font-europa ${props.klasse}`}>
-                <div className="col-span-12 text-center flex flex-col items-center m-auto sm:w-2/4 px-6">
+            <MainContainer width={`w-100 bg-lightGray py-16 py-16 lg:py-32 font-europa ${props.klasse}`}>
+                <div className="col-span-12 text-center flex flex-col items-center m-auto lg:w-2/4 px-6">
                     <H2 klasse="font-europa mb-12 text-text">{props.headline}</H2>
-                    <p className="text-text sm:w-1/2">{props.text}</p>
+                    <p className="text-text lg:w-1/2">{props.text}</p>
                     <DefaultButton
                         onClick={(e) => {
                             modalSwitcher(e, showModal, setShowModal);

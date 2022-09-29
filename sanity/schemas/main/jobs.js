@@ -25,6 +25,10 @@ export default {
                         title: "Teilzeit",
                         value: "teilzeit",
                     },
+                    {
+                        title: "Vollzeit / Teilzeit",
+                        value: "vollzeit Teilzeit",
+                    },
                 ],
             },
         },

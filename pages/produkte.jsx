@@ -14,14 +14,14 @@ import LinkBox from "../components/sections/linkBox";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { useNextSanityImage } from "next-sanity-image";
-
+import ProduktContainer from "../components/sections/produkte/productContainer";
 const builder = imageUrlBuilder(client);
 
 function urlFor(source) {
     return builder.image(source);
 }
 
-export default function Produkte({ data, dermaData, produkteData, produkteKomponente, produkteKontakt }) {
+export default function Produkte({ data, dermaData, produkteData, produkteKomponente, produkteKontakt, laserRes }) {
     const imageProps = useNextSanityImage(client, produkteData[0].hero_settings.backgroundImg);
 
     return (
@@ -61,6 +61,12 @@ export default function Produkte({ data, dermaData, produkteData, produkteKompon
                 valueLeft={produkteData[0].intro.text}
             ></BehandlungTop>
             <ProduktGrid data={produkteData[0].produkte}></ProduktGrid>
+            <ProduktContainer
+                // dataNav={"Bubu"}
+                // dataNav={["Kategorie 1", "Kategorie 2", "Kategorie 3"]}
+                dataNav={produkteData[0].produktKategorien}
+                dataBehandlung={produkteData[0].produkte}
+            ></ProduktContainer>
             <ImageBox
                 single={true}
                 headline={produkteKomponente[0].imagebox.headline[0].title}
@@ -107,6 +113,7 @@ export async function getStaticProps() {
     const produkteRes = await client.fetch(`*[_type in ["cosmetics_produkte"] ]`);
     const resKomponente = await client.fetch(`*[_type in ["cosmetics_komponente"] ]`);
     const resKontakt = await client.fetch(`*[_type in ["cosmetics_kontakt"] ]`);
+    const laserRes = await client.fetch(`*[_type in ["cosmetics_behandlung"] ]`);
 
     const data = await res;
     const dermaData = await dermaRes;
@@ -120,6 +127,7 @@ export async function getStaticProps() {
             produkteData,
             produkteKomponente,
             produkteKontakt,
+            laserRes,
         },
     };
 }

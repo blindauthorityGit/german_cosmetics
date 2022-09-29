@@ -60,7 +60,7 @@ export default function CTAContent(props) {
 
     return (
         <MainContainer width={`w-100  font-europa gap-6`}>
-            <div className="col-span-12 order-last sm:col-span-6 text-text">
+            <div className="col-span-12 order-last lg:col-span-6 text-text">
                 {/* <p className="text-white sm:w-1/2">{props.text}</p> */}
                 <form onSubmit={handleSubmit(onSubmitForm)} className="grid grid-cols-12 gap-6 pt-8 sm:pr-t-0">
                     <div className="col-span-12">
@@ -175,43 +175,6 @@ export default function CTAContent(props) {
                             id="message"
                         />
                     </div>
-                    {/* <div className="col-span-12 sm:col-span-6">
-                        <label className="block mb-2 font-bold" htmlFor="name">
-                            Datum wählen
-                        </label>
-                        <input
-                            className="border py-4 px-4 w-full"
-                            value={date}
-                            {...register("date", { required: true })}
-                            type="date"
-                            onChange={(e) => {
-                                setDate(e.target.value);
-                                console.log(Date.parse(e.target.value));
-                                console.log(new Date(e.target.value).getDay());
-                                setDay(new Date(e.target.value).getDay());
-                            }}
-                        />
-                    </div>
-                    <div className="col-span-12 sm:col-span-6">
-                        <label className="block mb-2 font-bold" htmlFor="name">
-                            Uhrzeit wählen
-                        </label>
-                        <select
-                            {...register("time", { required: true })}
-                            className="border py-4 px-4 w-full"
-                            name="uhrzeit"
-                            placeholder="Uhrzeit wählen"
-                            id="uhrzeit"
-                        >
-                            {day === 1 && No()}
-                            {day === 2 && No()}
-                            {day === 3 && Wed()}
-                            {day === 4 && Thu()}
-                            {day === 5 && Fri()}
-                            {day === 6 && No()}
-                            {day === 0 && No()}
-                        </select>
-                    </div> */}
                     <div className="col-span-12">
                         {loading ? (
                             <div className="w-full flex justify-center">
@@ -246,7 +209,7 @@ export default function CTAContent(props) {
                     </div>
                 </form>
             </div>
-            <div className="col-span-12 sm:col-span-6 sm:pl-12">
+            <div className="col-span-12 lg:col-span-6 sm:pl-12">
                 <H2 klasse="font-europa mb-12 hidden sm:block">Rufen Sie uns an!</H2>
 
                 <div className="contactWrapper grid grid-cols-12 mt-12 clamp ">

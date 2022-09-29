@@ -23,7 +23,9 @@ function urlFor(source) {
 }
 
 export default function Jobs({ data, jobsData, dataKontakt, dataKomponente }) {
-    // const imageProps = useNextSanityImage(client, JobHero.src);
+    useEffect(() => {
+        console.log(jobsData);
+    }, []);
 
     return (
         <>
