@@ -127,7 +127,7 @@ export default function Start({ data, dataBlog, dataHome, dataKontakt, dataKompo
                 value={dataKontakt[0].oeffnungszeiten}
             ></CTA>
             <BlogSwiper data={dataBlog}>
-                <div className="absolute w-[100%] h-[360px] bg-[#F5F0ED] top-0 sm:top-[30%]"></div>
+                <div className="absolute w-[100%] md:h-[210px] lg:h-[360px] bg-[#F5F0ED] top-0 sm:top-[30%]"></div>
             </BlogSwiper>
             <LinkBox
                 image={urlFor(dataKomponente[0].linkbox.img)}

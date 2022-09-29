@@ -89,7 +89,6 @@ export async function getStaticProps() {
         `*[_type in ["aesthetic_praxis", "aesthetic_kontakt", "cosmetics_settings", "aesthetic_komponente"] ]`
     );
     const laserRes = await client.fetch(`*[_type in ["aesthetic_laserbehandlung"] ]`);
-    // const res = await fetch("https://jsonplaceholder.typicode.com/todos/1");
     const resKontakt = await client.fetch(`*[_type in ["cosmetics_kontakt"] ]`);
 
     const data = await res;

@@ -40,14 +40,13 @@ const BlogSwiper = (props) => {
                     modules={[Navigation, Pagination, Scrollbar, A11y]}
                     loop={false}
                     pagination={{ clickable: true }}
-                    navigation={{ clickable: true }}
                     className="bubu"
                     breakpoints={{
                         // when window width is >= 640px
                         320: {
                             slidesPerView: 1,
                         },
-                        1025: {
+                        820: {
                             slidesPerView: 2,
                         },
                     }}

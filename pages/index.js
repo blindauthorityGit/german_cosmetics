@@ -17,7 +17,7 @@ export default function Choose({ data, cosmData, aesthData, dataHome, dataKontak
 
     useEffect(() => {
         function checkWidth() {
-            setMobile(window.innerWidth <= 768);
+            setMobile(window.innerWidth <= 820);
         }
         checkWidth();
         window.addEventListener("resize", checkWidth);

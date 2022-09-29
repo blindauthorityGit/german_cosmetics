@@ -1,7 +1,7 @@
 import Head from "next/head";
 import MainContainer from "../components/layout/mainContainer";
 import client from "../client";
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef } from "react";
 
 import imageUrlBuilder from "@sanity/image-url";
 import Navbar from "../components/nav/navbar";
@@ -9,7 +9,6 @@ import PageHero from "../components/sections/pageHero";
 import TopSubNav from "../components/nav/topSubNav";
 import PraxisTop from "../components/sections/praxisTop";
 import FullWidthSwiper from "../components/sections/fullWidthSwiper";
-import SideNavContainer from "../components/sections/sideNavContainer";
 import { isMobile } from "react-device-detect";
 
 import CTA from "../components/sections/cta";
@@ -84,7 +83,6 @@ export default function Institut({ data, dataCosmetics, dataKontakt, dataKompone
 
             <FullWidthSwiper data={data[2].raeumlichkeiten_settings.images} width="1485" height="816"></FullWidthSwiper>
 
-            {/* <CTA headline={data[0].cta.headline} text={data[0].cta.text} button={data[0].cta.button_text}></CTA> */}
             <MainContainer width="w-100 gap-4 sm:mt-24  sm:mt-24 container font-europa sm:px-16 ">
                 <div id="team" className="container m-auto col-span-12 overflow-hidden">
                     {showDoc && (
@@ -142,48 +140,6 @@ export default function Institut({ data, dataCosmetics, dataKontakt, dataKompone
                             );
                         })}
                     </div>
-
-                    {/* {!isMobile ? (
-                        <div id="teamWrapper" className="sm:mt-16 grid grid-cols-12 gap-4" ref={teamRef}>
-                            {data[2].team.teamMember.map((e, i) => {
-                                return (
-                                    <ScrollAnimation
-                                        key={`key${i}`}
-                                        animateIn={i % 2 === 0 ? "slideInLeft" : "slideInRight"}
-                                        animateOnce={true}
-                                        duration={0.4}
-                                        className="col-span-12 sm:col-span-6 "
-                                    >
-                                        <TeamMember
-                                            img={urlFor(e.img).width(600).height(600)}
-                                            headline={e.title}
-                                            text={e.subTitle}
-                                            title={e.title}
-                                            orderTop={i % 2 === 0 ? "" : "order-last"}
-                                        ></TeamMember>
-                                    </ScrollAnimation>
-                                );
-                            })}
-                        </div>
-                    ) : (
-                        <div id="teamWrapper" className="sm:mt-16 grid grid-cols-12 gap-4">
-                            {data[2].team.teamMember.map((e, i) => {
-                                return (
-                                    <div
-                                        key={`keyM${i}`}
-                                        className="BUBU opacity-[1!important] col-span-12 sm:col-span-6  sm:py-64 relative cursor-pointer group overflow-hidden"
-                                    >
-                                        <TeamMember
-                                            img={urlFor(e.img).width(450).height(450)}
-                                            headline={e.title}
-                                            title={e.title}
-                                            text={e.subTitle}
-                                        ></TeamMember>
-                                    </div>
-                                );
-                            })}
-                        </div>
-                    )} */}
                 </div>
             </MainContainer>
             <JobsCTA

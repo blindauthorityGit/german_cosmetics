@@ -36,7 +36,7 @@ const HomeSwiper = (props) => {
                 animateIn={"slideInLeft"}
                 animateOnce={true}
                 duration={0.4}
-                className="col-span-12 lg:col-span-4 flex flex-col justify-center px-8 lg:px-0 lg:pr-16"
+                className="col-span-12 lg:col-span-4 md:mt-8 md:order-last lg:order-first flex flex-col justify-center px-8 lg:px-0 lg:pr-16"
             >
                 <H2 klasse="font-europa mb-12">{props.headline}</H2>
                 <PortableText className="font-europa" value={props.value} />
