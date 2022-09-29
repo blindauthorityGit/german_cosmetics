@@ -41,8 +41,6 @@ export default function Institut({ data, dataCosmetics, dataKontakt, dataKompone
 
     const imageProps = useNextSanityImage(client, data[2].hero_settings.backgroundImg);
 
-    useEffect(() => {}, []);
-
     return (
         <>
             <Head>
@@ -69,7 +67,6 @@ export default function Institut({ data, dataCosmetics, dataKontakt, dataKompone
                         layout="fill"
                         objectFit="cover"
                         alt="hero"
-                        // height={550}
                         sizes="(max-height: 550px) 100%, 550px"
                     />
                 </PageHero>
@@ -103,7 +100,7 @@ export default function Institut({ data, dataCosmetics, dataKontakt, dataKompone
                         ></DerArzt>
                     )}
 
-                    <div id="teamWrapperM" className=" sm:hidden sm:mt-16 grid grid-cols-12 gap-4">
+                    <div id="teamWrapperM" className=" lg:hidden sm:mt-16 grid grid-cols-12 gap-4">
                         {data[2].team.teamMember.map((e, i) => {
                             return (
                                 <ScrollAnimation
@@ -111,7 +108,7 @@ export default function Institut({ data, dataCosmetics, dataKontakt, dataKompone
                                     animateIn={i % 2 === 0 ? "slideInLeft" : "slideInRight"}
                                     animateOnce={true}
                                     duration={0.4}
-                                    className="BUBU col-span-12 sm:col-span-6  sm:py-64 relative cursor-pointer group overflow-hidden"
+                                    className="BUBU col-span-12 sm:col-span-6  lg:py-64 relative cursor-pointer group overflow-hidden"
                                 >
                                     <TeamMember
                                         img={urlFor(e.img).width(450).height(450)}
@@ -124,7 +121,7 @@ export default function Institut({ data, dataCosmetics, dataKontakt, dataKompone
                         })}
                     </div>
 
-                    <div id="teamWrapperD" className="hidden sm:grid sm:mt-16  grid-cols-12 gap-4" ref={teamRef}>
+                    <div id="teamWrapperD" className="hidden lg:grid sm:mt-16  grid-cols-12 gap-4" ref={teamRef}>
                         {data[2].team.teamMember.map((e, i) => {
                             return (
                                 <ScrollAnimation
@@ -190,7 +187,7 @@ export default function Institut({ data, dataCosmetics, dataKontakt, dataKompone
                 </div>
             </MainContainer>
             <JobsCTA
-                klasse="sm:mb-16"
+                klasse="lg:mb-16"
                 headline={data[0].cta_jobs.headline}
                 text={data[0].cta_jobs.text}
                 button={data[0].cta_jobs.button_text}
