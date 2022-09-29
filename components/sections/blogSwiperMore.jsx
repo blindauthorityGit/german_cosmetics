@@ -22,8 +22,8 @@ function urlFor(source) {
 
 const BlogSwiper = (props) => {
     return (
-        <MainContainer width="container pt-16 sm:pt-4 sm:pb-32 font-europa relative">
-            <div className="col-span-12 z-20 justify-center px-8 sm:px-0 sm:pr-16">
+        <MainContainer width="container pt-16 sm:pt-4 lg:pb-32 font-europa relative">
+            <div className="col-span-12 z-20 justify-center px-12 lg:px-0 sm:pr-16">
                 <H2 klasse="font-europa mb-12">
                     Weitere<br></br>Beiträge
                 </H2>
@@ -42,6 +42,9 @@ const BlogSwiper = (props) => {
                         // when window width is >= 640px
                         320: {
                             slidesPerView: 1,
+                        },
+                        820: {
+                            slidesPerView: 2,
                         },
                         1025: {
                             slidesPerView: 3,

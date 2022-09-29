@@ -7,9 +7,9 @@ import ScrollAnimation from "react-animate-on-scroll";
 
 const BehandlungTop = (props) => {
     return (
-        <MainContainer width={`${props.klasse} w-100 gap-0 mt-12  container font-europa 2xl:px-32 `}>
+        <MainContainer width={`${props.klasse} w-100 gap-0 mt-12  container font-europa md:px-12 2xl:px-32 `}>
             <div className="container col-span-12 grid grid-cols-12 text-left ">
-                <div className="col-span-12 sm:col-span-8">
+                <div className="col-span-12 lg:col-span-8">
                     <div className="px-8">
                         {props.date && (
                             <>

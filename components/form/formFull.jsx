@@ -38,7 +38,7 @@ const FormFull = () => {
         }
     }
     return (
-        <MainContainer width="container sm:pt-16 sm:pt-16 sm:pb-32 font-europa relative px-8 sm:px-32">
+        <MainContainer width="container sm:pt-16 sm:pt-16 sm:pb-32 font-europa relative px-12 lg:px-32">
             <div className="col-span-12 sm:col-span-12 grid grid-cols-12">
                 <form
                     onSubmit={handleSubmit(onSubmitForm)}

@@ -15,7 +15,7 @@ function urlFor(source) {
 
 const ImageBox = (props) => {
     return (
-        <MainContainer width="container sm:gap-6  md:pt-16 lg:pt-32 font-europa ">
+        <MainContainer width="container sm:gap-6 px-0 md:px-12 lg:px-0  md:pt-16 lg:pt-32 font-europa ">
             {props.single ? (
                 <>
                     <ScrollAnimation

@@ -31,7 +31,7 @@ const HomeSwiper = (props) => {
     }, []);
 
     return (
-        <MainContainer width="container pt-16 lg:py-32 font-europa">
+        <MainContainer width="container overflow-hidden pt-16 lg:py-32 font-europa">
             <ScrollAnimation
                 animateIn={"slideInLeft"}
                 animateOnce={true}
