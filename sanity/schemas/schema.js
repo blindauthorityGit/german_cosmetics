@@ -35,6 +35,7 @@ import behandlung from "./cosmetics/objects/behandlung";
 import cosmetics_behandlung from "./cosmetics/behandlungen/";
 import cosmetics_produkte from "./cosmetics/produkte";
 import produkt from "./cosmetics/objects/produkt";
+import produktKategorie from "./cosmetics/objects/produktKategorie";
 
 import start from "./main/start";
 
@@ -78,5 +79,6 @@ export default createSchema({
         cosmetics_produkte,
         produkt,
         start,
+        produktKategorie,
     ]),
 });

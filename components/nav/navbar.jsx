@@ -112,7 +112,7 @@ const Navbar = (props) => {
             <nav
                 className={`navbar ${
                     props.dark ? "text-text" : "text-white"
-                }  hidden sm:block w-full absolute z-30 header-section`}
+                }  hidden xl:block w-full absolute z-30 header-section`}
             >
                 <div className="container px-16 flex grid grid-cols-12 font-semibold font-europa tracking-wider m-auto">
                     <div className="middle col-span-4 flex items-center  pt-4">
@@ -137,28 +137,6 @@ const Navbar = (props) => {
                                 <Link href="/behandlungen">
                                     <motion.a className="">Behandlungen</motion.a>
                                 </Link>
-                                {/* <motion.div variants={boxMotion} className="absolute pt-8  top-8">
-                                    <div className="wrap min-w-60 dropdown bg-white py-8 pl-8 pr-20">
-                                        <Link href="/dermatologie">
-                                            <motion.a
-                                                className="text-text block my-4 subNav relative hover:text-primaryColor cursor-pointer"
-                                                variants={textMotion}
-                                            >
-                                                Dermatologie
-                                            </motion.a>
-                                        </Link>
-                                        <br></br>
-                                        <hr />
-                                        <Link href="/lasermedizin">
-                                            <motion.a
-                                                className="text-text block my-4 subNav relative mt-4 hover:text-primaryColor cursor-pointer"
-                                                variants={textMotion}
-                                            >
-                                                Lasermedizin
-                                            </motion.a>
-                                        </Link>{" "}
-                                    </div>
-                                </motion.div> */}
                             </motion.li>
                             <li className="mr-8 flex items-center hover:underline">
                                 <Link href="/produkte">
@@ -177,7 +155,7 @@ const Navbar = (props) => {
                             </li>
 
                             <li
-                                className={`bg-primaryColor cursor-pointer hover:bg-darkPurple py-3 px-4 text-white ${
+                                className={`bg-primaryColor cursor-pointer hover:bg-darkPurple py-3 px-6 text-white ${
                                     props.hideCTA ? "hidden" : ""
                                 }`}
                                 onClick={(e) => {
@@ -188,25 +166,35 @@ const Navbar = (props) => {
                                     <span className="mr-2 text-xl">
                                         <IoMdCalendar></IoMdCalendar>
                                     </span>
-                                    Termin vereinbaren
+                                    Termin
                                 </a>
                             </li>
                         </ul>
                     </div>
                 </div>
             </nav>
-            <div
-                className="block  sm:hidden  burger absolute z-40 right-8 top-8"
-                ref={navRef}
-                onClick={(e) => {
-                    clicker(e);
-                }}
-            >
-                <div className="fixed" id="burger" ref={burgerRef}>
-                    <span></span>
-                    <span></span>
+            <>
+                <div className="absolute top-4 left-8 hidden md:block  xl:hidden z-10">
+                    <Link href="/start">
+                        <a>
+                            <img src={isItSticky ? props.logoDark : props.logoLight} width="230" alt="Logo" />
+                        </a>
+                    </Link>
                 </div>
-            </div>
+
+                <div
+                    className="block xl:hidden  burger absolute z-40 right-8 top-8"
+                    ref={navRef}
+                    onClick={(e) => {
+                        clicker(e);
+                    }}
+                >
+                    <div className="fixed" id="burger" ref={burgerRef}>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </>
         </>
     );
 };

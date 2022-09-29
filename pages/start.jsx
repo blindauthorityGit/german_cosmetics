@@ -74,7 +74,7 @@ export default function Start({ data, dataBlog, dataHome, dataKontakt, dataKompo
                 logoLight={urlFor(data[3].logo.logo_dark)}
                 logoDark={urlFor(data[3].logo.logo_dark)}
             ></Navbar>
-            <MainContainer width="max-w-[100%] h-full">
+            <MainContainer width="max-w-[100%] h-full ">
                 <motion.div className="col-span-12" layoutId={"Hero"} animate={{ opacity: 1 }}>
                     <Hero
                         fullHeight={true}

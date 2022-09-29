@@ -101,6 +101,17 @@ export default {
             ],
         },
         {
+            title: "Produktkategorien",
+            name: "produktKategorien",
+            type: "array",
+            of: [
+                {
+                    title: "Produktkategorie",
+                    type: "produktKategorie",
+                },
+            ],
+        },
+        {
             title: "Produkte",
             name: "produkte",
             type: "array",
