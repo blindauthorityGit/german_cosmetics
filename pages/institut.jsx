@@ -86,7 +86,7 @@ export default function Institut({ data, dataCosmetics, dataKontakt, dataKompone
 
             {/* <CTA headline={data[0].cta.headline} text={data[0].cta.text} button={data[0].cta.button_text}></CTA> */}
             <MainContainer width="w-100 gap-4 sm:mt-24  sm:mt-24 container font-europa sm:px-16 ">
-                <div id="team" className="container m-auto col-span-12">
+                <div id="team" className="container m-auto col-span-12 overflow-hidden">
                     {showDoc && (
                         <DerArzt
                             img={urlFor(data[2].arzt.arztImg)
