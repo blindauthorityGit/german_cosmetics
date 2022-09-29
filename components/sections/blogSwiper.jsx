@@ -26,8 +26,8 @@ const BlogSwiper = (props) => {
     }, []);
 
     return (
-        <MainContainer width="container pt-16 sm:pt-36 sm:pb-12 font-europa relative">
-            <div className="col-span-12 z-20 justify-center px-8 sm:px-0 sm:pr-16">
+        <MainContainer width="container pt-16 lg:pt-36 sm:pb-12 font-europa relative">
+            <div className="col-span-12 z-20 justify-center px-8 lg:px-0 sm:pr-16">
                 <H2 klasse="font-europa mb-12">
                     Veranstaltungen<br></br> und Aktionen
                 </H2>
@@ -40,14 +40,13 @@ const BlogSwiper = (props) => {
                     modules={[Navigation, Pagination, Scrollbar, A11y]}
                     loop={false}
                     pagination={{ clickable: true }}
-                    navigation={{ clickable: true }}
                     className="bubu"
                     breakpoints={{
                         // when window width is >= 640px
                         320: {
                             slidesPerView: 1,
                         },
-                        1025: {
+                        768: {
                             slidesPerView: 2,
                         },
                     }}

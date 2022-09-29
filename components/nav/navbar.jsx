@@ -112,7 +112,7 @@ const Navbar = (props) => {
             <nav
                 className={`navbar ${
                     props.dark ? "text-text" : "text-white"
-                }  hidden sm:block w-full absolute z-30 header-section`}
+                }  hidden xl:block w-full absolute z-30 header-section`}
             >
                 <div className="container px-16 flex grid grid-cols-12 font-semibold font-europa tracking-wider m-auto">
                     <div className="middle col-span-6 flex items-center  pt-4">
@@ -186,25 +186,36 @@ const Navbar = (props) => {
                                     <span className="mr-2 text-xl">
                                         <IoMdCalendar></IoMdCalendar>
                                     </span>
-                                    Termin vereinbaren
+                                    Termin
                                 </a>
                             </li>
                         </ul>
                     </div>
                 </div>
             </nav>
-            <div
-                className="block  sm:hidden  burger absolute z-40 right-8 top-8"
-                ref={navRef}
-                onClick={(e) => {
-                    clicker(e);
-                }}
-            >
-                <div className="fixed" id="burger" ref={burgerRef}>
-                    <span></span>
-                    <span></span>
+
+            <>
+                <div className="absolute top-4 left-8 hidden md:block  xl:hidden z-10">
+                    <Link href="/start">
+                        <a>
+                            <img src={isItSticky ? props.logoDark : props.logoLight} width="230" alt="Logo" />
+                        </a>
+                    </Link>
                 </div>
-            </div>
+
+                <div
+                    className="block xl:hidden  burger absolute z-40 right-8 top-8"
+                    ref={navRef}
+                    onClick={(e) => {
+                        clicker(e);
+                    }}
+                >
+                    <div className="fixed" id="burger" ref={burgerRef}>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </>
         </>
     );
 };

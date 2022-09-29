@@ -67,9 +67,9 @@ const Hero = (props) => {
                 props.fullHeight ? "h-full" : props.height
             } ${props.colspan}`}
         >
-            <AbsoluteContainer width={`container w-full px-8 sm:px-0 h-full ${props.containerKlasse}`}>
+            <AbsoluteContainer width={`container w-full px-8 sm:px-0 md:px-16 lg:px-0 h-full ${props.containerKlasse}`}>
                 <animated.div
-                    className="wrapper w-full col-span-12 sm:col-span-6 lg:col-span-5 mt-[-5rem] sm:mt-0"
+                    className="wrapper w-full col-span-12 md:col-span-8 lg:col-span-6 lg:col-span-5 mt-[-5rem] sm:mt-0"
                     style={leftIn}
                 >
                     {props.children}
@@ -77,7 +77,7 @@ const Hero = (props) => {
             </AbsoluteContainer>
             <animated.div
                 style={fadeIn}
-                className="absolute grid grid-cols-12 leading-relaxed font-europa text-center sm:text-left z-20 bg-white w-[95%] sm:w-[30rem] h-56 sm:h-96  sm:top-auto bottom-0 transform -translate-x-1/2 sm:-translate-x-0 left-1/2 sm:left-auto right-auto sm:right-0"
+                className="absolute grid grid-cols-12 leading-relaxed font-europa text-center sm:text-left z-20 bg-white w-[95%] sm:w-[30rem] h-56 md:h-[20rem] lg:h-96  sm:top-auto bottom-0 transform -translate-x-1/2 sm:-translate-x-0 left-1/2 sm:left-auto right-auto sm:right-0"
             >
                 <div className="col-span-2 bg-lightGray py-8 sm:py-10 flex flex-col items-center">
                     <div
@@ -118,7 +118,7 @@ const Hero = (props) => {
                                 Praxiszeiten
                             </H4>
                             <hr />
-                            <div className="wrapper flex  oeffnung  py-2 sm:py-0 sm:pb-24 sm:pt-8 pl-12 sm:pr-24">
+                            <div className="wrapper flex  oeffnung  py-2 sm:py-0 md:pb-10 lg:pb-24 sm:pt-8 pl-12 sm:pr-24">
                                 <div className="left mr-6 text-left oeffnung clamp">
                                     Mo
                                     <br />
@@ -143,7 +143,7 @@ const Hero = (props) => {
                                 Kontaktdaten
                             </H4>
                             <hr />
-                            <div className="wrapper flex  oeffnung  py-2 sm:py-0 sm:pb-24 sm:pt-8 pl-12 pr-6 sm:pr-24">
+                            <div className="wrapper flex  oeffnung  py-2 sm:py-0 md:pb-16 lg:pb-24 sm:pt-8 pl-12 pr-6 sm:pr-24">
                                 <div className="left mr-6 text-left oeffnung clamp">
                                     Tel.:
                                     <br />

@@ -125,7 +125,8 @@ export default function Start({ data, dataBlog }) {
                 value={data[2].oeffnungszeiten}
             ></CTA>
             <BlogSwiper data={dataBlog}>
-                <div className="absolute w-[100%] h-[360px] bg-[#EEF0F2] top-0 sm:top-[30%]"></div>
+                {/* <div className="absolute w-[100%] h-[360px] bg-[#EEF0F2] top-0 sm:top-[30%]"></div> */}
+                <div className="absolute w-[100%] md:h-[210px] lg:h-[360px] bg-[#EEF0F2] top-0 sm:top-[30%]"></div>
             </BlogSwiper>
             <LinkBox
                 image={urlFor(data[1].linkbox.img)}

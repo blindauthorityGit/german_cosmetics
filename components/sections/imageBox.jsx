@@ -15,7 +15,7 @@ function urlFor(source) {
 
 const ImageBox = (props) => {
     return (
-        <MainContainer width="container sm:gap-6   sm:pt-32 font-europa ">
+        <MainContainer width="container sm:gap-6 px-0 md:px-12 lg:px-0  md:pt-16 lg:pt-32 font-europa ">
             {props.single ? (
                 <>
                     <ScrollAnimation
@@ -66,7 +66,7 @@ const ImageBox = (props) => {
                                                 MEHR ENTDECKEN
                                             </div>
                                         </div>
-                                        <div className="overlay absolute z-20 w-full h-full sm:bg-gradient-to-t bg-black sm:bg-transparent transition-all duration-500 sm:from-[#00000061] group-hover:from-[#0000] opacity-30 sm:opacity-60 group-hover:opacity-80 group-hover:bg-overlay group-hover:from-bg-overlay  top-0"></div>
+                                        <div className="overlay absolute z-20 w-full h-full sm:bg-gradient-to-t bg-black sm:bg-transparent transition-all duration-500 sm:from-[#00000061] group-hover:from-[#0000] opacity-30 sm:opacity-60 group-hover:opacity-80 group-hover:bg-secondaryColor group-hover:from-bg-overlay  top-0"></div>
                                         <div
                                             className="absolute bg-center w-full h-full bg-cover top-0 transition-all duration-300 group-hover:scale-110"
                                             style={{ backgroundImage: `url("${urlFor(e.img)}")` }}

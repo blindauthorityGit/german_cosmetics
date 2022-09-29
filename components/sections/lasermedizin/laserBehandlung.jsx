@@ -20,7 +20,6 @@ function urlFor(source) {
 const LaserBehandlungenContainer = (props, ref) => {
     const [activeLink, setActiveLink] = useState("test");
     const scrollRef = useRef(null);
-    // useScrollSnap({ ref: scrollRef, duration: 200, delay: 0 });
 
     useEffect(() => {
         props.dataNav.map((e, i) => {});
@@ -76,8 +75,6 @@ const LaserBehandlungenContainer = (props, ref) => {
                     </Sticky>
                 </div>
                 <div className="col-span-12 sm:col-span-8 transition-all duration-300" ref={ref}>
-                    {/* <H2 klasse="mb-16">Unser Angebot</H2> */}
-                    {/* <section ref={scrollRef}> */}
                     {props.dataBehandlung.map((e, i) => {
                         return (
                             <ScrollAnimation
@@ -103,7 +100,6 @@ const LaserBehandlungenContainer = (props, ref) => {
                             </ScrollAnimation>
                         );
                     })}
-                    {/* </section> */}
                 </div>
             </StickyContainer>
         </MainContainer>

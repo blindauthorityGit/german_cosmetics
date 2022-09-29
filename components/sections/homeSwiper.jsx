@@ -31,18 +31,18 @@ const HomeSwiper = (props) => {
     }, []);
 
     return (
-        <MainContainer width="container pt-16 sm:py-32 font-europa">
+        <MainContainer width="container overflow-hidden pt-16 lg:py-32 font-europa">
             <ScrollAnimation
                 animateIn={"slideInLeft"}
                 animateOnce={true}
                 duration={0.4}
-                className="col-span-12 sm:col-span-4 flex flex-col justify-center px-8 sm:px-0 sm:pr-16"
+                className="col-span-12 lg:col-span-4 md:mt-8 md:order-last lg:order-first flex flex-col justify-center px-8 lg:px-0 lg:pr-16"
             >
                 <H2 klasse="font-europa mb-12">{props.headline}</H2>
                 <PortableText className="font-europa" value={props.value} />
                 {props.children}
-                <Link href="/praxis">
-                    <DefaultButton klasse="mt-8 sm:mt-16 mb-12 sm:mb-0 hover:bg-primaryColor hover:text-white border border-[#A54399] text-primaryColor">
+                <Link href="/institut">
+                    <DefaultButton klasse="mt-8 sm:mt-16 mb-12 lg:mb-0 hover:bg-primaryColor hover:text-white border border-primaryColor text-primaryColor">
                         {props.button}
                     </DefaultButton>
                 </Link>
@@ -51,7 +51,7 @@ const HomeSwiper = (props) => {
                 animateIn={"slideInRight"}
                 animateOnce={true}
                 duration={0.4}
-                className="col-span-12 sm:col-span-8"
+                className="col-span-12 lg:col-span-8"
             >
                 <Swiper
                     spaceBetween={50}
@@ -78,8 +78,13 @@ const HomeSwiper = (props) => {
                     {props.images.map((e, i) => {
                         return (
                             <SwiperSlide key={`keyImgs${i}`}>
-                                <img className="hidden sm:block" src={urlFor(e).width("522").height("673")} alt="img" />
-                                <img className="block sm:hidden" src={urlFor(e).width(415).height(288)} alt="img" />
+                                <img className="hidden lg:block" src={urlFor(e).width("522").height("673")} alt="img" />
+                                <img
+                                    className="hidden md:block lg:hidden"
+                                    src={urlFor(e).width(960).height(640)}
+                                    alt="img"
+                                />
+                                <img className="block md:hidden" src={urlFor(e).width(415).height(288)} alt="img" />
                             </SwiperSlide>
                         );
                     })}
