@@ -17,7 +17,7 @@ const DerArzt = (props, ref) => {
 
     return (
         <div ref={ref} className={`wrapper grid grid-cols-12 gap-4`}>
-            <div className="col-span-12 sm:col-span-6 sm:order-last sm:min-h-[650px]">
+            <div className="col-span-12 lg:col-span-6 sm:order-last sm:min-h-[650px]">
                 <img
                     src={props.img}
                     alt="Dr. German Hubatsch"
@@ -25,8 +25,10 @@ const DerArzt = (props, ref) => {
                     // onLoad={() => setImageLoaded(true)}
                 />
             </div>
-            <div className={`col-span-12 sm:col-span-6 px-8 sm:pr-24 flex flex-col justify-center ${props.animation}`}>
-                <H2 klasse="mt-12 sm:mt-0 mb-8 sm:mb-16 beforeH">{props.headline}</H2>
+            <div
+                className={`col-span-12 lg:col-span-6 px-8 sm:pr-24 flex flex-col justify-center mb-0 lg:mb-0 md:mb-12 ${props.animation}`}
+            >
+                <H2 klasse="mt-12 sm:mt-0 mb-8 lg:mb-16 beforeH">{props.headline}</H2>
                 <PortableText value={props.text}></PortableText>
             </div>
             <div className="col-span-12 order-last px-8 ">
@@ -48,13 +50,13 @@ const DerArzt = (props, ref) => {
                         <PortableText value={props.werdegang}></PortableText>
                     </div>
                     {/* <div className="hidden sm:block sm:col-span-6">
-                        <img
-                            src={props.img}
-                            alt=""
-                            className={`smooth-image ${imageLoaded ? "visible fade-in" : "hidden"}`}
-                            onLoad={() => setImageLoaded(true)}
-                        />
-                    </div> */}
+                    <img
+                        src={props.img}
+                        alt=""
+                        className={`smooth-image ${imageLoaded ? "visible fade-in" : "hidden"}`}
+                        onLoad={() => setImageLoaded(true)}
+                    />
+                </div> */}
                 </section>
             </div>
         </div>

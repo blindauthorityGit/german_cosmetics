@@ -34,7 +34,10 @@ const JobContainer = (props, ref) => {
     }, []);
 
     return (
-        <MainContainer id={props.id} width="w-100 gap-0 sm:mt-24 sm:mb-24 sm:mt-24 container font-europa sm:px-16 ">
+        <MainContainer
+            id={props.id}
+            width="w-100 gap-0 sm:mt-24 sm:mb-24 sm:mt-24 container font-europa sm:px-16 overflow-hidden"
+        >
             <StickyContainer className="container col-span-12 grid grid-cols-12 text-left sm:gap-8">
                 <div className="hidden sm:block sm:col-span-4 scroll-smooth">
                     <Sticky distanceFromTop={280} topOffset={-128}>

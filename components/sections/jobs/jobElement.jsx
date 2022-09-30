@@ -16,7 +16,7 @@ const JobElement = (props, ref) => {
             <div className="h-auto col-span-12 grid grid-cols-12 relative">
                 <div
                     data-len={props.len}
-                    className={`col-span-12 sm:col-span-10 mt-8 sm:mt-0  ${props.orderBottom} ${props.animation} flex flex-col justify-center  pb-12 px-12`}
+                    className={`col-span-12 lg:col-span-10 mt-8 sm:mt-0  ${props.orderBottom} ${props.animation} flex flex-col justify-center  pb-12 px-12`}
                 >
                     <div className="zeit mb-3">{props.zeit}</div>
                     <H3 klasse="mb-8  sm:mb-3 wordBreak	">{props.headline}</H3>

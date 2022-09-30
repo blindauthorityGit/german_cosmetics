@@ -83,7 +83,7 @@ export default function Praxis({ data }) {
 
             {/* <CTA headline={data[0].cta.headline} text={data[0].cta.text} button={data[0].cta.button_text}></CTA> */}
             <MainContainer width="w-100 gap-4 sm:mt-24  sm:mt-24 container font-europa sm:px-16 ">
-                <div id="team" className="container m-auto col-span-12">
+                <div id="team" className="container m-auto col-span-12 overflow-hidden">
                     {showDoc && (
                         <DerArzt
                             img={urlFor(data[2].arzt.arztImg)
@@ -97,7 +97,7 @@ export default function Praxis({ data }) {
                         ></DerArzt>
                     )}
 
-                    <div id="teamWrapperM" className=" sm:hidden sm:mt-16 grid grid-cols-12 gap-4">
+                    <div id="teamWrapperM" className=" lg:hidden sm:mt-16 grid grid-cols-12 gap-4">
                         {data[2].team.teamMember.map((e, i) => {
                             return (
                                 <ScrollAnimation
@@ -105,7 +105,7 @@ export default function Praxis({ data }) {
                                     animateIn={i % 2 === 0 ? "slideInLeft" : "slideInRight"}
                                     animateOnce={true}
                                     duration={0.4}
-                                    className="BUBU col-span-12 sm:col-span-6  sm:py-64 relative cursor-pointer group overflow-hidden"
+                                    className="BUBU col-span-12 sm:col-span-6  lg:py-64 relative cursor-pointer group overflow-hidden"
                                 >
                                     <TeamMember
                                         img={urlFor(e.img).width(450).height(450)}
@@ -118,7 +118,7 @@ export default function Praxis({ data }) {
                         })}
                     </div>
 
-                    <div id="teamWrapperD" className="hidden sm:grid sm:mt-16  grid-cols-12 gap-4" ref={teamRef}>
+                    <div id="teamWrapperD" className="hidden lg:grid sm:mt-16  grid-cols-12 gap-4" ref={teamRef}>
                         {data[2].team.teamMember.map((e, i) => {
                             return (
                                 <ScrollAnimation
@@ -139,48 +139,6 @@ export default function Praxis({ data }) {
                             );
                         })}
                     </div>
-
-                    {/* {!isMobile ? (
-                        <div id="teamWrapper" className="sm:mt-16 grid grid-cols-12 gap-4" ref={teamRef}>
-                            {data[2].team.teamMember.map((e, i) => {
-                                return (
-                                    <ScrollAnimation
-                                        key={`key${i}`}
-                                        animateIn={i % 2 === 0 ? "slideInLeft" : "slideInRight"}
-                                        animateOnce={true}
-                                        duration={0.4}
-                                        className="col-span-12 sm:col-span-6 "
-                                    >
-                                        <TeamMember
-                                            img={urlFor(e.img).width(600).height(600)}
-                                            headline={e.title}
-                                            text={e.subTitle}
-                                            title={e.title}
-                                            orderTop={i % 2 === 0 ? "" : "order-last"}
-                                        ></TeamMember>
-                                    </ScrollAnimation>
-                                );
-                            })}
-                        </div>
-                    ) : (
-                        <div id="teamWrapper" className="sm:mt-16 grid grid-cols-12 gap-4">
-                            {data[2].team.teamMember.map((e, i) => {
-                                return (
-                                    <div
-                                        key={`keyM${i}`}
-                                        className="BUBU opacity-[1!important] col-span-12 sm:col-span-6  sm:py-64 relative cursor-pointer group overflow-hidden"
-                                    >
-                                        <TeamMember
-                                            img={urlFor(e.img).width(450).height(450)}
-                                            headline={e.title}
-                                            title={e.title}
-                                            text={e.subTitle}
-                                        ></TeamMember>
-                                    </div>
-                                );
-                            })}
-                        </div>
-                    )} */}
                 </div>
             </MainContainer>
             <JobsCTA

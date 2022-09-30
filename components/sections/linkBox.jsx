@@ -20,7 +20,7 @@ const LinkBox = (props) => {
                         className="flex items-center justify-center w-full"
                         href="https://germanaesthetic-git-dev-blindauthoritygit.vercel.app/"
                     >
-                        <DefaultButton klasse="border border-white text-white w-3/4 transition hover:bg-white hover:text-text">
+                        <DefaultButton klasse="border-2 border-white text-white w-3/4 transition hover:bg-white hover:text-text">
                             {props.button}
                         </DefaultButton>
                     </a>

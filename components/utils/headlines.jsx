@@ -11,7 +11,7 @@ function H1(props) {
 }
 function H2(props) {
     return (
-        <h2 className={`z-20 text-4xl lg-text-5xl xl:text-6xl 2xl:text-5xl 3xl:text-7xl   ${props.klasse}`}>
+        <h2 className={`z-20 text-4xl lg-text-5xl xl:text-6xl 2xl:text-5xl 3xl:text-7xl md:mb-8  ${props.klasse}`}>
             {props.children}
         </h2>
     );

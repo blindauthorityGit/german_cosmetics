@@ -118,7 +118,7 @@ const Hero = (props) => {
                                 Praxiszeiten
                             </H4>
                             <hr />
-                            <div className="wrapper flex  oeffnung  py-2 sm:py-0 md:pb-10 lg:pb-24 sm:pt-8 pl-12 sm:pr-24">
+                            <div className="wrapper flex  oeffnung  py-2 sm:py-0 md:pb-10 lg:pb-24 sm:pt-6 pl-12 sm:pr-24">
                                 <div className="left mr-6 text-left oeffnung clamp">
                                     Mo
                                     <br />
@@ -143,7 +143,7 @@ const Hero = (props) => {
                                 Kontaktdaten
                             </H4>
                             <hr />
-                            <div className="wrapper flex  oeffnung  py-2 sm:py-0 md:pb-16 lg:pb-24 sm:pt-8 pl-12 pr-6 sm:pr-24">
+                            <div className="wrapper flex  oeffnung  py-2 sm:py-0 md:pb-16 lg:pb-24 sm:pt-6 pl-12 pr-6 sm:pr-24">
                                 <div className="left mr-6 text-left oeffnung clamp">
                                     Tel.:
                                     <br />
@@ -166,11 +166,11 @@ const Hero = (props) => {
                     )}
                     {showAdresse && (
                         <>
-                            <H4 klasse=" pt-6 mb-2 sm:mb-6  sm:py-6 sm:py-0 sm:pt-10 pl-12 sm:pl-12 text-left ">
+                            <H4 klasse="  pt-6 mb-2 sm:mb-6  sm:py-6 sm:py-0 sm:pt-10 pl-12 sm:pl-12 text-left">
                                 Adresse
                             </H4>
                             <hr />
-                            <div className="wrapper flex  oeffnung  py-2 sm:py-0 sm:pb-24 sm:pt-8 pl-12 sm:pr-24">
+                            <div className="wrapper flex  oeffnung  py-2 sm:py-0 md:pb-16 lg:pb-24 sm:pt-6 pl-12 pr-6 sm:pr-24">
                                 <div className="left mr-6 text-left oeffnung clamp font-light">
                                     {props.strasse}
                                     <br></br>

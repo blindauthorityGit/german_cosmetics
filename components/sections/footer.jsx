@@ -1,13 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import MainContainer from "../layout/mainContainer";
 import { H2, H4 } from "../utils/headlines";
 import { DefaultButton } from "../utils/buttons";
 import { PortableText } from "@portabletext/react";
 import { BsFacebook, BsInstagram } from "react-icons/bs";
 import Link from "next/link";
+import { isMobile } from "react-device-detect";
+
 import FormTemplate from "../form/formTemplate";
 
 const Footer = (props) => {
+    useEffect(() => {
+        console.log(isMobile);
+    }, []);
     return (
         <MainContainer width="w-100 bg-footer px-8 lg:px-0 py-16 py-16 lg:py-32 font-europa mt-16 sm:mt-32">
             <div className="col-span-12 container grid grid-cols-12 m-auto">
@@ -46,6 +51,10 @@ const Footer = (props) => {
                         <H4 klasse="text-white">Praxiszeiten</H4>
                         <div className="wrapper flex oeffnung opacity-60">
                             <div className="left mr-6 text-left  2xl:clamp">
+                                Mo
+                                <br />
+                                Di
+                                <br />
                                 Mi
                                 <br />
                                 Do

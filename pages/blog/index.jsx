@@ -53,12 +53,12 @@ export default function Blog({ data, dataBlog, dataBlogSettings }) {
                 />
             </PageHero>
 
-            <div className="container m-auto mt-12 sm:mt-36 grid sm:gap-16 grid-cols-12 mb-24">
+            <div className="container m-auto px-0 md:px-12 lg:px-0 mt-12 sm:mt-36 grid sm:gap-16 grid-cols-12 mb-24">
                 {dataBlog.map((e, i) => {
                     return (
                         <BlogOverviewElement
                             key={`blogOverview${i}`}
-                            klasse="col-span-12 sm:col-span-4 mb-12 sm:mb-0"
+                            klasse="col-span-12 md:col-span-6 lg:col-span-4 mb-12 sm:mb-0"
                             date={e.blog_settings.date.split("-").reverse().join("-")}
                             // image={urlFor(e.blog_settings.featuredImg).width("575").height("360")}
                             image={
