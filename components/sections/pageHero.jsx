@@ -17,7 +17,7 @@ const PageHero = (props) => {
     return (
         <MainContainer width="w-100 bg-lightGray py-20 sm:py-16 py-16 pt-32 sm:pt-48  relative font-europa sm:h-[320px]  2xl:h-[450px] sm:mb-32">
             <div className="col-span-12 text-center flex flex-col items-center justify-end m-auto  sm:w-2/4">
-                <H2 klasse="font-europa mb-12 text-white mb-0">{props.headline}</H2>
+                <H2 klasse="font-europa mb-12 text-white uppercase font-light mb-0">{props.headline}</H2>
                 <p className="text-white sm:w-1/2">{props.text}</p>
                 {props.showButton && (
                     <DefaultButton klasse="mt-8 w-2/4 sm:mt-16 mb-12 sm:mb-0 hover:bg-darkPurple bg-primaryColor hover:text-white  text-white">
