@@ -122,7 +122,7 @@ const FormTemplate = () => {
                     </div>
                 ) : (
                     <button
-                        className="mt-8 col-span-12 border transition border-white py-4 px-8 w-56 text-white hover:bg-white hover:text-text"
+                        className="mt-8 col-span-12 border-2 font-bold transition border-white py-4 px-8 w-56 text-white hover:bg-white hover:text-text"
                         type="submit"
                     >
                         Absenden

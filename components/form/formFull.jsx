@@ -32,7 +32,6 @@ const FormFull = () => {
             const response = await axios(config);
             setLoading(false);
             setSuccess(true);
-            console.log(response);
         } catch (err) {
             console.log(err);
         }
