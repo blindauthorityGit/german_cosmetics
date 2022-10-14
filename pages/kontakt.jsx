@@ -30,7 +30,17 @@ export default function Kontakt({ data, laserData, kontaktData, dataKomponente }
                 <title>{laserData[0].seo.title}</title>
                 <meta name="description" content={laserData[0].seo.description} />
             </Head>
-            <Navbar logoLight={urlFor(data[3].logo.logo_light)} logoDark={urlFor(data[3].logo.logo_dark)}></Navbar>
+            <Navbar
+                logo={urlFor(data[3].logo.logo_light)}
+                strasse={kontaktData[0].adresse.strasse}
+                ort={kontaktData[0].adresse.ort}
+                phone={kontaktData[0].kontakt.phone}
+                email={kontaktData[0].kontakt.email}
+                mobile={kontaktData[0].kontakt.mobile}
+                value={kontaktData[0].oeffnungszeiten}
+                logoLight={urlFor(data[3].logo.logo_light)}
+                logoDark={urlFor(data[3].logo.logo_dark)}
+            ></Navbar>
             <motion.div layoutId={"Hero"} animate={{ opacity: 1 }}>
                 <PageHero
                     bg={urlFor(data[2].raeumlichkeiten_settings.images[2]).width(1560).height(550)}
