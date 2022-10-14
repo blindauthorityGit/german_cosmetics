@@ -37,7 +37,7 @@ export default function CTAContent(props) {
         let config = {
             method: "post",
             // url: `http://localhost:3000/api/contactTermin`,
-            url: `${process.env.NEXT_PUBLIC_API_URL}/api/contactTermin`,
+            url: `/api/contactTermin`,
             headers: {
                 "Content-Type": "application/json",
             },
