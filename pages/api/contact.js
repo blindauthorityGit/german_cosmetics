@@ -14,10 +14,8 @@ export default async (req, res) => {
         port: 465,
         secure: true,
         auth: {
-            user: "johabuch@gmail.com",
-            pass: "lwjxwtxvpkdifkrm",
-            // user: process.env.NEXT_USER,
-            // pass: process.env.NEXT_PASSWORD,
+            user: process.env.NEXT_USER,
+            pass: process.env.NEXT_PASSWORD,
         },
     });
 
@@ -50,7 +48,7 @@ export default async (req, res) => {
             try {
                 const emailRes = transporter.sendMail({
                     from: email,
-                    to: "johabuch@gmail.com",
+                    to: "contacts@german-cosmetics.de",
                     subject: `Email von ${name}`,
                     html: htmlToSend,
                 });
