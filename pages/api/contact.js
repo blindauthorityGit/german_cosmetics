@@ -1,5 +1,7 @@
-import nodemailer from "nodemailer";
+// import nodemailer from "nodemailer";
 import handlebars from "handlebars";
+const nodemailer = require("nodemailer");
+
 const path = require("path");
 const fs = require("fs");
 
@@ -17,6 +19,19 @@ export default async (req, res) => {
             // user: process.env.NEXT_USER,
             // pass: process.env.NEXT_PASSWORD,
         },
+    });
+
+    await new Promise((resolve, reject) => {
+        // verify connection configuration
+        transporter.verify(function (error, success) {
+            if (error) {
+                console.log(error);
+                reject(error);
+            } else {
+                console.log("Server is ready to take our messages");
+                resolve(success);
+            }
+        });
     });
 
     const filePath = path.join(__dirname, "../../../../components/form/html/template.html");
