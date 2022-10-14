@@ -162,8 +162,8 @@ const Navbar = (props) => {
                                     modalSwitcher(e, showModal, setShowModal);
                                 }}
                             >
-                                <a className="flex">
-                                    <span className="mr-2 text-xl">
+                                <a className="flex items-center">
+                                    <span className="mr-2 text-xl ">
                                         <IoMdCalendar></IoMdCalendar>
                                     </span>
                                     Termin

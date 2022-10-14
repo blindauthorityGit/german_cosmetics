@@ -250,6 +250,11 @@ h2 {
   font-size: clamp(0.88rem, calc(0.73rem + 0.73vw), 1.25rem) !important;
 }
 
+.bigLI li {
+  font-size: clamp(0.88rem, calc(0.73rem + 0.73vw), 1.25rem) !important;
+  margin-bottom: 1rem;
+}
+
 .is-sticky {
   position: fixed;
   width: 100%;

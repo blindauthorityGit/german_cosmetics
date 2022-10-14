@@ -102,7 +102,7 @@ const FormFull = () => {
                             <Rings
                                 height="80"
                                 width="80"
-                                color="#a53f98"
+                                color="#8c8264"
                                 radius="6"
                                 wrapperStyle={{}}
                                 wrapperClass=""

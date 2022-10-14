@@ -15,6 +15,9 @@ const FooterMini = (props) => {
                     <Link href="/jobs">
                         <a className="block mr-8">Karriere</a>
                     </Link>
+                    <Link href="/blog">
+                        <a className="block">News</a>
+                    </Link>
                     <Link className="block" href="/impressum">
                         <a className="block mr-8">Impressum</a>
                     </Link>

@@ -22,7 +22,7 @@ function urlFor(source) {
 
 const BlogSwiper = (props) => {
     return (
-        <MainContainer width="container pt-16 sm:pt-4 lg:pb-32 font-europa relative">
+        <MainContainer width="container pt-16 sm:pt-4 lg:pb-32 font-europa relative mt-12">
             <div className="col-span-12 z-20 justify-center px-12 lg:px-0 sm:pr-16">
                 <H2 klasse="font-europa mb-12">
                     Weitere<br></br>Beiträge
