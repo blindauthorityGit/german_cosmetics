@@ -30,23 +30,25 @@ export default async (req, res) => {
     };
     const htmlToSend = template(replacements);
 
-    if (!firstName) {
-        try {
-            const emailRes = await transporter.sendMail({
-                from: email,
-                to: "johabuch@gmail.com",
-                subject: `Email von ${name}`,
-                html: htmlToSend,
-            });
+    await new Promise((resolve, reject) => {
+        if (!firstName) {
+            try {
+                const emailRes = transporter.sendMail({
+                    from: email,
+                    to: "johabuch@gmail.com",
+                    subject: `Email von ${name}`,
+                    html: htmlToSend,
+                });
 
-            console.log("Message Sent", emailRes.messageId);
-            res.status(200).json(req.body);
-        } catch (err) {
-            console.log(err);
+                console.log("Message Sent", emailRes.messageId);
+                res.status(200).json(req.body);
+            } catch (err) {
+                console.log(err);
+            }
+        } else {
+            res.status(403).json(req.body);
         }
-    } else {
-        res.status(403).json(req.body);
-    }
+    });
 
     console.log(req.body, "HALLO");
 };
