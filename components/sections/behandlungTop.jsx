@@ -4,12 +4,43 @@ import { H2 } from "../utils/headlines";
 import { DefaultButton } from "../utils/buttons";
 import { PortableText } from "@portabletext/react";
 import ScrollAnimation from "react-animate-on-scroll";
+import urlBuilder from "@sanity/image-url";
+import { getImageDimensions } from "@sanity/asset-utils";
+
+const SampleImageComponent = ({ value, isInline }) => {
+    const { width, height } = getImageDimensions(value);
+    return (
+        <img
+            src={urlBuilder()
+                .image(value)
+                .width(isInline ? 100 : 800)
+                .fit("max")
+                .auto("format")
+                .url()}
+            alt={value.alt || " "}
+            loading="lazy"
+            style={{
+                // Display alongside text if image appears inside a block text span
+                display: isInline ? "inline-block" : "block",
+
+                // Avoid jumping around with aspect-ratio CSS property
+                aspectRatio: width / height,
+            }}
+        />
+    );
+};
 
 const BehandlungTop = (props) => {
+    const myPortableTextComponents = {
+        types: {
+            image: SampleImageComponent,
+        },
+    };
+
     return (
         <MainContainer width={`${props.klasse} w-100 gap-0 mt-12  container font-europa md:px-12 2xl:px-32 `}>
             <div className="container col-span-12 grid grid-cols-12 text-left ">
-                <div className="col-span-12 lg:col-span-8">
+                <div className="col-span-12 lg:col-span-8 bigLI">
                     <div className="px-8">
                         {props.date && (
                             <>
@@ -20,7 +51,7 @@ const BehandlungTop = (props) => {
 
                         <H2 klasse="mb-8 sm:mb-16 beforeH">{props.headline}</H2>
 
-                        <PortableText value={props.valueLeft}></PortableText>
+                        <PortableText value={props.valueLeft} components={myPortableTextComponents}></PortableText>
                         {props.jobIntro}
                     </div>
                 </div>
