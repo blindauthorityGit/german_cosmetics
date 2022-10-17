@@ -11,5 +11,10 @@ export default {
             name: "title",
             type: "string",
         },
+        {
+            title: "Cat Image",
+            name: "image",
+            type: "image",
+        },
     ],
 };
