@@ -73,6 +73,9 @@ const Footer = (props) => {
                             <Link href="/jobs">
                                 <a className="block">Karriere</a>
                             </Link>
+                            <Link href="/blog">
+                                <a className="block">News</a>
+                            </Link>
                             <Link className="block" href="/impressum">
                                 <a className="block">Impressum</a>
                             </Link>

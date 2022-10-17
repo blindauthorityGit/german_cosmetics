@@ -34,7 +34,7 @@ export default async (req, res) => {
         try {
             const emailRes = await transporter.sendMail({
                 from: email,
-                to: "johabuch@gmail.com",
+                to: "contacts@german-aesthetics.de",
                 subject: `Email von ${name}`,
                 html: htmlToSend,
             });
