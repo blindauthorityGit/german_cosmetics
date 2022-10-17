@@ -88,6 +88,16 @@ export default {
                                             type: "string",
                                             title: "Beschreibungstext Bild",
                                         },
+                                        {
+                                            name: "width",
+                                            type: "number",
+                                            title: "Breite",
+                                        },
+                                        {
+                                            name: "height",
+                                            type: "number",
+                                            title: "Höhe",
+                                        },
                                     ],
                                 },
                             ],

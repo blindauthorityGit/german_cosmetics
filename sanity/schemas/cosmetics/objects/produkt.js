@@ -29,5 +29,10 @@ export default {
                 },
             ],
         },
+        {
+            name: "categories",
+            title: "Categories",
+            type: "number",
+        },
     ],
 };

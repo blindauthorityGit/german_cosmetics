@@ -36,6 +36,8 @@ const ProduktContainer = (props, ref) => {
         };
     }, []);
 
+    let counter = 0;
+
     return (
         <MainContainer
             id={props.id}
@@ -77,7 +79,43 @@ const ProduktContainer = (props, ref) => {
                     className="col-span-12 grid grid-cols-12 gap-8 sm:col-span-8 transition-all duration-300"
                     ref={ref}
                 >
-                    {props.dataBehandlung.map((e, i) => {
+                    {props.dataNav.map((e, i) => {
+                        counter = i;
+                        return (
+                            <>
+                                <div className="col-span-12">
+                                    <img src={urlFor(e.image).width(800).height(400)} alt="Dat Image" />
+                                </div>
+                                {props.dataBehandlung.map((e, i) => {
+                                    return counter === e.categories ? (
+                                        <ScrollAnimation
+                                            key={`produkt${i}`}
+                                            animateIn={"slideInRight"}
+                                            animateOnce={true}
+                                            duration={0.4}
+                                            className={` col-span-12 sm:col-span-6 lg:col-span-4`}
+                                        >
+                                            <ProduktElement
+                                                image={urlFor(e.image).width(400).height(600)}
+                                                headline={e.title}
+                                                key={`behandlung${i}`}
+                                                len={
+                                                    e.text &&
+                                                    e.text[0].children
+                                                        .map((e) => e.text)
+                                                        .join("")
+                                                        .split("").length
+                                                }
+                                                value={e.text}
+                                                cat={`cat${e.categories}`}
+                                            ></ProduktElement>
+                                        </ScrollAnimation>
+                                    ) : null;
+                                })}
+                            </>
+                        );
+                    })}
+                    {/* {props.dataBehandlung.map((e, i) => {
                         return (
                             <ScrollAnimation
                                 key={`produkt${i}`}
@@ -87,7 +125,7 @@ const ProduktContainer = (props, ref) => {
                                 className="col-span-4"
                             >
                                 <ProduktElement
-                                    image={urlFor(e.image).width(860).height(400)}
+                                    image={urlFor(e.image).width(400).height(600)}
                                     headline={e.title}
                                     key={`behandlung${i}`}
                                     len={
@@ -101,7 +139,7 @@ const ProduktContainer = (props, ref) => {
                                 ></ProduktElement>
                             </ScrollAnimation>
                         );
-                    })}
+                    })} */}
                     {/* </section> */}
                 </div>
             </StickyContainer>

@@ -1,3 +1,4 @@
+import React, { useState, useEffect, useRef } from "react";
 import imageUrlBuilder from "@sanity/image-url";
 import Head from "next/head";
 import client from "../client";
@@ -23,6 +24,39 @@ function urlFor(source) {
 
 export default function Produkte({ data, dermaData, produkteData, produkteKomponente, produkteKontakt, laserRes }) {
     const imageProps = useNextSanityImage(client, produkteData[0].hero_settings.backgroundImg);
+
+    const containerRef = useRef();
+
+    const [fetchID, setFetchID] = useState(0);
+
+    const dataSet = (e) => {
+        return Array.from(document.querySelectorAll(`[data-cat=${e}]`));
+    };
+
+    const idFormater = (e) => {
+        return produkteData[0].produktKategorien[e].title
+            .toLowerCase()
+            .split(" ")
+            .join("")
+            .replace(/[^\w\s]/gi, "");
+    };
+
+    useEffect(() => {
+        produkteData[0].produktKategorien.map((e, i) => {
+            dataSet(`cat${i}`)[0].id = idFormater(i);
+        });
+    }, []);
+
+    useEffect(() => {
+        containerRef.current.style.opacity = "0";
+        setTimeout(() => {
+            containerRef.current.style.opacity = "1";
+        }, 100);
+    }, [fetchID]);
+
+    function handleClick(e) {
+        setFetchID(e.target.dataset.id);
+    }
 
     return (
         <>
@@ -60,10 +94,14 @@ export default function Produkte({ data, dermaData, produkteData, produkteKompon
                 headline={produkteData[0].intro.headline}
                 valueLeft={produkteData[0].intro.text}
             ></BehandlungTop>
-            <ProduktGrid data={produkteData[0].produkte}></ProduktGrid>
+            {/* <ProduktGrid data={produkteData[0].produkte}></ProduktGrid> */}
             <ProduktContainer
                 dataNav={produkteData[0].produktKategorien}
                 dataBehandlung={produkteData[0].produkte}
+                onClick={(e) => {
+                    handleClick(e);
+                }}
+                ref={containerRef}
             ></ProduktContainer>
             <ImageBox
                 single={true}
