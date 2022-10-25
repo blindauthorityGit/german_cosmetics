@@ -45,17 +45,17 @@ export default {
                         },
                     ],
                 },
-                {
-                    title: "Headline",
-                    name: "headline",
-                    type: "string",
-                },
-                {
-                    name: "cta",
-                    title: "Button Text",
-                    type: "string",
-                    description: "Text für den Button",
-                },
+                // {
+                //     title: "Headline",
+                //     name: "headline",
+                //     type: "string",
+                // },
+                // {
+                //     name: "cta",
+                //     title: "Button Text",
+                //     type: "string",
+                //     description: "Text für den Button",
+                // },
             ],
         },
         {

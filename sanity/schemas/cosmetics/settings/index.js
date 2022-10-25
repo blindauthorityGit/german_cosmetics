@@ -62,29 +62,6 @@ export default {
                         },
                     ],
                 },
-                {
-                    name: "favicon",
-                    title: "Favicon",
-                    type: "image",
-                    fields: [
-                        {
-                            title: "Alt Text",
-                            name: "alt",
-                            type: "string",
-                        },
-                    ],
-                },
-            ],
-        },
-        {
-            title: "Colors",
-            name: "colors",
-            type: "array",
-            of: [
-                {
-                    title: "Farben",
-                    type: "aesthetics_colors",
-                },
             ],
         },
     ],

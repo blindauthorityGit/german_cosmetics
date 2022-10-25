@@ -113,46 +113,5 @@ export default {
                 },
             ],
         },
-        {
-            title: "Imagebox Settings",
-            name: "imagebox_settings",
-            type: "document",
-            fields: [
-                {
-                    name: "backgroundImg1",
-                    title: "Hintergrund Bild 1",
-                    type: "image",
-                    fields: [
-                        {
-                            title: "Alt Text",
-                            name: "alt",
-                            type: "string",
-                        },
-                    ],
-                },
-                {
-                    title: "Headline 1",
-                    name: "headline1",
-                    type: "string",
-                },
-                {
-                    name: "backgroundImg2",
-                    title: "Hintergrund Bild 2",
-                    type: "image",
-                    fields: [
-                        {
-                            title: "Alt Text",
-                            name: "alt",
-                            type: "string",
-                        },
-                    ],
-                },
-                {
-                    title: "Headline 2",
-                    name: "headline2",
-                    type: "string",
-                },
-            ],
-        },
     ],
 };
