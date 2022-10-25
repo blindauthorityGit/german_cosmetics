@@ -14,11 +14,19 @@ import { FaHandHoldingMedical } from "react-icons/fa";
 import { GrContact } from "react-icons/gr";
 import { GrTechnology } from "react-icons/gr";
 import { GoLaw } from "react-icons/go";
+import { ImBlog } from "react-icons/im";
+import { FaImages } from "react-icons/fa";
 
 export default () =>
     S.list()
         .title("Bereiche")
         .items([
+            S.listItem()
+                .title("Start Settings")
+                .icon(FaImages)
+                .child(S.document().schemaType("start").documentId("start")),
+            S.divider(),
+
             S.listItem()
                 .title("German Aesthetics")
                 .icon(Aesthetics)
@@ -171,7 +179,7 @@ export default () =>
             S.divider(),
             S.listItem()
                 .title("Blog Settings")
-                .icon(Cosmetics)
+                .icon(ImBlog)
                 .child(S.document().schemaType("blog_settings").documentId("blog_settings")),
             // ...S.documentTypeListItems(),
             // ...S.documentTypeListItems().filter((item) => !["angebotSetting"].includes(item.getId())),
@@ -186,13 +194,15 @@ export default () =>
                 .title("Datenschutz")
                 .icon(GoLaw)
                 .child(S.document().schemaType("datenschutz").documentId("datenschutz")),
+            S.divider(),
+
             // ...S.documentTypeListItems(),
             // ...S.documentTypeListItems().filter((item) => !["angebotSetting"].includes(item.getId())),
-            S.divider(),
-            S.listItem()
-                .title("Start Settings")
-                .icon(GoLaw)
-                .child(S.document().schemaType("start").documentId("start")),
+            // S.divider(),
+            // S.listItem()
+            //     .title("Start Settings")
+            //     .icon(GoLaw)
+            //     .child(S.document().schemaType("start").documentId("start")),
             // ...S.documentTypeListItems(),
             // ...S.documentTypeListItems().filter((item) => !["angebotSetting"].includes(item.getId())),
 
@@ -216,6 +226,7 @@ export default () =>
                         "aesthetic_praxis",
                         "aesthethic_laserbehandlung_category",
                         "aesthetic_home",
+                        "blog_settings",
                         "impressum",
                         "datenschutz",
                         "cosmetics_settings",

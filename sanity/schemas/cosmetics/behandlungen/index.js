@@ -50,12 +50,12 @@ export default {
                     name: "headline",
                     type: "string",
                 },
-                {
-                    name: "cta",
-                    title: "Button Text",
-                    type: "string",
-                    description: "Text für den Button",
-                },
+                // {
+                //     name: "cta",
+                //     title: "Button Text",
+                //     type: "string",
+                //     description: "Text für den Button",
+                // },
             ],
         },
         {
@@ -87,17 +87,17 @@ export default {
                 },
             ],
         },
-        {
-            title: "Kategorie Behandlung",
-            name: "behandlungenFull",
-            type: "array",
-            of: [
-                {
-                    title: "Behandlung",
-                    type: "catBehandlung",
-                },
-            ],
-        },
+        // {
+        //     title: "Kategorie Behandlung",
+        //     name: "behandlungenFull",
+        //     type: "array",
+        //     of: [
+        //         {
+        //             title: "Behandlung",
+        //             type: "catBehandlung",
+        //         },
+        //     ],
+        // },
         {
             title: "Kategories",
             name: "categories",
