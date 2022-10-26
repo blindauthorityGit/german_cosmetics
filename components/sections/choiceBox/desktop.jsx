@@ -14,8 +14,8 @@ function urlFor(source) {
 const Desktop = (props) => {
     // STATES
     const [showCosm, setShowCosm] = useState(false);
-    const [showCosmLogo, setShowCosmLogo] = useState(true);
-    const [showAesthLogo, setshowAesthLogo] = useState(false);
+    const [showCosmLogo, setShowCosmLogo] = useState(false);
+    const [showAesthLogo, setshowAesthLogo] = useState(true);
     const [isSubZero, setIsSubZero] = useState(false);
     // REFS
     const wrapperRef = useRef();
