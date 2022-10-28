@@ -165,5 +165,6 @@ export async function getStaticProps() {
             produkteKontakt,
             laserRes,
         },
+        revalidate: 1, // 10 seconds
     };
 }
