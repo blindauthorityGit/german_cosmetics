@@ -34,6 +34,7 @@ export default function Start({ data, dataBlog, dataHome, dataKontakt, dataKompo
     useEffect(() => {
         const splitter = headlineRef.current.children[0].innerHTML.split("");
         console.log(dataHome);
+        console.log(process.env);
     }, []);
 
     return (

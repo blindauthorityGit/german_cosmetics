@@ -48,7 +48,8 @@ export default async (req, res) => {
             try {
                 const emailRes = transporter.sendMail({
                     from: email,
-                    to: "contacts@german-cosmetics.de",
+                    // to: "contacts@german-cosmetics.de",
+                    to: "office@atelierbuchner.at",
                     subject: `Email von ${name}`,
                     html: htmlToSend,
                 });
