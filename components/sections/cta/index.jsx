@@ -50,7 +50,7 @@ export default function CTAContent(props) {
             setSuccess(true);
             console.log(response);
         } catch (err) {
-            console.log(err);
+            console.log("Frontent ErrOr", err);
         }
     }
 
