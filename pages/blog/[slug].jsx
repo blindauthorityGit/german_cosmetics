@@ -38,6 +38,7 @@ export const getStaticPaths = async () => {
     return {
         paths,
         fallback: false,
+        revalidate: 1, // 10 seconds
     };
 };
 
@@ -61,6 +62,7 @@ export const getStaticProps = async (context) => {
             resData,
             blogData,
         },
+        revalidate: 1, // 10 seconds
     };
 };
 

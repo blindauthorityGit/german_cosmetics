@@ -88,5 +88,6 @@ export async function getStaticProps() {
             data,
             impressumData,
         },
+        revalidate: 1, // 10 seconds
     };
 }

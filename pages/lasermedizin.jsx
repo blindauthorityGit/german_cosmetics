@@ -150,5 +150,6 @@ export async function getStaticProps() {
             data,
             laserData,
         },
+        revalidate: 1, // 10 seconds
     };
 }

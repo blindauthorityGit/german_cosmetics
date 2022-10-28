@@ -92,5 +92,6 @@ export async function getStaticProps() {
             data,
             jobsData,
         },
+        revalidate: 1, // 10 seconds
     };
 }

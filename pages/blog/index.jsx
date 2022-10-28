@@ -110,5 +110,6 @@ export async function getStaticProps() {
             dataBlog,
             dataBlogSettings,
         },
+        revalidate: 1, // 10 seconds
     };
 }

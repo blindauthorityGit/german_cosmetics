@@ -117,5 +117,6 @@ export async function getStaticProps() {
             data,
             dermaData,
         },
+        revalidate: 1, // 10 seconds
     };
 }
