@@ -33,7 +33,7 @@ const FormFull = () => {
             setLoading(false);
             setSuccess(true);
         } catch (err) {
-            console.log(err);
+            console.log("frontend error", err);
         }
     }
     return (
