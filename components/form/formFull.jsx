@@ -21,7 +21,7 @@ const FormFull = () => {
         let config = {
             method: "post",
             // url: `http://localhost:3000/api/contact`,
-            url: `https://german-cosmetics.vercel.app//api/contacts`,
+            url: `https://german-cosmetics.vercel.app//api/contact`,
             headers: {
                 "Content-Type": "application/json",
             },
