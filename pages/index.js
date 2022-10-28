@@ -87,5 +87,6 @@ export const getStaticProps = async (context) => {
             dataHome,
             dataKontakt,
         },
+        revalidate: 10, // 10 seconds
     };
 };
