@@ -114,5 +114,6 @@ export async function getStaticProps() {
             kontaktData,
             dataKomponente,
         },
+        revalidate: 1, // 10 seconds
     };
 }

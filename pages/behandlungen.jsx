@@ -154,5 +154,6 @@ export async function getStaticProps() {
             resKomponente,
             dataKomponente,
         },
+        revalidate: 1, // 10 seconds
     };
 }

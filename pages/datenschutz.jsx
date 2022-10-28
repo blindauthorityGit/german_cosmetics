@@ -92,5 +92,6 @@ export async function getStaticProps() {
             impressumData,
             dataKontakt,
         },
+        revalidate: 1, // 10 seconds
     };
 }
