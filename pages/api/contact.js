@@ -23,7 +23,7 @@ export default async (req, res) => {
         // verify connection configuration
         transporter.verify(function (error, success) {
             if (error) {
-                console.log(error);
+                console.log("SAUBEDA", error);
                 reject(error);
             } else {
                 console.log("Server is ready to take our messages");
@@ -57,7 +57,7 @@ export default async (req, res) => {
                 console.log("Message Sent", emailRes.messageId);
                 res.status(200).json(req.body);
             } catch (err) {
-                console.log(err);
+                console.log("GEHT NET", err);
             }
         } else {
             res.status(403).json(req.body);
