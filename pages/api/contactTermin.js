@@ -13,7 +13,7 @@ export default async (req, res) => {
         secure: true,
         auth: {
             user: process.env.NEXT_USER,
-            pass: process.env.NEXT_PASSWORD,
+            pass: process.env.NEXT_GMAIL,
         },
     });
 
