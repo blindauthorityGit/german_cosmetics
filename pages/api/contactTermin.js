@@ -35,7 +35,7 @@ export default async (req, res) => {
                 from: email,
                 to: "johabuch@gmail.com",
                 subject: `Email von ${name}`,
-                html: `<p>Email von ${name}</p> <p>Email: ${email}`,
+                html: `<p>Name_ ${name}</p> <p>Email: ${email}</p> <p>Telefon: ${phone}</p> <p>Behandlung: ${behandlung}</p> <p>Nachricht: ${message}</p>`,
             });
 
             console.log("Message Sent", emailRes.messageId);
