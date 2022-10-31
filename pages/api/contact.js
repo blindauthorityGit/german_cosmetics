@@ -2,8 +2,8 @@
 import handlebars from "handlebars";
 const nodemailer = require("nodemailer");
 
-const path = require("path");
-const fs = require("fs");
+// const path = require("path");
+// const fs = require("fs");
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default async (req, res) => {
