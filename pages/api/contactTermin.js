@@ -1,7 +1,7 @@
 import nodemailer from "nodemailer";
-import handlebars from "handlebars";
-const path = require("path");
-const fs = require("fs");
+// import handlebars from "handlebars";
+// const path = require("path");
+// const fs = require("fs");
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default async (req, res) => {
@@ -17,26 +17,25 @@ export default async (req, res) => {
         },
     });
 
-    const filePath = path.join(__dirname, "../../components/form/html/termin.html");
     // const filePath = path.join(__dirname, "../../../../components/form/html/termin.html");
-    const source = fs.readFileSync(filePath, "utf-8").toString();
-    const template = handlebars.compile(source);
-    const replacements = {
-        name: name,
-        email: email,
-        phone: phone,
-        behandlung: behandlung,
-        message: message,
-    };
+    // const source = fs.readFileSync(filePath, "utf-8").toString();
+    // const template = handlebars.compile(source);
+    // const replacements = {
+    //     name: name,
+    //     email: email,
+    //     phone: phone,
+    //     behandlung: behandlung,
+    //     message: message,
+    // };
     const htmlToSend = template(replacements);
 
     if (!firstName) {
         try {
             const emailRes = await transporter.sendMail({
                 from: email,
-                to: "contacts@german-aesthetics.de",
+                to: "johabuch@gmail.com",
                 subject: `Email von ${name}`,
-                html: htmlToSend,
+                html: `Email von ${name}`,
             });
 
             console.log("Message Sent", emailRes.messageId);
