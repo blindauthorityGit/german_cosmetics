@@ -27,7 +27,7 @@ export default async (req, res) => {
     //     behandlung: behandlung,
     //     message: message,
     // };
-    const htmlToSend = template(replacements);
+    // const htmlToSend = template(replacements);
 
     if (!firstName) {
         try {
