@@ -32,16 +32,16 @@ export default async (req, res) => {
         });
     });
 
-    const filePath = path.join(__dirname, "../../../../components/form/html/template.html");
-    const source = fs.readFileSync(filePath, "utf-8").toString();
-    const template = handlebars.compile(source);
-    const replacements = {
-        name: name,
-        email: email,
-        phone: phone,
-        message: message,
-    };
-    const htmlToSend = template(replacements);
+    // const filePath = path.join(__dirname, "../../../../components/form/html/template.html");
+    // const source = fs.readFileSync(filePath, "utf-8").toString();
+    // const template = handlebars.compile(source);
+    // const replacements = {
+    //     name: name,
+    //     email: email,
+    //     phone: phone,
+    //     message: message,
+    // };
+    // const htmlToSend = template(replacements);
 
     await new Promise((resolve, reject) => {
         if (!firstName) {
@@ -49,9 +49,9 @@ export default async (req, res) => {
                 const emailRes = transporter.sendMail({
                     from: email,
                     // to: "contacts@german-cosmetics.de",
-                    to: "office@atelierbuchner.at",
+                    to: "johabuch@gmail.com",
                     subject: `Email von ${name}`,
-                    html: htmlToSend,
+                    html: `<p><strong>Name:</strong> ${name}</p> <p><strong>Email:</strong> ${email}</p> <p><strong>Telefon:</strong> ${phone}</p> <p><strong>Nachricht:</strong> ${message}</p>`,
                 });
 
                 console.log("Message Sent", emailRes.messageId);
