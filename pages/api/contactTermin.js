@@ -17,7 +17,8 @@ export default async (req, res) => {
         },
     });
 
-    const filePath = path.join(__dirname, "../../../../components/form/html/termin.html");
+    const filePath = path.join(__dirname, "../../components/form/html/termin.html");
+    // const filePath = path.join(__dirname, "../../../../components/form/html/termin.html");
     const source = fs.readFileSync(filePath, "utf-8").toString();
     const template = handlebars.compile(source);
     const replacements = {
