@@ -14,8 +14,8 @@ export default async (req, res) => {
         port: 465,
         secure: true,
         auth: {
-            user: process.env.NEXT_USER,
-            pass: process.env.NEXT_GMAIL,
+            user: process.env.NEXT_USER_PRODUCTION,
+            pass: process.env.NEXT_PASSWORD_PRODUCTION,
         },
     });
 
@@ -49,7 +49,7 @@ export default async (req, res) => {
             const emailRes = transporter.sendMail({
                 from: email,
                 // to: "contacts@german-cosmetics.de",
-                to: "office@atelierbuchner.at",
+                to: "contacts@german-cosmetics.de",
                 subject: `Email von ${name}`,
                 html: `<p><strong>Name:</strong> ${name}</p> <p><strong>Email:</strong> ${email}</p> <p><strong>Telefon:</strong> ${phone}</p> <p><strong>Nachricht:</strong> ${message}</p>`,
             });
