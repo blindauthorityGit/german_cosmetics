@@ -139,7 +139,7 @@ const Desktop = (props) => {
                             } `}
                         >
                             <DefaultButtonLink
-                                href="https://germanaesthetic-git-dev-blindauthoritygit.vercel.app/"
+                                href="https://german-aesthetics.de/"
                                 klasse="col-span-12 w-full  hover:bg-[#472f46] m-auto  text-white border-none bg-[#a53f98] font-semibold"
                             >
                                 zur Website
