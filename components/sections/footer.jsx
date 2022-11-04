@@ -14,9 +14,9 @@ const Footer = (props) => {
         console.log(isMobile);
     }, []);
     return (
-        <MainContainer width="w-100 bg-footer px-8 lg:px-0 py-16 py-16 lg:py-32 font-europa mt-16 sm:mt-32">
+        <MainContainer width="w-100 bg-footer px-8 lg:px-0 py-16 py-16 lg:py-16 font-europa mt-16 sm:mt-32">
             <div className="col-span-12 container grid grid-cols-12 m-auto">
-                <div className="col-span-12 sm:col-span-3">
+                <div className="col-span-12 sm:col-span-3 mb-6">
                     <img src={props.logo} alt="Logo" />
                 </div>
                 <FormTemplate></FormTemplate>
