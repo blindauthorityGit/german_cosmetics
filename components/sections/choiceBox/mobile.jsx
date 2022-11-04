@@ -140,7 +140,7 @@ const Mobile = (props) => {
                         style={{ backgroundImage: `url(${urlFor(props.imageR)})` }}
                         className="w-full bg-center h-full bg-cover cursor-pointer"
                     ></div>
-                    <Link href="https://german-cosmetics.vercel.app/start">
+                    <Link href="https://german-cosmetics.de/start">
                         <div
                             ref={rightLogo}
                             className={`absolute z-50 bottom-20 flex justify-center w-full ${
@@ -150,7 +150,7 @@ const Mobile = (props) => {
                             <img src={urlFor(props.logoR)} alt="" />
                         </div>
                     </Link>
-                    <Link href="https://german-cosmetics.vercel.app/start">
+                    <Link href="https://german-cosmetics.de/start">
                         <div
                             className={`text absolute bottom-10 flex  justify-center w-full text-white z-50 ${
                                 showCosmLogo ? "fade-in" : "fade-out"
@@ -159,7 +159,7 @@ const Mobile = (props) => {
                             <p> Privates Studio für Kosmetik und Ästhetik</p>
                         </div>
                     </Link>
-                    <Link href="https://german-cosmetics.vercel.app/start">
+                    <Link href="https://german-cosmetics.de/start">
                         <a>
                             <animated.div
                                 style={opacityIn}

@@ -145,7 +145,7 @@ const Desktop = (props) => {
                         ref={rightRef}
                         className="innerWrapper right bg-cover right-0 absolute w-[60%] h-[600px] bg-lightGray"
                     >
-                        <Link href="https://german-cosmetics.vercel.app/start">
+                        <Link href="https://german-cosmetics.de">
                             <div
                                 ref={rightImgRef}
                                 style={{ backgroundImage: `url(${urlFor(props.imageR)})` }}
