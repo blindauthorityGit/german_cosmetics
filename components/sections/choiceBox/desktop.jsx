@@ -118,7 +118,7 @@ const Desktop = (props) => {
                         ref={leftRef}
                         className="innerWrapper left-0 bg-cover  absolute w-[60%] h-[600px] bg-lightGray"
                     >
-                        <Link href="https://germanaesthetic-git-dev-blindauthoritygit.vercel.app/">
+                        <Link href="https://www.german-aesthetics.de/start/">
                             <div
                                 ref={leftImgRef}
                                 style={{ backgroundImage: `url(${urlFor(props.imageL)})` }}
@@ -139,7 +139,7 @@ const Desktop = (props) => {
                             } `}
                         >
                             <DefaultButtonLink
-                                href="https://german-aesthetics.de/"
+                                href="https://www.german-aesthetics.de/start"
                                 klasse="col-span-12 w-full  hover:bg-[#472f46] m-auto  text-white border-none bg-[#a53f98] font-semibold"
                             >
                                 zur Website

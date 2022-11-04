@@ -94,7 +94,7 @@ export default function Start({ data, dataBlog, dataHome, dataKontakt, dataKompo
                                 onClick={(e) => {
                                     modalSwitcher(e, showModal, setShowModal);
                                 }}
-                                klasse="col-span-12 w-3/4 hover:bg-darkPurple m-auto sm:m-0 mt-12 sm:mt-16 text-white border-none bg-primaryColor font-semibold"
+                                klasse="col-span-12 sm:w-3/4 hover:bg-darkPurple m-auto sm:m-0 mt-12 sm:mt-16 text-white border-none bg-primaryColor font-semibold"
                             >
                                 <span className="mr-4 text-xl">
                                     <IoMdCalendar></IoMdCalendar>
