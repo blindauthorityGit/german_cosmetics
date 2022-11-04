@@ -108,13 +108,13 @@ const Mobile = (props) => {
                         style={{ backgroundImage: `url(${urlFor(props.imageL)})` }}
                         className="w-full h-full bg-cover cursor-pointer"
                     ></div>
-                    <Link href="https://germanaesthetic-git-dev-blindauthoritygit.vercel.app/">
+                    <Link href="https://www.german-aesthetics.de/start/">
                         <div ref={rightLogo} className={`absolute z-50 bottom-20 flex justify-center w-full`}>
                             <img src={urlFor(props.logoL)} alt="" />
                         </div>
                     </Link>
 
-                    <Link href="https://germanaesthetic-git-dev-blindauthoritygit.vercel.app/">
+                    <Link href="https://www.german-aesthetics.de/start/">
                         <div
                             className={`text absolute bottom-10 flex justify-center text-white z-50 w-full ${
                                 showAesthLogo ? "fade-in" : "fade-out"
@@ -124,7 +124,7 @@ const Mobile = (props) => {
                         </div>
                     </Link>
 
-                    <Link href="https://germanaesthetic-git-dev-blindauthoritygit.vercel.app/">
+                    <Link href="https://www.german-aesthetics.de/start/">
                         <a>
                             <animated.div
                                 style={opacityIn}
