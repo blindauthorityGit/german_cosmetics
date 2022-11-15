@@ -115,7 +115,7 @@ const Hero = (props) => {
                     {showTime && (
                         <>
                             <H4 klasse=" pt-6 mb-2 sm:mb-6 sm:py-6 sm:py-0 sm:pt-10 pl-12 sm:pl-12 text-left ">
-                                Praxiszeiten
+                                Öffnungszeiten
                             </H4>
                             <hr />
                             <div className="wrapper flex  oeffnung  py-2 sm:py-0 md:pb-16 lg:pb-24 sm:pt-8 pl-12 sm:pr-24">
