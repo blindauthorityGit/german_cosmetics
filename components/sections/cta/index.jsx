@@ -244,6 +244,10 @@ export default function CTAContent(props) {
                         <div className="left mr-6 text-left clamp">
                             Mi
                             <br />
+                            Di
+                            <br />
+                            Mi
+                            <br />
                             Do
                             <br />
                             Fr
