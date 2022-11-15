@@ -51,7 +51,7 @@ export default async (req, res) => {
                 // to: "contacts@german-cosmetics.de",
                 to: "contacts@german-cosmetics.de",
                 subject: `Email von ${name}`,
-                replyTo: email,
+                // replyTo: email,
                 html: `<p><strong>Name:</strong> ${name}</p> <p><strong>Email:</strong> ${email}</p> <p><strong>Telefon:</strong> ${phone}</p> <p><strong>Nachricht:</strong> ${message}</p>`,
             });
 
