@@ -122,6 +122,10 @@ const Hero = (props) => {
                                 <div className="left mr-6 text-left oeffnung clamp">
                                     Mi
                                     <br />
+                                    Di
+                                    <br />
+                                    Mi
+                                    <br />
                                     Do
                                     <br />
                                     Fr

@@ -48,6 +48,10 @@ const Footer = (props) => {
                             <div className="left mr-6 text-left  2xl:clamp">
                                 Mi
                                 <br />
+                                Di
+                                <br />
+                                Mi
+                                <br />
                                 Do
                                 <br />
                                 Fr

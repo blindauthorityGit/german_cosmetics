@@ -112,11 +112,11 @@ const Desktop = (props) => {
 
     return (
         <MainContainer width="2xl:container w-full h-screen items-center z-10">
-            <div className="wrapper  overflow-hidden col-span-12 flex justify-center h-[800px] z-50">
+            <div className="wrapper  overflow-hidden col-span-12 flex justify-center h-[70%] max-h-[70%] z-50">
                 <div ref={wrapperRef} className="imgwrapper overflow-hidden relative w-[80%] xl:w-[60%] 2xl:w-[50%]">
                     <div
                         ref={leftRef}
-                        className="innerWrapper left-0 bg-cover  absolute w-[60%] h-[600px] bg-lightGray"
+                        className="innerWrapper left-0 bg-cover  absolute w-[60%] h-[80%] max-h-[80%] bg-lightGray"
                     >
                         <Link href="https://www.german-aesthetics.de/start/">
                             <div
@@ -150,7 +150,7 @@ const Desktop = (props) => {
 
                     <div
                         ref={rightRef}
-                        className="innerWrapper right bg-cover right-0 absolute w-[60%] h-[600px] bg-lightGray"
+                        className="innerWrapper right bg-cover right-0 absolute w-[60%] h-[80%] max-h-[80%] bg-lightGray"
                     >
                         <Link href="/start">
                             <div
