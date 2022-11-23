@@ -37,7 +37,7 @@ const Footer = (props) => {
                             <a className="mr-6 " href="https://www.facebook.com/drhubatsch">
                                 <BsFacebook></BsFacebook>
                             </a>
-                            <a href="https://www.instagram.com/german_aesthetics.de/">
+                            <a href="https://www.instagram.com/germancosmeticsde/">
                                 <BsInstagram></BsInstagram>
                             </a>
                         </div>
