@@ -46,7 +46,7 @@ const Footer = (props) => {
                         <H4 klasse="text-white">Öffnungszeiten </H4>
                         <div className="wrapper flex oeffnung opacity-60">
                             <div className="left mr-6 text-left  2xl:clamp">
-                                Mi
+                                Mo
                                 <br />
                                 Di
                                 <br />

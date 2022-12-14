@@ -120,7 +120,7 @@ const Hero = (props) => {
                             <hr />
                             <div className="wrapper flex  oeffnung  py-2 sm:py-0 md:pb-16 lg:pb-24 sm:pt-8 pl-12 sm:pr-24">
                                 <div className="left mr-6 text-left oeffnung clamp">
-                                    Mi
+                                    Mo
                                     <br />
                                     Di
                                     <br />
