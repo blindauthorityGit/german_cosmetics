@@ -78,7 +78,7 @@ const KontaktTop = (props) => {
                             <div className="left col-span-3 lg:col-span-1 mt-8 lg:mt-0 flex items-end lg:justify-center">
                                 <div className="wrapper flex oeffnung">
                                     <div className="left mr-6 text-left clamp">
-                                        Mi
+                                        Mo
                                         <br />
                                         Di
                                         <br />
