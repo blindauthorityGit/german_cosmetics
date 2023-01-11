@@ -13,6 +13,8 @@ import BlogSwiper from "../components/sections/blogSwiper";
 import Modal from "../components/sections/modal/modal";
 import Overlay from "../components/sections/modal/overlay";
 import CTAContent from "../components/sections/cta/";
+import Gutschein from "../components/sections/gutschein";
+
 import CTA from "../components/sections/cta";
 import ImageBox from "../components/sections/imageBox";
 import LinkBox from "../components/sections/linkBox";
@@ -27,7 +29,7 @@ function urlFor(source) {
     return builder.image(source);
 }
 
-export default function Start({ data, dataBlog, dataHome, dataKontakt, dataKomponente }) {
+export default function Start({ data, dataBlog, dataHome, dataKontakt, dataKomponente, dataGutschein }) {
     const [showModal, setShowModal] = useState(false);
     const headlineRef = useRef();
 
@@ -130,6 +132,12 @@ export default function Start({ data, dataBlog, dataHome, dataKontakt, dataKompo
             <BlogSwiper data={dataBlog}>
                 <div className="absolute w-[100%] md:h-[210px] lg:h-[360px] bg-[#F5F0ED] top-0 sm:top-[30%]"></div>
             </BlogSwiper>
+            <Gutschein
+                headline={dataGutschein[0].title}
+                text={dataGutschein[0].description}
+                images={dataGutschein[0].images}
+                subline={dataGutschein[0].subline}
+            ></Gutschein>
             <LinkBox
                 image={urlFor(dataKomponente[0].linkbox.img)}
                 headline={dataKomponente[0].linkbox.headline}
@@ -157,6 +165,10 @@ export async function getStaticProps() {
     const resKomponente = await client.fetch(`*[_type in ["cosmetics_komponente"] ]`);
     const resBlog = await client.fetch(`*[_type in ["blogEntry"] ]`);
 
+    const resGutschein = await client.fetch(`*[_type in ["gutschein"]]`);
+
+    const dataGutschein = await resGutschein;
+
     const data = await res;
     const dataHome = await resHome;
     const dataKontakt = await resKontakt;
@@ -169,6 +181,7 @@ export async function getStaticProps() {
             dataHome,
             dataKontakt,
             dataKomponente,
+            dataGutschein,
         },
         revalidate: 1, // 10 seconds
     };
