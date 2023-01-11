@@ -195,6 +195,11 @@ export default () =>
                 .icon(GoLaw)
                 .child(S.document().schemaType("datenschutz").documentId("datenschutz")),
             S.divider(),
+            S.listItem()
+                .title("Gutschein")
+                .icon(GoLaw)
+                .child(S.document().schemaType("gutschein").documentId("gutschein")),
+            S.divider(),
 
             // ...S.documentTypeListItems(),
             // ...S.documentTypeListItems().filter((item) => !["angebotSetting"].includes(item.getId())),
@@ -236,6 +241,7 @@ export default () =>
                         "cosmetics_behandlung",
                         "cosmetics_produkte",
                         "start",
+                        "gutschein",
                     ].includes(listItem.getId())
             ),
         ]);

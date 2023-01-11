@@ -37,6 +37,8 @@ import cosmetics_produkte from "./cosmetics/produkte";
 import produkt from "./cosmetics/objects/produkt";
 import produktKategorie from "./cosmetics/objects/produktKategorie";
 
+import gutschein from "./main/gutschein";
+
 import start from "./main/start";
 
 // Then we give our schema to the builder and provide the result to Sanity
@@ -80,5 +82,6 @@ export default createSchema({
         produkt,
         start,
         produktKategorie,
+        gutschein,
     ]),
 });

@@ -15,6 +15,7 @@ import LinkBox from "../components/sections/linkBox";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { useNextSanityImage } from "next-sanity-image";
+import Gutschein from "../components/sections/gutschein";
 
 const builder = imageUrlBuilder(client);
 
@@ -22,7 +23,14 @@ function urlFor(source) {
     return builder.image(source);
 }
 
-export default function LaserBehanldungen({ data, laserData, dataKontakt, resKomponente, dataKomponente }) {
+export default function LaserBehanldungen({
+    data,
+    laserData,
+    dataKontakt,
+    resKomponente,
+    dataKomponente,
+    dataGutschein,
+}) {
     const imageProps = useNextSanityImage(client, laserData[0].hero_settings.backgroundImg);
 
     const containerRef = useRef();
@@ -121,6 +129,12 @@ export default function LaserBehanldungen({ data, laserData, dataKontakt, resKom
                 text={dataKomponente[0].linkbox.text}
                 button={dataKomponente[0].linkbox.button_text}
             ></LinkBox>
+            <Gutschein
+                headline={dataGutschein[0].title}
+                text={dataGutschein[0].description}
+                images={dataGutschein[0].images}
+                subline={dataGutschein[0].subline}
+            ></Gutschein>
             <Footer
                 logo={urlFor(data[3].logo.logo_light)}
                 strasse={dataKontakt[0].adresse.strasse}
@@ -141,6 +155,10 @@ export async function getStaticProps() {
     const resKontakt = await client.fetch(`*[_type in ["cosmetics_kontakt"] ]`);
     const resKomponente = await client.fetch(`*[_type in ["cosmetics_komponente"] ]`);
 
+    const resGutschein = await client.fetch(`*[_type in ["gutschein"]]`);
+
+    const dataGutschein = await resGutschein;
+
     const data = await res;
     const laserData = await laserRes;
     const dataKontakt = await resKontakt;
@@ -153,6 +171,7 @@ export async function getStaticProps() {
             dataKontakt,
             resKomponente,
             dataKomponente,
+            dataGutschein,
         },
         revalidate: 1, // 10 seconds
     };
