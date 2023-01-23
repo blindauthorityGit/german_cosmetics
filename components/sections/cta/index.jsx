@@ -201,7 +201,7 @@ export default function CTAContent(props) {
                                 value="abschicken"
                             />
                         )}
-                        <p>
+                        <p className="text-sm">
                             Termine sollten bitte nur in dringenden Fällen, spätestens jedoch 24h vor der Behandlung
                             abgesagt werden. Leider müssen wir Ihnen nicht rechtzeitig abgesagte Termine in Rechnung
                             stellen.
@@ -218,22 +218,29 @@ export default function CTAContent(props) {
                             <div className="icon mr-8 text-primaryColor">
                                 <IoIosCall />
                             </div>
-                            <a href={`tel:${props.phone}`}> {props.phone}</a>
+                            <a className="text-base" href={`tel:${props.phone}`}>
+                                {" "}
+                                {props.phone}
+                            </a>
                         </div>
 
                         <div className="wrapper flex items-center mt-4">
                             <div className="icon mr-8 text-primaryColor">
                                 <IoMdMail />
                             </div>
-                            <a href={`mailto:${props.email}`}>{props.email}</a>
+                            <a className="text-base" href={`mailto:${props.email}`}>
+                                {props.email}
+                            </a>
                         </div>
                         <div className="wrapper flex items-center mt-4">
                             <div className="icon mr-8 text-primaryColor">
                                 <IoMdMap />
                             </div>
-                            {props.strasse}
-                            <br></br>
-                            {props.ort}
+                            <div className="text-base">
+                                {props.strasse}
+                                <br></br>
+                                {props.ort}
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -259,7 +266,7 @@ export default function CTAContent(props) {
                     </div>
                 </div>
 
-                <div className="top mt-16">
+                <div className="top mt-16 text-base">
                     <p>
                         <strong className="font-bold"> Bitte beachten Sie:</strong>
                         <br></br>
