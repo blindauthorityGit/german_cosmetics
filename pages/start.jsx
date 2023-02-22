@@ -22,6 +22,7 @@ import Footer from "../components/sections/footer";
 import { motion } from "framer-motion";
 import { IoMdCalendar } from "react-icons/io";
 import { modalSwitcher } from "../functions/modal";
+import { Popup1 } from "../components/popups";
 
 const builder = imageUrlBuilder(client);
 
@@ -38,6 +39,8 @@ export default function Start({ data, dataBlog, dataHome, dataKontakt, dataKompo
         console.log(dataHome);
         console.log(process.env);
     }, []);
+
+    const isOnVacation = true;
 
     return (
         <>
@@ -68,6 +71,8 @@ export default function Start({ data, dataBlog, dataHome, dataKontakt, dataKompo
                     ></Overlay>
                 </>
             )}
+            {isOnVacation && <Popup1 />}
+
             <Navbar
                 strasse={dataKontakt[0].adresse.strasse}
                 ort={dataKontakt[0].adresse.ort}
