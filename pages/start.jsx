@@ -40,7 +40,7 @@ export default function Start({ data, dataBlog, dataHome, dataKontakt, dataKompo
         console.log(process.env);
     }, []);
 
-    const isOnVacation = false;
+    const isOnVacation = true;
 
     return (
         <>

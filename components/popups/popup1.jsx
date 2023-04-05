@@ -18,8 +18,10 @@ function Popup1() {
                 <div className="text-center">
                     <h2 className="text-lg font-medium text-gray-900">Urlaubsmeldung</h2>
                     <p className="mt-2 text-sm text-grey-800">
-                        Wir machen Urlaub vom <strong>24.02. – 05.03.2023 </strong>.
+                        Ab Freitag <strong>07.04- einschließlich Sonntag, den 16.4.</strong> <br /> Der erste Arbeitstag
+                        wieder der Montag, der 17.4 sein.
                     </p>
+                    <p className="mt-2 text-sm text-grey-800">Vielen herzlichen Dank, schöne Feiertage.</p>
                 </div>
                 <div className="mt-4 flex justify-center">
                     <button
@@ -27,7 +29,7 @@ function Popup1() {
                         className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-primaryColor hover:bg-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black"
                         onClick={handleClose}
                     >
-                        Close
+                        schließen
                     </button>
                 </div>
             </div>
