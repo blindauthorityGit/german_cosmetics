@@ -148,7 +148,7 @@ export default function Institut({ data, dataCosmetics, dataKontakt, dataKompone
                 text={data[0].cta_jobs.text}
                 button={data[0].cta_jobs.button_text}
             ></JobsCTA>
-            <CTA
+            {/* <CTA
                 onClick={(e) => {
                     modalSwitcher(e, showModal, setShowModal);
                 }}
@@ -160,7 +160,7 @@ export default function Institut({ data, dataCosmetics, dataKontakt, dataKompone
                 phone={dataKontakt[0].kontakt.phone}
                 email={dataKontakt[0].kontakt.email}
                 value={dataKontakt[0].oeffnungszeiten}
-            ></CTA>
+            ></CTA> */}
 
             <LinkBox
                 klasse="sm:mt-16 mt-24"

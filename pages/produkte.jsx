@@ -110,7 +110,7 @@ export default function Produkte({ data, dermaData, produkteData, produkteKompon
                 href={produkteKomponente[0].imagebox.headline[0].title.toLowerCase()}
             ></ImageBox>
 
-            <CTA
+            {/* <CTA
                 klasse="sm:mb-16"
                 headline={data[0].cta.headline}
                 text={data[0].cta.text}
@@ -120,7 +120,7 @@ export default function Produkte({ data, dermaData, produkteData, produkteKompon
                 phone={produkteKontakt[0].kontakt.phone}
                 email={produkteKontakt[0].kontakt.email}
                 value={produkteKontakt[0].oeffnungszeiten}
-            ></CTA>
+            ></CTA> */}
 
             <LinkBox
                 klasse="sm:mt-16"

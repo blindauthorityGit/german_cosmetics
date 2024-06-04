@@ -110,7 +110,7 @@ export default function LaserBehanldungen({
                 href={resKomponente[0].imagebox.headline[1].title.toLowerCase()}
             ></ImageBox>
 
-            <CTA
+            {/* <CTA
                 klasse="sm:mb-16"
                 headline={data[0].cta.headline}
                 text={data[0].cta.text}
@@ -120,7 +120,7 @@ export default function LaserBehanldungen({
                 phone={dataKontakt[0].kontakt.phone}
                 email={dataKontakt[0].kontakt.email}
                 value={dataKontakt[0].oeffnungszeiten}
-            ></CTA>
+            ></CTA> */}
 
             <LinkBox
                 klasse="sm:mt-16 mt-24"
