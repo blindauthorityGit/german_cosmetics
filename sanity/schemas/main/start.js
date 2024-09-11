@@ -1,4 +1,4 @@
-import { BsPersonSquare } from "react-icons/bs";
+import { BsPersonSquare } from "react-icons/bs/index.js";
 
 export default {
     name: "start",

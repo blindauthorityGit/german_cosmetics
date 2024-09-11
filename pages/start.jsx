@@ -20,7 +20,7 @@ import ImageBox from "../components/sections/imageBox";
 import LinkBox from "../components/sections/linkBox";
 import Footer from "../components/sections/footer";
 import { motion } from "framer-motion";
-import { IoMdCalendar } from "react-icons/io";
+import { IoMdCalendar } from "react-icons/io/index.js";
 import { modalSwitcher } from "../functions/modal";
 import { Popup1 } from "../components/popups";
 

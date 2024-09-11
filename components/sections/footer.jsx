@@ -3,7 +3,7 @@ import MainContainer from "../layout/mainContainer";
 import { H2, H4 } from "../utils/headlines";
 import { DefaultButton } from "../utils/buttons";
 import { PortableText } from "@portabletext/react";
-import { BsFacebook, BsInstagram } from "react-icons/bs";
+import { BsFacebook, BsInstagram } from "react-icons/bs/index.js";
 import Link from "next/link";
 import FormTemplate from "../form/formTemplate";
 
@@ -65,17 +65,17 @@ const Footer = (props) => {
                     <div className="col-span-6 sm:col-span-2 mt-8 sm:mt-0 2xl:clamp">
                         <H4 klasse="text-white">Links</H4>
                         <span className="opacity-60">
-                            <Link href="/jobs">
-                                <a className="block">Karriere</a>
+                            <Link href="/jobs" className="block">
+                                Karriere
                             </Link>
-                            <Link href="/blog">
-                                <a className="block">News</a>
+                            <Link href="/blog" className="block">
+                                News
                             </Link>
                             <Link className="block" href="/impressum">
-                                <a className="block">Impressum</a>
+                                Impressum
                             </Link>
-                            <Link href="/datenschutz">
-                                <a className="block">Datenschutz</a>
+                            <Link href="/datenschutz" className="block">
+                                Datenschutz
                             </Link>
                         </span>
                     </div>

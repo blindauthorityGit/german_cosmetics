@@ -5,7 +5,7 @@ import Burger from "../../public/burger.svg";
 import MobileNav from "./mobile";
 import { motion } from "framer-motion";
 import isSticky from "../../functions/isSticky";
-import { IoMdCalendar } from "react-icons/io";
+import { IoMdCalendar } from "react-icons/io/index.js";
 import Overlay from "../sections/modal/overlay";
 import Modal from "../sections/modal/modal";
 import CTAContent from "../sections/cta/";
@@ -117,9 +117,7 @@ const Navbar = (props) => {
                 <div className="container px-16 flex grid grid-cols-12 font-semibold font-europa tracking-wider m-auto">
                     <div className="middle col-span-4 flex items-center  pt-4">
                         <Link href="/start">
-                            <a>
-                                <img src={isItSticky ? props.logoDark : props.logoLight} width="230" alt="Logo" />
-                            </a>
+                            <img src={isItSticky ? props.logoDark : props.logoLight} width="230" alt="Logo" />
                         </Link>
                     </div>
                     <div className={`left col-span-8 pt-4 flex justify-end ${props.hideCTA ? "" : "items-baseline"}`}>
@@ -135,23 +133,17 @@ const Navbar = (props) => {
                                 className="mr-8  hover:underline relative cursor-pointer flex items-center"
                             >
                                 <Link href="/behandlungen">
-                                    <motion.a className="">Behandlungen</motion.a>
+                                    <motion.div className="">Behandlungen</motion.div>
                                 </Link>
                             </motion.li>
                             <li className="mr-8 flex items-center hover:underline">
-                                <Link href="/produkte">
-                                    <a>Produkte</a>
-                                </Link>
+                                <Link href="/produkte">Produkte</Link>
                             </li>
                             <li className="mr-8 flex items-center hover:underline">
-                                <Link href="/institut">
-                                    <a>Institut</a>
-                                </Link>
+                                <Link href="/institut">Institut</Link>
                             </li>
                             <li className="mr-8 flex items-center hover:underline">
-                                <Link href="/kontakt">
-                                    <a>Kontakt</a>
-                                </Link>
+                                <Link href="/kontakt">Kontakt</Link>
                             </li>
 
                             <li
@@ -176,9 +168,7 @@ const Navbar = (props) => {
             <>
                 <div className="absolute top-4 left-8 hidden md:block  xl:hidden z-10">
                     <Link href="/start">
-                        <a>
-                            <img src={isItSticky ? props.logoDark : props.logoLight} width="230" alt="Logo" />
-                        </a>
+                        <img src={isItSticky ? props.logoDark : props.logoLight} width="230" alt="Logo" />
                     </Link>
                 </div>
 

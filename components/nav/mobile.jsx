@@ -22,68 +22,68 @@ const MobileNav = (props) => {
                 <div className="container h-screen py-16 px-8 font-europa tracking-wider">
                     <div className="middle pl-8">
                         <Link href="/start">
-                            <a>
-                                <img src={props.logo} width="230" alt="Logo" />
-                            </a>
+                            <img src={props.logo} width="230" alt="Logo" />
                         </Link>
                     </div>
                     <div className="MenuItems text-2xl sm:text-4xl pt-8">
                         <ul className="">
                             <li className="mb-4">
                                 <div className="wrap dropdown bg-white  ">
-                                    <Link href="/behandlungen">
-                                        <a className="text-text block my-4 subNav relative hover:text-primaryColor cursor-pointer">
-                                            Behandlungen
-                                        </a>
+                                    <Link
+                                        href="/behandlungen"
+                                        className="text-text block my-4 subNav relative hover:text-primaryColor cursor-pointer"
+                                    >
+                                        Behandlungen
                                     </Link>
 
-                                    <Link href="./produkte">
-                                        <a className="text-text block my-4 subNav relative mt-4 hover:text-primaryColor cursor-pointer">
-                                            Produkte
-                                        </a>
+                                    <Link
+                                        href="./produkte"
+                                        className="text-text block my-4 subNav relative mt-4 hover:text-primaryColor cursor-pointer"
+                                    >
+                                        Produkte
                                     </Link>
                                 </div>
                             </li>
                             <li className="mr-8 hover:text-primaryColor hover:underline mb-4">
-                                <Link href="/institut">
-                                    <a>Institut</a>
-                                </Link>
+                                <Link href="/institut">Institut</Link>
                             </li>
                             <li>
-                                <Link href="/kontakt">
-                                    <a>Kontakt</a>
-                                </Link>
+                                <Link href="/kontakt">Kontakt</Link>
                             </li>
                         </ul>
                         <hr className="mt-6" />
                         <ul className="">
                             <li className="mb-4 text-sm">
                                 <div className="wrap dropdown bg-white  ">
-                                    <Link href="/jobs">
-                                        <a className="text-text block my-4 subNav relative hover:text-primaryColor cursor-pointer">
-                                            Karriere
-                                        </a>
+                                    <Link
+                                        href="/jobs"
+                                        className="text-text block my-4 subNav relative hover:text-primaryColor cursor-pointer"
+                                    >
+                                        Karriere
                                     </Link>
 
-                                    <Link href="/blog">
-                                        <a className="text-text block my-4 subNav relative mt-4 hover:text-primaryColor cursor-pointer">
-                                            News
-                                        </a>
+                                    <Link
+                                        href="/blog"
+                                        className="text-text block my-4 subNav relative mt-4 hover:text-primaryColor cursor-pointer"
+                                    >
+                                        News
                                     </Link>
                                 </div>
                             </li>
                             <li className="mb-4 mt-8 text-sm">
                                 <div className="wrap dropdown bg-white  ">
-                                    <Link href="/impressum">
-                                        <a className="text-text block my-4 subNav relative hover:text-primaryColor cursor-pointer">
-                                            Impressum
-                                        </a>
+                                    <Link
+                                        href="/impressum"
+                                        className="text-text block my-4 subNav relative hover:text-primaryColor cursor-pointer"
+                                    >
+                                        Impressum
                                     </Link>
 
-                                    <Link href="/datenschutz">
-                                        <a className="text-text block my-4 subNav relative mt-4 hover:text-primaryColor cursor-pointer">
-                                            Datenschutzerklärung
-                                        </a>
+                                    <Link
+                                        href="/datenschutz"
+                                        className="text-text block my-4 subNav relative mt-4 hover:text-primaryColor cursor-pointer"
+                                    >
+                                        Datenschutzerklärung
                                     </Link>
                                 </div>
                             </li>
