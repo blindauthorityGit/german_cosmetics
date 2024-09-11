@@ -1,4 +1,4 @@
-import { BsPersonSquare } from "react-icons/bs";
+import { BsPersonSquare } from "/index.js";
 
 export default {
     name: "jobs",

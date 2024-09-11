@@ -15,12 +15,11 @@ function DefaultButton(props) {
 function DefaultButtonLink(props) {
     return (
         <>
-            <Link href={props.href}>
-                <a
-                    className={`group uppercase font-bold ease-in-out duration-200 hover:bg-darkBlue cursor-pointer p-4 flex items-center justify-center ${props.klasse}`}
-                >
-                    {props.children}
-                </a>
+            <Link
+                href={props.href}
+                className={`group uppercase font-bold ease-in-out duration-200 hover:bg-darkBlue cursor-pointer p-4 flex items-center justify-center ${props.klasse}`}
+            >
+                {props.children}
             </Link>
         </>
     );

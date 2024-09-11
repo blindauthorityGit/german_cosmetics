@@ -5,7 +5,7 @@ import { PortableText } from "@portabletext/react";
 import { useSpring, animated } from "react-spring";
 import { config } from "react-spring";
 import { isMobile } from "react-device-detect";
-import { IoMdTime, IoIosCall, IoMdMap } from "react-icons/io";
+import { IoMdTime, IoIosCall, IoMdMap } from "react-icons/io/index.js";
 
 const Hero = (props) => {
     const [showTime, setShowTime] = useState(true);
@@ -118,7 +118,7 @@ const Hero = (props) => {
                                 Öffnungszeiten
                             </H4>
                             <hr />
-                            <div className="wrapper flex  oeffnung  py-2 sm:py-0 md:pb-16 lg:pb-24 sm:pt-8 pl-12 sm:pr-24">
+                            <div className="wrapper flex  oeffnung  py-2 sm:py-0 px-4  sm:pt-8 pl-12 sm:pr-24">
                                 <div className="left mr-6 text-left oeffnung clamp">
                                     Mo
                                     <br />

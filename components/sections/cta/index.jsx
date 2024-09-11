@@ -7,7 +7,7 @@ import DatePicker from "@amir04lm26/react-modern-calendar-date-picker";
 import myCustomLocale from "./locale";
 import client from "../../../client";
 import { PortableText } from "@portabletext/react";
-import { IoMdTime, IoIosCall, IoMdMap, IoMdMail } from "react-icons/io";
+import { IoMdTime, IoIosCall, IoMdMap, IoMdMail } from "react-icons/io/index.js";
 import { Controller, useForm } from "react-hook-form";
 import Error from "../../form/error";
 import axios from "axios";
