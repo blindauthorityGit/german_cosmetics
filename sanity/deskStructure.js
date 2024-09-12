@@ -200,6 +200,10 @@ export default () =>
                 .icon(GoLaw)
                 .child(S.document().schemaType("gutschein").documentId("gutschein")),
             S.divider(),
+            S.listItem()
+                .title("Start Modal")
+                // .icon(YourIconComponent) // You can replace with an icon of your choice
+                .child(S.document().schemaType("modalGeneral").documentId("modalGeneral")),
 
             // ...S.documentTypeListItems(),
             // ...S.documentTypeListItems().filter((item) => !["angebotSetting"].includes(item.getId())),
