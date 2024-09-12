@@ -21,6 +21,7 @@
     "axios": "^0.27.2",
     "framer-motion": "^7.6.7",
     "handlebars": "^4.7.7",
+    "lenis": "^1.1.4",
     "next": "^14.2.9",
     "next-sanity-image": "^3.2.1",
     "next-useragent": "^2.8.0",

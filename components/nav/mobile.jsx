@@ -1,130 +1,112 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import Link from "next/link";
-import Image from "next/image";
-import { H4 } from "../utils/headlines";
+import { motion } from "framer-motion";
 import { PortableText } from "@portabletext/react";
 
 const MobileNav = (props) => {
-    const [showMenu, setShowMenu] = useState(props.showMenu);
-
     const burgerRef = useRef();
 
-    function clicker(e) {
-        console.log("Clicked");
-    }
+    // Framer Motion variants for staggering the menu items
+    const navItemVariants = {
+        hidden: { opacity: 0, y: 20 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: {
+                type: "spring",
+                stiffness: 100,
+                damping: 10,
+            },
+        },
+    };
+
+    const navVariants = {
+        visible: {
+            transition: {
+                staggerChildren: 0.2,
+                delayChildren: 0.2,
+            },
+        },
+        hidden: {},
+    };
 
     return (
         <>
-            <nav
-                className={`navbar ${props.klasse} 
-                 w-full h-screen bg-white fixed z-40 `}
-            >
-                <div className="container h-screen py-16 px-8 font-europa tracking-wider">
-                    <div className="middle pl-8">
+            <nav className={`navbar ${props.klasse} w-full h-screen bg-white fixed z-40`}>
+                <div className="container bg-[#f5f0ed] h-screen py-8 px-4 font-europa tracking-wider">
+                    <div className="middle flex justify-center">
                         <Link href="/start">
                             <img src={props.logo} width="230" alt="Logo" />
                         </Link>
                     </div>
-                    <div className="MenuItems text-2xl sm:text-4xl pt-8">
-                        <ul className="">
-                            <li className="mb-4">
-                                <div className="wrap dropdown bg-white  ">
-                                    <Link
-                                        href="/behandlungen"
-                                        className="text-text block my-4 subNav relative hover:text-primaryColor cursor-pointer"
-                                    >
-                                        Behandlungen
-                                    </Link>
 
-                                    <Link
-                                        href="./produkte"
-                                        className="text-text block my-4 subNav relative mt-4 hover:text-primaryColor cursor-pointer"
-                                    >
-                                        Produkte
-                                    </Link>
-                                </div>
-                            </li>
-                            <li className="mr-8 hover:text-primaryColor hover:underline mb-4">
-                                <Link href="/institut">Institut</Link>
-                            </li>
-                            <li>
-                                <Link href="/kontakt">Kontakt</Link>
-                            </li>
-                        </ul>
-                        <hr className="mt-6" />
-                        <ul className="">
-                            <li className="mb-4 text-sm">
-                                <div className="wrap dropdown bg-white  ">
-                                    <Link
-                                        href="/jobs"
-                                        className="text-text block my-4 subNav relative hover:text-primaryColor cursor-pointer"
-                                    >
-                                        Karriere
-                                    </Link>
+                    {/* Staggered Menu Items */}
+                    <motion.div
+                        initial="hidden"
+                        animate="visible"
+                        variants={navVariants}
+                        className="MenuItems text-2xl sm:text-4xl pt-2"
+                    >
+                        <motion.ul>
+                            <motion.li variants={navItemVariants} className="mb-4">
+                                <Link
+                                    href="/behandlungen"
+                                    className="text-text block my-4 subNav relative hover:text-primaryColor cursor-pointer"
+                                >
+                                    Behandlungen
+                                </Link>
+                            </motion.li>
+                            <motion.li variants={navItemVariants} className="mb-4">
+                                <Link
+                                    href="/produkte"
+                                    className="text-text block my-4 subNav relative hover:text-primaryColor cursor-pointer"
+                                >
+                                    Produkte
+                                </Link>
+                            </motion.li>
+                            <motion.li variants={navItemVariants} className="mb-4">
+                                <Link href="/institut" className="hover:text-primaryColor">
+                                    Institut
+                                </Link>
+                            </motion.li>
+                            <motion.li variants={navItemVariants}>
+                                <Link href="/kontakt" className="hover:text-primaryColor">
+                                    Kontakt
+                                </Link>
+                            </motion.li>
+                        </motion.ul>
+                    </motion.div>
 
-                                    <Link
-                                        href="/blog"
-                                        className="text-text block my-4 subNav relative mt-4 hover:text-primaryColor cursor-pointer"
-                                    >
-                                        News
-                                    </Link>
-                                </div>
-                            </li>
-                            <li className="mb-4 mt-8 text-sm">
-                                <div className="wrap dropdown bg-white  ">
-                                    <Link
-                                        href="/impressum"
-                                        className="text-text block my-4 subNav relative hover:text-primaryColor cursor-pointer"
-                                    >
-                                        Impressum
-                                    </Link>
+                    <hr className="mt-2" />
 
-                                    <Link
-                                        href="/datenschutz"
-                                        className="text-text block my-4 subNav relative mt-4 hover:text-primaryColor cursor-pointer"
-                                    >
-                                        Datenschutzerklärung
-                                    </Link>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-
-                    {/* <div className="Kontakt flex mt-10">
-                        <div className="left w-1/2">
-                            <H4>Kontakt</H4>
-                            <div className="content text-xs leading-relaxed">
-                                <div> {props.strasse}</div>
-                                <div> {props.ort}</div>
-                                <div className="mt-4">{props.phone}</div>
-                                <div>
-                                    {" "}
-                                    <a href="mailto:contacts@german-aesthetics.de"> {props.email}</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="right w-1/2">
-                            <H4>Praxiszeiten</H4>
-
-                            <div className="wrapper flex  text-xs leading-relaxed">
-                                <div className="left mr-6 text-left ">
-                                    Mo
-                                    <br />
-                                    Di
-                                    <br />
-                                    Mi
-                                    <br />
-                                    Do
-                                    <br />
-                                    Fr
-                                    <br />
-                                </div>
-                                <div className="right text-left">
-                                    <PortableText value={props.value} />
-                                </div>
-                            </div>
-                        </div>
-                    </div> */}
+                    {/* Secondary Links */}
+                    <motion.div initial="hidden" animate="visible" variants={navVariants} className="text-sm pt-2">
+                        <motion.ul>
+                            <motion.li variants={navItemVariants} className="mb-4">
+                                <Link
+                                    href="/jobs"
+                                    className="text-text block my-4 subNav relative hover:text-primaryColor cursor-pointer"
+                                >
+                                    Karriere
+                                </Link>
+                            </motion.li>
+                            <motion.li variants={navItemVariants} className="mb-4">
+                                <Link href="/blog" className="hover:text-primaryColor">
+                                    News
+                                </Link>
+                            </motion.li>
+                            <motion.li variants={navItemVariants} className="mb-4">
+                                <Link href="/impressum" className="hover:text-primaryColor">
+                                    Impressum
+                                </Link>
+                            </motion.li>
+                            <motion.li variants={navItemVariants}>
+                                <Link href="/datenschutz" className="hover:text-primaryColor">
+                                    Datenschutzerklärung
+                                </Link>
+                            </motion.li>
+                        </motion.ul>
+                    </motion.div>
                 </div>
             </nav>
         </>
