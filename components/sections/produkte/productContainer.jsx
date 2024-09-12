@@ -76,7 +76,7 @@ const ProduktContainer = (props, ref) => {
                     </Sticky>
                 </div>
                 <div
-                    className="col-span-12 grid grid-cols-12 gap-8 sm:col-span-8 transition-all duration-300"
+                    className="col-span-12 grid grid-cols-12 gap-2 lg:gap-8 sm:col-span-8 transition-all duration-300"
                     ref={ref}
                 >
                     {props.dataNav.map((e, i) => {
@@ -93,7 +93,7 @@ const ProduktContainer = (props, ref) => {
                                             animateIn={"slideInRight"}
                                             animateOnce={true}
                                             duration={0.4}
-                                            className={` col-span-12 sm:col-span-6 lg:col-span-4`}
+                                            className={` col-span-6 sm:col-span-6 lg:col-span-4`}
                                         >
                                             <ProduktElement
                                                 image={urlFor(e.image).width(400).height(600)}

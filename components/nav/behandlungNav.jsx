@@ -4,7 +4,7 @@ import MainContainer from "../layout/mainContainer";
 
 const BehandlungNav = (props, ref) => {
     return (
-        <section className="container w-full mt-1 sm:m-auto flex mb-20 md:pl-12 pl-0 lg:pl-0">
+        <section className="container w-full mt-1 sm:m-auto flex lg:mb-20 md:pl-12 pl-0 lg:pl-0">
             <Link
                 href="./behandlungen"
                 onClick={props.onClick}

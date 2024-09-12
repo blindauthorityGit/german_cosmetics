@@ -34,44 +34,70 @@ const Navbar = (props) => {
     function clicker(e) {
         setShowMenu((current) => !current);
         burgerRef.current.classList.toggle("open");
-        navRef.current.classList.toggle("fixed");
-        navRef.current.classList.toggle("absolute");
-        if (!showMenu) {
-            setMobileClass("slide-in-left");
-        } else {
-            setMobileClass("slide-out-left");
-        }
+        // navRef.current.classList.toggle("fixed");
+        // navRef.current.classList.toggle("absolute");
+        // if (!showMenu) {
+        //     setMobileClass("slide-in-left");
+        // } else {
+        //     setMobileClass("slide-out-left");
+        // }
     }
 
-    const textMotion = {
-        rest: {
-            x: 0,
+    // Framer Motion variants for the snappy and bouncy menu animation
+    const menuVariants = {
+        hidden: {
+            opacity: 0,
+            scale: 0.2,
+            y: 100,
             transition: {
-                duration: 0.5,
-                type: "tween",
-                ease: "easeIn",
+                type: "spring",
+                stiffness: 300,
+                damping: 20,
             },
         },
-        hover: {
-            // color: "blue",
-            x: 30,
+        visible: {
+            opacity: 1,
+            scale: 1,
+            y: 0,
             transition: {
-                duration: 0.4,
-                type: "tween",
-                ease: "easeOut",
+                type: "spring",
+                stiffness: 300,
+                damping: 20,
+            },
+        },
+        exit: {
+            opacity: 0,
+            scale: 0.2,
+            y: 100,
+            transition: {
+                type: "spring",
+                stiffness: 300,
+                damping: 20,
             },
         },
     };
 
-    const boxMotion = {
-        rest: { opacity: 0, ease: "easeOut", duration: 0.2, type: "spring", display: "none" },
-        hover: {
+    // Framer Motion variants for menu content
+    const contentVariants = {
+        hidden: {
+            opacity: 0,
+            y: 20,
+        },
+        visible: {
             opacity: 1,
-            display: "block",
+            y: 0,
+            transition: {
+                delay: 0.3,
+                duration: 0.4,
+                ease: "easeInOut",
+            },
+        },
+        exit: {
+            opacity: 0,
+            y: 20,
             transition: {
                 duration: 0.4,
-                type: "spring",
-                ease: "easeIn",
+                ease: "easeInOut",
             },
         },
     };
@@ -100,28 +126,35 @@ const Navbar = (props) => {
                     ></Overlay>
                 </>
             )}
-            <MobileNav
-                value={props.value}
-                logo={props.logoDark}
-                klasse={`${showMenu ? "block" : "hidden"} ${mobileClass}`}
-                strasse={props.strasse}
-                ort={props.ort}
-                phone={props.phone}
-                email={props.email}
-            ></MobileNav>
+            <motion.div
+                initial="hidden"
+                animate={showMenu ? "visible" : "hidden"}
+                exit="exit"
+                variants={menuVariants}
+                className="xl:hidden  fixed w-full h-full z-30"
+            >
+                <MobileNav
+                    value={props.value}
+                    logo={props.logoDark}
+                    strasse={props.strasse}
+                    ort={props.ort}
+                    phone={props.phone}
+                    email={props.email}
+                />
+            </motion.div>
             <nav
                 className={`navbar ${
                     props.dark ? "text-text" : "text-white"
                 }  hidden xl:block w-full absolute z-30 header-section`}
             >
-                <div className="container px-16 flex grid grid-cols-12 font-semibold font-europa tracking-wider m-auto">
+                <div className="container px-16 text-sm grid grid-cols-12 font-semibold font-europa tracking-wider m-auto">
                     <div className="middle col-span-4 flex items-center  pt-4">
                         <Link href="/start">
                             <img src={isItSticky ? props.logoDark : props.logoLight} width="230" alt="Logo" />
                         </Link>
                     </div>
                     <div className={`left col-span-8 pt-4 flex justify-end ${props.hideCTA ? "" : "items-baseline"}`}>
-                        <ul className={`flex uppercase tracking-widest ${isItSticky ? "text-text" : ""}`}>
+                        <ul className={`flex uppercase !pt-0 tracking-widest ${isItSticky ? "text-text" : ""}`}>
                             <motion.li
                                 initial="rest"
                                 whileHover="hover"
@@ -173,15 +206,17 @@ const Navbar = (props) => {
                 </div>
 
                 <div
-                    className="block xl:hidden  burger absolute z-40 right-8 top-8"
+                    className={` xl:hidden w-20 h-20 ${
+                        showMenu ? "bg-black" : "bg-primaryColor"
+                    }  flex items-center justify-center items burger p-2 rounded-full fixed z-40 bottom-8 left-1/2 transform -translate-x-1/2`}
                     ref={navRef}
                     onClick={(e) => {
                         clicker(e);
                     }}
                 >
-                    <div className="fixed" id="burger" ref={burgerRef}>
-                        <span></span>
-                        <span></span>
+                    <div id="burger" className=" relative flex flex-col justify-center items-center" ref={burgerRef}>
+                        <span className="block w-3/4 h-1 bg-white rounded-full mb-1 transform transition-transform duration-300 ease-in-out"></span>
+                        <span className="block w-3/4 h-1 bg-white rounded-full mb-1 transform transition-transform duration-300 ease-in-out"></span>
                     </div>
                 </div>
             </>

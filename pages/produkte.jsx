@@ -79,13 +79,14 @@ export default function Produkte({ data, dermaData, produkteData, produkteKompon
                     headline="Unsere Produkte"
                     showButton={false}
                 >
-                    <Image
-                        {...imageProps}
-                        layout="fill"
-                        objectFit="cover"
-                        alt="hero"
-                        sizes="(max-height: 550px) 100%, 550px"
-                    />
+                    <div className="relative w-full h-full lg:max-h-[550px]">
+                        <Image
+                            {...{ ...imageProps, width: undefined, height: undefined }} // Remove width and height
+                            fill={true} // This enables the fill property to work
+                            objectFit="cover" // Ensures the image covers the entire space
+                            alt="hero"
+                        />
+                    </div>
                 </PageHero>
             </motion.div>
             <BehandlungNav klasseTwo="active"></BehandlungNav>
@@ -141,7 +142,7 @@ export default function Produkte({ data, dermaData, produkteData, produkteKompon
     );
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
     const res = await client.fetch(
         `*[_type in ["aesthetic_praxis", "aesthetic_kontakt", "cosmetics_settings", "aesthetic_komponente"] ]`
     );
@@ -156,6 +157,7 @@ export async function getStaticProps() {
     const produkteData = await produkteRes;
     const produkteKomponente = await resKomponente;
     const produkteKontakt = await resKontakt;
+
     return {
         props: {
             data,
@@ -165,6 +167,5 @@ export async function getStaticProps() {
             produkteKontakt,
             laserRes,
         },
-        revalidate: 1, // 10 seconds
     };
 }

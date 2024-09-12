@@ -50,6 +50,7 @@ export default function LaserBehanldungen({
     };
 
     useEffect(() => {
+        console.log(dataKomponente);
         laserData[0].categories.map((e, i) => {
             dataSet(`cat${i}`)[0].id = idFormater(i);
         });
@@ -83,13 +84,14 @@ export default function LaserBehanldungen({
             ></Navbar>
             <motion.div layoutId={"Hero"} animate={{ opacity: 1 }}>
                 <PageHero headline="Behandlungen" showButton={false}>
-                    <Image
-                        {...imageProps}
-                        layout="fill"
-                        objectFit="cover"
-                        alt="hero"
-                        sizes="(max-height: 550px) 100%, 550px"
-                    />
+                    <div className="relative w-full h-full lg:max-h-[550px]">
+                        <Image
+                            {...{ ...imageProps, width: undefined, height: undefined }} // Remove width and height
+                            fill={true} // This enables the fill property to work
+                            objectFit="cover" // Ensures the image covers the entire space
+                            alt="hero"
+                        />
+                    </div>
                 </PageHero>
             </motion.div>
             <BehandlungNav klasseOne="active"></BehandlungNav>
@@ -105,9 +107,9 @@ export default function LaserBehanldungen({
             ></LaserBehandlungContainer>
             <ImageBox
                 single={true}
-                headline={resKomponente[0].imagebox.headline[1].title}
-                img={resKomponente[0].imagebox.headline[1].img}
-                href={resKomponente[0].imagebox.headline[1].title.toLowerCase()}
+                headline={dataKomponente[0].imagebox.headline[1].title}
+                img={dataKomponente[0].imagebox.headline[1].img}
+                href={dataKomponente[0].imagebox.headline[1].title.toLowerCase()}
             ></ImageBox>
 
             {/* <CTA
@@ -147,32 +149,58 @@ export default function LaserBehanldungen({
     );
 }
 
-export async function getStaticProps() {
+// export async function getStaticProps() {
+//     const res = await client.fetch(
+//         `*[_type in ["aesthetic_praxis", "aesthetic_kontakt", "cosmetics_settings", "aesthetic_komponente"] ]`
+//     );
+//     const laserRes = await client.fetch(`*[_type in ["cosmetics_behandlung"] ]`);
+//     const resKontakt = await client.fetch(`*[_type in ["cosmetics_kontakt"] ]`);
+//     const resKomponente = await client.fetch(`*[_type in ["cosmetics_komponente"] ]`);
+
+//     const resGutschein = await client.fetch(`*[_type in ["gutschein"]]`);
+
+//     const dataGutschein = await resGutschein;
+
+//     const data = await res;
+//     const laserData = await laserRes;
+//     const dataKontakt = await resKontakt;
+//     const dataKomponente = await resKomponente;
+
+//     return {
+//         props: {
+//             data,
+//             laserData,
+//             dataKontakt,
+//             resKomponente,
+//             dataKomponente,
+//             dataGutschein,
+//         },
+//         revalidate: 1, // 10 seconds
+//     };
+// }
+
+export async function getServerSideProps() {
     const res = await client.fetch(
         `*[_type in ["aesthetic_praxis", "aesthetic_kontakt", "cosmetics_settings", "aesthetic_komponente"] ]`
     );
     const laserRes = await client.fetch(`*[_type in ["cosmetics_behandlung"] ]`);
     const resKontakt = await client.fetch(`*[_type in ["cosmetics_kontakt"] ]`);
     const resKomponente = await client.fetch(`*[_type in ["cosmetics_komponente"] ]`);
-
     const resGutschein = await client.fetch(`*[_type in ["gutschein"]]`);
 
-    const dataGutschein = await resGutschein;
-
-    const data = await res;
-    const laserData = await laserRes;
-    const dataKontakt = await resKontakt;
-    const dataKomponente = await resKomponente;
+    const dataGutschein = resGutschein;
+    const data = res;
+    const laserData = laserRes;
+    const dataKontakt = resKontakt;
+    const dataKomponente = resKomponente;
 
     return {
         props: {
             data,
             laserData,
             dataKontakt,
-            resKomponente,
             dataKomponente,
             dataGutschein,
         },
-        revalidate: 1, // 10 seconds
     };
 }
