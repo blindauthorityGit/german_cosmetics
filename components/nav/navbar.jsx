@@ -47,7 +47,7 @@ const Navbar = (props) => {
     const menuVariants = {
         hidden: {
             opacity: 0,
-            scale: 0.2,
+            scale: 0,
             y: 100,
             transition: {
                 type: "spring",
@@ -67,7 +67,7 @@ const Navbar = (props) => {
         },
         exit: {
             opacity: 0,
-            scale: 0.2,
+            scale: 0,
             y: 100,
             transition: {
                 type: "spring",
