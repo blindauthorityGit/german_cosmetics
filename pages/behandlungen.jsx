@@ -149,36 +149,6 @@ export default function LaserBehanldungen({
     );
 }
 
-// export async function getStaticProps() {
-//     const res = await client.fetch(
-//         `*[_type in ["aesthetic_praxis", "aesthetic_kontakt", "cosmetics_settings", "aesthetic_komponente"] ]`
-//     );
-//     const laserRes = await client.fetch(`*[_type in ["cosmetics_behandlung"] ]`);
-//     const resKontakt = await client.fetch(`*[_type in ["cosmetics_kontakt"] ]`);
-//     const resKomponente = await client.fetch(`*[_type in ["cosmetics_komponente"] ]`);
-
-//     const resGutschein = await client.fetch(`*[_type in ["gutschein"]]`);
-
-//     const dataGutschein = await resGutschein;
-
-//     const data = await res;
-//     const laserData = await laserRes;
-//     const dataKontakt = await resKontakt;
-//     const dataKomponente = await resKomponente;
-
-//     return {
-//         props: {
-//             data,
-//             laserData,
-//             dataKontakt,
-//             resKomponente,
-//             dataKomponente,
-//             dataGutschein,
-//         },
-//         revalidate: 1, // 10 seconds
-//     };
-// }
-
 export async function getServerSideProps() {
     const res = await client.fetch(
         `*[_type in ["aesthetic_praxis", "aesthetic_kontakt", "cosmetics_settings", "aesthetic_komponente"] ]`
