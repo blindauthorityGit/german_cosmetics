@@ -3,7 +3,7 @@ import {structureTool} from 'sanity/structure'
 import {visionTool} from '@sanity/vision'
 import {schemaTypes} from './schemaTypes'
 
-import {structure} from './deskStructure'
+import deskStructure from './deskStructure'
 
 export default defineConfig({
   name: 'default',
@@ -13,8 +13,10 @@ export default defineConfig({
   dataset: 'production',
 
   plugins: [
-    structureTool({structure}), // Updated to structureTool for v3
-    ,
+    structureTool({
+      structure: deskStructure,
+    }), // Updated to structureTool for v3
+
     visionTool(),
   ],
 

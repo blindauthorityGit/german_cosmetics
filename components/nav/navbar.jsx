@@ -10,11 +10,14 @@ import Overlay from "../sections/modal/overlay";
 import Modal from "../sections/modal/modal";
 import CTAContent from "../sections/cta/";
 import { modalSwitcher, hideModalSet } from "../../functions/modal";
+import { IoMdTime, IoIosCall, IoMdMap } from "react-icons/io/index.js";
 
 const Navbar = (props) => {
     const [showMenu, setShowMenu] = useState(false);
     const [showModal, setShowModal] = useState(false);
     const [isItSticky, setIsItSticky] = useState(false);
+    const [navContent, setNavContent] = useState("default"); // Track which content to show in MobileNav
+
     const [mobileClass, setMobileClass] = useState(null);
     const dropdownRef = useRef();
     const burgerRef = useRef();
@@ -31,18 +34,11 @@ const Navbar = (props) => {
         };
     });
 
-    function clicker(e) {
+    function clicker(contentType) {
         setShowMenu((current) => !current);
+        setNavContent(contentType); // Set the content based on button click
         burgerRef.current.classList.toggle("open");
-        // navRef.current.classList.toggle("fixed");
-        // navRef.current.classList.toggle("absolute");
-        // if (!showMenu) {
-        //     setMobileClass("slide-in-left");
-        // } else {
-        //     setMobileClass("slide-out-left");
-        // }
     }
-
     // Framer Motion variants for the snappy and bouncy menu animation
     const menuVariants = {
         hidden: {
@@ -140,6 +136,7 @@ const Navbar = (props) => {
                     ort={props.ort}
                     phone={props.phone}
                     email={props.email}
+                    content={navContent} // Pass the content to MobileNav
                 />
             </motion.div>
             <nav
@@ -210,14 +207,30 @@ const Navbar = (props) => {
                         showMenu ? "bg-black" : "bg-primaryColor"
                     }  flex items-center justify-center items burger p-2 rounded-full fixed z-40 bottom-8 left-1/2 transform -translate-x-1/2`}
                     ref={navRef}
-                    onClick={(e) => {
-                        clicker(e);
-                    }}
+                    onClick={() => clicker("default")}
                 >
                     <div id="burger" className=" relative flex flex-col justify-center items-center" ref={burgerRef}>
                         <span className="block w-3/4 h-1 bg-white rounded-full mb-1 transform transition-transform duration-300 ease-in-out"></span>
                         <span className="block w-3/4 h-1 bg-white rounded-full mb-1 transform transition-transform duration-300 ease-in-out"></span>
                     </div>
+                </div>
+                <div
+                    className={` xl:hidden w-10 h-10 ${
+                        showMenu ? "bg-black hidden" : "bg-lightGray"
+                    }  flex items-center justify-center items burger p-2 rounded-full fixed z-30 bottom-8 left-8 transform -translate-x-1/2`}
+                    ref={navRef}
+                    onClick={() => clicker("time")} // Show time content
+                >
+                    <IoMdTime></IoMdTime>
+                </div>
+                <div
+                    className={` xl:hidden w-10 h-10 ${
+                        showMenu ? "bg-black hidden" : "bg-lightGray"
+                    }  flex items-center justify-center items burger p-2 rounded-full fixed z-30 bottom-8 right-[-8px] transform -translate-x-1/2`}
+                    ref={navRef}
+                    onClick={() => clicker("map")} // Show map content
+                >
+                    <IoMdMap></IoMdMap>
                 </div>
             </>
         </>

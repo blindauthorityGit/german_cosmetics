@@ -61,13 +61,14 @@ export default function Institut({ data, dataCosmetics, dataKontakt, dataKompone
                     headline="Das Institut"
                     showButton={false}
                 >
-                    <Image
-                        {...imageProps}
-                        layout="fill"
-                        objectFit="cover"
-                        alt="hero"
-                        sizes="(max-height: 550px) 100%, 550px"
-                    />
+                    <div className="relative w-full h-full lg:max-h-[550px]">
+                        <Image
+                            {...{ ...imageProps, width: undefined, height: undefined }} // Remove width and height
+                            fill={true} // This enables the fill property to work
+                            objectFit="cover" // Ensures the image covers the entire space
+                            alt="hero"
+                        />
+                    </div>
                 </PageHero>
             </motion.div>
 

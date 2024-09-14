@@ -47,13 +47,14 @@ export default function Kontakt({ data, laserData, kontaktData, dataKomponente }
                     headline="Kontakt"
                     showButton={false}
                 >
-                    <Image
-                        {...imageProps}
-                        layout="fill"
-                        objectFit="cover"
-                        alt="hero"
-                        sizes="(max-height: 550px) 100%, 550px"
-                    />
+                    <div className="relative w-full h-full lg:max-h-[550px]">
+                        <Image
+                            {...{ ...imageProps, width: undefined, height: undefined }} // Remove width and height
+                            fill={true} // This enables the fill property to work
+                            objectFit="cover" // Ensures the image covers the entire space
+                            alt="hero"
+                        />
+                    </div>
                 </PageHero>
             </motion.div>
 
@@ -65,7 +66,7 @@ export default function Kontakt({ data, laserData, kontaktData, dataKomponente }
                 mobile={kontaktData[0].kontakt.mobile}
                 fax={kontaktData[0].kontakt.fax}
                 value={kontaktData[0].oeffnungszeiten}
-                headline="Kontaktdaten"
+                headline="german cosmetics"
                 valueLeft={<div>Hallo</div>}
                 klasse="pt-12"
             ></KontaktTop>
