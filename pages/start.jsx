@@ -151,8 +151,9 @@ export default function Start({
             <GoogleReviews reviews={googleReviews}></GoogleReviews>
 
             <BlogSwiper data={dataBlog}>
-                <div className="absolute w-[100%] md:h-[210px] lg:h-[360px] bg-[#F5F0ED] top-0 sm:top-[30%]"></div>
+                <div className="absolute w-[100%] md:h-[210px] lg:h-[360px] bg-[#F5F0ED]  top-0 sm:top-[30%]"></div>
             </BlogSwiper>
+            <div className="h-20"></div>
 
             {/* <div style={{ display: "flex", justifyContent: "center" }}>
                 <InstagramEmbed url="https://www.instagram.com/p/CUbHfhpswxt/" width={328} />

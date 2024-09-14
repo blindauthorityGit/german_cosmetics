@@ -205,7 +205,7 @@ const Navbar = (props) => {
                 <div
                     className={` xl:hidden w-20 h-20 ${
                         showMenu ? "bg-black" : "bg-primaryColor"
-                    }  flex items-center justify-center items burger p-2 rounded-full fixed z-40 bottom-8 left-1/2 transform -translate-x-1/2`}
+                    }  flex items-center justify-center items burger p-2 rounded-full fixed z-30 bottom-8 left-1/2 transform -translate-x-1/2`}
                     ref={navRef}
                     onClick={() => clicker("default")}
                 >

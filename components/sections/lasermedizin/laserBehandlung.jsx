@@ -71,8 +71,8 @@ const LaserBehandlungenContainer = (props, ref) => {
                         <Sticky topOffset={-1} distanceFromTop={0}>
                             {({ style, isSticky }) => (
                                 <div
-                                    className="sticky top-0 bg-[#f5f0ed] z-20 p-4 border-b"
-                                    style={{ ...style, zIndex: isSticky ? "20" : "1" }}
+                                    className="sticky top-0 bg-[#f5f0ed] z-40 p-4 border-b"
+                                    style={{ ...style, zIndex: isSticky ? "40" : "1" }}
                                 >
                                     <div className="mt-2">
                                         <select
