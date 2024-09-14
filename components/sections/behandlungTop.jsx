@@ -3,7 +3,6 @@ import MainContainer from "../layout/mainContainer";
 import { H2 } from "../utils/headlines";
 import { DefaultButton } from "../utils/buttons";
 import { PortableText } from "@portabletext/react";
-import ScrollAnimation from "react-animate-on-scroll";
 import urlBuilder from "@sanity/image-url";
 import { getImageDimensions } from "@sanity/asset-utils";
 

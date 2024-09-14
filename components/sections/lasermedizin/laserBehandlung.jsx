@@ -5,8 +5,7 @@ import LaserBehandlungElement from "../laserBehandlungElement";
 import { StickyContainer, Sticky } from "react-sticky";
 import client from "../../../client";
 import imageUrlBuilder from "@sanity/image-url";
-import { checkTop, wrap } from "../../utils/functions";
-import ScrollAnimation from "react-animate-on-scroll";
+import { checkTop } from "../../utils/functions";
 
 const builder = imageUrlBuilder(client);
 
@@ -143,11 +142,11 @@ const LaserBehandlungenContainer = (props, ref) => {
                 <div className="col-span-12 sm:col-span-8 transition-all duration-300" ref={ref}>
                     {props.dataBehandlung.map((e, i) => {
                         return (
-                            <ScrollAnimation
+                            <div
                                 key={`laserBehandlung${i}`}
-                                animateIn={"slideInRight"}
-                                animateOnce={true}
-                                duration={0.2}
+                                // animateIn={"slideInRight"}
+                                // animateOnce={true}
+                                // duration={0.2}
                                 className=""
                             >
                                 <LaserBehandlungElement
@@ -163,7 +162,7 @@ const LaserBehandlungenContainer = (props, ref) => {
                                     text={e.text}
                                     cat={`cat${e.categories}`}
                                 ></LaserBehandlungElement>
-                            </ScrollAnimation>
+                            </div>
                         );
                     })}
                 </div>

@@ -1,13 +1,10 @@
 import React, { useState, useRef, useEffect, forwardRef } from "react";
 import MainContainer from "../../layout/mainContainer";
 import SideNavElem from "../../nav/sideNavElem";
-import BehandlungElement from "../behanldungElement";
-import LaserBehandlungElement from "../laserBehandlungElement";
 import { StickyContainer, Sticky } from "react-sticky";
 import client from "../../../client";
 import imageUrlBuilder from "@sanity/image-url";
 import { checkTop, wrap } from "../../utils/functions";
-import ScrollAnimation from "react-animate-on-scroll";
 import ProduktElement from "./produktElement";
 
 const builder = imageUrlBuilder(client);
@@ -88,11 +85,11 @@ const ProduktContainer = (props, ref) => {
                                 </div>
                                 {props.dataBehandlung.map((e, i) => {
                                     return counter === e.categories ? (
-                                        <ScrollAnimation
+                                        <div
                                             key={`produkt${i}`}
-                                            animateIn={"slideInRight"}
-                                            animateOnce={true}
-                                            duration={0.4}
+                                            // animateIn={"slideInRight"}
+                                            // animateOnce={true}
+                                            // duration={0.4}
                                             className={` col-span-6 sm:col-span-6 lg:col-span-4`}
                                         >
                                             <ProduktElement
@@ -109,7 +106,7 @@ const ProduktContainer = (props, ref) => {
                                                 value={e.text}
                                                 cat={`cat${e.categories}`}
                                             ></ProduktElement>
-                                        </ScrollAnimation>
+                                        </div>
                                     ) : null;
                                 })}
                             </>

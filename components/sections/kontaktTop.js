@@ -3,7 +3,6 @@ import MainContainer from "../layout/mainContainer";
 import { H2 } from "../utils/headlines";
 import { DefaultButton } from "../utils/buttons";
 import { PortableText } from "@portabletext/react";
-import ScrollAnimation from "react-animate-on-scroll";
 import { IoIosCall, IoMdMap, IoMdMail } from "react-icons/io/index.js";
 import { FaFax, FaMobileAlt } from "react-icons/fa";
 
