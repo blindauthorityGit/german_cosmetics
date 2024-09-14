@@ -14,7 +14,6 @@ import ImageBox from "../components/sections/imageBox";
 import LinkBox from "../components/sections/linkBox";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { useNextSanityImage } from "next-sanity-image";
 import Gutschein from "../components/sections/gutschein";
 
 const builder = imageUrlBuilder(client);
@@ -31,8 +30,6 @@ export default function LaserBehanldungen({
     dataKomponente,
     dataGutschein,
 }) {
-    const imageProps = useNextSanityImage(client, laserData[0].hero_settings.backgroundImg);
-
     const containerRef = useRef();
 
     const [fetchID, setFetchID] = useState(0);
@@ -86,9 +83,9 @@ export default function LaserBehanldungen({
                 <PageHero headline="Behandlungen" showButton={false}>
                     <div className="relative w-full h-full lg:max-h-[550px]">
                         <Image
-                            {...{ ...imageProps, width: undefined, height: undefined }} // Remove width and height
-                            fill={true} // This enables the fill property to work
-                            objectFit="cover" // Ensures the image covers the entire space
+                            src={urlFor(laserData[0].hero_settings.backgroundImg).url()}
+                            fill
+                            style={{ objectFit: "cover" }} // To ensure it covers the whole space
                             alt="hero"
                         />
                     </div>

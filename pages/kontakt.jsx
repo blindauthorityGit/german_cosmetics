@@ -13,7 +13,6 @@ import FormFull from "../components/form/formFull";
 import Map from "../assets/map.jpg";
 import MapMobile from "../assets/mapMobile.jpg";
 import Image from "next/image";
-import { useNextSanityImage } from "next-sanity-image";
 
 const builder = imageUrlBuilder(client);
 
@@ -22,8 +21,6 @@ function urlFor(source) {
 }
 
 export default function Kontakt({ data, laserData, kontaktData, dataKomponente }) {
-    const imageProps = useNextSanityImage(client, data[2].raeumlichkeiten_settings.images[2]);
-
     return (
         <>
             <Head>
@@ -49,9 +46,9 @@ export default function Kontakt({ data, laserData, kontaktData, dataKomponente }
                 >
                     <div className="relative w-full h-full lg:max-h-[550px]">
                         <Image
-                            {...{ ...imageProps, width: undefined, height: undefined }} // Remove width and height
-                            fill={true} // This enables the fill property to work
-                            objectFit="cover" // Ensures the image covers the entire space
+                            src={urlFor(data[2].raeumlichkeiten_settings.images[2]).url()}
+                            fill
+                            style={{ objectFit: "cover" }} // To ensure it covers the whole space
                             alt="hero"
                         />
                     </div>

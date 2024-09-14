@@ -10,17 +10,12 @@ import Modal from "../../sections/modal/modal";
 import CTAContent from "../../sections/cta/";
 import { modalSwitcher, hideModalSet } from "../../../functions/modal";
 
-import { useNextSanityImage } from "next-sanity-image";
 import imageUrlBuilder from "@sanity/image-url";
 
 const builder = imageUrlBuilder(client);
 
 function urlFor(source) {
     return builder.image(source);
-}
-
-function ImageProps(e) {
-    return useNextSanityImage(client, e);
 }
 
 const Gutschein = (props) => {
