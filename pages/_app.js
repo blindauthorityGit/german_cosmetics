@@ -60,8 +60,10 @@ function MyApp({ Component, pageProps, dataModal }) {
                             modalSwitcher(e, showModal, setShowModal);
                         }}
                     >
-                        <div className="modal text-center">
-                            <BasicPortableText value={modalData}></BasicPortableText>
+                        <div className="modal text-center flex items-center flex-col justify-center">
+                            <div className="pt-12 lg:pt-0">
+                                <BasicPortableText value={modalData}></BasicPortableText>
+                            </div>
                         </div>{" "}
                     </Modal>
                     <Overlay
