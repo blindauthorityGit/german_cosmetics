@@ -1,8 +1,6 @@
 import React, { useState, forwardRef, useCallback } from "react";
 import { PortableText } from "@portabletext/react";
 import { H3 } from "../utils/headlines";
-import ScrollAnimation from "react-animate-on-scroll";
-import { FaChevronCircleDown } from "react-icons/fa";
 
 const LaserBehandlungElement = (props, ref) => {
     const [imageLoaded, setImageLoaded] = useState(false);

@@ -3,7 +3,6 @@ import MainContainer from "../layout/mainContainer";
 import { H2 } from "../utils/headlines";
 import client from "../../client";
 import Link from "next/link";
-import ScrollAnimation from "react-animate-on-scroll";
 import { DefaultButton } from "../utils/buttons";
 import imageUrlBuilder from "@sanity/image-url";
 
@@ -18,10 +17,10 @@ const ImageBox = (props) => {
         <MainContainer width="container sm:gap-6 px-0 md:px-12 lg:px-0  md:pt-16 lg:pt-32 font-europa ">
             {props.single ? (
                 <>
-                    <ScrollAnimation
-                        animateIn={"slideInLeft"}
-                        animateOnce={true}
-                        duration={0.4}
+                    <div
+                        // animateIn={"slideInLeft"}
+                        // animateOnce={true}
+                        // duration={0.4}
                         className="col-span-12 py-36 sm:py-64 relative cursor-pointer group transition-all overflow-hidden "
                     >
                         <Link href={`./${props.href}`}>
@@ -40,7 +39,7 @@ const ImageBox = (props) => {
                                 style={{ backgroundImage: `url("${urlFor(props.img)}")` }}
                             ></div>
                         </Link>
-                    </ScrollAnimation>
+                    </div>
                 </>
             ) : (
                 <>
