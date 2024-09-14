@@ -147,7 +147,7 @@ const LaserBehandlungenContainer = (props, ref) => {
                                 key={`laserBehandlung${i}`}
                                 animateIn={"slideInRight"}
                                 animateOnce={true}
-                                duration={0.4}
+                                duration={0.2}
                                 className=""
                             >
                                 <LaserBehandlungElement

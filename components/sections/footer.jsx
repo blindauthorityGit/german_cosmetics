@@ -9,14 +9,14 @@ import FormTemplate from "../form/formTemplate";
 
 const Footer = (props) => {
     return (
-        <MainContainer width="w-100 bg-footer px-8 lg:px-0 py-16 py-16 lg:py-32 font-europa mt-16 sm:mt-32">
+        <MainContainer width="w-100 font-sans bg-footer px-8 lg:px-0 py-16 py-16 lg:py-32 font-europa mt-16 sm:mt-32">
             <div className="col-span-12 container grid grid-cols-12 m-auto">
                 <div className="col-span-12 sm:col-span-3">
                     <img src={props.logo} alt="Logo" />
                 </div>
                 <FormTemplate></FormTemplate>
 
-                <div className="col-span-12 grid grid-cols-12 mt-16 text-white gap-4">
+                <div className="col-span-12 grid grid-cols-12 mt-16 text-white lg:gap-16">
                     <div className="col-span-12 sm:col-span-3 2xl:clamp">
                         <H4 klasse="text-white">Adresse</H4>
                         <span className="opacity-60">
@@ -24,9 +24,10 @@ const Footer = (props) => {
                             <br></br>
                             {props.ort}
                         </span>
+                        <div className="mt-4">PRIVATPRAXIS OHNE Kassenzulassung</div>
                     </div>
                     <div className="col-span-12 sm:col-span-3 mt-8 sm:mt-0 2xl:clamp">
-                        <H4 klasse="text-white">Kontakt</H4>
+                        <H4 klasse="text-white ">Kontakt</H4>
                         <span className="opacity-60">
                             {props.phone}
                             <br></br>
@@ -53,8 +54,6 @@ const Footer = (props) => {
                                 Mi
                                 <br />
                                 Do
-                                <br />
-                                Fr
                                 <br />
                             </div>
                             <div className="right text-left  fontAuto">
