@@ -14,7 +14,6 @@ import ImageBox from "../components/sections/imageBox";
 import LinkBox from "../components/sections/linkBox";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { useNextSanityImage } from "next-sanity-image";
 import ProduktContainer from "../components/sections/produkte/productContainer";
 const builder = imageUrlBuilder(client);
 
@@ -23,8 +22,6 @@ function urlFor(source) {
 }
 
 export default function Produkte({ data, dermaData, produkteData, produkteKomponente, produkteKontakt, laserRes }) {
-    const imageProps = useNextSanityImage(client, produkteData[0].hero_settings.backgroundImg);
-
     const containerRef = useRef();
 
     const [fetchID, setFetchID] = useState(0);
@@ -81,9 +78,9 @@ export default function Produkte({ data, dermaData, produkteData, produkteKompon
                 >
                     <div className="relative w-full h-full lg:max-h-[550px]">
                         <Image
-                            {...{ ...imageProps, width: undefined, height: undefined }} // Remove width and height
-                            fill={true} // This enables the fill property to work
-                            objectFit="cover" // Ensures the image covers the entire space
+                            src={urlFor(produkteData[0].hero_settings.backgroundImg).url()}
+                            fill
+                            style={{ objectFit: "cover" }} // To ensure it covers the whole space
                             alt="hero"
                         />
                     </div>
