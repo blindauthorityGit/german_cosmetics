@@ -72,7 +72,7 @@ const LaserBehandlungenContainer = (props, ref) => {
                             {({ style, isSticky }) => (
                                 <div
                                     className="sticky top-0 bg-[#f5f0ed] z-40 p-4 border-b"
-                                    style={{ ...style, zIndex: isSticky ? "40" : "1" }}
+                                    style={{ ...style, zIndex: isSticky ? "29" : "1" }}
                                 >
                                     <div className="mt-2">
                                         <select

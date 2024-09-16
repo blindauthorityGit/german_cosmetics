@@ -37,8 +37,8 @@ const MobileNav = (props) => {
 
     return (
         <>
-            <nav className={`navbar ${props.klasse} w-full h-screen bg-white fixed z-40`}>
-                <div className="container bg-[#f5f0ed] z-40 h-screen py-8 px-4 font-europa tracking-wider">
+            <nav className={`navbar ${props.klasse} w-full h-screen bg-white fixed z-50`}>
+                <div className="container bg-[#f5f0ed] z-50 h-screen py-8 px-4 font-europa tracking-wider">
                     <div className="middle flex justify-center">
                         <Link href="/start">
                             <img src={props.logo} width="230" alt="Logo" />
