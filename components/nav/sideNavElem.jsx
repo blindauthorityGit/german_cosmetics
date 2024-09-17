@@ -3,7 +3,7 @@ import React, { useRef, forwardRef } from "react";
 const SideNavElem = (props, ref) => {
     return (
         <a
-            className="wrapper sideNavElem wordBreak scroll-smooth flex mb-8 linkElement cursor-pointer hover:font-bold"
+            className="wrapper sideNavElem font-sans wordBreak scroll-smooth flex mb-8 linkElement cursor-pointer hover:font-bold"
             ref={ref}
             data-name={props.name}
             onClick={props.onClick}

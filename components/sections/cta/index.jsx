@@ -7,7 +7,7 @@ import DatePicker from "@amir04lm26/react-modern-calendar-date-picker";
 import myCustomLocale from "./locale";
 import client from "../../../client";
 import { PortableText } from "@portabletext/react";
-import { IoMdTime, IoIosCall, IoMdMap, IoMdMail } from "react-icons/io";
+import { IoMdTime, IoIosCall, IoMdMap, IoMdMail } from "react-icons/io/index.js";
 import { Controller, useForm } from "react-hook-form";
 import Error from "../../form/error";
 import axios from "axios";
@@ -218,7 +218,7 @@ export default function CTAContent(props) {
                             <div className="icon mr-8 text-primaryColor">
                                 <IoIosCall />
                             </div>
-                            <a className="text-base" href={`tel:${props.phone}`}>
+                            <a className="" href={`tel:${props.phone}`}>
                                 {" "}
                                 {props.phone}
                             </a>
@@ -228,7 +228,7 @@ export default function CTAContent(props) {
                             <div className="icon mr-8 text-primaryColor">
                                 <IoMdMail />
                             </div>
-                            <a className="text-base" href={`mailto:${props.email}`}>
+                            <a className="" href={`mailto:${props.email}`}>
                                 {props.email}
                             </a>
                         </div>
@@ -236,7 +236,7 @@ export default function CTAContent(props) {
                             <div className="icon mr-8 text-primaryColor">
                                 <IoMdMap />
                             </div>
-                            <div className="text-base">
+                            <div className="">
                                 {props.strasse}
                                 <br></br>
                                 {props.ort}
@@ -245,7 +245,7 @@ export default function CTAContent(props) {
                     </div>
                 </div>
 
-                <div className="mt-12">
+                <div className="mt-12 ">
                     <H4 klasse="text-text col-span-12 mb-8">Öffnungszeiten</H4>
                     <div className="wrapper flex oeffnung">
                         <div className="left mr-6 text-left clamp">
@@ -256,8 +256,6 @@ export default function CTAContent(props) {
                             Mi
                             <br />
                             Do
-                            <br />
-                            Fr
                             <br />
                         </div>
                         <div className="right text-left">
@@ -272,6 +270,8 @@ export default function CTAContent(props) {
                         <br></br>
                         <br></br>
                         <strong>Keine Behandlung ohne Sprechstunde!</strong>
+                        <br></br>
+                        <strong>PRIVATPRAXIS OHNE Kassenzulassung</strong>
                     </p>
                 </div>
             </div>

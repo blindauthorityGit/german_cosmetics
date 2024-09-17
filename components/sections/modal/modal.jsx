@@ -1,6 +1,6 @@
 import React from "react";
 
-import { MdOutlineClose } from "react-icons/md";
+import { MdOutlineClose } from "react-icons/md/index.js";
 const Modal = (props) => {
     return (
         <div className="fixed overflow-y-auto max-h-[100%] fade-in w-[90%] lg:w-[80%] min-h-[50%] bg-white p-8 md:p-12 xl:p-24 z-50  top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">

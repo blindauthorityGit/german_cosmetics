@@ -3,7 +3,6 @@ import MainContainer from "../layout/mainContainer";
 import { H2 } from "../utils/headlines";
 import { DefaultButton } from "../utils/buttons";
 import { PortableText } from "@portabletext/react";
-import ScrollAnimation from "react-animate-on-scroll";
 import { motion } from "framer-motion";
 
 const PraxisTop = (props) => {
@@ -20,7 +19,6 @@ const PraxisTop = (props) => {
                     </div>
                 </div>
                 <div className="col-span-12 lg:col-span-6 mb-16 sm:mb-0">
-                    {/* <ScrollAnimation animateIn="slideInRight" animateOnce={true}> */}
                     <div className={`hidden h-auto  sm:block ${props.minHeightR}`}>
                         <motion.img
                             initial={{ x: 1000, opacity: 0 }}
@@ -31,7 +29,6 @@ const PraxisTop = (props) => {
                             alt={props.imgRightAlt}
                         />
                     </div>
-                    {/* </ScrollAnimation> */}
                     <div className="px-8">
                         <PortableText value={props.valueRight}></PortableText>
                     </div>

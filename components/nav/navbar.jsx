@@ -5,16 +5,20 @@ import Burger from "../../public/burger.svg";
 import MobileNav from "./mobile";
 import { motion } from "framer-motion";
 import isSticky from "../../functions/isSticky";
-import { IoMdCalendar } from "react-icons/io";
+import { IoMdCalendar } from "react-icons/io/index.js";
 import Overlay from "../sections/modal/overlay";
 import Modal from "../sections/modal/modal";
 import CTAContent from "../sections/cta/";
 import { modalSwitcher, hideModalSet } from "../../functions/modal";
+import { IoMdTime, IoIosCall, IoMdMap } from "react-icons/io/index.js";
+import { BsFacebook, BsInstagram } from "react-icons/bs/index.js";
 
 const Navbar = (props) => {
     const [showMenu, setShowMenu] = useState(false);
     const [showModal, setShowModal] = useState(false);
     const [isItSticky, setIsItSticky] = useState(false);
+    const [navContent, setNavContent] = useState("default"); // Track which content to show in MobileNav
+
     const [mobileClass, setMobileClass] = useState(null);
     const dropdownRef = useRef();
     const burgerRef = useRef();
@@ -31,47 +35,66 @@ const Navbar = (props) => {
         };
     });
 
-    function clicker(e) {
+    function clicker(contentType) {
         setShowMenu((current) => !current);
+        setNavContent(contentType); // Set the content based on button click
         burgerRef.current.classList.toggle("open");
-        navRef.current.classList.toggle("fixed");
-        navRef.current.classList.toggle("absolute");
-        if (!showMenu) {
-            setMobileClass("slide-in-left");
-        } else {
-            setMobileClass("slide-out-left");
-        }
     }
-
-    const textMotion = {
-        rest: {
-            x: 0,
+    // Framer Motion variants for the snappy and bouncy menu animation
+    const menuVariants = {
+        hidden: {
+            opacity: 0,
+            scale: 0,
+            y: 100,
             transition: {
-                duration: 0.5,
-                type: "tween",
-                ease: "easeIn",
+                type: "spring",
+                stiffness: 300,
+                damping: 20,
             },
         },
-        hover: {
-            // color: "blue",
-            x: 30,
+        visible: {
+            opacity: 1,
+            scale: 1,
+            y: 0,
             transition: {
-                duration: 0.4,
-                type: "tween",
-                ease: "easeOut",
+                type: "spring",
+                stiffness: 300,
+                damping: 20,
+            },
+        },
+        exit: {
+            opacity: 0,
+            scale: 0,
+            y: 100,
+            transition: {
+                type: "spring",
+                stiffness: 300,
+                damping: 20,
             },
         },
     };
 
-    const boxMotion = {
-        rest: { opacity: 0, ease: "easeOut", duration: 0.2, type: "spring", display: "none" },
-        hover: {
+    // Framer Motion variants for menu content
+    const contentVariants = {
+        hidden: {
+            opacity: 0,
+            y: 20,
+        },
+        visible: {
             opacity: 1,
-            display: "block",
+            y: 0,
+            transition: {
+                delay: 0.3,
+                duration: 0.4,
+                ease: "easeInOut",
+            },
+        },
+        exit: {
+            opacity: 0,
+            y: 20,
             transition: {
                 duration: 0.4,
-                type: "spring",
-                ease: "easeIn",
+                ease: "easeInOut",
             },
         },
     };
@@ -100,30 +123,36 @@ const Navbar = (props) => {
                     ></Overlay>
                 </>
             )}
-            <MobileNav
-                value={props.value}
-                logo={props.logoDark}
-                klasse={`${showMenu ? "block" : "hidden"} ${mobileClass}`}
-                strasse={props.strasse}
-                ort={props.ort}
-                phone={props.phone}
-                email={props.email}
-            ></MobileNav>
+            <motion.div
+                initial="hidden"
+                animate={showMenu ? "visible" : "hidden"}
+                exit="exit"
+                variants={menuVariants}
+                className="xl:hidden  fixed w-full h-full z-30"
+            >
+                <MobileNav
+                    value={props.value}
+                    logo={props.logoDark}
+                    strasse={props.strasse}
+                    ort={props.ort}
+                    phone={props.phone}
+                    email={props.email}
+                    content={navContent} // Pass the content to MobileNav
+                />
+            </motion.div>
             <nav
                 className={`navbar ${
                     props.dark ? "text-text" : "text-white"
                 }  hidden xl:block w-full absolute z-30 header-section`}
             >
-                <div className="container px-16 flex grid grid-cols-12 font-semibold font-europa tracking-wider m-auto">
+                <div className="container px-16 text-sm grid grid-cols-12 font-semibold font-europa tracking-wider m-auto">
                     <div className="middle col-span-4 flex items-center  pt-4">
                         <Link href="/start">
-                            <a>
-                                <img src={isItSticky ? props.logoDark : props.logoLight} width="230" alt="Logo" />
-                            </a>
+                            <img src={isItSticky ? props.logoDark : props.logoLight} width="230" alt="Logo" />
                         </Link>
                     </div>
                     <div className={`left col-span-8 pt-4 flex justify-end ${props.hideCTA ? "" : "items-baseline"}`}>
-                        <ul className={`flex uppercase tracking-widest ${isItSticky ? "text-text" : ""}`}>
+                        <ul className={`flex uppercase !pt-0 tracking-widest ${isItSticky ? "text-text" : ""}`}>
                             <motion.li
                                 initial="rest"
                                 whileHover="hover"
@@ -135,23 +164,17 @@ const Navbar = (props) => {
                                 className="mr-8  hover:underline relative cursor-pointer flex items-center"
                             >
                                 <Link href="/behandlungen">
-                                    <motion.a className="">Behandlungen</motion.a>
+                                    <motion.div className="">Behandlungen</motion.div>
                                 </Link>
                             </motion.li>
                             <li className="mr-8 flex items-center hover:underline">
-                                <Link href="/produkte">
-                                    <a>Produkte</a>
-                                </Link>
+                                <Link href="/produkte">Produkte</Link>
                             </li>
                             <li className="mr-8 flex items-center hover:underline">
-                                <Link href="/institut">
-                                    <a>Institut</a>
-                                </Link>
+                                <Link href="/institut">Institut</Link>
                             </li>
                             <li className="mr-8 flex items-center hover:underline">
-                                <Link href="/kontakt">
-                                    <a>Kontakt</a>
-                                </Link>
+                                <Link href="/kontakt">Kontakt</Link>
                             </li>
 
                             <li
@@ -169,6 +192,14 @@ const Navbar = (props) => {
                                     Termin
                                 </a>
                             </li>
+                            <li className="ml-8 flex item-center h-full pt-4">
+                                <a
+                                    className="flex item-center h-full"
+                                    href="https://www.instagram.com/german_aesthetics.de/"
+                                >
+                                    <BsInstagram></BsInstagram>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -176,23 +207,39 @@ const Navbar = (props) => {
             <>
                 <div className="absolute top-4 left-8 hidden md:block  xl:hidden z-10">
                     <Link href="/start">
-                        <a>
-                            <img src={isItSticky ? props.logoDark : props.logoLight} width="230" alt="Logo" />
-                        </a>
+                        <img src={isItSticky ? props.logoDark : props.logoLight} width="230" alt="Logo" />
                     </Link>
                 </div>
 
                 <div
-                    className="block xl:hidden  burger absolute z-40 right-8 top-8"
+                    className={` xl:hidden w-20 h-20 ${
+                        showMenu ? "bg-black" : "bg-primaryColor"
+                    }  flex items-center justify-center items burger p-2 rounded-full fixed z-30 bottom-8 left-1/2 transform -translate-x-1/2`}
                     ref={navRef}
-                    onClick={(e) => {
-                        clicker(e);
-                    }}
+                    onClick={() => clicker("default")}
                 >
-                    <div className="fixed" id="burger" ref={burgerRef}>
-                        <span></span>
-                        <span></span>
+                    <div id="burger" className=" relative flex flex-col justify-center items-center" ref={burgerRef}>
+                        <span className="block w-3/4 h-1 bg-white rounded-full mb-1 transform transition-transform duration-300 ease-in-out"></span>
+                        <span className="block w-3/4 h-1 bg-white rounded-full mb-1 transform transition-transform duration-300 ease-in-out"></span>
                     </div>
+                </div>
+                <div
+                    className={` xl:hidden w-10 h-10 ${
+                        showMenu ? "bg-black hidden" : "bg-lightGray"
+                    }  flex items-center justify-center items burger p-2 rounded-full fixed z-30 bottom-8 left-8 transform -translate-x-1/2`}
+                    ref={navRef}
+                    onClick={() => clicker("time")} // Show time content
+                >
+                    <IoMdTime></IoMdTime>
+                </div>
+                <div
+                    className={` xl:hidden w-10 h-10 ${
+                        showMenu ? "bg-black hidden" : "bg-lightGray"
+                    }  flex items-center justify-center items burger p-2 rounded-full fixed z-30 bottom-8 right-[-8px] transform -translate-x-1/2`}
+                    ref={navRef}
+                    onClick={() => clicker("map")} // Show map content
+                >
+                    <IoMdMap></IoMdMap>
                 </div>
             </>
         </>

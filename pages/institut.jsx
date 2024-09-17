@@ -15,7 +15,6 @@ import CTA from "../components/sections/cta";
 import JobsCTA from "../components/sections/jobs/jobCTA";
 import LinkBox from "../components/sections/linkBox";
 import Footer from "../components/sections/footer";
-import ScrollAnimation from "react-animate-on-scroll";
 
 import DerArzt from "../components/sections/derArzt";
 import TeamMember from "../components/sections/teamMember";
@@ -24,7 +23,6 @@ import { modalSwitcher, hideModalSet } from "../functions/modal";
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { useNextSanityImage } from "next-sanity-image";
 
 const builder = imageUrlBuilder(client);
 
@@ -37,8 +35,6 @@ export default function Institut({ data, dataCosmetics, dataKontakt, dataKompone
     const teamRef = useRef();
 
     const [showDoc, setShowDoc] = useState(true);
-
-    const imageProps = useNextSanityImage(client, data[2].hero_settings.backgroundImg);
 
     return (
         <>
@@ -61,13 +57,14 @@ export default function Institut({ data, dataCosmetics, dataKontakt, dataKompone
                     headline="Das Institut"
                     showButton={false}
                 >
-                    <Image
-                        {...imageProps}
-                        layout="fill"
-                        objectFit="cover"
-                        alt="hero"
-                        sizes="(max-height: 550px) 100%, 550px"
-                    />
+                    <div className="relative w-full h-full lg:max-h-[550px]">
+                        <Image
+                            src={urlFor(data[2].hero_settings.backgroundImg).url()}
+                            fill
+                            style={{ objectFit: "cover" }} // To ensure it covers the whole space
+                            alt="hero"
+                        />
+                    </div>
                 </PageHero>
             </motion.div>
 
@@ -101,11 +98,8 @@ export default function Institut({ data, dataCosmetics, dataKontakt, dataKompone
                     <div id="teamWrapperM" className=" lg:hidden sm:mt-16 grid grid-cols-12 gap-4">
                         {data[2].team.teamMember.map((e, i) => {
                             return (
-                                <ScrollAnimation
+                                <div
                                     key={`keyM${i}`}
-                                    animateIn={i % 2 === 0 ? "slideInLeft" : "slideInRight"}
-                                    animateOnce={true}
-                                    duration={0.4}
                                     className="BUBU col-span-12 sm:col-span-6  lg:py-64 relative cursor-pointer group overflow-hidden"
                                 >
                                     <TeamMember
@@ -114,7 +108,7 @@ export default function Institut({ data, dataCosmetics, dataKontakt, dataKompone
                                         title={e.title}
                                         text={e.subTitle}
                                     ></TeamMember>
-                                </ScrollAnimation>
+                                </div>
                             );
                         })}
                     </div>
@@ -122,13 +116,7 @@ export default function Institut({ data, dataCosmetics, dataKontakt, dataKompone
                     <div id="teamWrapperD" className="hidden lg:grid sm:mt-16  grid-cols-12 gap-4" ref={teamRef}>
                         {data[2].team.teamMember.map((e, i) => {
                             return (
-                                <ScrollAnimation
-                                    key={`key${i}`}
-                                    animateIn={i % 2 === 0 ? "slideInLeft" : "slideInRight"}
-                                    animateOnce={true}
-                                    duration={0.4}
-                                    className="col-span-12 sm:col-span-6 "
-                                >
+                                <div key={`key${i}`} className="col-span-12 sm:col-span-6 ">
                                     <TeamMember
                                         img={urlFor(e.img).width(600).height(600)}
                                         headline={e.title}
@@ -136,7 +124,7 @@ export default function Institut({ data, dataCosmetics, dataKontakt, dataKompone
                                         title={e.title}
                                         orderTop={i % 2 === 0 ? "" : "order-last"}
                                     ></TeamMember>
-                                </ScrollAnimation>
+                                </div>
                             );
                         })}
                     </div>

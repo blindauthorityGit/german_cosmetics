@@ -1,15 +1,11 @@
 import React, { useState, useRef, useEffect, forwardRef } from "react";
 import MainContainer from "../../layout/mainContainer";
 import SideNavElem from "../../nav/sideNavElem";
-import BehandlungElement from "../behanldungElement";
 import LaserBehandlungElement from "../laserBehandlungElement";
 import { StickyContainer, Sticky } from "react-sticky";
 import client from "../../../client";
 import imageUrlBuilder from "@sanity/image-url";
-import { checkTop, wrap } from "../../utils/functions";
-import ScrollAnimation from "react-animate-on-scroll";
-import { H2 } from "../../utils/headlines";
-import useScrollSnap from "react-use-scroll-snap";
+import { checkTop } from "../../utils/functions";
 
 const builder = imageUrlBuilder(client);
 
@@ -20,22 +16,49 @@ function urlFor(source) {
 const LaserBehandlungenContainer = (props, ref) => {
     const [activeLink, setActiveLink] = useState("test");
     const scrollRef = useRef(null);
+    const [isMobile, setIsMobile] = useState(false);
+    const [dropdownOpen, setDropdownOpen] = useState(false);
+    const [selectedValue, setSelectedValue] = useState("");
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth <= 768); // Toggle mobile mode if width <= 768px
+        };
+
+        handleResize();
+        window.addEventListener("resize", handleResize);
+
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        };
+    }, []);
 
     useEffect(() => {
         props.dataNav.map((e, i) => {});
-        window.addEventListener("scroll", () => {
+
+        const handleScroll = () => {
             let divs = Array.from(document.querySelectorAll("[data-cat]")).filter((e) => e.id.length > 0);
             let links = Array.from(document.querySelectorAll(".sideNavElem"));
 
             checkTop(divs, activeLink, setActiveLink, links);
-        });
+
+            // Update selected value in dropdown for mobile
+            const currentSection = divs.find((div) => {
+                const rect = div.getBoundingClientRect();
+                return rect.top <= 200 && rect.bottom >= 200;
+            });
+
+            if (currentSection) {
+                setSelectedValue(`#${currentSection.id}`);
+            }
+        };
+
+        window.addEventListener("scroll", handleScroll);
 
         return () => {
-            window.removeEventListener("scroll", () => {
-                checkTop(divs, activeLink, setActiveLink, links);
-            });
+            window.removeEventListener("scroll", handleScroll);
         };
-    }, []);
+    }, [activeLink]);
 
     return (
         <MainContainer
@@ -43,47 +66,87 @@ const LaserBehandlungenContainer = (props, ref) => {
             width="w-100 overflow-hidden scrollContainer gap-0 sm:mt-24 lg:mb-24 sm:mt-24 container font-europa sm:px-16 "
         >
             <StickyContainer className="container col-span-12 grid grid-cols-12 text-left sm:gap-8">
-                <div className="hidden sm:block sm:col-span-4 scroll-smooth">
-                    <Sticky distanceFromTop={280} topOffset={-128}>
-                        {({ style, isSticky }) => (
-                            <div style={{ ...style, marginTop: isSticky ? "128px" : "0px" }} className="col-span-3">
-                                <div className="border-l-2 pr-6">
-                                    {props.dataNav.map((e, i) => {
-                                        return (
-                                            <SideNavElem
-                                                name={e.title
-                                                    .toLowerCase()
-                                                    .split(" ")
-                                                    .join("")
-                                                    .replace(/[^\w\s]/gi, "")}
-                                                onClick={props.onClick}
-                                                key={`elem${i}`}
-                                                href={`#${e.title
-                                                    .toLowerCase()
-                                                    .split(" ")
-                                                    .join("")
-                                                    .replace(/[^\w\s]/gi, "")}`}
-                                                dataid={i}
-                                            >
-                                                {e.title}
-                                            </SideNavElem>
-                                        );
-                                    })}
+                {isMobile ? (
+                    <div className="col-span-12">
+                        <Sticky topOffset={-1} distanceFromTop={0}>
+                            {({ style, isSticky }) => (
+                                <div
+                                    className="sticky top-0 bg-[#f5f0ed] z-40 p-4 border-b"
+                                    style={{ ...style, zIndex: isSticky ? "29" : "1" }}
+                                >
+                                    <div className="mt-2">
+                                        <select
+                                            className="w-full p-2 border font-bold"
+                                            value={selectedValue} // Bind selected value
+                                            onChange={(e) => {
+                                                const targetSection = document.querySelector(e.target.value);
+                                                if (targetSection) {
+                                                    targetSection.scrollIntoView({ behavior: "smooth" });
+                                                }
+                                                setSelectedValue(e.target.value); // Update selected value
+                                            }}
+                                        >
+                                            {props.dataNav.map((e, i) => (
+                                                <option
+                                                    key={`option${i}`}
+                                                    className="font-bold"
+                                                    value={`#${e.title
+                                                        .toLowerCase()
+                                                        .split(" ")
+                                                        .join("")
+                                                        .replace(/[^\w\s]/gi, "")}`}
+                                                >
+                                                    {e.title}
+                                                </option>
+                                            ))}
+                                        </select>
+                                    </div>
                                 </div>
-                            </div>
-                        )}
-                    </Sticky>
-                </div>
+                            )}
+                        </Sticky>
+                    </div>
+                ) : (
+                    // Desktop Sidebar
+                    <div className="hidden sm:block sm:col-span-4 scroll-smooth">
+                        <Sticky distanceFromTop={280} topOffset={-128}>
+                            {({ style, isSticky }) => (
+                                <div style={{ ...style, marginTop: isSticky ? "128px" : "0px" }} className="col-span-3">
+                                    <div className="border-l-2 pr-6">
+                                        {props.dataNav.map((e, i) => {
+                                            return (
+                                                <SideNavElem
+                                                    name={e.title
+                                                        .toLowerCase()
+                                                        .split(" ")
+                                                        .join("")
+                                                        .replace(/[^\w\s]/gi, "")}
+                                                    onClick={props.onClick}
+                                                    key={`elem${i}`}
+                                                    href={`#${e.title
+                                                        .toLowerCase()
+                                                        .split(" ")
+                                                        .join("")
+                                                        .replace(/[^\w\s]/gi, "")}`}
+                                                    dataid={i}
+                                                >
+                                                    {e.title}
+                                                </SideNavElem>
+                                            );
+                                        })}
+                                    </div>
+                                </div>
+                            )}
+                        </Sticky>
+                    </div>
+                )}
                 <div className="col-span-12 sm:col-span-8 transition-all duration-300" ref={ref}>
-                    {/* <H2 klasse="mb-16">Unser Angebot</H2> */}
-                    {/* <section ref={scrollRef}> */}
                     {props.dataBehandlung.map((e, i) => {
                         return (
-                            <ScrollAnimation
+                            <div
                                 key={`laserBehandlung${i}`}
-                                animateIn={"slideInRight"}
-                                animateOnce={true}
-                                duration={0.4}
+                                // animateIn={"slideInRight"}
+                                // animateOnce={true}
+                                // duration={0.2}
                                 className=""
                             >
                                 <LaserBehandlungElement
@@ -99,10 +162,9 @@ const LaserBehandlungenContainer = (props, ref) => {
                                     text={e.text}
                                     cat={`cat${e.categories}`}
                                 ></LaserBehandlungElement>
-                            </ScrollAnimation>
+                            </div>
                         );
                     })}
-                    {/* </section> */}
                 </div>
             </StickyContainer>
         </MainContainer>

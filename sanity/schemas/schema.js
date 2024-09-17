@@ -37,6 +37,8 @@ import cosmetics_produkte from "./cosmetics/produkte";
 import produkt from "./cosmetics/objects/produkt";
 import produktKategorie from "./cosmetics/objects/produktKategorie";
 
+import modalGeneral from "./main/modalGeneral";
+
 import gutschein from "./main/gutschein";
 
 import start from "./main/start";
@@ -71,6 +73,7 @@ export default createSchema({
         jobs,
         impressum,
         datenschutz,
+        modalGeneral,
         cosmetics_settings,
         cosmetics_home,
         cosmetics_kontakt,

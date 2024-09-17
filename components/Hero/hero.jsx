@@ -5,7 +5,7 @@ import { PortableText } from "@portabletext/react";
 import { useSpring, animated } from "react-spring";
 import { config } from "react-spring";
 import { isMobile } from "react-device-detect";
-import { IoMdTime, IoIosCall, IoMdMap } from "react-icons/io";
+import { IoMdTime, IoIosCall, IoMdMap } from "react-icons/io/index.js";
 
 const Hero = (props) => {
     const [showTime, setShowTime] = useState(true);
@@ -38,7 +38,7 @@ const Hero = (props) => {
     const fadeIn = useSpring({ to: { right: 0 }, from: { right: -400 }, delay: 200, config: config.molasses });
     const leftIn = useSpring({
         to: { transform: "translateX(0)" },
-        from: { transform: "translateX(-700px)" },
+        from: { transform: "translateX(-100px)" },
         delay: 0,
         config: config.gentle,
     });
@@ -67,19 +67,25 @@ const Hero = (props) => {
                 props.fullHeight ? "h-full" : props.height
             } ${props.colspan}`}
         >
-            <AbsoluteContainer width={`container w-full px-8 sm:px-0 md:px-16 lg:px-0 h-full ${props.containerKlasse}`}>
+            <AbsoluteContainer
+                width={`container font-sans w-full px-2 sm:px-0 md:px-16 lg:px-0 h-full ${props.containerKlasse}`}
+            >
                 <animated.div
                     className="wrapper w-full col-span-12 md:col-span-8 lg:col-span-6 lg:col-span-5 mt-[-5rem] sm:mt-0"
                     style={leftIn}
                 >
                     {props.children}
                 </animated.div>
+                <div className="absolute font-sans text-white bottom-48 text-center w-full lg:text-left lg:w-autp lg:bottom-16 left-0 z-50">
+                    PRIVATPRAXIS OHNE Kassenzulassung
+                </div>
             </AbsoluteContainer>
+
             <animated.div
                 style={fadeIn}
-                className="absolute grid grid-cols-12 leading-relaxed font-europa text-center sm:text-left z-20 bg-white w-[95%] sm:w-[30rem] h-56 md:h-72 lg:h-96  sm:top-auto bottom-0 transform -translate-x-1/2 sm:-translate-x-0 left-1/2 sm:left-auto right-auto sm:right-0"
+                className="absolute hidden lg:grid grid-cols-12 leading-relaxed font-europa text-center sm:text-left z-20 bg-white w-[95%] sm:w-[30rem] h-[18rem] md:h-72 lg:h-96  sm:top-auto bottom-0 transform -translate-x-1/2 sm:-translate-x-0 left-1/2 sm:left-auto right-auto sm:right-0"
             >
-                <div className="col-span-2 bg-lightGray py-8 sm:py-10 flex flex-col items-center">
+                <div className="col-span-12 lg:col-span-2  bg-lightGray justify-around  sm:py-10 lg:grid flex items-center ">
                     <div
                         onClick={(e) => {
                             quickCheck(e);
@@ -90,36 +96,36 @@ const Hero = (props) => {
                         <IoMdTime></IoMdTime>
                     </div>
 
-                    <hr />
                     <div
                         onClick={(e) => {
                             quickCheck(e);
                         }}
-                        className="text-3xl quick  mt-6"
+                        className="text-3xl quick"
                         data-id="call"
                     >
                         <IoIosCall></IoIosCall>
                     </div>
-                    <hr />
+
                     <div
                         onClick={(e) => {
                             quickCheck(e);
                         }}
-                        className="text-3xl quick  mt-6"
+                        className="text-3xl quick "
                         data-id="adresse"
                     >
                         <IoMdMap></IoMdMap>
                     </div>
                 </div>
-                <div className="col-span-10">
+                <div className="col-span-12 lg:col-span-10 order-first lg:order-last min-h-[14rem] sm:min-h-[14rem] md:min-h-[18rem] lg:min-h-[24rem] transition-all duration-300">
                     {showTime && (
                         <>
-                            <H4 klasse=" pt-6 mb-2 sm:mb-6 sm:py-6 sm:py-0 sm:pt-10 pl-12 sm:pl-12 text-left ">
+                            <H4 klasse=" pt-6 mb-1 sm:mb-6 sm:py-6 sm:py-0 sm:pt-10 pl-8 sm:pl-12 text-left ">
                                 Öffnungszeiten
                             </H4>
-                            <hr />
-                            <div className="wrapper flex  oeffnung  py-2 sm:py-0 md:pb-16 lg:pb-24 sm:pt-8 pl-12 sm:pr-24">
+
+                            <div className="wrapper flex oeffnung pt-0 sm:py-0 px-4 sm:pt-0 pl-8 sm:pr-24">
                                 <div className="left mr-6 text-left oeffnung clamp">
+                                    {console.log(props.value[0].children[0].text.split("\n"))}
                                     Mo
                                     <br />
                                     Di
@@ -127,8 +133,6 @@ const Hero = (props) => {
                                     Mi
                                     <br />
                                     Do
-                                    <br />
-                                    Fr
                                     <br />
                                 </div>
                                 <div className="right text-left">
@@ -139,11 +143,11 @@ const Hero = (props) => {
                     )}
                     {showContact && (
                         <>
-                            <H4 klasse="  pt-6 mb-2 sm:mb-6  sm:py-6 sm:py-0 sm:pt-10 pl-12 sm:pl-12 text-left">
+                            <H4 klasse="  pt-6 mb-2 sm:mb-6 sm:py-6 sm:py-0 sm:pt-10 pl-8 sm:pl-12 text-left">
                                 Kontaktdaten
                             </H4>
-                            <hr />
-                            <div className="wrapper flex  oeffnung  py-2 sm:py-0 md:pb-16 lg:pb-24 sm:pt-8 pl-12 pr-6 sm:pr-24">
+
+                            <div className="wrapper flex oeffnung py-2 sm:py-0 md:pb-16 lg:pb-24 sm:pt-8 pl-8 pr-6 sm:pr-24">
                                 <div className="left mr-6 text-left oeffnung clamp">
                                     Tel.:
                                     <br />
@@ -166,11 +170,11 @@ const Hero = (props) => {
                     )}
                     {showAdresse && (
                         <>
-                            <H4 klasse=" pt-6 mb-2 sm:mb-6  sm:py-6 sm:py-0 sm:pt-10 pl-12 sm:pl-12 text-left ">
+                            <H4 klasse=" pt-6 mb-2 sm:mb-6 sm:py-6 sm:py-0 sm:pt-10 pl-12 sm:pl-12 text-left ">
                                 Adresse
                             </H4>
                             <hr />
-                            <div className="wrapper flex  oeffnung  py-2 sm:py-0 sm:pb-24 sm:pt-8 pl-12 sm:pr-24">
+                            <div className="wrapper flex oeffnung py-2 sm:py-0 sm:pb-24 sm:pt-8 pl-12 sm:pr-24">
                                 <div className="left mr-6 text-left oeffnung clamp font-light">
                                     {props.strasse}
                                     <br></br>
@@ -185,6 +189,7 @@ const Hero = (props) => {
                 style={isMobile ? opacityInMobile : opacityIn}
                 className="overlay z-10 sm:opacity-40  opacity-60 absolute w-full h-full bg-primaryColor "
             ></animated.div>
+
             <div className="overflow-hidden w-full h-full ">
                 <animated.div
                     className={`w-full  blurIn h-full bg-cover  ${
