@@ -32,8 +32,8 @@ const KontaktTop = (props) => {
                                 <strong className="block mb-8">PRIVATPRAXIS OHNE Kassenzulassung</strong>
                             </p>
                         </div>
-                        <div className="kdata grid grid-cols-3">
-                            <div className="left col-span-3 sm:col-span-1 flex items-end">
+                        <div className="kdata grid grid-cols-3 mt-4">
+                            <div className="left col-span-3 sm:col-span-1 flex ">
                                 <p>
                                     german cosmetics GmbH
                                     <br />
@@ -96,8 +96,6 @@ const KontaktTop = (props) => {
                                         Mi
                                         <br />
                                         Do
-                                        <br />
-                                        Fr
                                         <br />
                                     </div>
                                     <div className="right text-left">
