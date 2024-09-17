@@ -34,14 +34,6 @@ class MyDocument extends Document {
 
                     <meta name="msapplication-TileColor" content="#da532c" />
                     <meta name="theme-color" content="#ffffff"></meta>
-                    <script
-                        id="Cookiebot"
-                        src="https://consent.cookiebot.com/uc.js"
-                        data-cbid="1dd00d71-e04e-459f-aacc-d6876d79444a"
-                        type="text/javascript"
-                        data-blockingmode="auto"
-                        async
-                    ></script>
                 </Head>
                 {/* <link rel="preconnect" href="https://fonts.googleapis.com" />
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin /> */}

@@ -26,7 +26,8 @@ import { Popup1 } from "../components/popups";
 
 import { InstagramEmbed } from "react-social-media-embed";
 import GoogleReviews from "../components/reviews";
-
+import JamedaReviews from "../components/reviews/jameda";
+import LeaveReviewCTA from "../components/reviews/leaveReviewCTA";
 const builder = imageUrlBuilder(client);
 
 function urlFor(source) {
@@ -42,6 +43,7 @@ export default function Start({
     dataGutschein,
     dataModal,
     googleReviews,
+    dataJameda,
 }) {
     const [showModal, setShowModal] = useState(false);
     const headlineRef = useRef();
@@ -149,7 +151,8 @@ export default function Start({
                 value={dataKontakt[0].oeffnungszeiten}
             ></CTA>
             <GoogleReviews reviews={googleReviews}></GoogleReviews>
-
+            <JamedaReviews reviews={dataJameda}></JamedaReviews>
+            <LeaveReviewCTA />
             <BlogSwiper data={dataBlog}>
                 <div className="absolute w-[100%] md:h-[210px] lg:h-[360px] bg-[#F5F0ED]  top-0 sm:top-[30%]"></div>
             </BlogSwiper>
@@ -190,6 +193,8 @@ export async function getStaticProps() {
     const resKontakt = await client.fetch(`*[_type in ["cosmetics_kontakt"] ]`);
     const resKomponente = await client.fetch(`*[_type in ["cosmetics_komponente"] ]`);
     const resBlog = await client.fetch(`*[_type in ["blogEntry"] ]`);
+    const resJameda = await client.fetch(`*[_type in ["jameda"]]`);
+    const dataJameda = await resJameda;
 
     const resGutschein = await client.fetch(`*[_type in ["gutschein"]]`);
     const dataGutschein = await resGutschein;
@@ -221,7 +226,8 @@ export async function getStaticProps() {
             dataKomponente,
             dataGutschein,
             dataModal,
-            googleReviews, // Pass the Google reviews to your component
+            googleReviews,
+            dataJameda, // Pass the Google reviews to your component
         },
         revalidate: 1, // Revalidate every second
     };

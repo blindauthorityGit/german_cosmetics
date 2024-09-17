@@ -5,13 +5,15 @@ import { useState, useEffect } from "react";
 import { AnimateSharedLayout } from "framer-motion";
 import { CTAContext } from "../components/helper/Content";
 import { CookieBanner } from "@palmabit/react-cookie-law";
-import CookieConsent, { Cookies } from "react-cookie-consent";
+// import CookieConsent, { Cookies } from "react-cookie-consent";
 import client from "../client";
 import Modal from "../components/sections/modal/modal";
 import Overlay from "../components/sections/modal/overlay";
 import { modalSwitcher } from "../functions/modal";
 import { BasicPortableText } from "../components/content/";
 import { useRouter } from "next/router";
+import Script from "next/script";
+import CookieConsent from "../components/cookieConsent";
 
 //LIBS
 import { ReactLenis, useLenis } from "../libs/lenis";
@@ -52,42 +54,44 @@ function MyApp({ Component, pageProps, dataModal }) {
     }, [dataModal]);
 
     return (
-        <ReactLenis ReactLenis root>
-            {showModal && modalData !== null && router.pathname !== "/" && (
-                <>
-                    <Modal
-                        onClick={(e) => {
-                            modalSwitcher(e, showModal, setShowModal);
-                        }}
+        <>
+            <ReactLenis ReactLenis root>
+                {showModal && modalData !== null && router.pathname !== "/" && (
+                    <>
+                        <Modal
+                            onClick={(e) => {
+                                modalSwitcher(e, showModal, setShowModal);
+                            }}
+                        >
+                            <div className="modal text-center flex items-center flex-col justify-center">
+                                <div className="pt-12 lg:pt-0">
+                                    <BasicPortableText value={modalData}></BasicPortableText>
+                                </div>
+                            </div>{" "}
+                        </Modal>
+                        <Overlay
+                            onClick={(e) => {
+                                modalSwitcher(e, showModal, setShowModal);
+                            }}
+                        ></Overlay>
+                    </>
+                )}
+                <AnimateSharedLayout>
+                    <Component {...pageProps} />
+                    <CookieConsent />
+                    {/* <CookieConsent
+                        location="bottom"
+                        buttonText="Bestätigen"
+                        cookieName="myAwesomeCookieName2"
+                        style={{ background: "#414646" }}
+                        buttonStyle={{ background: "#d7d0c4", fontSize: "16px" }}
+                        expires={150}
                     >
-                        <div className="modal text-center flex items-center flex-col justify-center">
-                            <div className="pt-12 lg:pt-0">
-                                <BasicPortableText value={modalData}></BasicPortableText>
-                            </div>
-                        </div>{" "}
-                    </Modal>
-                    <Overlay
-                        onClick={(e) => {
-                            modalSwitcher(e, showModal, setShowModal);
-                        }}
-                    ></Overlay>
-                </>
-            )}
-            <AnimateSharedLayout>
-                <Component {...pageProps} />
-                <CookieConsent
-                    location="bottom"
-                    buttonText="Bestätigen"
-                    cookieName="myAwesomeCookieName2"
-                    style={{ background: "#414646" }}
-                    buttonStyle={{ background: "#d7d0c4", fontSize: "16px" }}
-                    expires={150}
-                >
-                    Wir verwenden Cookies. Hiermit bestätigen Sie dieses.
-                    {/* <span style={{ fontSize: "10px" }}></span> */}
-                </CookieConsent>
-            </AnimateSharedLayout>
-        </ReactLenis>
+                        Wir verwenden Cookies. Hiermit bestätigen Sie dieses.
+                    </CookieConsent> */}
+                </AnimateSharedLayout>
+            </ReactLenis>
+        </>
     );
 }
 

@@ -32,8 +32,8 @@ const KontaktTop = (props) => {
                                 <strong className="block mb-8">PRIVATPRAXIS OHNE Kassenzulassung</strong>
                             </p>
                         </div>
-                        <div className="kdata grid grid-cols-3 mt-4">
-                            <div className="left col-span-3 sm:col-span-1 flex ">
+                        <div className="kdata grid grid-cols-3">
+                            <div className="left col-span-3 sm:col-span-1 flex items-end">
                                 <p>
                                     german cosmetics GmbH
                                     <br />
@@ -43,7 +43,7 @@ const KontaktTop = (props) => {
                                     {props.ort}
                                 </p>
                             </div>
-                            <div className="right col-span-3 lg:col-span-1 ">
+                            <div className="right col-span-3 lg:col-span-1 kdataRight">
                                 <div className="wrapper flex items-center">
                                     <div className="icon mr-8 text-primaryColor">
                                         <p>
@@ -97,6 +97,8 @@ const KontaktTop = (props) => {
                                         <br />
                                         Do
                                         <br />
+                                        Fr
+                                        <br />
                                     </div>
                                     <div className="right text-left">
                                         <PortableText value={props.value}></PortableText>
@@ -107,9 +109,6 @@ const KontaktTop = (props) => {
                     </div>
                 </div>
                 <div className="col-span-12 sm:col-span-8 mb-16 sm:mb-0">
-                    {/* <ScrollAnimation animateIn="slideInRight" animateOnce={true}> */}
-
-                    {/* </ScrollAnimation> */}
                     <div className="px-8">
                         <PortableText value={props.valueRight}></PortableText>
                     </div>

@@ -11,6 +11,7 @@ import Modal from "../sections/modal/modal";
 import CTAContent from "../sections/cta/";
 import { modalSwitcher, hideModalSet } from "../../functions/modal";
 import { IoMdTime, IoIosCall, IoMdMap } from "react-icons/io/index.js";
+import { BsFacebook, BsInstagram } from "react-icons/bs/index.js";
 
 const Navbar = (props) => {
     const [showMenu, setShowMenu] = useState(false);
@@ -189,6 +190,14 @@ const Navbar = (props) => {
                                         <IoMdCalendar></IoMdCalendar>
                                     </span>
                                     Termin
+                                </a>
+                            </li>
+                            <li className="ml-8 flex item-center h-full pt-4">
+                                <a
+                                    className="flex item-center h-full"
+                                    href="https://www.instagram.com/german_aesthetics.de/"
+                                >
+                                    <BsInstagram></BsInstagram>
                                 </a>
                             </li>
                         </ul>

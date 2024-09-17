@@ -35,6 +35,7 @@ import produktKategorie from './cosmetics/objects/produktKategorie'
 import modalGeneral from './main/modalGeneral'
 import gutschein from './main/gutschein'
 import start from './main/start'
+import jameda from './main/jameda'
 
 // Export schema types directly
 export const schemaTypes = [
@@ -69,4 +70,5 @@ export const schemaTypes = [
   start,
   produktKategorie,
   gutschein,
+  jameda,
 ]
