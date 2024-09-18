@@ -14,6 +14,7 @@ import Modal from "../components/sections/modal/modal";
 import Overlay from "../components/sections/modal/overlay";
 import CTAContent from "../components/sections/cta/";
 import Gutschein from "../components/sections/gutschein";
+import { BasicPortableText } from "../components/content/";
 
 import CTA from "../components/sections/cta";
 import ImageBox from "../components/sections/imageBox";
@@ -46,16 +47,30 @@ export default function Start({
     dataJameda,
 }) {
     const [showModal, setShowModal] = useState(false);
+    const [showModalAlert, setShowModalAlert] = useState(false);
     const headlineRef = useRef();
+
+    const [showOverlay, setShowOverlay] = useState(false);
+    const [modalData, setModalData] = useState(null);
 
     useEffect(() => {
         const splitter = headlineRef.current.children[0].innerHTML.split("");
         console.log(dataHome);
         console.log(dataModal);
         console.log(googleReviews);
+        console.log(dataModal[0]);
     }, []);
 
     const isOnVacation = false;
+
+    useEffect(() => {
+        if (dataModal && dataModal[0] && dataModal[0].settings && dataModal[0].settings.active) {
+            console.log(dataModal[0].settings);
+            setModalData(dataModal[0].settings.text); // Assuming "text" contains the modal content
+            setShowModal(true);
+            setShowOverlay(true);
+        }
+    }, [dataModal]);
 
     return (
         <>
@@ -86,7 +101,26 @@ export default function Start({
                     ></Overlay>
                 </>
             )}
-            {isOnVacation && <Popup1 />}
+            {showModalAlert && modalData !== null && router.pathname !== "/" && (
+                <>
+                    <Modal
+                        onClick={(e) => {
+                            modalSwitcher(e, showModal, setShowModal);
+                        }}
+                    >
+                        <div className="modal text-center flex items-center flex-col justify-center">
+                            <div className="pt-12 lg:pt-0">
+                                <BasicPortableText value={modalData}></BasicPortableText>
+                            </div>
+                        </div>{" "}
+                    </Modal>
+                    <Overlay
+                        onClick={(e) => {
+                            modalSwitcher(e, showModal, setShowModal);
+                        }}
+                    ></Overlay>
+                </>
+            )}
 
             <Navbar
                 strasse={dataKontakt[0].adresse.strasse}
@@ -185,7 +219,7 @@ export default function Start({
     );
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
     const res = await client.fetch(
         `*[_type in ["cosmetics_home", "aesthetic_kontakt", "cosmetics_settings", "aesthetic_komponente"] ]`
     );
@@ -227,8 +261,9 @@ export async function getStaticProps() {
             dataGutschein,
             dataModal,
             googleReviews,
-            dataJameda, // Pass the Google reviews to your component
+            dataJameda,
+            dataModal, // Pass the Google reviews to your component
         },
-        revalidate: 1, // Revalidate every second
+        // revalidate: 1, // Revalidate every second
     };
 }

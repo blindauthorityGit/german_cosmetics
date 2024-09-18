@@ -12,7 +12,6 @@ import Overlay from "../components/sections/modal/overlay";
 import { modalSwitcher } from "../functions/modal";
 import { BasicPortableText } from "../components/content/";
 import { useRouter } from "next/router";
-import Script from "next/script";
 import CookieConsent from "../components/cookieConsent";
 
 //LIBS
@@ -26,18 +25,16 @@ function MyApp({ Component, pageProps, dataModal }) {
 
     const router = useRouter(); // Get current route
 
-    // Fetch modal settings globally
     useEffect(() => {
-        console.log(modalData); // Check if modalData is defined
-
         const fetchModalSettings = async () => {
+            console.log("Fetching modal settings...");
             try {
                 const settings = await client.fetch(`*[_type == "modalGeneral"][0]`);
+                console.log(settings, "bubu");
 
                 if (settings && settings.active) {
                     console.log(settings);
                     setModalData(settings.text);
-                    // setModalContent(<StartModal data={settings.text} />);  // Load the modal content
                     setShowModal(true);
                     setShowOverlay(true);
                 }
@@ -47,7 +44,7 @@ function MyApp({ Component, pageProps, dataModal }) {
         };
 
         fetchModalSettings(); // Fetch modal data
-    }, []); // This effect runs once when the app is loaded
+    }, []);
 
     useEffect(() => {
         console.log(dataModal);
