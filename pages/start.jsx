@@ -67,7 +67,7 @@ export default function Start({
         if (dataModal && dataModal[0] && dataModal[0].settings && dataModal[0].settings.active) {
             console.log(dataModal[0].settings);
             setModalData(dataModal[0].settings.text); // Assuming "text" contains the modal content
-            setShowModal(true);
+            setShowModalAlert(true);
             setShowOverlay(true);
         }
     }, [dataModal]);
@@ -101,7 +101,7 @@ export default function Start({
                     ></Overlay>
                 </>
             )}
-            {showModalAlert && modalData !== null && router.pathname !== "/" && (
+            {showModalAlert &&  (
                 <>
                     <Modal
                         onClick={(e) => {
