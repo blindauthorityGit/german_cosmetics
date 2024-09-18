@@ -67,7 +67,7 @@ export default function Start({
 
     useEffect(() => {
         if (dataModal && dataModal[0] && dataModal[0].settings && dataModal[0].settings.active) {
-            console.log(dataModal[0].settings);
+            console.log(dataModal[0].settings, "bubu");
             setModalData(dataModal[0].settings.text); // Assuming "text" contains the modal content
             setShowModalAlert(true);
             setShowOverlay(true);
@@ -107,7 +107,7 @@ export default function Start({
                 <>
                     <Modal
                         onClick={(e) => {
-                            modalSwitcher(e, showModal, setShowModal);
+                            modalSwitcher(e, showModal, setShowModalAlert);
                         }}
                     >
                         <div className="modal text-center flex items-center flex-col justify-center">
@@ -118,7 +118,7 @@ export default function Start({
                     </Modal>
                     <Overlay
                         onClick={(e) => {
-                            modalSwitcher(e, showModal, setShowModal);
+                            modalSwitcher(e, showModal, setShowModalAlert);
                         }}
                     ></Overlay>
                 </>
