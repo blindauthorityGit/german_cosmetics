@@ -67,7 +67,7 @@ export default function Start({
     const isOnVacation = false;
 
     useEffect(() => {
-        if (dataModal && dataModal[0] && dataModal[0].settings) {
+        if (dataModal && dataModal[0] && dataModal[0].settings && dataModal[0].active) {
             console.log(dataModal[0].settings, "bubu");
             setModalData(dataModal[0].settings.text); // Assuming "text" contains the modal content
             setShowModalAlert(true);
