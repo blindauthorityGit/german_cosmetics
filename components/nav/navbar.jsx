@@ -136,6 +136,7 @@ const Navbar = (props) => {
                     strasse={props.strasse}
                     ort={props.ort}
                     phone={props.phone}
+                    mobile={props.mobile}
                     email={props.email}
                     content={navContent} // Pass the content to MobileNav
                 />
@@ -192,10 +193,10 @@ const Navbar = (props) => {
                                     Termin
                                 </a>
                             </li>
-                            <li className="ml-8 flex item-center h-full pt-4">
+                            <li className="ml-8 flex item-center h-full pt-3 text-[#D8829D]">
                                 <a
-                                    className="flex item-center h-full"
-                                    href="https://www.instagram.com/german_aesthetics.de/"
+                                    className="flex item-center  h-full text-2xl"
+                                    href="https://www.instagram.com/germancosmetics.de/"
                                 >
                                     <BsInstagram></BsInstagram>
                                 </a>

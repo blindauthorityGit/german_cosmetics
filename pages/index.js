@@ -37,6 +37,7 @@ export default function Choose({ data, cosmData, aesthData, dataHome, dataKontak
                 ort={dataKontakt.adresse.ort}
                 phone={dataKontakt.kontakt.phone}
                 email={dataKontakt.kontakt.email}
+                mobile={dataKontakt.kontakt.mobile}
                 value={dataKontakt.oeffnungszeiten}
                 logoLight={urlFor(cosmData.logo.logo_dark)}
                 logoDark={urlFor(cosmData.logo.logo_dark)}

@@ -11,7 +11,7 @@ const LeaveReviewCTA = () => {
                 anderen Patienten, uns zu finden.
             </p>
             <a
-                href="https://www.jameda.de/bewertung-schreiben/german-hubatsch#/erfahrung"
+                href="https://www.jameda.de/german-hubatsch/hautarzt-dermatologe/neu-isenburg"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-block bg-primaryColor text-white py-3 px-6 rounded-full font-semibold text-lg hover:bg-primaryColor-dark transition duration-300 ease-in-out"

@@ -3,7 +3,7 @@ import MainContainer from "../components/layout/mainContainer";
 import Hero from "../components/Hero/hero";
 import client from "../client";
 import { useState, useEffect, useRef } from "react";
-import { H1 } from "../components/utils/headlines";
+import { H1, H2 } from "../components/utils/headlines";
 import { DefaultButton } from "../components/utils/buttons";
 
 import imageUrlBuilder from "@sanity/image-url";
@@ -29,6 +29,7 @@ import { InstagramEmbed } from "react-social-media-embed";
 import GoogleReviews from "../components/reviews";
 import JamedaReviews from "../components/reviews/jameda";
 import LeaveReviewCTA from "../components/reviews/leaveReviewCTA";
+import LeaveGoogleReview from "../components/reviews/leaveGoogleReview";
 const builder = imageUrlBuilder(client);
 
 function urlFor(source) {
@@ -55,17 +56,19 @@ export default function Start({
 
     useEffect(() => {
         const splitter = headlineRef.current.children[0].innerHTML.split("");
-        console.log(dataHome);
+        console.log(dataKontakt);
         console.log(dataModal);
         console.log(googleReviews);
+        console.log(dataModal[0]);
+        console.log(dataModal[0]);
         console.log(dataModal[0]);
     }, []);
 
     const isOnVacation = false;
 
     useEffect(() => {
-        if (dataModal && dataModal[0] && dataModal[0].settings && dataModal[0].settings.active) {
-            console.log(dataModal[0].settings);
+        if (dataModal && dataModal[0] && dataModal[0].settings && dataModal[0].active) {
+            console.log(dataModal[0].settings, "bubu");
             setModalData(dataModal[0].settings.text); // Assuming "text" contains the modal content
             setShowModalAlert(true);
             setShowOverlay(true);
@@ -101,22 +104,31 @@ export default function Start({
                     ></Overlay>
                 </>
             )}
-            {showModalAlert &&  (
+            {showModalAlert && (
                 <>
                     <Modal
                         onClick={(e) => {
-                            modalSwitcher(e, showModal, setShowModal);
+                            modalSwitcher(e, showModalAlert, setShowModalAlert);
                         }}
                     >
                         <div className="modal text-center flex items-center flex-col justify-center">
                             <div className="pt-12 lg:pt-0">
+                                {/* <H2>Urlaubsmeldung</H2>
+                                <p className="mt-12">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia eum minima dolorem
+                                    itaque numquam laborum dignissimos at. Ea, harum laboriosam earum nisi modi,
+                                    distinctio officiis, in praesentium optio tenetur labore? Sed enim esse sint est
+                                    ipsum quae blanditiis eum, dolorem tenetur iure corporis. Odio quod suscipit quasi?
+                                    Sunt nostrum, beatae voluptatibus voluptatum, laboriosam, fugiat delectus culpa
+                                    ipsam ad eveniet aut?
+                                </p> */}
                                 <BasicPortableText value={modalData}></BasicPortableText>
                             </div>
                         </div>{" "}
                     </Modal>
                     <Overlay
                         onClick={(e) => {
-                            modalSwitcher(e, showModal, setShowModal);
+                            modalSwitcher(e, showModalAlert, setShowModalAlert);
                         }}
                     ></Overlay>
                 </>
@@ -126,6 +138,7 @@ export default function Start({
                 strasse={dataKontakt[0].adresse.strasse}
                 ort={dataKontakt[0].adresse.ort}
                 phone={dataKontakt[0].kontakt.phone}
+                mobile={dataKontakt[0].kontakt.mobile}
                 email={dataKontakt[0].kontakt.email}
                 value={dataKontakt[0].oeffnungszeiten}
                 logoLight={urlFor(data[3].logo.logo_dark)}
@@ -141,6 +154,7 @@ export default function Start({
                         strasse={dataKontakt[0].adresse.strasse}
                         ort={dataKontakt[0].adresse.ort}
                         phone={dataKontakt[0].kontakt.phone}
+                        mobile={dataKontakt[0].kontakt.mobile}
                         email={dataKontakt[0].kontakt.email}
                         value={dataKontakt[0].oeffnungszeiten}
                     >
@@ -185,6 +199,7 @@ export default function Start({
                 value={dataKontakt[0].oeffnungszeiten}
             ></CTA>
             <GoogleReviews reviews={googleReviews}></GoogleReviews>
+            <LeaveGoogleReview />
             <JamedaReviews reviews={dataJameda}></JamedaReviews>
             <LeaveReviewCTA />
             <BlogSwiper data={dataBlog}>
@@ -212,6 +227,7 @@ export default function Start({
                 strasse={dataKontakt[0].adresse.strasse}
                 ort={dataKontakt[0].adresse.ort}
                 phone={dataKontakt[0].kontakt.phone}
+                mobile={dataKontakt[0].kontakt.mobile}
                 email={dataKontakt[0].kontakt.email}
                 value={dataKontakt[0].oeffnungszeiten}
             ></Footer>

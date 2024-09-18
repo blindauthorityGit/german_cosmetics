@@ -6,6 +6,7 @@ import { useSpring, animated } from "react-spring";
 import { config } from "react-spring";
 import { isMobile } from "react-device-detect";
 import { IoMdTime, IoIosCall, IoMdMap } from "react-icons/io/index.js";
+import { BsWhatsapp } from "react-icons/bs/index.js"; // WhatsApp Icon hinzugefügt
 
 const Hero = (props) => {
     const [showTime, setShowTime] = useState(true);
@@ -76,9 +77,9 @@ const Hero = (props) => {
                 >
                     {props.children}
                 </animated.div>
-                <div className="absolute font-sans text-white bottom-48 text-center w-full lg:text-left lg:w-autp lg:bottom-16 left-0 z-50">
+                {/* <div className="absolute font-sans text-white bottom-48 text-center w-full lg:text-left lg:w-autp lg:bottom-16 left-0 z-50">
                     PRIVATPRAXIS OHNE Kassenzulassung
-                </div>
+                </div> */}
             </AbsoluteContainer>
 
             <animated.div
@@ -120,7 +121,7 @@ const Hero = (props) => {
                     {showTime && (
                         <>
                             <H4 klasse=" pt-6 mb-1 sm:mb-6 sm:py-6 sm:py-0 sm:pt-10 pl-8 sm:pl-12 text-left ">
-                                Öffnungszeiten
+                                Telefonische Erreichbarkeit
                             </H4>
 
                             <div className="wrapper flex oeffnung pt-0 sm:py-0 px-4 sm:pt-0 pl-8 sm:pr-24">
@@ -133,6 +134,8 @@ const Hero = (props) => {
                                     Mi
                                     <br />
                                     Do
+                                    <br />
+                                    Fr
                                     <br />
                                 </div>
                                 <div className="right text-left">
@@ -147,9 +150,11 @@ const Hero = (props) => {
                                 Kontaktdaten
                             </H4>
 
-                            <div className="wrapper flex oeffnung py-2 sm:py-0 md:pb-16 lg:pb-24 sm:pt-8 pl-8 pr-6 sm:pr-24">
+                            <div className="wrapper flex oeffnung pt-0 sm:py-0 px-4 sm:pt-0 pl-8 sm:pr-24">
                                 <div className="left mr-6 text-left oeffnung clamp">
                                     Tel.:
+                                    <br />
+                                    Mobil:
                                     <br />
                                     Email:
                                 </div>
@@ -158,11 +163,21 @@ const Hero = (props) => {
                                         {props.phone}
                                     </a>
                                     <br></br>
+                                    <a className="hover:text-primaryColor font-light clamp" href={`tel:${props.phone}`}>
+                                        {props.mobile}
+                                    </a>
+                                    <br></br>
                                     <a
                                         className="hover:text-primaryColor font-light clamp"
                                         href={`mailto:${props.email}`}
                                     >
                                         {props.email}
+                                    </a>
+                                    <br></br>
+                                    <br></br>
+
+                                    <a href={`https://wa.me/${props.mobile}`} target="_blank" rel="noopener noreferrer">
+                                        <BsWhatsapp></BsWhatsapp>
                                     </a>
                                 </div>
                             </div>
@@ -174,7 +189,7 @@ const Hero = (props) => {
                                 Adresse
                             </H4>
                             <hr />
-                            <div className="wrapper flex oeffnung py-2 sm:py-0 sm:pb-24 sm:pt-8 pl-12 sm:pr-24">
+                            <div className="wrapper flex oeffnung pt-0 sm:py-0 px-4 sm:pt-0 pl-8 sm:pr-24">
                                 <div className="left mr-6 text-left oeffnung clamp font-light">
                                     {props.strasse}
                                     <br></br>
