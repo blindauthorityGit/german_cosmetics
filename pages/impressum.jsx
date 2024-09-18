@@ -41,6 +41,7 @@ export default function Impressum({ data, impressumData, dataKontakt }) {
                 ort={dataKontakt[0].adresse.ort}
                 phone={dataKontakt[0].kontakt.phone}
                 email={dataKontakt[0].kontakt.email}
+                mobile={dataKontakt[0].kontakt.mobile}
                 value={dataKontakt[0].oeffnungszeiten}
             ></Navbar>
             {/* <PageHero bg={JobHero.src} headline="Jobs" showButton={false}></PageHero> */}
@@ -69,6 +70,7 @@ export default function Impressum({ data, impressumData, dataKontakt }) {
                 phone={dataKontakt[0].kontakt.phone}
                 email={dataKontakt[0].kontakt.email}
                 value={dataKontakt[0].oeffnungszeiten}
+                mobile={dataKontakt[0].kontakt.mobile}
             ></Footer>
         </>
     );

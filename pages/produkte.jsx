@@ -65,9 +65,10 @@ export default function Produkte({ data, dermaData, produkteData, produkteKompon
                 strasse={produkteKontakt[0].adresse.strasse}
                 ort={produkteKontakt[0].adresse.ort}
                 phone={produkteKontakt[0].kontakt.phone}
+                mobile={produkteKontakt[0].kontakt.mobile}
                 email={produkteKontakt[0].kontakt.email}
                 value={produkteKontakt[0].oeffnungszeiten}
-                logoLight={urlFor(data[3].logo.logo_light)}
+                logoLight={urlFor(data[3].logo.logo_dark)}
                 logoDark={urlFor(data[3].logo.logo_dark)}
             ></Navbar>
             <motion.div layoutId={"Hero"} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
@@ -133,6 +134,7 @@ export default function Produkte({ data, dermaData, produkteData, produkteKompon
                 ort={produkteKontakt[0].adresse.ort}
                 phone={produkteKontakt[0].kontakt.phone}
                 email={produkteKontakt[0].kontakt.email}
+                mobile={produkteKontakt[0].kontakt.mobile}
                 value={produkteKontakt[0].oeffnungszeiten}
             ></Footer>
         </>

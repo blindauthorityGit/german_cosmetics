@@ -3,7 +3,7 @@ import MainContainer from "../layout/mainContainer";
 import { H2, H4 } from "../utils/headlines";
 import { DefaultButton } from "../utils/buttons";
 import { PortableText } from "@portabletext/react";
-import { BsFacebook, BsInstagram } from "react-icons/bs/index.js";
+import { BsFacebook, BsInstagram, BsWhatsapp } from "react-icons/bs/index.js"; // WhatsApp Icon hinzugefügt
 import Link from "next/link";
 import FormTemplate from "../form/formTemplate";
 
@@ -24,27 +24,34 @@ const Footer = (props) => {
                             <br></br>
                             {props.ort}
                         </span>
-                        <div className="mt-4">PRIVATPRAXIS OHNE Kassenzulassung</div>
+                        {/* <div className="mt-4">PRIVATPRAXIS OHNE Kassenzulassung</div> */}
                     </div>
                     <div className="col-span-12 sm:col-span-3 mt-8 sm:mt-0 2xl:clamp">
                         <H4 klasse="text-white ">Kontakt</H4>
                         <span className="opacity-60">
                             {props.phone}
                             <br></br>
+                            {props.mobile}
+                            <br></br>
+                            <br></br>
                             {props.email}
                             <br></br>{" "}
                         </span>
-                        <div className="flex mt-6">
-                            <a className="mr-6 " href="https://www.facebook.com/drhubatsch">
+                        <div className="flex mt-6 text-2xl">
+                            {/* <a className="mr-6" href="https://www.facebook.com/drhubatsch">
                                 <BsFacebook></BsFacebook>
-                            </a>
-                            <a href="https://www.instagram.com/germancosmeticsde/">
+                            </a> */}
+                            <a className="mr-6" href="https://www.instagram.com/germancosmeticsde/">
                                 <BsInstagram></BsInstagram>
+                            </a>
+                            {/* WhatsApp Button hinzugefügt */}
+                            <a href="https://wa.me/015119100049" target="_blank" rel="noopener noreferrer">
+                                <BsWhatsapp></BsWhatsapp>
                             </a>
                         </div>
                     </div>
                     <div className="col-span-12 sm:col-span-3 mt-8 sm:mt-0">
-                        <H4 klasse="text-white">Öffnungszeiten </H4>
+                        <H4 klasse="text-white">Telefonische Erreichbarkeit</H4>
                         <div className="wrapper flex oeffnung opacity-60">
                             <div className="left mr-6 text-left  2xl:clamp">
                                 Mo
@@ -54,6 +61,8 @@ const Footer = (props) => {
                                 Mi
                                 <br />
                                 Do
+                                <br />
+                                Fr
                                 <br />
                             </div>
                             <div className="right text-left  fontAuto">

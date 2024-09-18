@@ -5,6 +5,7 @@ import { DefaultButton } from "../utils/buttons";
 import { PortableText } from "@portabletext/react";
 import { IoIosCall, IoMdMap, IoMdMail } from "react-icons/io/index.js";
 import { FaFax, FaMobileAlt } from "react-icons/fa";
+import { BsFacebook, BsInstagram, BsWhatsapp } from "react-icons/bs/index.js"; // WhatsApp Icon hinzugefügt
 
 const KontaktTop = (props) => {
     return (
@@ -16,7 +17,7 @@ const KontaktTop = (props) => {
                         <div className="header lg:flex lg:space-x-16">
                             <p>
                                 <strong className="block mb-8 ">
-                                    Privates Studio<br></br> für Kosmetik und Ästhetik
+                                    Privates Institut<br></br> für Kosmetik und Ästhetik
                                 </strong>
                             </p>
                             <p>
@@ -28,9 +29,7 @@ const KontaktTop = (props) => {
                                     </span>
                                 </strong>
                             </p>
-                            <p>
-                                <strong className="block mb-8">PRIVATPRAXIS OHNE Kassenzulassung</strong>
-                            </p>
+                            <p>{/* <strong className="block mb-8">PRIVATPRAXIS OHNE Kassenzulassung</strong> */}</p>
                         </div>
                         <div className="kdata grid grid-cols-3 mt-4">
                             <div className="left col-span-3 sm:col-span-1 flex ">
@@ -85,6 +84,17 @@ const KontaktTop = (props) => {
                                         <a href={`mailto:${props.email}`}>{props.email}</a>{" "}
                                     </p>
                                 </div>
+                                <div className="wrapper flex items-center mt-4">
+                                    <div className="icon mr-8 text-primaryColor">
+                                        <a
+                                            href={`https://wa.me/${props.mobile}`}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                        >
+                                            <BsWhatsapp></BsWhatsapp>
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                             <div className="left col-span-3 lg:col-span-1 mt-8 lg:mt-0 flex items-end lg:justify-center">
                                 <div className="wrapper flex oeffnung">
@@ -96,6 +106,8 @@ const KontaktTop = (props) => {
                                         Mi
                                         <br />
                                         Do
+                                        <br />
+                                        Fr
                                         <br />
                                     </div>
                                     <div className="right text-left">

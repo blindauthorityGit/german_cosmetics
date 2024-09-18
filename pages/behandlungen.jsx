@@ -74,9 +74,10 @@ export default function LaserBehanldungen({
                 strasse={dataKontakt[0].adresse.strasse}
                 ort={dataKontakt[0].adresse.ort}
                 phone={dataKontakt[0].kontakt.phone}
+                mobile={dataKontakt[0].kontakt.mobile}
                 email={dataKontakt[0].kontakt.email}
                 value={dataKontakt[0].oeffnungszeiten}
-                logoLight={urlFor(data[3].logo.logo_light)}
+                logoLight={urlFor(data[3].logo.logo_dark)}
                 logoDark={urlFor(data[3].logo.logo_dark)}
             ></Navbar>
             <motion.div layoutId={"Hero"} animate={{ opacity: 1 }}>
@@ -141,6 +142,7 @@ export default function LaserBehanldungen({
                 phone={dataKontakt[0].kontakt.phone}
                 email={dataKontakt[0].kontakt.email}
                 value={dataKontakt[0].oeffnungszeiten}
+                mobile={dataKontakt[0].kontakt.mobile}
             ></Footer>
         </>
     );
