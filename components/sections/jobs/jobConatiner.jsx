@@ -6,7 +6,6 @@ import { StickyContainer, Sticky } from "react-sticky";
 import client from "../../../client";
 import imageUrlBuilder from "@sanity/image-url";
 import { checkTop } from "../../utils/functions";
-import ScrollAnimation from "react-animate-on-scroll";
 
 const builder = imageUrlBuilder(client);
 
@@ -74,11 +73,11 @@ const JobContainer = (props, ref) => {
                     {/* <H2 klasse="mb-16">Unser Angebot</H2> */}
                     {props.dataJobs.map((e, i) => {
                         return (
-                            <ScrollAnimation
+                            <div
                                 key={`dermaBehandlung${i}`}
-                                animateIn={"slideInRight"}
-                                animateOnce={true}
-                                duration={0.4}
+                                // animateIn={"slideInRight"}
+                                // animateOnce={true}
+                                // duration={0.4}
                                 className=""
                             >
                                 <JobElement
@@ -92,7 +91,7 @@ const JobContainer = (props, ref) => {
                                         .join("")
                                         .replace(/[^\w\s]/gi, "")}
                                 ></JobElement>
-                            </ScrollAnimation>
+                            </div>
                         );
                     })}
                 </div>

@@ -5,11 +5,9 @@ import { PortableText } from "@portabletext/react";
 import { DefaultButton } from "../utils/buttons";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useSwiper } from "swiper/react";
-import { useNextSanityImage } from "next-sanity-image";
 import Image from "next/image";
 import client from "../../client";
 import imageUrlBuilder from "@sanity/image-url";
-import ScrollAnimation from "react-animate-on-scroll";
 import Link from "next/link";
 import { Navigation, Pagination, Scrollbar, A11y } from "swiper";
 import "swiper/css";
@@ -32,10 +30,10 @@ const HomeSwiper = (props) => {
 
     return (
         <MainContainer width="container overflow-hidden pt-16 lg:py-32 font-europa">
-            <ScrollAnimation
-                animateIn={"slideInLeft"}
-                animateOnce={true}
-                duration={0.4}
+            <div
+                // animateIn={"slideInLeft"}
+                // animateOnce={true}
+                // duration={0.4}
                 className="col-span-12 lg:col-span-4 md:mt-8 md:order-last lg:order-first flex flex-col justify-center px-8 lg:px-0 lg:pr-16"
             >
                 <H2 klasse="font-europa mb-12">{props.headline}</H2>
@@ -46,11 +44,11 @@ const HomeSwiper = (props) => {
                         {props.button}
                     </DefaultButton>
                 </Link>
-            </ScrollAnimation>
-            <ScrollAnimation
-                animateIn={"slideInRight"}
-                animateOnce={true}
-                duration={0.4}
+            </div>
+            <div
+                // animateIn={"slideInRight"}
+                // animateOnce={true}
+                // duration={0.4}
                 className="col-span-12 lg:col-span-8"
             >
                 <Swiper
@@ -89,7 +87,7 @@ const HomeSwiper = (props) => {
                         );
                     })}
                 </Swiper>
-            </ScrollAnimation>
+            </div>
         </MainContainer>
     );
 };

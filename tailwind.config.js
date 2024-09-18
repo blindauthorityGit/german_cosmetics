@@ -10,7 +10,7 @@ module.exports = {
                 sm: "100%",
                 md: "100%",
                 lg: "1024px",
-                xl: "1280px",
+                xl: "1440px",
             },
         },
         extend: {
@@ -22,7 +22,7 @@ module.exports = {
                 pink: "#e41aff",
                 rosa: "#d77bbf",
                 // footer: "#526576",
-                footer: "#1d1e1e",
+                footer: "#3f3e39",
                 text: "#414646",
                 lightGray: "#F5F0ED",
             },

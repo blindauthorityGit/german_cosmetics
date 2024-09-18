@@ -11,7 +11,6 @@ import BlogOverviewElement from "../../components/sections/blogOvervieElement";
 import { isMobile } from "react-device-detect";
 
 import Image from "next/image";
-import { useNextSanityImage } from "next-sanity-image";
 
 const builder = imageUrlBuilder(client);
 
@@ -21,8 +20,6 @@ function urlFor(source) {
 
 export default function Blog({ data, dataBlog, dataBlogSettings }) {
     const [_isMobile, setMobile] = useState();
-
-    const imageProps = useNextSanityImage(client, dataBlogSettings[0].bgImage);
 
     useEffect(() => {
         setMobile(isMobile);
@@ -44,13 +41,14 @@ export default function Blog({ data, dataBlog, dataBlogSettings }) {
                 logoLight={urlFor(data[3].logo.logo_light)}
             ></Navbar>
             <PageHero headline="Blog" showButton={false}>
-                <Image
-                    {...imageProps}
-                    layout="fill"
-                    objectFit="cover"
-                    alt="hero"
-                    sizes="(max-height: 550px) 100%, 550px"
-                />
+                <div className="relative w-full h-full lg:max-h-[550px]">
+                    <Image
+                        src={urlFor(dataBlogSettings[0].bgImage).url()}
+                        fill
+                        style={{ objectFit: "cover" }} // To ensure it covers the whole space
+                        alt="hero"
+                    />
+                </div>
             </PageHero>
 
             <div className="container m-auto px-0 md:px-12 lg:px-0 mt-12 sm:mt-36 grid sm:gap-16 grid-cols-12 mb-24">

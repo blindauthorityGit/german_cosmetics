@@ -3,8 +3,6 @@ import MainContainer from "../layout/mainContainer";
 import { H2 } from "../utils/headlines";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import { useSwiper } from "swiper/react";
-import { useNextSanityImage } from "next-sanity-image";
 import Image from "next/image";
 import client from "../../client";
 import imageUrlBuilder from "@sanity/image-url";

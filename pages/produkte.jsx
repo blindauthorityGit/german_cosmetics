@@ -14,7 +14,6 @@ import ImageBox from "../components/sections/imageBox";
 import LinkBox from "../components/sections/linkBox";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { useNextSanityImage } from "next-sanity-image";
 import ProduktContainer from "../components/sections/produkte/productContainer";
 const builder = imageUrlBuilder(client);
 
@@ -23,8 +22,6 @@ function urlFor(source) {
 }
 
 export default function Produkte({ data, dermaData, produkteData, produkteKomponente, produkteKontakt, laserRes }) {
-    const imageProps = useNextSanityImage(client, produkteData[0].hero_settings.backgroundImg);
-
     const containerRef = useRef();
 
     const [fetchID, setFetchID] = useState(0);
@@ -79,13 +76,14 @@ export default function Produkte({ data, dermaData, produkteData, produkteKompon
                     headline="Unsere Produkte"
                     showButton={false}
                 >
-                    <Image
-                        {...imageProps}
-                        layout="fill"
-                        objectFit="cover"
-                        alt="hero"
-                        sizes="(max-height: 550px) 100%, 550px"
-                    />
+                    <div className="relative w-full h-full lg:max-h-[550px]">
+                        <Image
+                            src={urlFor(produkteData[0].hero_settings.backgroundImg).url()}
+                            fill
+                            style={{ objectFit: "cover" }} // To ensure it covers the whole space
+                            alt="hero"
+                        />
+                    </div>
                 </PageHero>
             </motion.div>
             <BehandlungNav klasseTwo="active"></BehandlungNav>
@@ -141,7 +139,7 @@ export default function Produkte({ data, dermaData, produkteData, produkteKompon
     );
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
     const res = await client.fetch(
         `*[_type in ["aesthetic_praxis", "aesthetic_kontakt", "cosmetics_settings", "aesthetic_komponente"] ]`
     );
@@ -156,6 +154,7 @@ export async function getStaticProps() {
     const produkteData = await produkteRes;
     const produkteKomponente = await resKomponente;
     const produkteKontakt = await resKontakt;
+
     return {
         props: {
             data,
@@ -165,6 +164,5 @@ export async function getStaticProps() {
             produkteKontakt,
             laserRes,
         },
-        revalidate: 1, // 10 seconds
     };
 }

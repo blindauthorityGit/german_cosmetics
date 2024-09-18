@@ -16,8 +16,7 @@
 # production
 /build
 
-# sanityNew
-/sanityNew
+/sanityNew/backups/*
 
 # misc
 .DS_Store

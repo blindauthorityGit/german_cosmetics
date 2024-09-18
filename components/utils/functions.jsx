@@ -1,14 +1,30 @@
-function checkTop(divs, state, setState, links) {
-    divs.forEach((e, i) => {
-        let divTop = e.getBoundingClientRect().top;
-        if (divTop <= 128) {
-            setState(e.id);
-            links.forEach((e) => {
-                e.classList.remove("activeSideLink");
-                e.children[0].style.width = "2rem";
-            });
-            links[i].classList.add("activeSideLink");
-            links[i].children[0].style.width = "3rem";
+function checkTop(divs, activeLink, setActiveLink, links) {
+    divs.forEach((div, i) => {
+        const rect = div.getBoundingClientRect();
+
+        if (rect.top <= 200 && rect.bottom >= 200) {
+            setActiveLink(div.id);
+
+            // Check if links[i] exists
+            if (links[i]) {
+                // Loop through all links and ensure they have children before accessing
+                links.forEach((e) => {
+                    e.classList.remove("activeSideLink");
+
+                    // Check if e has children and if children[0] exists
+                    if (e.children && e.children[0]) {
+                        e.children[0].style.width = "2rem";
+                    }
+                });
+
+                // Add class and style to the current link
+                links[i].classList.add("activeSideLink");
+
+                // Ensure links[i] has children before accessing
+                if (links[i].children && links[i].children[0]) {
+                    links[i].children[0].style.width = "3rem";
+                }
+            }
         }
     });
 }

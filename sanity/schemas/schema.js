@@ -73,6 +73,7 @@ export default createSchema({
         jobs,
         impressum,
         datenschutz,
+        modalGeneral,
         cosmetics_settings,
         cosmetics_home,
         cosmetics_kontakt,

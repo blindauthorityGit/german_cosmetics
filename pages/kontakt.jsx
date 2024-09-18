@@ -13,7 +13,6 @@ import FormFull from "../components/form/formFull";
 import Map from "../assets/map.jpg";
 import MapMobile from "../assets/mapMobile.jpg";
 import Image from "next/image";
-import { useNextSanityImage } from "next-sanity-image";
 
 const builder = imageUrlBuilder(client);
 
@@ -22,8 +21,6 @@ function urlFor(source) {
 }
 
 export default function Kontakt({ data, laserData, kontaktData, dataKomponente }) {
-    const imageProps = useNextSanityImage(client, data[2].raeumlichkeiten_settings.images[2]);
-
     return (
         <>
             <Head>
@@ -47,13 +44,14 @@ export default function Kontakt({ data, laserData, kontaktData, dataKomponente }
                     headline="Kontakt"
                     showButton={false}
                 >
-                    <Image
-                        {...imageProps}
-                        layout="fill"
-                        objectFit="cover"
-                        alt="hero"
-                        sizes="(max-height: 550px) 100%, 550px"
-                    />
+                    <div className="relative w-full h-full lg:max-h-[550px]">
+                        <Image
+                            src={urlFor(data[2].raeumlichkeiten_settings.images[2]).url()}
+                            fill
+                            style={{ objectFit: "cover" }} // To ensure it covers the whole space
+                            alt="hero"
+                        />
+                    </div>
                 </PageHero>
             </motion.div>
 
@@ -65,7 +63,7 @@ export default function Kontakt({ data, laserData, kontaktData, dataKomponente }
                 mobile={kontaktData[0].kontakt.mobile}
                 fax={kontaktData[0].kontakt.fax}
                 value={kontaktData[0].oeffnungszeiten}
-                headline="Kontaktdaten"
+                headline="german cosmetics"
                 valueLeft={<div>Hallo</div>}
                 klasse="pt-12"
             ></KontaktTop>

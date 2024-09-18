@@ -3,8 +3,7 @@ import MainContainer from "../layout/mainContainer";
 import { H2 } from "../utils/headlines";
 import { DefaultButton } from "../utils/buttons";
 import { PortableText } from "@portabletext/react";
-import ScrollAnimation from "react-animate-on-scroll";
-import { IoIosCall, IoMdMap, IoMdMail } from "react-icons/io";
+import { IoIosCall, IoMdMap, IoMdMail } from "react-icons/io/index.js";
 import { FaFax, FaMobileAlt } from "react-icons/fa";
 
 const KontaktTop = (props) => {
@@ -14,15 +13,27 @@ const KontaktTop = (props) => {
                 <div className="col-span-12 sm:col-span-12">
                     <div className="px-8">
                         <H2 klasse="mb-8 sm:mb-16 beforeH">{props.headline}</H2>
-                        <div className="header">
+                        <div className="header lg:flex lg:space-x-16">
                             <p>
-                                <strong className="block mb-8">
+                                <strong className="block mb-8 ">
                                     Privates Studio<br></br> für Kosmetik und Ästhetik
                                 </strong>
                             </p>
+                            <p>
+                                <strong className="block mb-8">
+                                    Facharzt für<br></br>{" "}
+                                    <span className="text-bold text-primaryColor">
+                                        {" "}
+                                        Dermatologie | Dermatochirurgie | Lasermedizin{" "}
+                                    </span>
+                                </strong>
+                            </p>
+                            <p>
+                                <strong className="block mb-8">PRIVATPRAXIS OHNE Kassenzulassung</strong>
+                            </p>
                         </div>
-                        <div className="kdata grid grid-cols-3">
-                            <div className="left col-span-3 sm:col-span-1 flex items-end">
+                        <div className="kdata grid grid-cols-3 mt-4">
+                            <div className="left col-span-3 sm:col-span-1 flex ">
                                 <p>
                                     german cosmetics GmbH
                                     <br />
@@ -86,8 +97,6 @@ const KontaktTop = (props) => {
                                         <br />
                                         Do
                                         <br />
-                                        Fr
-                                        <br />
                                     </div>
                                     <div className="right text-left">
                                         <PortableText value={props.value}></PortableText>
@@ -98,9 +107,6 @@ const KontaktTop = (props) => {
                     </div>
                 </div>
                 <div className="col-span-12 sm:col-span-8 mb-16 sm:mb-0">
-                    {/* <ScrollAnimation animateIn="slideInRight" animateOnce={true}> */}
-
-                    {/* </ScrollAnimation> */}
                     <div className="px-8">
                         <PortableText value={props.valueRight}></PortableText>
                     </div>

@@ -18,7 +18,6 @@ import InlineImgs from "../../components/sections/inlineImgs";
 import Breadcrumbs from "../../components/sections/breadcrumbs";
 
 import Image from "next/image";
-import { useNextSanityImage } from "next-sanity-image";
 
 const builder = imageUrlBuilder(client);
 
@@ -66,8 +65,6 @@ export const getStaticProps = async (context) => {
 };
 
 const BlogPage = ({ post, resData, blogData }) => {
-    const imageProps = useNextSanityImage(client, post.blog_settings.featuredImg);
-
     return (
         <>
             <Head>
@@ -84,13 +81,14 @@ const BlogPage = ({ post, resData, blogData }) => {
                 logoDark={urlFor(resData[3].logo.logo_dark)}
             ></Navbar>
             <PageHero headline={post.title} showButton={false}>
-                <Image
-                    {...imageProps}
-                    layout="fill"
-                    objectFit="cover"
-                    alt="hero"
-                    sizes="(max-height: 550px) 100%, 550px"
-                />
+                <div className="relative w-full h-full lg:max-h-[550px]">
+                    <Image
+                        src={urlFor(post.blog_settings.featuredImg).url()}
+                        fill
+                        style={{ objectFit: "cover" }} // To ensure it covers the whole space
+                        alt="hero"
+                    />
+                </div>
             </PageHero>
             <Breadcrumbs
                 first="Blog"

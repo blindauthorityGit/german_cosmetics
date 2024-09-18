@@ -17,6 +17,8 @@ const Desktop = (props) => {
     const [showCosmLogo, setShowCosmLogo] = useState(true);
     const [showAesthLogo, setshowAesthLogo] = useState(false);
     const [isSubZero, setIsSubZero] = useState(false);
+    const [overlayOpacity, setOverlayOpacity] = useState(0.8); // Overlay opacity state
+
     // REFS
     const wrapperRef = useRef();
     const leftRef = useRef();
@@ -37,7 +39,7 @@ const Desktop = (props) => {
 
         const scaleDiv = 2300;
         const opacityDiv = 1000;
-        const blurDiv = 70;
+        const blurDiv = 40;
         let translateDivR = 12;
         let translateDivL = 12;
 
@@ -89,6 +91,15 @@ const Desktop = (props) => {
                 leftImg.style.opacity = `${1 - pos / opacityDiv}`;
                 leftImgHolder.style.filter = `blur(${1 - (pos / blurDiv) * -1}px)`;
             }
+
+            // Update overlay opacity based on whether the image is in the background
+            const maxDistance = container.offsetWidth / 2;
+            if (pos > 0) {
+                const newOverlayOpacity = Math.min(0.6, Math.abs(pos) / maxDistance);
+                setOverlayOpacity(newOverlayOpacity);
+            } else {
+                setOverlayOpacity(0);
+            }
             if (pos > 0) {
                 rightImg.style.zIndex = 1;
                 leftImg.style.zIndex = 0;
@@ -113,7 +124,7 @@ const Desktop = (props) => {
     return (
         <MainContainer width="2xl:container w-full h-screen items-center z-10">
             <div className="wrapper  overflow-hidden col-span-12 flex justify-center h-[70%] max-h-[70%] z-50">
-                <div ref={wrapperRef} className="imgwrapper overflow-hidden relative w-[80%] xl:w-[60%] 2xl:w-[50%]">
+                <div ref={wrapperRef} className="imgwrapper overflow-hidden relative w-[80%] xl:w-[60%] 2xl:w-[65%]">
                     <div
                         ref={leftRef}
                         className="innerWrapper left-0 bg-cover  absolute w-[60%] h-[80%] max-h-[80%] bg-lightGray"
@@ -125,6 +136,11 @@ const Desktop = (props) => {
                                 className="w-full bg-center h-full bg-cover cursor-pointer"
                             ></div>
                         </Link>
+                        {/* Add the overlay to the background box */}
+                        <div
+                            className="absolute top-0 left-0 w-full h-full bg-[#a53f98]"
+                            style={{ opacity: overlayOpacity }} // Set the dynamic opacity
+                        ></div>
                         <div
                             ref={rightLogo}
                             className={`absolute bottom-8 flex justify-center w-full ${

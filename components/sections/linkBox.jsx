@@ -5,7 +5,7 @@ import { DefaultButton } from "../utils/buttons";
 
 const LinkBox = (props) => {
     return (
-        <MainContainer width={`w-100 gap-0 mt-12 lg:mt-24  container font-europa sm:px-16 text-center ${props.klasse}`}>
+        <MainContainer width={`w-100 gap-0  lg:mt-24  container font-europa sm:px-16 text-center ${props.klasse}`}>
             <div className="col-span-12 sm:col-span-6 relative h-[260px] sm:h-[570px]">
                 <div
                     className="bgImg absolute w-full h-full top-0 bg-cover bg-right lg:bg-center"
