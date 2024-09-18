@@ -59,6 +59,8 @@ export default function Start({
         console.log(dataModal);
         console.log(googleReviews);
         console.log(dataModal[0]);
+        console.log(dataModal[0]);
+        console.log(dataModal[0]);
     }, []);
 
     const isOnVacation = false;
