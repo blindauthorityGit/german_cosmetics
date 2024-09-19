@@ -39,4 +39,16 @@ const sorter = (data) => {
     return data.sort((a, b) => (a._type > b._type ? 1 : -1));
 };
 
-export { checkTop, wrap, sorter };
+function formatToWhatsAppNumber(phoneNumber) {
+    // Remove all non-digit characters (spaces, slashes, dashes, etc.)
+    let cleanedNumber = phoneNumber.replace(/[^0-9]/g, "");
+
+    // Check if the number starts with a '0', and if so, replace it with '49' (Germany's country code)
+    if (cleanedNumber.startsWith("0")) {
+        cleanedNumber = "49" + cleanedNumber.slice(1);
+    }
+
+    return cleanedNumber;
+}
+
+export { checkTop, wrap, sorter, formatToWhatsAppNumber };
