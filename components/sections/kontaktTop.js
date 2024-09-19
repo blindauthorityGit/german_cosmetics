@@ -6,6 +6,7 @@ import { PortableText } from "@portabletext/react";
 import { IoIosCall, IoMdMap, IoMdMail } from "react-icons/io/index.js";
 import { FaFax, FaMobileAlt } from "react-icons/fa";
 import { BsFacebook, BsInstagram, BsWhatsapp } from "react-icons/bs/index.js"; // WhatsApp Icon hinzugefügt
+import { formatToWhatsAppNumber } from "../utils/functions";
 
 const KontaktTop = (props) => {
     return (
@@ -87,7 +88,7 @@ const KontaktTop = (props) => {
                                 <div className="wrapper flex items-center mt-4">
                                     <div className="icon mr-8 text-primaryColor">
                                         <a
-                                            href={`https://wa.me/${props.mobile}`}
+                                            href={`https://wa.me/${formatToWhatsAppNumber(props.mobile)}`}
                                             target="_blank"
                                             rel="noopener noreferrer"
                                         >

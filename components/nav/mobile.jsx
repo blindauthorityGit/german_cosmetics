@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { PortableText } from "@portabletext/react";
 import { H4 } from "../../components/utils/headlines";
 import { BsWhatsapp } from "react-icons/bs/index.js"; // WhatsApp Icon hinzugefügt
+import { formatToWhatsAppNumber } from "../utils/functions";
 
 const MobileNav = (props) => {
     const burgerRef = useRef();
@@ -180,10 +181,6 @@ const MobileNav = (props) => {
                                     </a>
                                     <br></br>
                                     <br></br>
-
-                                    <a href={`https://wa.me/${props.mobile}`} target="_blank" rel="noopener noreferrer">
-                                        <BsWhatsapp></BsWhatsapp>
-                                    </a>
                                 </div>
                             </div>
                             <hr />
@@ -197,6 +194,16 @@ const MobileNav = (props) => {
                                     <br></br>
                                     {props.ort}
                                 </div>
+                            </div>
+                            <div className="wrapper flex oeffnung py-2 sm:py-0 sm:pb-24 sm:pt-8 pl-8 sm:pr-24">
+                                <a
+                                    href={`https://wa.me/${formatToWhatsAppNumber(props.mobile)}`}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="text-2xl"
+                                >
+                                    <BsWhatsapp></BsWhatsapp>
+                                </a>
                             </div>
                         </>
                     )}

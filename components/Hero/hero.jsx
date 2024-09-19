@@ -7,6 +7,7 @@ import { config } from "react-spring";
 import { isMobile } from "react-device-detect";
 import { IoMdTime, IoIosCall, IoMdMap } from "react-icons/io/index.js";
 import { BsWhatsapp } from "react-icons/bs/index.js"; // WhatsApp Icon hinzugefügt
+import { formatToWhatsAppNumber } from "../utils/functions";
 
 const Hero = (props) => {
     const [showTime, setShowTime] = useState(true);
@@ -176,7 +177,12 @@ const Hero = (props) => {
                                     <br></br>
                                     <br></br>
 
-                                    <a href={`https://wa.me/${props.mobile}`} target="_blank" rel="noopener noreferrer">
+                                    <a
+                                        className="text-2xl"
+                                        href={`https://wa.me/${formatToWhatsAppNumber(props.mobile)}`}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                    >
                                         <BsWhatsapp></BsWhatsapp>
                                     </a>
                                 </div>

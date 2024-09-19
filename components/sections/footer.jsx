@@ -45,7 +45,7 @@ const Footer = (props) => {
                                 <BsInstagram></BsInstagram>
                             </a>
                             {/* WhatsApp Button hinzugefügt */}
-                            <a href="https://wa.me/015119100049" target="_blank" rel="noopener noreferrer">
+                            <a href="https://wa.me/4915119100049" target="_blank" rel="noopener noreferrer">
                                 <BsWhatsapp></BsWhatsapp>
                             </a>
                         </div>

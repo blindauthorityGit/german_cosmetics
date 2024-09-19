@@ -52,31 +52,31 @@ function MyApp({ Component, pageProps, dataModal }) {
 
     return (
         <>
-            <ReactLenis ReactLenis root>
-                {showModal && modalData !== null && router.pathname !== "/" && (
-                    <>
-                        <Modal
-                            onClick={(e) => {
-                                modalSwitcher(e, showModal, setShowModal);
-                            }}
-                        >
-                            <div className="modal text-center flex items-center flex-col justify-center">
-                                <div className="pt-12 lg:pt-0">
-                                    <BasicPortableText value={modalData}></BasicPortableText>
-                                </div>
-                            </div>{" "}
-                        </Modal>
-                        <Overlay
-                            onClick={(e) => {
-                                modalSwitcher(e, showModal, setShowModal);
-                            }}
-                        ></Overlay>
-                    </>
-                )}
-                <AnimateSharedLayout>
-                    <Component {...pageProps} />
-                    <CookieConsent />
-                    {/* <CookieConsent
+            {/* <ReactLenis ReactLenis root> */}
+            {showModal && modalData !== null && router.pathname !== "/" && (
+                <>
+                    <Modal
+                        onClick={(e) => {
+                            modalSwitcher(e, showModal, setShowModal);
+                        }}
+                    >
+                        <div className="modal text-center flex items-center flex-col justify-center">
+                            <div className="pt-12 lg:pt-0">
+                                <BasicPortableText value={modalData}></BasicPortableText>
+                            </div>
+                        </div>{" "}
+                    </Modal>
+                    <Overlay
+                        onClick={(e) => {
+                            modalSwitcher(e, showModal, setShowModal);
+                        }}
+                    ></Overlay>
+                </>
+            )}
+            <AnimateSharedLayout>
+                <Component {...pageProps} />
+                <CookieConsent />
+                {/* <CookieConsent
                         location="bottom"
                         buttonText="Bestätigen"
                         cookieName="myAwesomeCookieName2"
@@ -86,8 +86,8 @@ function MyApp({ Component, pageProps, dataModal }) {
                     >
                         Wir verwenden Cookies. Hiermit bestätigen Sie dieses.
                     </CookieConsent> */}
-                </AnimateSharedLayout>
-            </ReactLenis>
+            </AnimateSharedLayout>
+            {/* </ReactLenis> */}
         </>
     );
 }
