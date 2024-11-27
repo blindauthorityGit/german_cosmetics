@@ -141,6 +141,7 @@ const LaserBehandlungenContainer = (props, ref) => {
                 )}
                 <div className="col-span-12 sm:col-span-8 transition-all duration-300" ref={ref}>
                     {props.dataBehandlung.map((e, i) => {
+                        console.log(e);
                         return (
                             <div
                                 key={`laserBehandlung${i}`}
@@ -161,6 +162,7 @@ const LaserBehandlungenContainer = (props, ref) => {
                                     }
                                     text={e.text}
                                     cat={`cat${e.categories}`}
+                                    slug={e.slug.current}
                                 ></LaserBehandlungElement>
                             </div>
                         );

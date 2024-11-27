@@ -47,7 +47,7 @@ export default function LaserBehanldungen({
     };
 
     useEffect(() => {
-        console.log(dataKomponente);
+        console.log(laserData[0].behandlungen);
         laserData[0].categories.map((e, i) => {
             dataSet(`cat${i}`)[0].id = idFormater(i);
         });
