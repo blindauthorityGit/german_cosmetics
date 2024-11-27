@@ -51,61 +51,69 @@ const CookieConsent = () => {
     if (!showConsent) return null;
 
     return (
-        <div className="fixed bottom-0 left-0 w-full bg-gray-600 text-white p-6 z-50">
-            <h3 className="text-lg font-bold mb-4">Wir verwenden Cookies</h3>
-            <p className="mb-4">
-                Diese Website verwendet Cookies, um Ihre Erfahrung zu verbessern. Sie können alle Cookies akzeptieren
-                oder Ihre Einstellungen anpassen.
-            </p>
+        <>
+            {/* Overlay to block interaction */}
+            <div className="fixed inset-0 bg-black bg-opacity-50 z-40 pointer-events-none"></div>
 
-            <div className="mb-4">
-                <label className="block mb-2">
-                    <input
-                        type="checkbox"
-                        name="necessary"
-                        checked={cookiePreferences.necessary}
-                        disabled
-                        className="mr-2"
-                    />
-                    Notwendige Cookies (Immer aktiv)
-                </label>
-                <label className="block mb-2">
-                    <input
-                        type="checkbox"
-                        name="analytics"
-                        checked={cookiePreferences.analytics}
-                        onChange={handlePreferenceChange}
-                        className="mr-2"
-                    />
-                    Analytics Cookies
-                </label>
-                <label className="block mb-2">
-                    <input
-                        type="checkbox"
-                        name="marketing"
-                        checked={cookiePreferences.marketing}
-                        onChange={handlePreferenceChange}
-                        className="mr-2"
-                    />
-                    Marketing Cookies
-                </label>
-            </div>
+            {/* Consent Box */}
+            <div className="fixed inset-0 flex items-center justify-center z-50">
+                <div className="bg-gray-600 text-white p-6 rounded shadow-lg lg:max-w-[60%] w-full">
+                    <h3 className="text-lg font-bold mb-4">Wir verwenden Cookies</h3>
+                    <p className="mb-4">
+                        Diese Website verwendet Cookies, um Ihre Erfahrung zu verbessern. Sie können alle Cookies
+                        akzeptieren oder Ihre Einstellungen anpassen.
+                    </p>
 
-            <div className="flex justify-end">
-                <button
-                    onClick={handleAcceptAll}
-                    className="bg-primaryColor text-white px-4 py-2 mr-2 rounded hover:bg-green-600"
-                >
-                    Alle akzeptieren
-                </button>
-                <button
-                    onClick={handleSavePreferences}
-                    className="bg-text text-white px-4 py-2 rounded hover:bg-blue-600"
-                >
-                    Einstellungen speichern
-                </button>
+                    <div className="mb-4">
+                        <label className="block mb-2">
+                            <input
+                                type="checkbox"
+                                name="necessary"
+                                checked={cookiePreferences.necessary}
+                                disabled
+                                className="mr-2"
+                            />
+                            Notwendige Cookies (Immer aktiv)
+                        </label>
+                        <label className="block mb-2">
+                            <input
+                                type="checkbox"
+                                name="analytics"
+                                checked={cookiePreferences.analytics}
+                                onChange={handlePreferenceChange}
+                                className="mr-2"
+                            />
+                            Analytics Cookies
+                        </label>
+                        <label className="block mb-2">
+                            <input
+                                type="checkbox"
+                                name="marketing"
+                                checked={cookiePreferences.marketing}
+                                onChange={handlePreferenceChange}
+                                className="mr-2"
+                            />
+                            Marketing Cookies
+                        </label>
+                    </div>
+
+                    <div className="flex justify-end text-xs lg:text-base mt-8 lg:mt-0">
+                        <button
+                            onClick={handleAcceptAll}
+                            className="bg-primaryColor text-white px-4 py-2 mr-2 rounded hover:bg-secondaryColor"
+                        >
+                            Alle akzeptieren
+                        </button>
+                        <button
+                            onClick={handleSavePreferences}
+                            className="bg-textColor text-white px-4 py-2 rounded hover:bg-black"
+                        >
+                            Einstellungen speichern
+                        </button>
+                    </div>
+                </div>
             </div>
-        </div>
+        </>
     );
 };
 
