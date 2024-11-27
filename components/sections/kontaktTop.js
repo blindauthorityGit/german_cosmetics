@@ -85,15 +85,17 @@ const KontaktTop = (props) => {
                                         <a href={`mailto:${props.email}`}>{props.email}</a>{" "}
                                     </p>
                                 </div>
-                                <div className="wrapper flex items-center mt-4">
-                                    <div className="icon mr-8 text-primaryColor">
+                                <div className="wrapper flex items-center ">
+                                    <div className="icon  text-primaryColor flex items-center">
                                         <a
                                             href={`https://wa.me/${formatToWhatsAppNumber(props.mobile)}`}
                                             target="_blank"
                                             rel="noopener noreferrer"
+                                            className="mr-8"
                                         >
                                             <BsWhatsapp></BsWhatsapp>
                                         </a>
+                                        <p> {props.mobile}</p>
                                     </div>
                                 </div>
                             </div>
