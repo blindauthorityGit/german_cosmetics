@@ -3,7 +3,7 @@ import client from "../../client";
 import Head from "next/head";
 import { useEffect } from "react";
 import imageUrlBuilder from "@sanity/image-url";
-
+import Meta from "../../components/SEO/index";
 import Navbar from "../../components/nav/navbar";
 import BehandlungTop from "../../components/sections/behandlungTop";
 import PageHero from "../../components/sections/pageHero";
@@ -40,7 +40,6 @@ export const getStaticPaths = async () => {
     const paths = data.behandlungen.map((behandlung) => ({
         params: { slug: behandlung.slug },
     }));
-    console.log(paths);
 
     return {
         paths,
@@ -84,14 +83,12 @@ export const getStaticProps = async (context) => {
 };
 
 const Behandlungen = ({ behandlung, resData, blogData, behandlungenAll }) => {
-    console.log(behandlungenAll, behandlung.behandlungen.slug.current);
+    console.log(behandlung.behandlungen);
 
     return (
         <>
-            <Head>
-                {/* <title>{post.seo.seo_title}</title>
-                <meta name="description" content={post.seo.description} /> */}
-            </Head>
+            <Meta data={behandlung?.behandlungen?.seo}></Meta>
+
             <Navbar
                 strasse={resData[2].adresse.strasse}
                 ort={resData[2].adresse.ort}

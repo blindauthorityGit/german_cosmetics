@@ -7,6 +7,11 @@ export default {
   icon: FaRegImage,
   fields: [
     {
+      name: 'seo',
+      title: 'SEO',
+      type: 'seo',
+    },
+    {
       title: 'Titel',
       name: 'title',
       type: 'string',

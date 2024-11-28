@@ -31,6 +31,7 @@ import cosmetics_behandlung from './cosmetics/behandlungen/'
 import cosmetics_produkte from './cosmetics/produkte'
 import produkt from './cosmetics/objects/produkt'
 import produktKategorie from './cosmetics/objects/produktKategorie'
+import seo from './cosmetics/objects/seo'
 
 import modalGeneral from './main/modalGeneral'
 import gutschein from './main/gutschein'
@@ -71,4 +72,5 @@ export const schemaTypes = [
   produktKategorie,
   gutschein,
   jameda,
+  seo,
 ]
