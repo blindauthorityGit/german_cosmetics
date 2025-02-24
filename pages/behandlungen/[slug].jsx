@@ -1,7 +1,6 @@
 import React from "react";
 import client from "../../client";
 import Head from "next/head";
-import { useEffect } from "react";
 import imageUrlBuilder from "@sanity/image-url";
 import Meta from "../../components/SEO/index";
 import Navbar from "../../components/nav/navbar";
@@ -26,36 +25,15 @@ function urlFor(source) {
     return builder.image(source);
 }
 
-export const getStaticPaths = async () => {
-    const query = `
-    *[_type == "cosmetics_behandlung"][0] {
-      behandlungen[] {
-        "slug": slug.current
-      }
-    }
-  `;
-
-    const data = await client.fetch(query);
-
-    const paths = data.behandlungen.map((behandlung) => ({
-        params: { slug: behandlung.slug },
-    }));
-
-    return {
-        paths,
-        fallback: false, // Change to 'true' or 'blocking' if you want to handle missing pages dynamically
-    };
-};
-export const getStaticProps = async (context) => {
+export const getServerSideProps = async (context) => {
     const { slug } = context.params;
 
     const query = `
     *[_type == "cosmetics_behandlung"][0] {
       behandlungen[slug.current == $slug][0]
-    }
-  `;
+    }`;
 
-    const behandlung = await client.fetch(query, { slug }); // Pass slug correctly
+    const behandlung = await client.fetch(query, { slug });
 
     const resMain = await client.fetch(
         `*[_type in ["aesthetic_home", "cosmetics_kontakt", "cosmetics_settings", "aesthetic_komponente"] && _id != "12ef8e69-f114-48e0-a647-63158111ee86"]`
@@ -87,7 +65,7 @@ const Behandlungen = ({ behandlung, resData, blogData, behandlungenAll }) => {
 
     return (
         <>
-            <Meta data={behandlung?.behandlungen?.seo}></Meta>
+            <Meta data={behandlung?.behandlungen?.seo} />
 
             <Navbar
                 strasse={resData[2].adresse.strasse}
@@ -97,19 +75,19 @@ const Behandlungen = ({ behandlung, resData, blogData, behandlungenAll }) => {
                 value={resData[2].oeffnungszeiten}
                 logoLight={urlFor(resData[3].logo.logo_light)}
                 logoDark={urlFor(resData[3].logo.logo_dark)}
-            ></Navbar>
+            />
             <PageHero headline={behandlung.behandlungen.title} showButton={false}>
                 <div className="relative w-full h-full lg:max-h-[550px]">
                     <Image
                         src={urlFor(behandlung.behandlungen.image).url()}
                         fill
-                        style={{ objectFit: "cover" }} // To ensure it covers the whole space
+                        style={{ objectFit: "cover" }} // Ensures the image covers the space
                         alt="hero"
                     />
                 </div>
             </PageHero>
             <div className="container mx-auto px-8 lg:px-64">
-                <BasicPortableText value={behandlung.behandlungen.fullDescription}></BasicPortableText>
+                <BasicPortableText value={behandlung.behandlungen.fullDescription} />
             </div>
             <div className="container mx-auto px-8 lg:px-16">
                 <WeitereBehandlungen
@@ -124,7 +102,7 @@ const Behandlungen = ({ behandlung, resData, blogData, behandlungenAll }) => {
                 phone={resData[2].kontakt.phone}
                 email={resData[2].kontakt.email}
                 value={resData[2].oeffnungszeiten}
-            ></Footer>
+            />
         </>
     );
 };
