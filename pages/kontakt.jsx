@@ -66,7 +66,7 @@ export default function Kontakt({ data, laserData, kontaktData, dataKomponente }
                 valueLeft={<div>Hallo</div>}
                 klasse="pt-12"
             ></KontaktTop>
-            <FormFull></FormFull>
+            {/* <FormFull></FormFull> */}
             <div className="container m-auto">
                 <img className="hidden sm:block" src={Map.src} alt="" />
                 <img className="block sm:hidden" src={MapMobile.src} alt="" />

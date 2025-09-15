@@ -14,7 +14,7 @@ const Footer = (props) => {
                 <div className="col-span-12 sm:col-span-3">
                     <img src={props.logo} alt="Logo" />
                 </div>
-                <FormTemplate></FormTemplate>
+                {/* <FormTemplate></FormTemplate> */}
 
                 <div className="col-span-12 grid grid-cols-12 mt-16 text-white lg:gap-16">
                     <div className="col-span-12 sm:col-span-3 2xl:clamp">

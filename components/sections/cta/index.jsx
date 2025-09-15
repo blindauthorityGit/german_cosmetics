@@ -62,7 +62,7 @@ export default function CTAContent(props) {
         <MainContainer width={`w-100  font-europa gap-6`}>
             <div className="col-span-12 order-last lg:col-span-6 text-text">
                 {/* <p className="text-white sm:w-1/2">{props.text}</p> */}
-                <form onSubmit={handleSubmit(onSubmitForm)} className="grid grid-cols-12 gap-6 pt-8 sm:pr-t-0">
+                {/* <form onSubmit={handleSubmit(onSubmitForm)} className="grid grid-cols-12 gap-6 pt-8 sm:pr-t-0">
                     <div className="col-span-12">
                         <div className="hidden">
                             <label htmlFor="firstName">Name</label>
@@ -207,7 +207,7 @@ export default function CTAContent(props) {
                             stellen.
                         </p>
                     </div>
-                </form>
+                </form> */}
             </div>
             <div className="col-span-12 lg:col-span-6 sm:pl-12">
                 <H2 klasse="font-europa mb-12 hidden sm:block">Rufen Sie uns an!</H2>
